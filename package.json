@@ -1,0 +1,19 @@
+{
+  "name": "dev-dict",
+  "version": "0.0.1",
+  "description": "The Oxford dictionary of dev terms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"This project does not have any tests which can be run yet...\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyco/dev-dict.git"
+  },
+  "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kyco/dev-dict/issues"
+  },
+  "homepage": "https://github.com/kyco/dev-dict#readme"
+}
