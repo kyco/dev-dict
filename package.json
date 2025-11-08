@@ -1,5 +1,5 @@
 {
-  "name": "@_kyco/dev-dict",
+  "name": "dev-dict",
   "version": "0.0.4",
   "description": "The Oxford dictionary of dev terms",
   "main": "index.js",
