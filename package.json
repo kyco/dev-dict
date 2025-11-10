@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/kyco/dev-dict.git"
   },
+  "publishConfig": {
+    "provenance": true
+  },
   "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
   "license": "MIT",
   "bugs": {
