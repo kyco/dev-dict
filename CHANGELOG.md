@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/kyco/dev-dict/compare/v1.0.0...v1.0.1) (2025-11-10)
+
+
+### Bug Fixes
+
+* Remove assets ([873ede7](https://github.com/kyco/dev-dict/commit/873ede7cd4bb3a1357734ec5a5f76276dcf34d4a))
+
 # 1.0.0 (2025-11-10)
 
 
