@@ -1,23 +1,18 @@
 # dev-dict
 
-The Oxford dictionary of dev terms.
+A collection of dev terms, with descriptions in multiple languages.
 
 ## Installation
 
 ```bash
-npm i @_kyco/dev-dict
+npm i dev-dict
 ```
 
 ## Usage
 
 ```typescript
-import devDict from '@_kyco/dev-dict`
+import { getDict } from 'dev-dict`
 
-console.log(devDict.typescript.name)
-
-// OR
-
-import { dd_typescript } from '@_kyco/dev-dict`
-
-console.log(dd_typescript.name)
+const dd = getDict()
+console.log(dd.react.name)
 ```
