@@ -9,63 +9,52 @@ const config: Options = {
       {
         preset: 'conventionalcommits',
         releaseRules: [
-          {
-            type: 'feat',
-            release: 'minor',
-          },
-          {
-            type: 'fix',
-            release: 'patch',
-          },
-          {
-            type: 'perf',
-            release: 'patch',
-          },
-          {
-            type: 'refactor',
-            release: 'patch',
-          },
-          {
-            type: 'docs',
-            release: 'patch',
-          },
-          {
-            type: 'chore',
-            release: 'patch',
-          },
-          {
-            type: 'style',
-            release: 'patch',
-          },
-          {
-            type: 'test',
-            release: 'patch',
-          },
-          {
-            breaking: true,
-            release: 'major',
-          },
+          { type: 'feat', release: 'minor' },
+          { type: 'fix', release: 'patch' },
+          { type: 'perf', release: 'patch' },
+          { type: 'refactor', release: 'patch' },
+          { type: 'docs', release: 'patch' },
+          { type: 'chore', release: 'patch' },
+          { type: 'style', release: 'patch' },
+          { type: 'test', release: 'patch' },
+          { breaking: true, release: 'major' },
         ],
       },
     ],
+
     [
       '@semantic-release/release-notes-generator',
       {
         preset: 'conventionalcommits',
+        presetConfig: {
+          types: [
+            { type: 'feat', section: 'Features' },
+            { type: 'fix', section: 'Bug Fixes' },
+            { type: 'chore', section: 'Chore' },
+            { type: 'docs', section: 'Docs' },
+            { type: 'style', section: 'Style' },
+            { type: 'refactor', section: 'Refactoring' },
+            { type: 'perf', section: 'Perf' },
+            { type: 'test', section: 'Tests' },
+          ],
+        },
       },
     ],
+
     [
       '@semantic-release/changelog',
       {
         changelogFile: 'CHANGELOG.md',
       },
     ],
+
     [
       '@semantic-release/npm',
       {
         npmPublish: true,
       },
     ],
+
     '@semantic-release/github',
     [
       '@semantic-release/git',
