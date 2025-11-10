@@ -1,6 +1,6 @@
 {
   "name": "dev-dict",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A collection of dev terms, with descriptions in multiple languages.",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly --outDir dist",
