@@ -7,7 +7,7 @@ on:
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
 
 jobs:
   publish-to-npm:
@@ -43,4 +43,4 @@ jobs:
         run: pnpm build
 
       - name: Publish to npm
-        run: pnpm publish
+        run: npx semantic-release
