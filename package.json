@@ -1,8 +1,8 @@
 {
   "name": "dev-dict",
   "version": "0.0.4",
-  "description": "The Oxford dictionary of dev terms",
-  "main": "index.js",
+  "description": "A collection of dev terms, with descriptions in multiple languages.",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"This project does not have any tests which can be run yet...\""
   },
