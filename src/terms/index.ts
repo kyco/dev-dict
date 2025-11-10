@@ -1,8 +1,12 @@
 import type { TTerm } from '../typings'
+import node_js from './node_js'
 import react from './react'
+import typescript from './typescript'
 
 export const TERMS: Record<string, TTerm> = {
   [react.id]: react,
+  [node_js.id]: node_js,
+  [typescript.id]: typescript,
 } as const
 
 export type TTerms = (typeof TERMS)[keyof typeof TERMS]
