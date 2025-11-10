@@ -30,6 +30,10 @@ const config: Options = {
             release: 'patch',
           },
           {
+            type: 'chore',
+            release: 'patch',
+          },
+          {
             type: 'style',
             release: 'patch',
           },
