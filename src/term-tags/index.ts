@@ -1,11 +1,11 @@
 import backend from './backend'
 import frontend from './frontend'
-import opensource from './opensource'
+import open_source from './open_source'
 
 export const TERM_TAGS = {
   [backend.id]: backend,
   [frontend.id]: frontend,
-  [opensource.id]: opensource,
+  [open_source.id]: open_source,
 } as const
 
 export type TTermTags = (typeof TERM_TAGS)[keyof typeof TERM_TAGS]
