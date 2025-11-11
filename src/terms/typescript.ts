@@ -20,9 +20,9 @@ export default {
     [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 
-  tags: [TERM_TAGS.frontend, TERM_TAGS.backend, TERM_TAGS.opensource],
+  tags: [TERM_TAGS.frontend, TERM_TAGS.backend, TERM_TAGS.open_source],
 
-  resources: {
+  links: {
     website: 'https://www.typescriptlang.org',
   },
 } as const satisfies TTerm

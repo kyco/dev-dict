@@ -22,7 +22,7 @@ export default {
 
   tags: [TERM_TAGS.backend],
 
-  resources: {
+  links: {
     website: 'https://nodejs.org',
   },
 } as const satisfies TTerm

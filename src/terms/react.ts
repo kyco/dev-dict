@@ -22,7 +22,7 @@ export default {
 
   tags: [TERM_TAGS.frontend, TERM_TAGS.backend],
 
-  resources: {
+  links: {
     website: 'https://react.dev',
   },
 } as const satisfies TTerm

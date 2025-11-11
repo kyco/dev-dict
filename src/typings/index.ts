@@ -10,7 +10,7 @@ export type LocaleRecord = {
 
 export type TLinkType = 'website' | 'github' | 'npm'
 
-export type TTermResources = {
+export type TTermLinks = {
   website: string
 } & Partial<Record<Exclude<TLinkType, 'website'>, string>>
 
@@ -45,7 +45,10 @@ export type TTerm = {
   label: TTermLabel
   definition: TTermDefinition
   tags: TTermTags[]
-  resources?: TTermResources
+  links?: TTermLinks
+  // Possible future fields:
+  // examples?: Record<TLocale, string>[]
+  // relatedTerms?: TTerm['term'][]
 }
 
 export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags'> & {
