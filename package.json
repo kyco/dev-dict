@@ -2,11 +2,14 @@
   "name": "dev-dict",
   "version": "0.1.0",
   "description": "A dictionary of software related terms. Supports multiple languages.",
-  "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly --outDir dist",
-    "prepublishOnly": "npm run build",
-    "test": "echo \"This project does not have any tests which can be run yet...\""
-  },
+  "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
+  "license": "MIT",
+  "keywords": [
+    "dictionary",
+    "software dictionary",
+    "software terms",
+    "developer dictionary"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kyco/dev-dict.git"
@@ -14,8 +17,6 @@
   "publishConfig": {
     "provenance": true
   },
-  "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kyco/dev-dict/issues"
   },
@@ -33,6 +34,12 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "vite build && tsc --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"This project does not have any tests which can be run yet...\"",
+    "update-packages": "npx npm-check-updates -u"
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@eslint/json": "^0.14.0",
