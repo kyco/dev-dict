@@ -1,6 +1,7 @@
-import type { Options } from 'semantic-release'
-
-const config: Options = {
+/**
+ * @type {import('semantic-release').GlobalConfig}
+ */
+const config = {
   branches: ['main'],
   preset: 'conventionalcommits',
   plugins: [
@@ -55,7 +56,6 @@ const config: Options = {
       },
     ],
 
-    '@semantic-release/github',
     [
       '@semantic-release/git',
       {
@@ -63,6 +63,8 @@ const config: Options = {
         message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
     ],
+
+    '@semantic-release/github',
   ],
 }
 
