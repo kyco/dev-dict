@@ -1,0 +1,8 @@
+{
+  "$schema": "./0-SCHEMA.json",
+  "id": "open_source",
+  "name": {
+    "en-GB": "Open Source",
+    "de-DE": "Open Source"
+  }
+}

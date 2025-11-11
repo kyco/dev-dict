@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kyco.io/schemas/dev-dict/term-tag.json",
+  "title": "Term Tag",
+  "description": "Schema for a developer dictionary term tag",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the tag"
+    },
+    "name": {
+      "type": "object",
+      "description": "Localised name of the tag",
+      "properties": {
+        "en-GB": {
+          "type": "string",
+          "description": "Tag name in English (GB)"
+        },
+        "de-DE": {
+          "type": "string",
+          "description": "Tag name in German (DE)"
+        }
+      },
+      "required": [
+        "en-GB"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ],
+  "additionalProperties": false
+}

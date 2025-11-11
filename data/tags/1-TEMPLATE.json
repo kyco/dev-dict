@@ -1,0 +1,8 @@
+{
+  "$schema": "./0-SCHEMA.json",
+  "id": "example_tag",
+  "name": {
+    "en-GB": "Example Tag",
+    "de-DE": "Beispiel-Tag"
+  }
+}

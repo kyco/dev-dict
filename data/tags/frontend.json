@@ -1,0 +1,8 @@
+{
+  "$schema": "./0-SCHEMA.json",
+  "id": "frontend",
+  "name": {
+    "en-GB": "Frontend",
+    "de-DE": "Frontend"
+  }
+}
