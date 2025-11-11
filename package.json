@@ -35,8 +35,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly --outDir dist",
-    "prepublishOnly": "npm run build",
+    "validate:tags:schema": "ajv validate -s data/tags/0-SCHEMA.json -d \"data/tags/!(0-SCHEMA|1-TEMPLATE).json\" --spec=draft2020 --strict=false --allow-matching-properties",
+    "validate:tags:rules": "tsx scripts/validate-tags.ts",
+    "validate:tags": "pnpm run validate:tags:schema && pnpm run validate:tags:rules",
+    "build": "pnpm run validate:tags && vite build && tsc --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "pnpm run build",
     "test": "echo \"This project does not have any tests which can be run yet...\"",
     "update-packages": "npx npm-check-updates -u"
   },
@@ -49,11 +52,15 @@
     "@semantic-release/github": "^12.0.2",
     "@semantic-release/npm": "^13.1.1",
     "@types/node": "^24.10.0",
+    "ajv": "^8.17.1",
+    "ajv-cli": "^5.0.0",
+    "ajv-formats": "^3.0.1",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
     "prettier": "^3.6.2",
     "semantic-release": "^25.0.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.3",
     "vite": "^7.2.2"

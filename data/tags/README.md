@@ -41,8 +41,28 @@ Tags are labels used to categorise and group related terms. For example, a term 
 
 ## Validation
 
-All tag files are automatically validated against `0-SCHEMA.json` in VS Code. If you see validation errors, ensure:
+Tag files are validated in two ways:
+
+### Editor validation (VS Code)
+All tag files are automatically validated against `0-SCHEMA.json` in VS Code as you edit them.
+
+### Build-time validation
+Tags are validated during the build process using `pnpm run validate:tags`. This runs two types of validation:
+
+1. **Schema validation** - Validates JSON structure against `0-SCHEMA.json`
+2. **Cross-file validation** - Checks for:
+   - ID matches filename (e.g., `database.json` must have `"id": "database"`)
+   - No duplicate IDs across all tag files
+   - No duplicate tag names within the same locale
+
+If you see validation errors, ensure:
 - The `$schema` reference is correct
-- The `id` field is a string
+- The `id` field is a string and matches the filename
 - The `name` object contains at least `en-GB`
 - No extra fields are added
+- Tag IDs and names are unique across all files
+
+To manually validate tags before committing, run:
+```bash
+pnpm run validate:tags
+```
