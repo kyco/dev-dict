@@ -40,6 +40,7 @@
     "validate:tags": "pnpm run validate:tags:schema && pnpm run validate:tags:rules",
     "build": "pnpm run validate:tags && vite build && tsc --emitDeclarationOnly --outDir dist",
     "prepublishOnly": "pnpm run build",
+    "prepare": "lefthook install",
     "test": "echo \"This project does not have any tests which can be run yet...\"",
     "update-packages": "npx npm-check-updates -u"
   },
@@ -58,6 +59,7 @@
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
+    "lefthook": "^2.0.3",
     "prettier": "^3.6.2",
     "semantic-release": "^25.0.2",
     "tsx": "^4.20.6",

@@ -41,12 +41,15 @@ Tags are labels used to categorise and group related terms. For example, a term 
 
 ## Validation
 
-Tag files are validated in two ways:
+Tag files are validated in three ways:
 
-### Editor validation (VS Code)
+### 1. Editor validation (VS Code)
 All tag files are automatically validated against `0-SCHEMA.json` in VS Code as you edit them.
 
-### Build-time validation
+### 2. Pre-commit validation
+When you commit changes to tag files, Lefthook automatically runs validation to prevent invalid tags from being committed.
+
+### 3. Build-time validation
 Tags are validated during the build process using `pnpm run validate:tags`. This runs two types of validation:
 
 1. **Schema validation** - Validates JSON structure against `0-SCHEMA.json`
