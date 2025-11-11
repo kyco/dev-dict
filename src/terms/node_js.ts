@@ -6,7 +6,7 @@ import type { TTerm } from '../typings'
 export default {
   id: 'node_js',
 
-  name: 'Node.js',
+  term: 'Node.js',
 
   type: [TERM_TYPES.runtime_environment],
 
@@ -15,7 +15,7 @@ export default {
     [LOCALE.DE_DE]: `JavaScript-Laufzeit`,
   },
 
-  description: {
+  definition: {
     [LOCALE.EN_GB]: `Node.js is a free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.`,
     [LOCALE.DE_DE]: `Node.js ist eine kostenlose, Open-Source, plattformübergreifende JavaScript-Laufzeitumgebung, die es Entwicklern ermöglicht, Server, Webanwendungen, Befehlszeilentools und Skripte zu erstellen.`,
   },

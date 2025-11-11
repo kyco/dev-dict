@@ -1,7 +1,7 @@
 import { CONFIG } from '../common'
 import type { TLocale } from '../locales'
 import type {
-  TTermDescription,
+  TTermDefinition,
   TTermLabel,
   TTermTag,
   TTermTagLocalized,
@@ -19,14 +19,14 @@ export const getLabelLocalized = ({
   return label[locale] || label[CONFIG.DEFAULT_LOCALE]
 }
 
-export const getDescriptionLocalized = ({
-  description,
+export const getDefinitionLocalized = ({
+  definition,
   locale = CONFIG.DEFAULT_LOCALE,
 }: {
-  description: TTermDescription
+  definition: TTermDefinition
   locale?: TLocale
 }): string => {
-  return description[locale] || description[CONFIG.DEFAULT_LOCALE]
+  return definition[locale] || definition[CONFIG.DEFAULT_LOCALE]
 }
 
 export const getTermTagLocalized = ({

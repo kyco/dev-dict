@@ -1,7 +1,7 @@
 {
   "name": "dev-dict",
   "version": "0.1.0",
-  "description": "A collection of dev terms, with descriptions in multiple languages.",
+  "description": "A dictionary of software related terms. Supports multiple languages.",
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly --outDir dist",
     "prepublishOnly": "npm run build",
