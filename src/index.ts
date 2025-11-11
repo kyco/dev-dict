@@ -3,7 +3,7 @@ import type { TLocale } from './locales'
 import { TERMS } from './terms'
 import type { TTermId } from './terms'
 import type { TDevDict, TTermLocalized } from './typings'
-import { getDescriptionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from './utils'
+import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from './utils'
 
 export const getTerm = ({
   id,
@@ -21,7 +21,7 @@ export const getTerm = ({
   return {
     ...term,
     label: getLabelLocalized({ label: term.label, locale }),
-    description: getDescriptionLocalized({ description: term.description, locale }),
+    definition: getDefinitionLocalized({ definition: term.definition, locale }),
     type: term.type.map((value) => getTermTypeLocalized({ term: value, locale })),
     tags: term.tags.map((value) => getTermTagLocalized({ tag: value, locale })),
   }

@@ -10,13 +10,13 @@ export type LocaleRecord = {
 
 export type TLinkType = 'website' | 'github' | 'npm'
 
-export type LinksRecord = {
+export type TTermResources = {
   website: string
 } & Partial<Record<Exclude<TLinkType, 'website'>, string>>
 
 export type TTermLabel = Record<TLocale, string>
 
-export type TTermDescription = Record<TLocale, string>
+export type TTermDefinition = Record<TLocale, string>
 
 export type TTermType = {
   id: string
@@ -40,17 +40,17 @@ export type TTermTagLocalized = {
 
 export type TTerm = {
   id: string
-  name: string
+  term: string
   type: TTermTypes[]
   label: TTermLabel
-  description: TTermDescription
+  definition: TTermDefinition
   tags: TTermTags[]
-  links?: LinksRecord
+  resources?: TTermResources
 }
 
-export type TTermLocalized = Omit<TTerm, 'label' | 'description' | 'type' | 'tags'> & {
+export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags'> & {
   label: string
-  description: string
+  definition: string
   type: TTermTypeLocalized[]
   tags: TTermTagLocalized[]
 }

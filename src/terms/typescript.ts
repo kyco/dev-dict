@@ -6,7 +6,7 @@ import type { TTerm } from '../typings'
 export default {
   id: 'typescript',
 
-  name: 'TypeScript',
+  term: 'TypeScript',
 
   type: [TERM_TYPES.language],
 
@@ -15,14 +15,14 @@ export default {
     [LOCALE.DE_DE]: `Hochsprache`,
   },
 
-  description: {
+  definition: {
     [LOCALE.EN_GB]: `TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`,
     [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 
   tags: [TERM_TAGS.frontend, TERM_TAGS.backend, TERM_TAGS.opensource],
 
-  links: {
+  resources: {
     website: 'https://www.typescriptlang.org',
   },
 } as const satisfies TTerm

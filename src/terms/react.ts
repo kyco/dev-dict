@@ -6,7 +6,7 @@ import type { TTerm } from '../typings'
 export default {
   id: 'react',
 
-  name: 'React',
+  term: 'React',
 
   type: [TERM_TYPES.library],
 
@@ -15,14 +15,14 @@ export default {
     [LOCALE.DE_DE]: `JavaScript-Bibliothek`,
   },
 
-  description: {
+  definition: {
     [LOCALE.EN_GB]: `A JavaScript library for building component-based user interfaces.`,
     [LOCALE.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
   },
 
   tags: [TERM_TAGS.frontend, TERM_TAGS.backend],
 
-  links: {
+  resources: {
     website: 'https://react.dev',
   },
 } as const satisfies TTerm
