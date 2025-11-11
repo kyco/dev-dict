@@ -1,6 +1,6 @@
 # dev-dict
 
-A collection of dev terms, with descriptions in multiple languages.
+A dictionary of software related terms. Supports multiple languages.
 
 ## Installation
 
