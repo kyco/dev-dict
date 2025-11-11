@@ -1,0 +1,8 @@
+{
+  "$schema": "./0-SCHEMA.json",
+  "id": "cms",
+  "name": {
+    "en-GB": "Content Management System",
+    "de-DE": "Content-Management-System"
+  }
+}

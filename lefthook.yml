@@ -3,3 +3,6 @@ pre-commit:
     validate-tags:
       glob: "data/tags/*.json"
       run: pnpm run validate:tags
+    validate-types:
+      glob: "data/types/*.json"
+      run: pnpm run validate:types

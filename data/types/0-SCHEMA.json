@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kyco.io/schemas/dev-dict/term-type.json",
+  "title": "Term Type",
+  "description": "Schema for a developer dictionary term type",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference for IDE validation"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the type"
+    },
+    "name": {
+      "type": "object",
+      "description": "Localised name of the type",
+      "properties": {
+        "en-GB": {
+          "type": "string",
+          "description": "Type name in English (GB)"
+        },
+        "de-DE": {
+          "type": "string",
+          "description": "Type name in German (DE)"
+        }
+      },
+      "required": ["en-GB"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
+}

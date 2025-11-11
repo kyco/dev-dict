@@ -1,0 +1,8 @@
+{
+  "$schema": "./0-SCHEMA.json",
+  "id": "library",
+  "name": {
+    "en-GB": "Library",
+    "de-DE": "Bibliothek"
+  }
+}
