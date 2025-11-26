@@ -1,13 +1,15 @@
-import cms from './cms'
-import language from './language'
-import library from './library'
-import runtime_environment from './runtime_environment'
+import type { TTermType } from '../typings'
 
-export const TERM_TYPES = {
-  [cms.id]: cms,
-  [library.id]: library,
-  [runtime_environment.id]: runtime_environment,
-  [language.id]: language,
-} as const
+const modules = import.meta.glob<{ default: TTermType }>('./*.ts', { eager: true })
+
+export const TERM_TYPES = Object.values(modules)
+  .filter((module) => module.default)
+  .reduce(
+    (acc, module) => ({
+      ...acc,
+      [module.default.id]: module.default,
+    }),
+    {} as Record<string, TTermType>,
+  )
 
 export type TTermTypes = (typeof TERM_TYPES)[keyof typeof TERM_TYPES]
