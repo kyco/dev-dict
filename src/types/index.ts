@@ -40,7 +40,7 @@ export type TTermTagLocalized = {
 
 export type TTerm = {
   id: string
-  term: string
+  name: string
   type: TTermTypes[]
   label: TTermLabel
   definition: TTermDefinition
@@ -48,7 +48,7 @@ export type TTerm = {
   links?: TTermLinks
   // Possible future fields:
   // examples?: Record<TLocale, string>[]
-  // relatedTerms?: TTerm['term'][]
+  // relatedTerms?: TTerm['name'][]
 }
 
 export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags'> & {

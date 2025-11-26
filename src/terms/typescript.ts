@@ -6,7 +6,7 @@ import type { TTerm } from '@/types'
 export default {
   id: 'typescript',
 
-  term: 'TypeScript',
+  name: 'TypeScript',
 
   type: [TERM_TYPES.language],
 

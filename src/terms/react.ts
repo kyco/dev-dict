@@ -6,7 +6,7 @@ import type { TTerm } from '@/types'
 export default {
   id: 'react',
 
-  term: 'React',
+  name: 'React',
 
   type: [TERM_TYPES.library],
 

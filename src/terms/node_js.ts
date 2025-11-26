@@ -6,7 +6,7 @@ import type { TTerm } from '@/types'
 export default {
   id: 'node_js',
 
-  term: 'Node.js',
+  name: 'Node.js',
 
   type: [TERM_TYPES.runtime_environment],
 
