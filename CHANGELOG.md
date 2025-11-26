@@ -1,3 +1,23 @@
+## [0.1.5](https://github.com/kyco/dev-dict/compare/v0.1.4...v0.1.5) (2025-11-26)
+
+### Bug Fixes
+
+* Only use `examples` as root for dev ([e88f681](https://github.com/kyco/dev-dict/commit/e88f6814194394031043fafcb2a1960a8d0275de))
+* Resolve circular imports ([5108046](https://github.com/kyco/dev-dict/commit/5108046f43542f307e61c74ff5a5166314e6cd03))
+* Restrict method to always return a value ([6c707c3](https://github.com/kyco/dev-dict/commit/6c707c3007a8eaf942e11c3a283b148963c487d4))
+* Type ([2bd8ae7](https://github.com/kyco/dev-dict/commit/2bd8ae728b940fbc2ee43b14444e003754af39df))
+
+### Chore
+
+* Update lockfile ([59ed793](https://github.com/kyco/dev-dict/commit/59ed7933ecb8541dc016178aa696e77fb192f272))
+
+### Refactoring
+
+* "term" to "name" ([a335c41](https://github.com/kyco/dev-dict/commit/a335c411d7086992e8a73d8e6ab0799f1c9c447d))
+* Move types, tags and tersm to `data` directory ([0717eb9](https://github.com/kyco/dev-dict/commit/0717eb9ee91afa3796c69f7209837546266083f6))
+* Simplify imports ([96149cd](https://github.com/kyco/dev-dict/commit/96149cd18f6df178ec67d049f4706f3793f76c0e))
+* Typings -> Types ([6b96082](https://github.com/kyco/dev-dict/commit/6b96082c8037dce3ec9e0eef7c27cd3581f1655f))
+
 ## [0.1.4](https://github.com/kyco/dev-dict/compare/v0.1.3...v0.1.4) (2025-11-26)
 
 ### Bug Fixes
