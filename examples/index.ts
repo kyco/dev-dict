@@ -1,4 +1,4 @@
-import { getDict, getTerm } from 'dev-dict'
+import { getDict, getTerm } from '../src/index'
 
 // Get a single term
 const reactEn = getTerm({ id: 'react', locale: 'en-US' })

@@ -1,5 +1,8 @@
 import type { TTerm } from '@/types'
-import { LOCALE, TAG, TYPE } from '@data'
+
+import { LOCALE } from '../locales'
+import { TAG } from '../tags'
+import { TYPE } from '../types'
 
 export default {
   id: 'react',

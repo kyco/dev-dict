@@ -1,5 +1,6 @@
 import type { TTermType } from '@/types'
-import { LOCALE } from '@data'
+
+import { LOCALE } from '../locales'
 
 export default {
   id: 'library',

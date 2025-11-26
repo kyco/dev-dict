@@ -1,5 +1,6 @@
 import type { TTermTag } from '@/types'
-import { LOCALE } from '@data'
+
+import { LOCALE } from '../locales'
 
 export default {
   id: 'backend',
