@@ -4,7 +4,7 @@ import type { TTermTags } from '../term-tags'
 import type { TTermTypes } from '../term-types'
 import type { TTermId } from '../terms'
 
-export type LocaleRecord = {
+export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
 } & Partial<Record<Exclude<TLocale, typeof CONFIG.DEFAULT_LOCALE>, string>>
 
@@ -20,7 +20,7 @@ export type TTermDefinition = Record<TLocale, string>
 
 export type TTermType = {
   id: string
-  name: LocaleRecord
+  name: TLocaleRecord
 }
 
 export type TTermTypeLocalized = {
@@ -30,7 +30,7 @@ export type TTermTypeLocalized = {
 
 export type TTermTag = {
   id: string
-  name: LocaleRecord
+  name: TLocaleRecord
 }
 
 export type TTermTagLocalized = {
