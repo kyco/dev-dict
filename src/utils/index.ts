@@ -1,5 +1,5 @@
-import { CONFIG } from '../common'
-import type { TLocale } from '../locales'
+import { CONFIG } from '@/common'
+import type { TLocale } from '@/locales'
 import type {
   TTermDefinition,
   TTermLabel,
@@ -7,7 +7,7 @@ import type {
   TTermTagLocalized,
   TTermType,
   TTermTypeLocalized,
-} from '../typings'
+} from '@/types'
 
 export const getLabelLocalized = ({
   label,

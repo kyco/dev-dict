@@ -1,9 +1,9 @@
-import { CONFIG } from './common'
-import type { TLocale } from './locales'
-import { TERMS } from './terms'
-import type { TTermId } from './terms'
-import type { TDevDict, TTermLocalized } from './typings'
-import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from './utils'
+import { CONFIG } from '@/common'
+import type { TLocale } from '@/locales'
+import { TERMS } from '@/terms'
+import type { TTermId } from '@/terms'
+import type { TDevDict, TTermLocalized } from '@/types'
+import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from '@/utils'
 
 export const getTerm = ({
   id,

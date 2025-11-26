@@ -1,5 +1,5 @@
-import { LOCALE } from '../locales'
-import type { TTermTag } from '../typings'
+import { LOCALE } from '@/locales'
+import type { TTermTag } from '@/types'
 
 export default {
   id: 'frontend',

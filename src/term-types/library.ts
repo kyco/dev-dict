@@ -1,5 +1,5 @@
-import { LOCALE } from '../locales'
-import type { TTermType } from '../typings'
+import { LOCALE } from '@/locales'
+import type { TTermType } from '@/types'
 
 export default {
   id: 'library',

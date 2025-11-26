@@ -1,7 +1,7 @@
-import { LOCALE } from '../locales'
-import { TERM_TAGS } from '../term-tags'
-import { TERM_TYPES } from '../term-types'
-import type { TTerm } from '../typings'
+import { LOCALE } from '@/locales'
+import { TERM_TAGS } from '@/term-tags'
+import { TERM_TYPES } from '@/term-types'
+import type { TTerm } from '@/types'
 
 export default {
   id: 'react',

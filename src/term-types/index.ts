@@ -1,4 +1,4 @@
-import type { TTermType } from '../typings'
+import type { TTermType } from '@/types'
 
 const modules = import.meta.glob<{ default: TTermType }>('./*.ts', { eager: true })
 

@@ -1,8 +1,8 @@
-import { CONFIG } from '../common'
-import type { TLocale } from '../locales'
-import type { TTermTags } from '../term-tags'
-import type { TTermTypes } from '../term-types'
-import type { TTermId } from '../terms'
+import { CONFIG } from '@/common'
+import type { TLocale } from '@/locales'
+import type { TTermTags } from '@/term-tags'
+import type { TTermTypes } from '@/term-types'
+import type { TTermId } from '@/terms'
 
 export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
