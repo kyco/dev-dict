@@ -1,4 +1,4 @@
-import { LOCALE } from '@/locales'
+import { LOCALE } from '@data'
 
 export const MISC = {} as const
 

@@ -1,14 +1,12 @@
-import { LOCALE } from '@/locales'
-import { TERM_TAGS } from '@/term-tags'
-import { TERM_TYPES } from '@/term-types'
 import type { TTerm } from '@/types'
+import { LOCALE, TAG, TYPE } from '@data'
 
 export default {
   id: 'typescript',
 
   name: 'TypeScript',
 
-  type: [TERM_TYPES.language],
+  type: [TYPE.language],
 
   label: {
     [LOCALE.EN_US]: `High-Level Programming Language`,
@@ -20,7 +18,7 @@ export default {
     [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 
-  tags: [TERM_TAGS.frontend, TERM_TAGS.backend, TERM_TAGS.open_source],
+  tags: [TAG.frontend, TAG.backend, TAG.open_source],
 
   links: {
     website: 'https://www.typescriptlang.org',

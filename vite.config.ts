@@ -2,9 +2,11 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  root: 'examples',
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
+      '@data': resolve(__dirname, './data/index.ts'),
     },
   },
   build: {

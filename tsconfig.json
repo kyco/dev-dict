@@ -15,7 +15,8 @@
     "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@data": ["data/index.ts"]
     }
   },
   "include": ["src/**/*", "data/**/*"],

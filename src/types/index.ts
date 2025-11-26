@@ -1,8 +1,7 @@
 import { CONFIG } from '@/common'
-import type { TLocale } from '@/locales'
-import type { TTermTags } from '@/term-tags'
-import type { TTermTypes } from '@/term-types'
-import type { TTermId } from '@/terms'
+import { LOCALE, TAG, TERM, TYPE } from '@data'
+
+export type TLocale = (typeof LOCALE)[keyof typeof LOCALE]
 
 export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
@@ -28,6 +27,8 @@ export type TTermTypeLocalized = {
   name: string
 }
 
+export type TTermTypes = (typeof TYPE)[keyof typeof TYPE]
+
 export type TTermTag = {
   id: string
   name: TLocaleRecord
@@ -37,6 +38,8 @@ export type TTermTagLocalized = {
   id: string
   name: string
 }
+
+export type TTermTags = (typeof TAG)[keyof typeof TAG]
 
 export type TTerm = {
   id: string
@@ -57,5 +60,9 @@ export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags
   type: TTermTypeLocalized[]
   tags: TTermTagLocalized[]
 }
+
+export type TTerms = (typeof TERM)[keyof typeof TERM]
+
+export type TTermId = keyof typeof TERM
 
 export type TDevDict = Record<TTermId, TTermLocalized>
