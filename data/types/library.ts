@@ -1,11 +1,12 @@
+import type { TTermType } from '@/types'
+
 import { LOCALE } from '../locales'
-import type { TTermType } from '../typings'
 
 export default {
   id: 'library',
 
   name: {
-    [LOCALE.EN_GB]: `Library`,
+    [LOCALE.EN_US]: `Library`,
     [LOCALE.DE_DE]: `Bibliothek`,
   },
 } as const satisfies TTermType

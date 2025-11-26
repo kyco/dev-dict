@@ -1,8 +1,7 @@
-import { CONFIG } from '../common'
-import type { TLocale } from '../locales'
-import type { TTermTags } from '../term-tags'
-import type { TTermTypes } from '../term-types'
-import type { TTermId } from '../terms'
+import { CONFIG } from '@/common'
+import { LOCALE, TAG, TERM, TYPE } from '@data'
+
+export type TLocale = (typeof LOCALE)[keyof typeof LOCALE]
 
 export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
@@ -14,9 +13,9 @@ export type TTermLinks = {
   website: string
 } & Partial<Record<Exclude<TLinkType, 'website'>, string>>
 
-export type TTermLabel = Record<TLocale, string>
+export type TTermLabel = TLocaleRecord
 
-export type TTermDefinition = Record<TLocale, string>
+export type TTermDefinition = TLocaleRecord
 
 export type TTermType = {
   id: string
@@ -28,6 +27,8 @@ export type TTermTypeLocalized = {
   name: string
 }
 
+export type TTermTypes = (typeof TYPE)[keyof typeof TYPE]
+
 export type TTermTag = {
   id: string
   name: TLocaleRecord
@@ -38,9 +39,11 @@ export type TTermTagLocalized = {
   name: string
 }
 
+export type TTermTags = (typeof TAG)[keyof typeof TAG]
+
 export type TTerm = {
   id: string
-  term: string
+  name: string
   type: TTermTypes[]
   label: TTermLabel
   definition: TTermDefinition
@@ -48,7 +51,7 @@ export type TTerm = {
   links?: TTermLinks
   // Possible future fields:
   // examples?: Record<TLocale, string>[]
-  // relatedTerms?: TTerm['term'][]
+  // relatedTerms?: TTerm['name'][]
 }
 
 export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags'> & {
@@ -57,5 +60,9 @@ export type TTermLocalized = Omit<TTerm, 'label' | 'definition' | 'type' | 'tags
   type: TTermTypeLocalized[]
   tags: TTermTagLocalized[]
 }
+
+export type TTerms = (typeof TERM)[keyof typeof TERM]
+
+export type TTermId = keyof typeof TERM
 
 export type TDevDict = Record<TTermId, TTermLocalized>

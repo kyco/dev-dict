@@ -1,11 +1,12 @@
+import type { TTermTag } from '@/types'
+
 import { LOCALE } from '../locales'
-import type { TTermTag } from '../typings'
 
 export default {
   id: 'frontend',
 
   name: {
-    [LOCALE.EN_GB]: `Frontend`,
+    [LOCALE.EN_US]: `Frontend`,
     [LOCALE.DE_DE]: `Frontend`,
   },
 } as const satisfies TTermTag
