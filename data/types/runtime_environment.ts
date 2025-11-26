@@ -2,10 +2,10 @@ import { LOCALE } from '@/locales'
 import type { TTermType } from '@/types'
 
 export default {
-  id: 'library',
+  id: 'runtime_environment',
 
   name: {
-    [LOCALE.EN_GB]: `Library`,
-    [LOCALE.DE_DE]: `Bibliothek`,
+    [LOCALE.EN_US]: `Runtime Environment`,
+    [LOCALE.DE_DE]: `Laufzeitumgebung`,
   },
 } as const satisfies TTermType

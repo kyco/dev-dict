@@ -11,12 +11,12 @@ export default {
   type: [TERM_TYPES.language],
 
   label: {
-    [LOCALE.EN_GB]: `High-Level Programming Language`,
+    [LOCALE.EN_US]: `High-Level Programming Language`,
     [LOCALE.DE_DE]: `Hochsprache`,
   },
 
   definition: {
-    [LOCALE.EN_GB]: `TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`,
+    [LOCALE.EN_US]: `TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`,
     [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 

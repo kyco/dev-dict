@@ -14,9 +14,9 @@ export type TTermLinks = {
   website: string
 } & Partial<Record<Exclude<TLinkType, 'website'>, string>>
 
-export type TTermLabel = Record<TLocale, string>
+export type TTermLabel = TLocaleRecord
 
-export type TTermDefinition = Record<TLocale, string>
+export type TTermDefinition = TLocaleRecord
 
 export type TTermType = {
   id: string

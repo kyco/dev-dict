@@ -5,7 +5,7 @@ export default {
   id: 'cms',
 
   name: {
-    [LOCALE.EN_GB]: `Content Management System`,
+    [LOCALE.EN_US]: `Content Management System`,
     [LOCALE.DE_DE]: `Content-Management-System`,
   },
 } as const satisfies TTermType

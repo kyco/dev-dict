@@ -3,5 +3,5 @@ import { LOCALE } from '@/locales'
 export const MISC = {} as const
 
 export const CONFIG = {
-  DEFAULT_LOCALE: LOCALE.EN_GB,
+  DEFAULT_LOCALE: LOCALE.EN_US,
 } as const

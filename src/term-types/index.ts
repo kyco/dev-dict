@@ -1,6 +1,6 @@
 import type { TTermType } from '@/types'
 
-const modules = import.meta.glob<{ default: TTermType }>('./*.ts', { eager: true })
+const modules = import.meta.glob<{ default: TTermType }>('../../data/types/*.ts', { eager: true })
 
 export const TERM_TYPES = Object.values(modules)
   .filter((module) => module.default)

@@ -11,12 +11,12 @@ export default {
   type: [TERM_TYPES.library],
 
   label: {
-    [LOCALE.EN_GB]: `JavaScript Library`,
+    [LOCALE.EN_US]: `JavaScript Library`,
     [LOCALE.DE_DE]: `JavaScript-Bibliothek`,
   },
 
   definition: {
-    [LOCALE.EN_GB]: `A JavaScript library for building component-based user interfaces.`,
+    [LOCALE.EN_US]: `A JavaScript library for building component-based user interfaces.`,
     [LOCALE.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
   },
 
