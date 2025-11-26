@@ -3,18 +3,9 @@ import { CONFIG } from '@/common'
 import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from '@/utils'
 import { TERM } from '@data'
 
-export const getTerm = ({
-  id,
-  locale = CONFIG.DEFAULT_LOCALE,
-}: {
-  id: TTermId
-  locale?: TLocale
-}): TTermLocalized | null => {
+export const getTerm = ({ id, locale = CONFIG.DEFAULT_LOCALE }: { id: TTermId; locale?: TLocale }): TTermLocalized => {
+  // We do not need a null check here because TTermId only allows valid IDs
   const term = TERM[id]
-
-  if (!term) {
-    return null
-  }
 
   return {
     ...term,
