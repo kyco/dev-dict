@@ -1,3 +1,18 @@
+## [0.1.4](https://github.com/kyco/dev-dict/compare/v0.1.3...v0.1.4) (2025-11-26)
+
+### Bug Fixes
+
+* Type ([04b1183](https://github.com/kyco/dev-dict/commit/04b1183a4aca1bbe185f5f2f539fb065c72f7379))
+
+### Chore
+
+* Bump packages ([7c0c75b](https://github.com/kyco/dev-dict/commit/7c0c75bf31c614e472d798c333906d523e2fe863))
+
+### Refactoring
+
+* Dynamic imports ([6f2e502](https://github.com/kyco/dev-dict/commit/6f2e50233bfc39328f735bfe4121af074b676be9))
+* Type ([c23a733](https://github.com/kyco/dev-dict/commit/c23a733418dc75744f8d5711792366f16fa1cf8a))
+
 ## [0.1.3](https://github.com/kyco/dev-dict/compare/v0.1.2...v0.1.3) (2025-11-11)
 
 ### Bug Fixes
