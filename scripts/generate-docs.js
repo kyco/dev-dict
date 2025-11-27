@@ -9,7 +9,6 @@ mkdirSync('./docs', { recursive: true })
 const generateTable = (title, headers, items, rowGenerator) => {
   let content = `# ${title}\n\n`
   content += `> This README is auto-generated. Do not edit manually.\n\n`
-  content += `Below is a list of all ${title.toLowerCase()} available in dev-dict:\n\n`
   content += `| ${headers.join(' | ')} |\n`
   content += `|${headers.map(() => '-------').join('|')}|\n`
 

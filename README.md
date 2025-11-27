@@ -6,13 +6,9 @@ This package aims to provide an exhaustive list of software industry related ter
 
 A list of available terms can be found here:
 - [Terms](./docs/TERMS.md)
-- [Types](./docs/TYPES.md)
-- [Tags](./docs/TAGS.md)
 
-Currently dev-dict supports:
-- English (US)
-- English (GB)
-- German (DE)
+Supported languages:
+- [Languages](./data/locales/index.ts)
 
 
 ## Installation
