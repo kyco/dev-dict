@@ -1,3 +1,9 @@
+## [0.2.1](https://github.com/kyco/dev-dict/compare/v0.2.0...v0.2.1) (2025-11-27)
+
+### Bug Fixes
+
+* Ensure back-merge has latest changes ([aa58d7c](https://github.com/kyco/dev-dict/commit/aa58d7c5f9571a3c0861987fc1af7800e0388f1c))
+
 ## [0.2.0](https://github.com/kyco/dev-dict/compare/v0.1.5...v0.2.0) (2025-11-27)
 
 ### Features
