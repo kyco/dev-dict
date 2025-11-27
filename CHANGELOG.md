@@ -1,3 +1,9 @@
+## [0.2.3](https://github.com/kyco/dev-dict/compare/v0.2.2...v0.2.3) (2025-11-27)
+
+### Bug Fixes
+
+* Allow fast-forward ([d7edbf6](https://github.com/kyco/dev-dict/commit/d7edbf68756214d1cdcbaaf24576bddfd478c322))
+
 ## [0.2.2](https://github.com/kyco/dev-dict/compare/v0.2.1...v0.2.2) (2025-11-27)
 
 ### Bug Fixes
