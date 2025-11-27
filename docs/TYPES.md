@@ -2,8 +2,6 @@
 
 > This README is auto-generated. Do not edit manually.
 
-Below is a list of all types available in dev-dict:
-
 | Type name | Type ID |
 |-------|-------|
 | [Content Management System](../data/types/cms.ts) | `cms` |
