@@ -65,4 +65,6 @@ export type TTerms = (typeof TERM)[keyof typeof TERM]
 
 export type TTermId = keyof typeof TERM
 
-export type TDevDict = Record<TTermId, TTermLocalized>
+export type TDevDict = Record<TTermId, TTerm>
+
+export type TDevDictLocalized = Record<TTermId, TTermLocalized>
