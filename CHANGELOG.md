@@ -1,3 +1,14 @@
+## [0.2.2](https://github.com/kyco/dev-dict/compare/v0.2.1...v0.2.2) (2025-11-27)
+
+### Bug Fixes
+
+* Export types ([16d6fdf](https://github.com/kyco/dev-dict/commit/16d6fdfb58f62b543384f4b1be27b94d1143dfd2))
+
+### Chore
+
+* back-merge main into develop [skip ci] ([4565900](https://github.com/kyco/dev-dict/commit/456590029ee3aacfb249747f22cfabe5cf140256))
+* Update docs ([9b3034a](https://github.com/kyco/dev-dict/commit/9b3034a54f5573d8973b293989014ff8b53612b4))
+
 ## [0.2.1](https://github.com/kyco/dev-dict/compare/v0.2.0...v0.2.1) (2025-11-27)
 
 ### Bug Fixes

@@ -2,8 +2,6 @@
 
 > This README is auto-generated. Do not edit manually.
 
-Below is a list of all tags available in dev-dict:
-
 | Tag name | Tag ID |
 |-------|-------|
 | [Backend](../data/tags/backend.ts) | `backend` |
