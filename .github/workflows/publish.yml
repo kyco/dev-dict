@@ -50,14 +50,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Back-merge to develop
-        if: success()
+  merge-main-into-develop:
+    name: Merge main into develop
+    needs: publish-to-npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Merge main into develop
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git fetch origin develop
+          git fetch
+          git pull
           git checkout develop
-          git merge origin/main --no-ff -m "chore: back-merge main into develop [skip ci]"
+          git pull
+          git merge main --no-ff -m "Merge main into develop [skip ci]"
           git push origin develop
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
