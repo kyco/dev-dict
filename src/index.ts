@@ -1,7 +1,7 @@
-import type { TDevDict, TDevDictLocalized, TLocale, TTerm, TTermId, TTermLocalized } from '@/types'
+import type { TDevDict, TDevDictLocalized, TLocale, TTerm, TTermId, TTermLocalized, TTermType, TTermTypeLocalized, TTermTag, TTermTagLocalized } from '@/types'
 import { CONFIG } from '@/common'
 import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from '@/utils'
-import { TERM } from '@data'
+import { TAG, TERM, TYPE } from '@data'
 
 export function getTerm(params: { id: TTermId; localized: false }): TTerm
 export function getTerm(params: { id: TTermId; localized?: true; locale?: TLocale }): TTermLocalized
@@ -69,4 +69,40 @@ export function getDict({
   }
 
   return dict
+}
+
+export function getTypes(params?: { localized: false }): TTermType[]
+export function getTypes(params?: { localized?: true; locale?: TLocale }): TTermTypeLocalized[]
+export function getTypes({
+  localized = true,
+  locale = CONFIG.DEFAULT_LOCALE,
+}: {
+  localized?: boolean
+  locale?: TLocale
+} = {}): TTermType[] | TTermTypeLocalized[] {
+  const types = Object.values(TYPE)
+
+  if (!localized) {
+    return types
+  }
+
+  return types.map((type) => getTermTypeLocalized({ term: type, locale }))
+}
+
+export function getTags(params?: { localized: false }): TTermTag[]
+export function getTags(params?: { localized?: true; locale?: TLocale }): TTermTagLocalized[]
+export function getTags({
+  localized = true,
+  locale = CONFIG.DEFAULT_LOCALE,
+}: {
+  localized?: boolean
+  locale?: TLocale
+} = {}): TTermTag[] | TTermTagLocalized[] {
+  const tags = Object.values(TAG)
+
+  if (!localized) {
+    return tags
+  }
+
+  return tags.map((tag) => getTermTagLocalized({ tag, locale }))
 }
