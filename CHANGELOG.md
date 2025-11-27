@@ -1,3 +1,9 @@
+## [0.3.0](https://github.com/kyco/dev-dict/compare/v0.2.3...v0.3.0) (2025-11-27)
+
+### Features
+
+* Add new type ([e09c1b1](https://github.com/kyco/dev-dict/commit/e09c1b16a5b0d569cb38f12582d3b32f16d6a342))
+
 ## [0.2.3](https://github.com/kyco/dev-dict/compare/v0.2.2...v0.2.3) (2025-11-27)
 
 ### Bug Fixes
