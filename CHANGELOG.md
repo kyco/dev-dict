@@ -1,3 +1,13 @@
+## [0.2.0](https://github.com/kyco/dev-dict/compare/v0.1.5...v0.2.0) (2025-11-27)
+
+### Features
+
+* Add new method `getTerms` ([8216379](https://github.com/kyco/dev-dict/commit/82163794e435bf4db414c1309f2cc37c68b0c76a))
+
+### Chore
+
+* Add docs ([572a1b5](https://github.com/kyco/dev-dict/commit/572a1b5f2362101c9b0856019aa05d55ae1d3b3f))
+
 ## [0.1.5](https://github.com/kyco/dev-dict/compare/v0.1.4...v0.1.5) (2025-11-26)
 
 ### Bug Fixes
