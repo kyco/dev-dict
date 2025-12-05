@@ -1,3 +1,23 @@
+## [0.4.0](https://github.com/kyco/dev-dict/compare/v0.3.2...v0.4.0) (2025-12-05)
+
+### Features
+
+* Add fallback logic so we can populate empty locales on demand ([9f4ed7b](https://github.com/kyco/dev-dict/commit/9f4ed7b4c3ada91ba5c768290be10d844fe495e9))
+* Allow referencing another locale for values and default to empty string if no value exists ([76cc888](https://github.com/kyco/dev-dict/commit/76cc888a725b7b025eff143761a4ebe1e8e97e86))
+
+### Bug Fixes
+
+* Ensure all locales get generated ([1807a56](https://github.com/kyco/dev-dict/commit/1807a561b265651cc4691441406985219312bbeb))
+* Ensure all TLocaleRecord values get interpolated ([6ace728](https://github.com/kyco/dev-dict/commit/6ace7280f73999e85e8b83e24b9fbaeb0f5d9191))
+* Ensure name gets localised ([71f44f8](https://github.com/kyco/dev-dict/commit/71f44f8a579dd6c727b4cda8ac03141522c2dbab))
+* Grab localised name ([3c63685](https://github.com/kyco/dev-dict/commit/3c63685a833d6482db63ea1011c1a99fec41eeca))
+* Include more info in docs ([bf890a0](https://github.com/kyco/dev-dict/commit/bf890a03022d17937feec8c848d57ec80a845fde))
+* Lint ([efefa8f](https://github.com/kyco/dev-dict/commit/efefa8f4d1fb8bd285f131f840b83608d0b32b1c))
+
+### Refactoring
+
+* Add helper method ([0119d68](https://github.com/kyco/dev-dict/commit/0119d68a869ba886a037a79beb56fd46eb6a0b5a))
+
 ## [0.3.2](https://github.com/kyco/dev-dict/compare/v0.3.1...v0.3.2) (2025-12-05)
 
 ### Chore
