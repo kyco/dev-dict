@@ -1,3 +1,9 @@
+## [0.4.4](https://github.com/kyco/dev-dict/compare/v0.4.3...v0.4.4) (2025-12-05)
+
+### Bug Fixes
+
+* Add term ([83d30d4](https://github.com/kyco/dev-dict/commit/83d30d462b6b913a313e743a5feb17ad51e52e30))
+
 ## [0.4.3](https://github.com/kyco/dev-dict/compare/v0.4.2...v0.4.3) (2025-12-05)
 
 ### Bug Fixes
