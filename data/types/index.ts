@@ -4,6 +4,7 @@ import cms from './cms'
 import framework from './framework'
 import language from './language'
 import library from './library'
+import platform from './platform'
 import runtime_environment from './runtime_environment'
 
 export const RAW_TYPE = {
@@ -12,6 +13,7 @@ export const RAW_TYPE = {
   [language.id]: language,
   [library.id]: library,
   [runtime_environment.id]: runtime_environment,
+  [platform.id]: runtime_environment,
 } as const
 
 export const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback: false })
