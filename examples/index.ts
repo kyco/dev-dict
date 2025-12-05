@@ -1,9 +1,39 @@
-import { getDict, getTerm, getTerms, getTypes } from '../src/index'
+import { getDict, getTerm, getTerms } from '../src/index'
 
-const types = getTypes({ localized: false })
-console.log('types', types)
-const reactDe = getTerm({ id: 'javascript', locale: 'en-GB' })
-console.log(reactDe.definition) // "JavaScript-Bibliothek"
+/**
+ * Get dictionary
+ */
+const dd = getDict({ locale: 'en-US' })
+console.log(dd.react.label) // "JavaScript Library"
 
-const reactRaw = getTerms({ localized: false, useFallback: false })
-console.log(reactRaw) // { "en-US": "JavaScript Library", "de-DE": "JavaScript-Bibliothek", ... }
+/**
+ * Get dictionary (raw)
+ */
+const ddRaw = getDict({ localized: false })
+console.log(ddRaw.react.label) // { "en-US": "JavaScript Library", "de-DE": "JavaScript-Bibliothek", ... }
+
+/**
+ * Get a single term
+ */
+const reactEn = getTerm({ id: 'react', locale: 'en-US' })
+const reactDe = getTerm({ id: 'react', locale: 'de-DE' })
+console.log(reactEn.label) // "JavaScript Library"
+console.log(reactDe.label) // "JavaScript-Bibliothek"
+
+/**
+ * Get a single term (raw)
+ */
+const reactRaw = getTerm({ id: 'react', localized: false })
+console.log(reactRaw.label) // { "en-US": "JavaScript Library", "de-DE": "JavaScript-Bibliothek", ... }
+
+/**
+ * Get all terms
+ */
+const terms = getTerms({ locale: 'en-US' })
+console.log(terms) // [{ id: "react", label: "JavaScript Library" }, ... ]
+
+/**
+ * Get all terms (raw)
+ */
+const termsRaw = getTerms({ localized: false })
+console.log(termsRaw) // [{ id: "react", label: { "en-US": "JavaScript Library", "de-DE": "JavaScript-Bibliothek", ... } }, ... ]
