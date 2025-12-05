@@ -2,7 +2,13 @@ import { mkdirSync, writeFileSync } from 'fs'
 
 import { getTags, getTerms, getTypes } from '../dist/index.js'
 
-const LOCALE = 'en-US'
+const LOCALE = {
+  EN_US: 'en-US',
+  EN_GB: 'en-GB',
+  DE_DE: 'de-DE',
+} as const
+
+const DEFAULT_LOCALE = LOCALE.EN_US
 
 mkdirSync('./docs', { recursive: true })
 
@@ -25,34 +31,63 @@ const generateTable = (
 }
 
 const generateTermsReadme = (): void => {
-  const terms = [...getTerms({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
+  const terms = [...getTerms({ localized: false })].sort((a, b) =>
+    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
+  )
 
-  const content = generateTable('Terms', ['Term', 'ID', 'Type'], terms, (term) => {
-    const types = term.type.map((t: any) => t.name[LOCALE]).join(', ')
-    return `| [${term.name[LOCALE]}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types} |\n`
-  })
+  const content = generateTable(
+    'Terms',
+    [
+      `Term (${DEFAULT_LOCALE})`,
+      'ID',
+      `Type (${DEFAULT_LOCALE})`,
+      `Label (${DEFAULT_LOCALE})`,
+      `Definition (${DEFAULT_LOCALE})`,
+      `Tags (${DEFAULT_LOCALE})`,
+    ],
+    terms,
+    (term) => {
+      const types = term.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
+      const tags = term.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
+      return `| [${term.name[DEFAULT_LOCALE]}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types} | ${term.label[DEFAULT_LOCALE]} | ${term.definition[DEFAULT_LOCALE]} | ${tags} |\n`
+    },
+  )
 
   writeFileSync('./docs/TERMS.md', content, 'utf-8')
   console.log('✓ docs/TERMS.md')
 }
 
 const generateTypesReadme = (): void => {
-  const types = [...getTypes({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
+  const types = [...getTypes({ localized: false })].sort((a, b) =>
+    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
+  )
 
-  const content = generateTable('Types', ['Type name', 'Type ID'], types, (type) => {
-    return `| [${type.name[LOCALE]}](../data/types/${type.id}.ts) | \`${type.id}\` |\n`
-  })
+  const content = generateTable(
+    'Types',
+    [`Type (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
+    types,
+    (value) => {
+      return `| [${value.name[DEFAULT_LOCALE]}](../data/types/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] || '✘'} | ${value.name[LOCALE.DE_DE] || '✘'} |\n`
+    },
+  )
 
   writeFileSync('./docs/TYPES.md', content, 'utf-8')
   console.log('✓ docs/TYPES.md')
 }
 
 const generateTagsReadme = (): void => {
-  const tags = [...getTags({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
+  const tags = [...getTags({ localized: false })].sort((a, b) =>
+    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
+  )
 
-  const content = generateTable('Tags', ['Tag name', 'Tag ID'], tags, (tag) => {
-    return `| [${tag.name[LOCALE]}](../data/tags/${tag.id}.ts) | \`${tag.id}\` |\n`
-  })
+  const content = generateTable(
+    'Tags',
+    [`Tag (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
+    tags,
+    (value) => {
+      return `| [${value.name[DEFAULT_LOCALE]}](../data/tags/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] || '✘'} | ${value.name[LOCALE.DE_DE] || '✘'} |\n`
+    },
+  )
 
   writeFileSync('./docs/TAGS.md', content, 'utf-8')
   console.log('✓ docs/TAGS.md')
