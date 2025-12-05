@@ -115,7 +115,7 @@ Always use these aliases when importing within the codebase.
 
 ### Adding a New Term
 
-1. Create a new file in `data/terms/` named `{term_id}.ts`
+1. Create a new file in `data/terms/` named `{term_id}.ts` with a default export
 2. Import the term in `data/terms/index.ts` and add to `RAW_TERM` object
 3. Define translations for at least `en-US` in name, label, and definition
 4. Assign appropriate types and tags from existing constants
@@ -125,8 +125,8 @@ Always use these aliases when importing within the codebase.
 
 ### Adding a New Type or Tag
 
-1. Create a file in `data/types/` or `data/tags/`
-2. Import and add to the respective index.ts file
+1. Create a file in `data/types/` or `data/tags/` with a default export
+2. Import and add to the respective `RAW_TYPE` or `RAW_TAG` object in the index.ts file
 3. Use the new constant in term definitions
 4. Run `pnpm build` to validate (documentation will be generated automatically on merge)
 
