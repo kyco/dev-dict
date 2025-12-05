@@ -45,10 +45,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "docs:generate": "node scripts/generate-docs.js",
-    "prepublishOnly": "npm run build && npm run docs:generate",
+    "docs:generate": "pnpm build && tsx scripts/generate-docs.ts",
+    "prepublishOnly": "pnpm docs:generate",
     "test": "echo \"This project does not have any tests which can be run yet...\"",
-    "update-packages": "npx npm-check-updates -u"
+    "update-packages": "pnpm dlx npm-check-updates -u"
   },
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
@@ -65,6 +65,7 @@
     "globals": "^16.5.0",
     "prettier": "^3.7.4",
     "semantic-release": "^25.0.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.1",
     "vite": "^7.2.6",

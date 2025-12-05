@@ -6,7 +6,12 @@ const LOCALE = 'en-US'
 
 mkdirSync('./docs', { recursive: true })
 
-const generateTable = (title, headers, items, rowGenerator) => {
+const generateTable = (
+  title: string,
+  headers: string[],
+  items: unknown[],
+  rowGenerator: (item: any) => string,
+): string => {
   let content = `# ${title}\n\n`
   content += `> This README is auto-generated. Do not edit manually.\n\n`
   content += `| ${headers.join(' | ')} |\n`
@@ -19,11 +24,11 @@ const generateTable = (title, headers, items, rowGenerator) => {
   return content + '\n'
 }
 
-const generateTermsReadme = () => {
+const generateTermsReadme = (): void => {
   const terms = [...getTerms({ localized: false })].sort((a, b) => a.name.localeCompare(b.name))
 
   const content = generateTable('Terms', ['Term', 'ID', 'Type'], terms, (term) => {
-    const types = term.type.map((t) => t.name[LOCALE]).join(', ')
+    const types = term.type.map((t: any) => t.name[LOCALE]).join(', ')
     return `| [${term.name}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types} |\n`
   })
 
@@ -31,7 +36,7 @@ const generateTermsReadme = () => {
   console.log('✓ docs/TERMS.md')
 }
 
-const generateTypesReadme = () => {
+const generateTypesReadme = (): void => {
   const types = [...getTypes({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
 
   const content = generateTable('Types', ['Type name', 'Type ID'], types, (type) => {
@@ -42,7 +47,7 @@ const generateTypesReadme = () => {
   console.log('✓ docs/TYPES.md')
 }
 
-const generateTagsReadme = () => {
+const generateTagsReadme = (): void => {
   const tags = [...getTags({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
 
   const content = generateTable('Tags', ['Tag name', 'Tag ID'], tags, (tag) => {
