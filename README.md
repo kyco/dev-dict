@@ -198,9 +198,3 @@ For detailed development guidance, see [CLAUDE.md](./CLAUDE.md).
 - **Developer Tools** - Add contextual help for technical terms
 - **Content Management** - Maintain consistent terminology across translations
 - **IDE Extensions** - Provide inline term explanations
-
-
-## License
-
-[MIT](./LICENSE)
-
