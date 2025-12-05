@@ -1,3 +1,10 @@
+## [0.4.8](https://github.com/kyco/dev-dict/compare/v0.4.7...v0.4.8) (2025-12-05)
+
+### Chore
+
+* Add terms ([c8d9263](https://github.com/kyco/dev-dict/commit/c8d926347ff2d7f8631faf0f12cfe0cd35573230))
+* **docs:** Update README ([820b4d6](https://github.com/kyco/dev-dict/commit/820b4d6e3ab8f1905e13d357fc8df5a4564d47aa))
+
 ## [0.4.7](https://github.com/kyco/dev-dict/compare/v0.4.6...v0.4.7) (2025-12-05)
 
 ### Chore
