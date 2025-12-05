@@ -1,13 +1,4 @@
-import type {
-  TLocale,
-  TLocaleRecord,
-  TTermDefinition,
-  TTermLabel,
-  TTermTag,
-  TTermTagLocalized,
-  TTermType,
-  TTermTypeLocalized,
-} from '@/types'
+import type { TLocale, TLocaleRecord, TTermTag, TTermTagLocalized, TTermType, TTermTypeLocalized } from '@/types'
 import { CONFIG } from '@/common'
 import { LOCALE } from '@data'
 
@@ -70,30 +61,6 @@ export const getValueLocalized = ({
   useFallback?: boolean
 }): string => {
   return interpolateValue({ obj, value: obj[locale], useFallback })
-}
-
-export const getLabelLocalized = ({
-  label,
-  locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
-}: {
-  label: TTermLabel
-  locale?: TLocale
-  useFallback?: boolean
-}): string => {
-  return getValueLocalized({ obj: label, locale, useFallback })
-}
-
-export const getDefinitionLocalized = ({
-  definition,
-  locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
-}: {
-  definition: TTermDefinition
-  locale?: TLocale
-  useFallback?: boolean
-}): string => {
-  return getValueLocalized({ obj: definition, locale, useFallback })
 }
 
 export const getTermTagLocalized = ({

@@ -11,13 +11,7 @@ import type {
   TTermTypeLocalized,
 } from '@/types'
 import { CONFIG } from '@/common'
-import {
-  getDefinitionLocalized,
-  getLabelLocalized,
-  getTermTagLocalized,
-  getTermTypeLocalized,
-  interpolateValues,
-} from '@/utils'
+import { getTermTagLocalized, getTermTypeLocalized, getValueLocalized, interpolateValues } from '@/utils'
 import { RAW_TAG, RAW_TERM, RAW_TYPE } from '@data'
 
 /**
@@ -52,14 +46,15 @@ export function getTerm({
 
   return {
     ...term,
-    label: getLabelLocalized({ label: term.label, locale, useFallback }),
-    definition: getDefinitionLocalized({ definition: term.definition, locale, useFallback }),
+    name: getValueLocalized({ obj: term.name, locale, useFallback }),
+    label: getValueLocalized({ obj: term.label, locale, useFallback }),
+    definition: getValueLocalized({ obj: term.definition, locale, useFallback }),
     type: term.type.map((value) => getTermTypeLocalized({ term: value, locale, useFallback })),
     tags: term.tags.map((value) => getTermTagLocalized({ tag: value, locale, useFallback })),
   }
 }
 
-export function getTerms(params?: { localized: false }): TTerm[]
+export function getTerms(params?: { localized: false; useFallback?: boolean }): TTerm[]
 export function getTerms(params?: { localized?: true; locale?: TLocale; useFallback?: boolean }): TTermLocalized[]
 export function getTerms({
   localized = true,
@@ -80,7 +75,7 @@ export function getTerms({
   return terms.map((term) => getTerm({ id: term.id, locale, useFallback }))
 }
 
-export function getDict(params?: { localized: false }): TDevDict
+export function getDict(params?: { localized: false; useFallback?: boolean }): TDevDict
 export function getDict(params?: { localized?: true; locale?: TLocale; useFallback?: boolean }): TDevDictLocalized
 export function getDict({
   localized = true,
@@ -107,7 +102,7 @@ export function getDict({
   return dict
 }
 
-export function getTypes(params?: { localized: false }): TTermType[]
+export function getTypes(params?: { localized: false; useFallback?: boolean }): TTermType[]
 export function getTypes(params?: { localized?: true; locale?: TLocale; useFallback?: boolean }): TTermTypeLocalized[]
 export function getTypes({
   localized = true,
@@ -128,7 +123,7 @@ export function getTypes({
   return types.map((type) => getTermTypeLocalized({ term: type, locale, useFallback }))
 }
 
-export function getTags(params?: { localized: false }): TTermTag[]
+export function getTags(params?: { localized: false; useFallback?: boolean }): TTermTag[]
 export function getTags(params?: { localized?: true; locale?: TLocale; useFallback?: boolean }): TTermTagLocalized[]
 export function getTags({
   localized = true,
