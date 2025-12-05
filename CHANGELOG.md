@@ -1,3 +1,9 @@
+## [0.4.7](https://github.com/kyco/dev-dict/compare/v0.4.6...v0.4.7) (2025-12-05)
+
+### Chore
+
+* **docs:** Update README ([1079d5e](https://github.com/kyco/dev-dict/commit/1079d5eb965ee87facac29749833c1e0c62c506b))
+
 ## [0.4.6](https://github.com/kyco/dev-dict/compare/v0.4.5...v0.4.6) (2025-12-05)
 
 ### Bug Fixes
