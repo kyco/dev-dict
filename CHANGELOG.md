@@ -1,3 +1,13 @@
+## [0.4.3](https://github.com/kyco/dev-dict/compare/v0.4.2...v0.4.3) (2025-12-05)
+
+### Bug Fixes
+
+* Ensure fallback works ([7e1c408](https://github.com/kyco/dev-dict/commit/7e1c408bcfb3749be8d5f2f156493a9ce4b8269c))
+
+### Refactoring
+
+* Use backticks ([327062b](https://github.com/kyco/dev-dict/commit/327062bfb54cbec21f3e3f29a6c1bb00fd347fdf))
+
 ## [0.4.2](https://github.com/kyco/dev-dict/compare/v0.4.1...v0.4.2) (2025-12-05)
 
 ### Bug Fixes
