@@ -13,6 +13,8 @@ export type TTermLinks = {
   website: string
 } & Partial<Record<Exclude<TLinkType, 'website'>, string>>
 
+export type TTermName = TLocaleRecord
+
 export type TTermLabel = TLocaleRecord
 
 export type TTermDefinition = TLocaleRecord
@@ -43,7 +45,7 @@ export type TTermTags = (typeof TAG)[keyof typeof TAG]
 
 export type TTerm = {
   id: string
-  name: string
+  name: TTermName
   type: TTermTypes[]
   label: TTermLabel
   definition: TTermDefinition

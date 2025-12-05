@@ -10,4 +10,4 @@ export const RAW_TERM = {
   [typescript.id]: typescript,
 } as const
 
-export const TERM = interpolateValues(RAW_TERM, ['label', 'definition'])
+export const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'label', 'definition'], useFallback: false })

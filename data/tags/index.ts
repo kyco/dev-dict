@@ -10,4 +10,4 @@ export const RAW_TAG = {
   [open_source.id]: open_source,
 } as const
 
-export const TAG = interpolateValues(RAW_TAG, ['name'])
+export const TAG = interpolateValues({ obj: RAW_TAG, keys: ['name'], useFallback: false })

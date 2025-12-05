@@ -14,4 +14,4 @@ export const RAW_TYPE = {
   [runtime_environment.id]: runtime_environment,
 } as const
 
-export const TYPE = interpolateValues(RAW_TYPE, ['name'])
+export const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback: false })

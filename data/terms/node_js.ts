@@ -5,11 +5,11 @@ import { TAG } from '../tags'
 import { TYPE } from '../types'
 
 export default {
-  id: 'node_js',
+  id: `node_js`,
 
-  name: 'Node.js',
-
-  type: [TYPE.runtime_environment],
+  name: {
+    [LOCALE.EN_US]: `Node.js`,
+  },
 
   label: {
     [LOCALE.EN_US]: `JavaScript Runtime`,
@@ -21,9 +21,11 @@ export default {
     [LOCALE.DE_DE]: `Node.js ist eine kostenlose, Open-Source, plattformübergreifende JavaScript-Laufzeitumgebung, die es Entwicklern ermöglicht, Server, Webanwendungen, Befehlszeilentools und Skripte zu erstellen.`,
   },
 
+  type: [TYPE.runtime_environment],
+
   tags: [TAG.backend],
 
   links: {
-    website: 'https://nodejs.org',
+    website: `https://nodejs.org`,
   },
 } as const satisfies TTerm

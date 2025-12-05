@@ -5,11 +5,11 @@ import { TAG } from '../tags'
 import { TYPE } from '../types'
 
 export default {
-  id: 'typescript',
+  id: `typescript`,
 
-  name: 'TypeScript',
-
-  type: [TYPE.language],
+  name: {
+    [LOCALE.EN_US]: `TypeScript`,
+  },
 
   label: {
     [LOCALE.EN_US]: `High-Level Programming Language`,
@@ -23,9 +23,11 @@ export default {
     [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 
+  type: [TYPE.language],
+
   tags: [TAG.frontend, TAG.backend, TAG.open_source],
 
   links: {
-    website: 'https://www.typescriptlang.org',
+    website: `https://www.typescriptlang.org`,
   },
 } as const satisfies TTerm
