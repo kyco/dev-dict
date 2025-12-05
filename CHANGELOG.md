@@ -1,3 +1,9 @@
+## [0.4.5](https://github.com/kyco/dev-dict/compare/v0.4.4...v0.4.5) (2025-12-05)
+
+### Bug Fixes
+
+* Type ([968918c](https://github.com/kyco/dev-dict/commit/968918ca1847af66bbf10401045f1c13472532e2))
+
 ## [0.4.4](https://github.com/kyco/dev-dict/compare/v0.4.3...v0.4.4) (2025-12-05)
 
 ### Bug Fixes

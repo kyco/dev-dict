@@ -8,6 +8,6 @@
 | [Framework](../data/types/framework.ts) | `framework` | ✔ | ✔ |
 | [Language](../data/types/language.ts) | `language` | ✔ | ✔ |
 | [Library](../data/types/library.ts) | `library` | ✔ | ✔ |
-| [Runtime Environment](../data/types/runtime_environment.ts) | `runtime_environment` | ✔ | ✔ |
+| [Platform](../data/types/platform.ts) | `platform` | ✔ | ✔ |
 | [Runtime Environment](../data/types/runtime_environment.ts) | `runtime_environment` | ✔ | ✔ |
 
