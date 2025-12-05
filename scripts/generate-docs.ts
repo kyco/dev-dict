@@ -35,11 +35,16 @@ const generateTermsReadme = (): void => {
     a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
   )
 
-  const content = generateTable('Terms', [`Term`, 'ID', `Type`, `Label`, `Definition`, `Tags`], terms, (term) => {
-    const types = term.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
-    const tags = term.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
-    return `| [${term.name[DEFAULT_LOCALE]}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types || '✘'} | ${term.label[DEFAULT_LOCALE]} | ${term.definition[DEFAULT_LOCALE] || '✘'} | ${tags || '✘'} |\n`
-  })
+  const content = generateTable(
+    'Terms',
+    [`Term`, 'ID', `Type`, `Label`, `Definition`, `Tags`, `Website`],
+    terms,
+    (value) => {
+      const types = value.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
+      const tags = value.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
+      return `| [${value.name[DEFAULT_LOCALE]}](../data/terms/${value.id}.ts) | \`${value.id}\` | ${types || '✘'} | ${value.label[DEFAULT_LOCALE]} | ${value.definition[DEFAULT_LOCALE] || '✘'} | ${tags || '✘'} | ${value.links?.website || '✘'} |\n`
+    },
+  )
 
   writeFileSync('./docs/TERMS.md', content, 'utf-8')
   console.log('✓ docs/TERMS.md')
