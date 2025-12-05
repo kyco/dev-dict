@@ -1,3 +1,11 @@
+## [0.4.1](https://github.com/kyco/dev-dict/compare/v0.4.0...v0.4.1) (2025-12-05)
+
+### Bug Fixes
+
+* Add JavaScript ([e56b07f](https://github.com/kyco/dev-dict/commit/e56b07f08d6897c8d71575227a8e5969d465ad09))
+* Revert ([f59ebbe](https://github.com/kyco/dev-dict/commit/f59ebbedee3a727d3153ae97fe27b4ff16d04d21))
+* Show website ([0f63c63](https://github.com/kyco/dev-dict/commit/0f63c630fd39807a970210fa95cb87eab004e2bd))
+
 ## [0.4.0](https://github.com/kyco/dev-dict/compare/v0.3.2...v0.4.0) (2025-12-05)
 
 ### Features

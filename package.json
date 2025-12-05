@@ -1,6 +1,6 @@
 {
   "name": "dev-dict",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A dictionary of software related terms. Supports multiple languages.",
   "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
   "license": "MIT",
