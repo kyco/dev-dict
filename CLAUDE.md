@@ -68,13 +68,15 @@ Each term file exports an object with this structure:
 {
   id: string,
   name: TLocaleRecord,        // Translated name
-  label: TLocaleRecord,       // Short description
+  label: TLocaleRecord,       // Concise, verbose type (e.g., "UI Library", "Frontend Framework")
   definition: TLocaleRecord,  // Full definition
   type: TTermTypes[],         // Array of type references
   tags: TTermTags[],          // Array of tag references
   links?: TTermLinks          // Optional website/github/npm links
 }
 ```
+
+**Note**: The `label` field serves as a more descriptive version of the type(s). It should be short, not a full sentence. For example, if a term has type "library", the label might be "UI Library" to provide more context.
 
 ### Localisation System
 
@@ -115,20 +117,28 @@ Always use these aliases when importing within the codebase.
 
 ### Adding a New Term
 
-1. Create a new file in `data/terms/` named `{term_id}.ts` with a default export
+1. Create a new file in `data/terms/` named `{term_id}.ts` with a default export (use lowercase with underscores only, no dashes)
 2. Import the term in `data/terms/index.ts` and add to `RAW_TERM` object
 3. Define translations for at least `en-US` in name, label, and definition
 4. Assign appropriate types and tags from existing constants
 5. Run `pnpm build` to validate (documentation will be generated automatically on merge)
 
+**ID Naming Convention**:
+- All IDs must use lowercase with underscores only (e.g., `node_js`, `open_source`, `react_native`). Never use dashes/hyphens in IDs.
+- The filename must match the ID exactly (e.g., if `id: 'node_js'`, the file must be `node_js.ts`) to make it easier to find and modify.
+
 **IMPORTANT**: Do NOT run `pnpm docs:generate` or commit documentation changes. Documentation is auto-generated on merge to main.
 
 ### Adding a New Type or Tag
 
-1. Create a file in `data/types/` or `data/tags/` with a default export
+1. Create a file in `data/types/` or `data/tags/` with a default export (use lowercase with underscores only, no dashes)
 2. Import and add to the respective `RAW_TYPE` or `RAW_TAG` object in the index.ts file
 3. Use the new constant in term definitions
 4. Run `pnpm build` to validate (documentation will be generated automatically on merge)
+
+**ID Naming Convention**:
+- All IDs must use lowercase with underscores only (e.g., `node_js`, `open_source`). Never use dashes/hyphens in IDs.
+- The filename must match the ID exactly (e.g., if `id: 'open_source'`, the file must be `open_source.ts`) to make it easier to find and modify.
 
 **IMPORTANT**: Do NOT run `pnpm docs:generate` or commit documentation changes. Documentation is auto-generated on merge to main.
 
