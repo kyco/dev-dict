@@ -1,5 +1,6 @@
 import type {
   TLocale,
+  TLocaleRecord,
   TTermDefinition,
   TTermLabel,
   TTermTag,
@@ -10,6 +11,20 @@ import type {
 import { CONFIG } from '@/common'
 import { LOCALE } from '@data'
 
+const getValueLocalized = ({
+  obj,
+  locale = CONFIG.DEFAULT_LOCALE,
+}: {
+  obj: TLocaleRecord
+  locale?: TLocale
+}): string => {
+  let value = obj[locale] || ''
+  if (value && Object.values<string>(LOCALE).includes(value)) {
+    value = obj[value as TLocale] || ''
+  }
+  return value
+}
+
 export const getLabelLocalized = ({
   label,
   locale = CONFIG.DEFAULT_LOCALE,
@@ -17,11 +32,7 @@ export const getLabelLocalized = ({
   label: TTermLabel
   locale?: TLocale
 }): string => {
-  const value = label[locale] || ''
-  if (value && Object.values<string>(LOCALE).includes(value)) {
-    return label[value as TLocale] || ''
-  }
-  return value
+  return getValueLocalized({ obj: label, locale })
 }
 
 export const getDefinitionLocalized = ({
@@ -31,11 +42,7 @@ export const getDefinitionLocalized = ({
   definition: TTermDefinition
   locale?: TLocale
 }): string => {
-  const value = definition[locale] || ''
-  if (value && Object.values<string>(LOCALE).includes(value)) {
-    return definition[value as TLocale] || ''
-  }
-  return value
+  return getValueLocalized({ obj: definition, locale })
 }
 
 export const getTermTagLocalized = ({
@@ -45,14 +52,9 @@ export const getTermTagLocalized = ({
   tag: TTermTag
   locale?: TLocale
 }): TTermTagLocalized => {
-  let value = tag.name[locale] || ''
-  if (value && Object.values<string>(LOCALE).includes(value)) {
-    value = tag.name[value as TLocale] || ''
-  }
-
   return {
     id: tag.id,
-    name: value,
+    name: getValueLocalized({ obj: tag.name, locale }),
   }
 }
 
@@ -63,13 +65,8 @@ export const getTermTypeLocalized = ({
   term: TTermType
   locale?: TLocale
 }): TTermTypeLocalized => {
-  let value = term.name[locale] || ''
-  if (value && Object.values<string>(LOCALE).includes(value)) {
-    value = term.name[value as TLocale] || ''
-  }
-
   return {
     id: term.id,
-    name: value,
+    name: getValueLocalized({ obj: term.name, locale }),
   }
 }
