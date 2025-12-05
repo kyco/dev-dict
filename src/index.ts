@@ -113,7 +113,7 @@ export function getTypes({
   locale?: TLocale
   useFallback?: boolean
 } = {}): TTermType[] | TTermTypeLocalized[] {
-  const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback: false })
+  const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback })
   const types = Object.values(TYPE)
 
   if (!localized) {
@@ -134,7 +134,7 @@ export function getTags({
   locale?: TLocale
   useFallback?: boolean
 } = {}): TTermTag[] | TTermTagLocalized[] {
-  const TAG = interpolateValues({ obj: RAW_TAG, keys: ['name'], useFallback: false })
+  const TAG = interpolateValues({ obj: RAW_TAG, keys: ['name'], useFallback })
   const tags = Object.values(TAG)
 
   if (!localized) {
