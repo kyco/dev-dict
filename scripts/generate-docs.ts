@@ -25,11 +25,11 @@ const generateTable = (
 }
 
 const generateTermsReadme = (): void => {
-  const terms = [...getTerms({ localized: false })].sort((a, b) => a.name.localeCompare(b.name))
+  const terms = [...getTerms({ localized: false })].sort((a, b) => a.name[LOCALE].localeCompare(b.name[LOCALE]))
 
   const content = generateTable('Terms', ['Term', 'ID', 'Type'], terms, (term) => {
     const types = term.type.map((t: any) => t.name[LOCALE]).join(', ')
-    return `| [${term.name}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types} |\n`
+    return `| [${term.name[LOCALE]}](../data/terms/${term.id}.ts) | \`${term.id}\` | ${types} |\n`
   })
 
   writeFileSync('./docs/TERMS.md', content, 'utf-8')
