@@ -8,6 +8,7 @@ import type {
   TTermTypeLocalized,
 } from '@/types'
 import { CONFIG } from '@/common'
+import { LOCALE } from '@data'
 
 export const getLabelLocalized = ({
   label,
@@ -16,7 +17,11 @@ export const getLabelLocalized = ({
   label: TTermLabel
   locale?: TLocale
 }): string => {
-  return label[locale] || label[CONFIG.DEFAULT_LOCALE]
+  const value = label[locale] || ''
+  if (value && Object.values<string>(LOCALE).includes(value)) {
+    return label[value as TLocale] || ''
+  }
+  return value
 }
 
 export const getDefinitionLocalized = ({
@@ -26,7 +31,11 @@ export const getDefinitionLocalized = ({
   definition: TTermDefinition
   locale?: TLocale
 }): string => {
-  return definition[locale] || definition[CONFIG.DEFAULT_LOCALE]
+  const value = definition[locale] || ''
+  if (value && Object.values<string>(LOCALE).includes(value)) {
+    return definition[value as TLocale] || ''
+  }
+  return value
 }
 
 export const getTermTagLocalized = ({
@@ -36,9 +45,14 @@ export const getTermTagLocalized = ({
   tag: TTermTag
   locale?: TLocale
 }): TTermTagLocalized => {
+  let value = tag.name[locale] || ''
+  if (value && Object.values<string>(LOCALE).includes(value)) {
+    value = tag.name[value as TLocale] || ''
+  }
+
   return {
     id: tag.id,
-    name: tag.name[locale] || tag.name[CONFIG.DEFAULT_LOCALE],
+    name: value,
   }
 }
 
@@ -49,8 +63,13 @@ export const getTermTypeLocalized = ({
   term: TTermType
   locale?: TLocale
 }): TTermTypeLocalized => {
+  let value = term.name[locale] || ''
+  if (value && Object.values<string>(LOCALE).includes(value)) {
+    value = term.name[value as TLocale] || ''
+  }
+
   return {
     id: term.id,
-    name: term.name[locale] || term.name[CONFIG.DEFAULT_LOCALE],
+    name: value,
   }
 }

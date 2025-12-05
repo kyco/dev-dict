@@ -7,6 +7,7 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Runtime Environment`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
     [LOCALE.DE_DE]: `Laufzeitumgebung`,
   },
 } as const satisfies TTermType
