@@ -42,7 +42,7 @@ const generateTermsReadme = (): void => {
     (value) => {
       const types = value.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
       const tags = value.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
-      return `| [${value.name[DEFAULT_LOCALE]}](../data/terms/${value.id}.ts) | \`${value.id}\` | ${types || '✘'} | ${value.label[DEFAULT_LOCALE]} | ${value.definition[DEFAULT_LOCALE] || '✘'} | ${tags || '✘'} | ${value.links?.website || '✘'} |\n`
+      return `| [${value.name[DEFAULT_LOCALE]}](../data/terms/${value.id}.ts) | \`${value.id}\` | ${types || '✘'} | ${value.label[DEFAULT_LOCALE]} | ${value.definition[DEFAULT_LOCALE] ? '✔' : '✘'} | ${tags || '✘'} | ${value.links?.website || '✘'} |\n`
     },
   )
 
