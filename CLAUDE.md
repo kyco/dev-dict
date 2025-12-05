@@ -154,8 +154,9 @@ The project uses TypeScript ESLint with custom rules in `eslint.config.mts`. Mos
 
 ## Writing Style
 
-- **Markdown files and comments**: Use British English (e.g., "localised", "behaviour", "organised")
+- **Markdown files**: Use British English (e.g., "localised", "behaviour", "organised")
 - **Code (variable names, function names, etc.)**: Use American English (e.g., `localized`, `behavior`, `organized`)
+- **Code comments**: Avoid unnecessary comments. Code should be self-explanatory
 
 ## Documentation Generation - CRITICAL
 
