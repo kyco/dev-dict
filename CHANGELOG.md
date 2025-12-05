@@ -1,3 +1,13 @@
+## [0.3.2](https://github.com/kyco/dev-dict/compare/v0.3.1...v0.3.2) (2025-12-05)
+
+### Chore
+
+* **dependencies:** bump actions/checkout from 4 to 6 ([dafedf4](https://github.com/kyco/dev-dict/commit/dafedf476e7f26b399da3c4faf1251e50cf96368))
+
+### Refactoring
+
+* Convert script to TS ([aef3dfd](https://github.com/kyco/dev-dict/commit/aef3dfd0116a068bbfcacef9c9213a2dd2b32ae5))
+
 ## [0.3.1](https://github.com/kyco/dev-dict/compare/v0.3.0...v0.3.1) (2025-12-05)
 
 ### Chore
