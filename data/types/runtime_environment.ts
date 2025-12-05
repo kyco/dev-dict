@@ -3,7 +3,7 @@ import type { TTermType } from '@/types'
 import { LOCALE } from '../locales'
 
 export default {
-  id: 'runtime_environment',
+  id: `runtime_environment`,
 
   name: {
     [LOCALE.EN_US]: `Runtime Environment`,
