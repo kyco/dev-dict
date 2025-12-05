@@ -7,7 +7,6 @@
 
 **dev-dict** provides an exhaustive, community-driven collection of software industry terms with clear explanations in multiple languages. Perfect for developers, technical writers, educators, and anyone building multilingual developer tools.
 
----
 
 ## Features
 
@@ -18,7 +17,6 @@
 - **Lightweight** - Tree-shakeable ESM and UMD builds
 - **Extensible** - Easy to contribute new terms and translations
 
----
 
 ## Quick Start
 
@@ -52,7 +50,6 @@ console.log(dict.react.label) // "JavaScript Library"
 console.log(dict.typescript.label) // "Programming Language"
 ```
 
----
 
 ## API Reference
 
@@ -80,8 +77,6 @@ console.log(reactRaw.label)
 - `localized?: boolean` - Return localised strings (default: `true`)
 - `useFallback?: boolean` - Fall back to en-US for missing translations (default: `true`)
 
----
-
 ### `getTerms(options)`
 
 Get all terms as an array.
@@ -101,8 +96,6 @@ console.log(termsRaw)
 - `locale?: string` - Target locale (default: `'en-US'`)
 - `localized?: boolean` - Return localised strings (default: `true`)
 - `useFallback?: boolean` - Fall back to en-US for missing translations (default: `true`)
-
----
 
 ### `getDict(options)`
 
@@ -124,8 +117,6 @@ console.log(dictRaw.react.label)
 - `localized?: boolean` - Return localised strings (default: `true`)
 - `useFallback?: boolean` - Fall back to en-US for missing translations (default: `true`)
 
----
-
 ### `getTypes(options)`
 
 Get all term types (e.g., library, framework, language).
@@ -135,8 +126,6 @@ const types = getTypes({ locale: 'en-US' })
 console.log(types)
 // [{ id: "library", name: "Library" }, { id: "framework", name: "Framework" }, ...]
 ```
-
----
 
 ### `getTags(options)`
 
@@ -148,7 +137,6 @@ console.log(tags)
 // [{ id: "frontend", name: "Frontend" }, { id: "backend", name: "Backend" }, ...]
 ```
 
----
 
 ## Supported Languages
 
@@ -160,7 +148,6 @@ console.log(tags)
 
 Want to add a new language? Check out the [Contributing Guide](./CONTRIBUTING.md#adding-a-new-language).
 
----
 
 ## Browse Available Terms
 
@@ -170,7 +157,6 @@ Explore the full catalogue of terms, types, and tags:
 - **[Types](./docs/TYPES.md)** - Term categories (library, framework, etc.)
 - **[Tags](./docs/TAGS.md)** - Additional classifications (frontend, backend, etc.)
 
----
 
 ## Contributing
 
@@ -182,7 +168,6 @@ We welcome contributions! Whether you want to:
 
 Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
 
----
 
 ## Development
 
@@ -205,7 +190,6 @@ npx prettier --write .
 
 For detailed development guidance, see [CLAUDE.md](./CLAUDE.md).
 
----
 
 ## Use Cases
 
@@ -215,18 +199,8 @@ For detailed development guidance, see [CLAUDE.md](./CLAUDE.md).
 - **Content Management** - Maintain consistent terminology across translations
 - **IDE Extensions** - Provide inline term explanations
 
----
 
 ## License
 
-[MIT](./LICENSE) © [Cornelius Weidmann](https://github.com/kyco)
-
----
-
-## Links
-
-- [npm Package](https://www.npmjs.com/package/dev-dict)
-- [GitHub Repository](https://github.com/kyco/dev-dict)
-- [Issue Tracker](https://github.com/kyco/dev-dict/issues)
-- [Discussions](https://github.com/kyco/dev-dict/discussions)
+[MIT](./LICENSE)
 
