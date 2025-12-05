@@ -13,7 +13,7 @@ export const RAW_TYPE = {
   [language.id]: language,
   [library.id]: library,
   [runtime_environment.id]: runtime_environment,
-  [platform.id]: runtime_environment,
+  [platform.id]: platform,
 } as const
 
 export const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback: false })
