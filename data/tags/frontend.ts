@@ -3,7 +3,7 @@ import type { TTermTag } from '@/types'
 import { LOCALE } from '../locales'
 
 export default {
-  id: 'frontend',
+  id: `frontend`,
 
   name: {
     [LOCALE.EN_US]: `Frontend`,
