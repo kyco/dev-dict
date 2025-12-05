@@ -18,6 +18,15 @@
 - **Extensible** - Easy to contribute new terms and translations
 
 
+## Browse Available Terms
+
+Explore the full catalogue of terms, types, and tags:
+
+- **[Terms](./docs/TERMS.md)** - All software development terms
+- **[Types](./docs/TYPES.md)** - Term categories (library, framework, etc.)
+- **[Tags](./docs/TAGS.md)** - Additional classifications (frontend, backend, etc.)
+
+
 ## Quick Start
 
 ### Installation
@@ -147,15 +156,6 @@ console.log(tags)
 | `de-DE` | German (Germany) | ✅ Supported |
 
 Want to add a new language? Check out the [Contributing Guide](./CONTRIBUTING.md#adding-a-new-language).
-
-
-## Browse Available Terms
-
-Explore the full catalogue of terms, types, and tags:
-
-- **[Terms](./docs/TERMS.md)** - All software development terms
-- **[Types](./docs/TYPES.md)** - Term categories (library, framework, etc.)
-- **[Tags](./docs/TAGS.md)** - Additional classifications (frontend, backend, etc.)
 
 
 ## Contributing
