@@ -19,11 +19,10 @@ export const interpolateValue = ({ obj, value }: { obj: TLocaleRecord; value: un
 }
 
 export const interpolateLocaleRecord = (lRecord: TLocaleRecord): TLocaleRecord => {
+  const locales = Object.values<string>(LOCALE) as TLocale[]
+
   return Object.fromEntries(
-    Object.entries(lRecord).map(([locale, value]) => [
-      locale,
-      interpolateValue({ obj: lRecord, value: value as string | undefined }),
-    ]),
+    locales.map((locale) => [locale, interpolateValue({ obj: lRecord, value: lRecord[locale] })]),
   ) as TLocaleRecord
 }
 
