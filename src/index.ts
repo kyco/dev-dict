@@ -1,4 +1,15 @@
-import type { TDevDict, TDevDictLocalized, TLocale, TTerm, TTermId, TTermLocalized, TTermType, TTermTypeLocalized, TTermTag, TTermTagLocalized } from '@/types'
+import type {
+  TDevDict,
+  TDevDictLocalized,
+  TLocale,
+  TTerm,
+  TTermId,
+  TTermLocalized,
+  TTermTag,
+  TTermTagLocalized,
+  TTermType,
+  TTermTypeLocalized,
+} from '@/types'
 import { CONFIG } from '@/common'
 import { getDefinitionLocalized, getLabelLocalized, getTermTagLocalized, getTermTypeLocalized } from '@/utils'
 import { TAG, TERM, TYPE } from '@data'
