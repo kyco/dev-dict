@@ -1,3 +1,19 @@
+## [0.4.6](https://github.com/kyco/dev-dict/compare/v0.4.5...v0.4.6) (2025-12-05)
+
+### Bug Fixes
+
+* Add more rules ([9d9cf19](https://github.com/kyco/dev-dict/commit/9d9cf198ec39536087392897d8e2b0d861394d3c))
+* Claude `/init` and update file ([d77d321](https://github.com/kyco/dev-dict/commit/d77d32169e3f0cb25c8c96fdb9bea49e01f6fe9f))
+* Empty label ([fbf768d](https://github.com/kyco/dev-dict/commit/fbf768d3d06dc6294a8be8a67659ac7b658a0091))
+* No unnecessary comments ([5b48f07](https://github.com/kyco/dev-dict/commit/5b48f07375ab1ccf3befe5712f274665792015e0))
+* Update ([7bc8932](https://github.com/kyco/dev-dict/commit/7bc893282227a815e3722f14fdaee1cd486cf221))
+* Update ([7fad3b8](https://github.com/kyco/dev-dict/commit/7fad3b89e0fe82c539dfa2041837005ffcdbaa8f))
+
+### Chore
+
+* **docs:** Add contribution guide ([8623c42](https://github.com/kyco/dev-dict/commit/8623c42d24faea240d406b0f1f8741c6e46a029c))
+* **docs:** Updat README ([21a1430](https://github.com/kyco/dev-dict/commit/21a14308ee6f21dd3f0b22c68879bb2b0f40ef8f))
+
 ## [0.4.5](https://github.com/kyco/dev-dict/compare/v0.4.4...v0.4.5) (2025-12-05)
 
 ### Bug Fixes
