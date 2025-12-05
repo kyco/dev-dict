@@ -7,6 +7,7 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Framework`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
     [LOCALE.DE_DE]: `Framework`,
   },
 } as const satisfies TTermType

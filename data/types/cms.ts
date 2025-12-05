@@ -7,6 +7,7 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Content Management System`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
     [LOCALE.DE_DE]: `Content-Management-System`,
   },
 } as const satisfies TTermType

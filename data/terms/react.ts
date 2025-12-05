@@ -5,11 +5,11 @@ import { TAG } from '../tags'
 import { TYPE } from '../types'
 
 export default {
-  id: 'react',
+  id: `react`,
 
-  name: 'React',
-
-  type: [TYPE.library],
+  name: {
+    [LOCALE.EN_US]: `React`,
+  },
 
   label: {
     [LOCALE.EN_US]: `JavaScript Library`,
@@ -21,9 +21,11 @@ export default {
     [LOCALE.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
   },
 
+  type: [TYPE.library],
+
   tags: [TAG.frontend, TAG.backend],
 
   links: {
-    website: 'https://react.dev',
+    website: `https://react.dev`,
   },
 } as const satisfies TTerm

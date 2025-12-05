@@ -7,6 +7,7 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Language`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
     [LOCALE.DE_DE]: `Sprache`,
   },
 } as const satisfies TTermType

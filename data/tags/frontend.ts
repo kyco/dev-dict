@@ -7,6 +7,7 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Frontend`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
     [LOCALE.DE_DE]: `Frontend`,
   },
 } as const satisfies TTermTag
