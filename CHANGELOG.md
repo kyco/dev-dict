@@ -1,3 +1,9 @@
+## [0.4.2](https://github.com/kyco/dev-dict/compare/v0.4.1...v0.4.2) (2025-12-05)
+
+### Bug Fixes
+
+* **docs:** Hide definition ([adf4b79](https://github.com/kyco/dev-dict/commit/adf4b7954bd7c10f11358b6ebbdeecaeee713b27))
+
 ## [0.4.1](https://github.com/kyco/dev-dict/compare/v0.4.0...v0.4.1) (2025-12-05)
 
 ### Bug Fixes
