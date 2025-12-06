@@ -1,3 +1,17 @@
+## [0.6.0](https://github.com/kyco/dev-dict/compare/v0.5.0...v0.6.0) (2025-12-06)
+
+### Features
+
+* Add demo ([f49cc4d](https://github.com/kyco/dev-dict/commit/f49cc4d1e97517214ca0f5ae58c4eb077c3794c9))
+
+### Bug Fixes
+
+* Check demo works ([70b723a](https://github.com/kyco/dev-dict/commit/70b723acaad7a4f26420796e24d6029adc5c31a6))
+
+### Chore
+
+* **docs:** Add badges ([c69d570](https://github.com/kyco/dev-dict/commit/c69d5705b14f6c51709a88aa1b836009e649730f))
+
 ## [0.5.0](https://github.com/kyco/dev-dict/compare/v0.4.9...v0.5.0) (2025-12-06)
 
 ### Features
