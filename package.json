@@ -43,8 +43,10 @@
     "provenance": true
   },
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
+    "demo:dev": "cd demo && pnpm dev",
+    "demo:build": "pnpm build && cd demo && pnpm build",
+    "demo:preview": "cd demo && pnpm preview",
     "docs:generate": "pnpm build && tsx scripts/generate-docs.ts",
     "prepublishOnly": "pnpm docs:generate",
     "test": "echo \"This project does not have any tests which can be run yet...\"",

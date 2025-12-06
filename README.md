@@ -11,6 +11,8 @@
 
 **dev-dict** provides an exhaustive, community-driven collection of software industry terms with clear explanations in multiple languages. Perfect for developers, technical writers, educators, and anyone building multilingual developer tools.
 
+**[🚀 View Live Demo](https://kyco.github.io/dev-dict/)**
+
 
 ## Features
 
@@ -179,11 +181,17 @@ Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
 # Install dependencies
 pnpm install
 
-# Start dev server (serves examples/)
-pnpm dev
-
 # Build library
 pnpm build
+
+# Run demo site locally
+pnpm demo:dev
+
+# Build demo site
+pnpm demo:build
+
+# Preview demo build
+pnpm demo:preview
 
 # Lint code
 npx eslint .

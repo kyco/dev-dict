@@ -18,11 +18,26 @@ pnpm build
 ```
 Builds the library using Vite. Outputs to the `dist/` directory with ES and UMD formats.
 
-### Development Server
+### Demo Site
+
+The `demo/` directory contains a React-based showcase application that demonstrates the library's capabilities.
+
 ```bash
-pnpm dev
+pnpm demo:dev
 ```
-Starts the Vite dev server serving the `examples/` directory for local testing.
+Starts the demo development server at http://localhost:5173
+
+```bash
+pnpm demo:build
+```
+Builds the library and then builds the demo site for production.
+
+```bash
+pnpm demo:preview
+```
+Previews the production build of the demo site.
+
+**Auto-deployment**: The demo is automatically deployed to GitHub Pages when changes are merged to the `main` branch. The live demo is available at https://kyco.github.io/dev-dict/
 
 ### Generate Documentation
 ```bash
