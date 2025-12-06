@@ -1,3 +1,9 @@
+## [0.6.1](https://github.com/kyco/dev-dict/compare/v0.6.0...v0.6.1) (2025-12-06)
+
+### Bug Fixes
+
+* Github pages deploy ([d643ced](https://github.com/kyco/dev-dict/commit/d643cedcf15ced9804eee632716549cbd6211653))
+
 ## [0.6.0](https://github.com/kyco/dev-dict/compare/v0.5.0...v0.6.0) (2025-12-06)
 
 ### Features
