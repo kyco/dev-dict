@@ -1,6 +1,7 @@
 import type { TTerm } from '@/types'
 
 import { LOCALE } from '../locales'
+import { SOURCE } from '../sources'
 import { TAG } from '../tags'
 import { TYPE } from '../types'
 
@@ -23,9 +24,13 @@ export default {
 
   type: [TYPE.library],
 
-  tags: [TAG.frontend, TAG.backend],
+  tags: [TAG.frontend, TAG.backend, TAG.javascript, TAG.open_source, TAG.ui_library],
 
   links: {
     website: `https://react.dev`,
+  },
+
+  sources: {
+    definition: SOURCE.official_website,
   },
 } as const satisfies TTerm
