@@ -2,6 +2,9 @@ import { getTags, getTerms, getTypes } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
 import { useMemo, useState } from 'react'
 
+import { ContributionDialog } from './components/ContributionDialog'
+import { calculateStats, getGithubEditUrl } from './utils/stats'
+
 type Locale = TLocale
 
 function App() {
@@ -9,10 +12,12 @@ function App() {
   const [selectedLocale, setSelectedLocale] = useState<Locale>('en-US')
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [isContributionDialogOpen, setIsContributionDialogOpen] = useState(false)
 
   const terms = getTerms({ locale: selectedLocale })
   const types = getTypes({ locale: selectedLocale })
   const tags = getTags({ locale: selectedLocale })
+  const stats = useMemo(() => calculateStats(), [])
 
   const filteredTerms = useMemo(() => {
     return terms.filter((term) => {
@@ -72,6 +77,12 @@ function App() {
                     </option>
                   ))}
                 </select>
+                <button
+                  onClick={() => setIsContributionDialogOpen(true)}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Help Us Grow
+                </button>
                 <a
                   href="https://github.com/kyco/dev-dict"
                   target="_blank"
@@ -108,6 +119,12 @@ function App() {
           </div>
         </div>
       </header>
+
+      <ContributionDialog
+        isOpen={isContributionDialogOpen}
+        onClose={() => setIsContributionDialogOpen(false)}
+        stats={stats}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -189,10 +206,22 @@ function App() {
                     className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow"
                   >
                     <div className="flex items-start justify-between gap-4 mb-3">
-                      <div>
+                      <div className="flex-1">
                         <h3 className="text-xl font-semibold text-slate-900">{term.name}</h3>
                         <p className="text-sm text-blue-600 font-medium mt-1">{term.label}</p>
                       </div>
+                      <a
+                        href={getGithubEditUrl(term.id)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-shrink-0 px-3 py-1.5 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-md transition-colors flex items-center gap-1.5"
+                        title="Edit this term on GitHub"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z" />
+                        </svg>
+                        Edit
+                      </a>
                     </div>
 
                     <p className="text-slate-700 leading-relaxed mb-4">{term.definition}</p>
