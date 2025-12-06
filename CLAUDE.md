@@ -37,7 +37,7 @@ pnpm demo:preview
 ```
 Previews the production build of the demo site.
 
-**Auto-deployment**: The demo is automatically deployed to GitHub Pages when changes are merged to the `main` branch. The live demo is available at https://kyco.github.io/dev-dict/
+**Auto-deployment**: The demo is automatically deployed to GitHub Pages after a successful npm publish when changes are merged to the `main` branch. The deployment workflow ensures the package is published first before deploying the demo. The live demo is available at https://kyco.github.io/dev-dict/
 
 ### Generate Documentation
 ```bash

@@ -1,4 +1,4 @@
-name: Publish package
+name: Publish & Deploy
 
 on:
   push:
@@ -6,8 +6,9 @@ on:
       - main
 
 permissions:
-  id-token: write # Required for OIDC
+  id-token: write # Required for OIDC and GitHub Pages
   contents: write
+  pages: write
 
 jobs:
   publish-to-npm:
@@ -50,9 +51,45 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  deploy-demo:
+    name: Deploy demo to GitHub Pages
+    needs: publish-to-npm
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.24.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.11.0'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build library
+        run: pnpm build
+
+      - name: Build demo
+        run: cd demo && pnpm build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: demo/dist
+          branch: gh-pages
+
   merge-main-into-develop:
     name: Merge main into develop
-    needs: publish-to-npm
+    needs: deploy-demo
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
