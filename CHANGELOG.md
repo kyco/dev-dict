@@ -1,3 +1,9 @@
+## [0.6.2](https://github.com/kyco/dev-dict/compare/v0.6.1...v0.6.2) (2025-12-06)
+
+### Bug Fixes
+
+* Add contribution stats dialog ([f7fb716](https://github.com/kyco/dev-dict/commit/f7fb7166c8982dd54da860c728281d871e365cf1))
+
 ## [0.6.1](https://github.com/kyco/dev-dict/compare/v0.6.0...v0.6.1) (2025-12-06)
 
 ### Bug Fixes
