@@ -1,3 +1,15 @@
+## [0.5.0](https://github.com/kyco/dev-dict/compare/v0.4.9...v0.5.0) (2025-12-06)
+
+### Features
+
+* Add new "sources" field ([2ca2a44](https://github.com/kyco/dev-dict/commit/2ca2a44838fd438cdd8fd3e32e2e695b7080de24))
+
+### Bug Fixes
+
+* Add predefined sources ([2d6362e](https://github.com/kyco/dev-dict/commit/2d6362e643897444d3acb216a0b87a780080cadf))
+* Update E2E term ([59bd115](https://github.com/kyco/dev-dict/commit/59bd115741fc7cc9203e8695acc0835f8a81dc92))
+* Update sources ([33d55d7](https://github.com/kyco/dev-dict/commit/33d55d7c2606025ed9de1134218d616b16964593))
+
 ## [0.4.9](https://github.com/kyco/dev-dict/compare/v0.4.8...v0.4.9) (2025-12-05)
 
 ### Chore

@@ -57,8 +57,8 @@
 | [Docusaurus](../data/terms/docusaurus.ts) | `docusaurus` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Dreamweaver](../data/terms/dreamweaver.ts) | `dreamweaver` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Dynatrace](../data/terms/dynatrace.ts) | `dynatrace` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [E2E](../data/terms/e2e.ts) | `e2e` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Encryption](../data/terms/encryption.ts) | `encryption` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [End-to-end Testing](../data/terms/e2e.ts) | `e2e` | Concept, Methodology | Testing Methodology | ✔ | Testing, Automation, QA | ✘ |
 | [esbuild](../data/terms/es_build.ts) | `es_build` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [ESLint](../data/terms/eslint.ts) | `eslint` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Excel](../data/terms/excel.ts) | `excel` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -96,7 +96,7 @@
 | [i18n](../data/terms/i18n.ts) | `i18n` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Ionic Framework](../data/terms/ionic.ts) | `ionic` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Jasmine](../data/terms/jasmine.ts) | `jasmine` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [JavaScript](../data/terms/javascript.ts) | `javascript` | Language | High-Level Programming Language | ✘ | Frontend, Backend, Open Source | https://en.wikipedia.org/wiki/JavaScript |
+| [JavaScript](../data/terms/javascript.ts) | `javascript` | Language | High-Level Programming Language | ✘ | Frontend, Backend, Open Source | https://tc39.es/ecma262 |
 | [JavaScript](../data/terms/js.ts) | `js` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Jenkins](../data/terms/jenkins.ts) | `jenkins` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Jest](../data/terms/jest.ts) | `jest` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -150,7 +150,7 @@
 | [PuTTY](../data/terms/putty.ts) | `putty` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Python](../data/terms/python.ts) | `python` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [QuickBooks](../data/terms/quickbooks.ts) | `quickbooks` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [React](../data/terms/react.ts) | `react` | Library | JavaScript Library | ✔ | Frontend, Backend | https://react.dev |
+| [React](../data/terms/react.ts) | `react` | Library | JavaScript Library | ✔ | Frontend, Backend, JavaScript, Open Source, UI Library | https://react.dev |
 | [React Hook Form](../data/terms/react_hook_form.ts) | `react_hook_form` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [React PDF](../data/terms/react_pdf.ts) | `react_pdf` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [React Testing Library](../data/terms/react_testing_library.ts) | `react_testing_library` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -186,7 +186,7 @@
 | [Terraform](../data/terms/terraform.ts) | `terraform` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Trello](../data/terms/trello.ts) | `trello` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Twig](../data/terms/twig.ts) | `twig` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [TypeScript](../data/terms/typescript.ts) | `typescript` | Language | High-Level Programming Language | ✔ | Frontend, Backend, Open Source | https://www.typescriptlang.org |
+| [TypeScript](../data/terms/typescript.ts) | `typescript` | Language | High-Level Programming Language | ✔ | Frontend, Backend, Open Source, JavaScript | https://www.typescriptlang.org |
 | [Typesense](../data/terms/typesense.ts) | `typesense` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Vercel](../data/terms/vercel.ts) | `vercel` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Vim](../data/terms/vim.ts) | `vim` | ✘ | ✘ | ✘ | ✘ | ✘ |
