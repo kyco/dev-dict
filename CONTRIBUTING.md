@@ -314,11 +314,14 @@ dev-dict/
 # Install dependencies
 pnpm install
 
-# Start development server (serves examples/ directory)
-pnpm dev
-
 # Build the library
 pnpm build
+
+# Run demo site locally
+pnpm demo:dev
+
+# Build demo site
+pnpm demo:build
 
 # Lint code
 npx eslint .
@@ -335,9 +338,11 @@ npx prettier --write .
    - Catches type errors and missing imports
 
 2. **Test locally**:
-   - Run `pnpm dev`
-   - Open the examples in your browser
-   - Import and use your term to verify it works
+   - Run `pnpm demo:dev`
+   - Open http://localhost:5173 in your browser
+   - Search for your term to verify it displays correctly
+   - Test filtering by type and tags
+   - Switch languages to verify translations
 
 **Note**: Documentation in `docs/` is auto-generated on merge to main. You don't need to generate or commit documentation changes.
 

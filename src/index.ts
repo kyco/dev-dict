@@ -143,3 +143,16 @@ export function getTags({
 
   return tags.map((tag) => getTermTagLocalized({ tag, locale, useFallback }))
 }
+
+export type {
+  TDevDict,
+  TDevDictLocalized,
+  TLocale,
+  TTerm,
+  TTermId,
+  TTermLocalized,
+  TTermTag,
+  TTermTagLocalized,
+  TTermType,
+  TTermTypeLocalized,
+}
