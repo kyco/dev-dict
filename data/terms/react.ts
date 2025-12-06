@@ -1,6 +1,7 @@
 import type { TTerm } from '@/types'
 
 import { LOCALE } from '../locales'
+import { SOURCE } from '../sources'
 import { TAG } from '../tags'
 import { TYPE } from '../types'
 
@@ -30,13 +31,6 @@ export default {
   },
 
   sources: {
-    label: {
-      [LOCALE.EN_US]: `Community`,
-      [LOCALE.DE_DE]: `AI translation from en-US`,
-    },
-    definition: {
-      [LOCALE.EN_US]: `https://react.dev`,
-      [LOCALE.DE_DE]: `AI translation from en-US`,
-    },
+    definition: SOURCE.official_website,
   },
 } as const satisfies TTerm

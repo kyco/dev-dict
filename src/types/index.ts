@@ -1,5 +1,5 @@
 import { CONFIG } from '@/common'
-import { LOCALE, TAG, TERM, TYPE } from '@data'
+import { LOCALE, SOURCE, TAG, TERM, TYPE } from '@data'
 
 export type TLocale = (typeof LOCALE)[keyof typeof LOCALE]
 
@@ -40,9 +40,21 @@ export type TTermTagLocalized = {
 
 export type TTermTags = (typeof TAG)[keyof typeof TAG]
 
+export type TTermSource = {
+  id: string
+  name: TLocaleRecord
+}
+
+export type TTermSourceLocalized = {
+  id: string
+  name: string
+}
+
+export type TTermSources = (typeof SOURCE)[keyof typeof SOURCE]
+
 export type TSourceMetadata = {
-  label?: Partial<Record<TLocale, string>>
-  definition?: Partial<Record<TLocale, string>>
+  label?: TTermSources
+  definition?: TTermSources
 }
 
 export type TTerm = {
@@ -85,20 +97,16 @@ export type TTerm = {
    */
   links?: TTermLinks
   /**
-   * Source attribution metadata for term labels and definitions.
-   * The locale keys indicate which translation the source applies to,
-   * but the source descriptions themselves should always be in English.
+   * Source attribution for term labels and definitions.
+   * Uses predefined source constants (e.g., SOURCE.official_website, SOURCE.community, SOURCE.inferred).
+   *
+   * IMPORTANT: If no source is specified, all content is assumed to be AI-generated.
+   * Only add sources when the content comes from a specific, verifiable origin.
    *
    * @example
    * sources: {
-   *   label: {
-   *     [LOCALE.EN_US]: 'Inferred from project classification',
-   *     [LOCALE.DE_DE]: 'AI translation from en-US',
-   *   },
-   *   definition: {
-   *     [LOCALE.EN_US]: 'https://react.dev',
-   *     [LOCALE.DE_DE]: 'AI translation from en-US',
-   *   },
+   *   label: SOURCE.community,
+   *   definition: SOURCE.official_website,
    * }
    */
   sources?: TSourceMetadata
