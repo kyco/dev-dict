@@ -1,0 +1,57 @@
+import { getTerms } from 'dev-dict'
+import type { TLocale } from 'dev-dict'
+
+export type LocaleStats = {
+  locale: TLocale
+  missingNames: number
+  missingLabels: number
+  missingDefinitions: number
+  totalTerms: number
+}
+
+export type ContributionStats = {
+  totalTerms: number
+  termsWithoutTags: number
+  termsWithoutTypes: number
+  localeStats: LocaleStats[]
+}
+
+export function calculateStats(): ContributionStats {
+  const rawTerms = getTerms({ localized: false, useFallback: false })
+  const locales: TLocale[] = ['en-US', 'en-GB', 'de-DE']
+
+  const totalTerms = rawTerms.length
+  const termsWithoutTags = rawTerms.filter((term) => term.tags.length === 0).length
+  const termsWithoutTypes = rawTerms.filter((term) => term.type.length === 0).length
+
+  const localeStats: LocaleStats[] = locales.map((locale) => {
+    let missingNames = 0
+    let missingLabels = 0
+    let missingDefinitions = 0
+
+    rawTerms.forEach((term) => {
+      if (!term.name[locale]) missingNames++
+      if (!term.label[locale]) missingLabels++
+      if (!term.definition[locale]) missingDefinitions++
+    })
+
+    return {
+      locale,
+      missingNames,
+      missingLabels,
+      missingDefinitions,
+      totalTerms,
+    }
+  })
+
+  return {
+    totalTerms,
+    termsWithoutTags,
+    termsWithoutTypes,
+    localeStats,
+  }
+}
+
+export function getGithubEditUrl(termId: string): string {
+  return `https://github.com/kyco/dev-dict/edit/main/data/terms/${termId}.ts`
+}
