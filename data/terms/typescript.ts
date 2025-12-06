@@ -25,9 +25,20 @@ export default {
 
   type: [TYPE.language],
 
-  tags: [TAG.frontend, TAG.backend, TAG.open_source],
+  tags: [TAG.frontend, TAG.backend, TAG.open_source, TAG.javascript],
 
   links: {
     website: `https://www.typescriptlang.org`,
+  },
+
+  sources: {
+    label: {
+      [LOCALE.EN_US]: `Community`,
+      [LOCALE.DE_DE]: `AI translation from en-US`,
+    },
+    definition: {
+      [LOCALE.EN_US]: `https://www.typescriptlang.org`,
+      [LOCALE.DE_DE]: `AI translation from en-US`,
+    },
   },
 } as const satisfies TTerm
