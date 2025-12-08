@@ -1,3 +1,16 @@
+## [0.6.3](https://github.com/kyco/dev-dict/compare/v0.6.2...v0.6.3) (2025-12-08)
+
+### Bug Fixes
+
+* **core:** Update react ([1bb0e71](https://github.com/kyco/dev-dict/commit/1bb0e71e5064270058f272939bd27270b8b46fce))
+* **demo:** Add wikipedia link ([cdd338f](https://github.com/kyco/dev-dict/commit/cdd338fa373202d263e32e96021939c839de97a4))
+* **demo:** Update demo ([ac0f7df](https://github.com/kyco/dev-dict/commit/ac0f7dfd0e58f2859de83ad4cdc290f1be65f0d7))
+* Update website URL ([d9bdc45](https://github.com/kyco/dev-dict/commit/d9bdc45b3eaa1c28e5b347c4d29e2a086c5ad15d))
+
+### Chore
+
+* **docs:** Update README ([3e00f4c](https://github.com/kyco/dev-dict/commit/3e00f4c5a240baf670d277a99be0c94487ad0a82))
+
 ## [0.6.2](https://github.com/kyco/dev-dict/compare/v0.6.1...v0.6.2) (2025-12-06)
 
 ### Bug Fixes
