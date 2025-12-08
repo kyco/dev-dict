@@ -286,6 +286,19 @@ function App() {
                             </a>
                           </div>
                         )}
+                        {term.links.wikipedia && (
+                          <div className="mt-1 flex gap-2">
+                            <span className="text-sm">Wikipedia:</span>
+                            <a
+                              href={term.links.wikipedia}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                            >
+                              {term.links.wikipedia.replace(/^https?:\/\//, '').replace('www.', '')}
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )}
                   </article>
