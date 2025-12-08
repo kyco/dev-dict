@@ -28,6 +28,9 @@ export default {
 
   links: {
     website: `https://react.dev`,
+    npm: `https://www.npmjs.com/package/react`,
+    github: `https://github.com/facebook/react`,
+    wikipedia: `https://en.wikipedia.org/wiki/React_(software)`,
   },
 
   sources: {
