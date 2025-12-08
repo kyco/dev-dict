@@ -246,36 +246,45 @@ function App() {
                     </div>
 
                     {term.links && (
-                      <div className="flex gap-3 pt-4 border-t border-slate-100">
+                      <div className="pt-4 border-t border-slate-100">
                         {term.links.website && (
-                          <a
-                            href={term.links.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
-                          >
-                            Website
-                          </a>
+                          <div className="flex gap-2">
+                            <span className="text-sm">Website:</span>
+                            <a
+                              href={term.links.website}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                            >
+                              {term.links.website.replace(/^https?:\/\//, '')}
+                            </a>
+                          </div>
                         )}
                         {term.links.github && (
-                          <a
-                            href={term.links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
-                          >
-                            GitHub
-                          </a>
+                          <div className="mt-1 flex gap-2">
+                            <span className="text-sm">GitHub:</span>
+                            <a
+                              href={term.links.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                            >
+                              {term.links.github.replace(/^https?:\/\//, '')}
+                            </a>
+                          </div>
                         )}
                         {term.links.npm && (
-                          <a
-                            href={term.links.npm}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
-                          >
-                            npm
-                          </a>
+                          <div className="mt-1 flex gap-2">
+                            <span className="text-sm">npm:</span>
+                            <a
+                              href={term.links.npm}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                            >
+                              {term.links.npm.replace(/^https?:\/\//, '').replace('www.', '')}
+                            </a>
+                          </div>
                         )}
                       </div>
                     )}

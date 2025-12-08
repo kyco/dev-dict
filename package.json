@@ -44,7 +44,8 @@
   },
   "scripts": {
     "build": "vite build",
-    "demo:dev": "cd demo && pnpm dev",
+    "build:watch": "vite build --watch",
+    "demo:dev": "pnpm build && (pnpm build:watch & cd demo && pnpm dev)",
     "demo:build": "pnpm build && cd demo && pnpm build",
     "demo:preview": "cd demo && pnpm preview",
     "docs:generate": "pnpm build && tsx scripts/generate-docs.ts",
