@@ -1,3 +1,18 @@
+## [0.7.0](https://github.com/kyco/dev-dict/compare/v0.6.4...v0.7.0) (2025-12-18)
+
+### Features
+
+* Add popular programming languages ([4419690](https://github.com/kyco/dev-dict/commit/44196909b9af9393f6b7ee3ae9d5bce500c87154))
+
+### Bug Fixes
+
+* Trim "www" ([dcfbc33](https://github.com/kyco/dev-dict/commit/dcfbc338b6a0fe1812c8bdd41e4467433fd940c3))
+* Update AES with definition and tags ([93d5617](https://github.com/kyco/dev-dict/commit/93d5617fcecfcde9020f2f72aac075b5599c6fbf))
+
+### Chore
+
+* Move Claude file ([293e85a](https://github.com/kyco/dev-dict/commit/293e85a5af9c31d589c6af3cf434ad48bae3db15))
+
 ## [0.6.4](https://github.com/kyco/dev-dict/compare/v0.6.3...v0.6.4) (2025-12-18)
 
 ### Chore

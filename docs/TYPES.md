@@ -12,4 +12,5 @@
 | [Methodology](../data/types/methodology.ts) | `methodology` | ✔ | ✔ |
 | [Platform](../data/types/platform.ts) | `platform` | ✔ | ✔ |
 | [Runtime Environment](../data/types/runtime_environment.ts) | `runtime_environment` | ✔ | ✔ |
+| [Standard](../data/types/standard.ts) | `standard` | ✔ | ✔ |
 
