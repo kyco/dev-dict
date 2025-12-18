@@ -256,7 +256,7 @@ function App() {
                               rel="noopener noreferrer"
                               className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
                             >
-                              {term.links.website.replace(/^https?:\/\//, '')}
+                              {term.links.website.replace(/^https?:\/\//, '').replace('www.', '')}
                             </a>
                           </div>
                         )}
@@ -269,7 +269,7 @@ function App() {
                               rel="noopener noreferrer"
                               className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
                             >
-                              {term.links.github.replace(/^https?:\/\//, '')}
+                              {term.links.github.replace(/^https?:\/\//, '').replace('www.', '')}
                             </a>
                           </div>
                         )}
