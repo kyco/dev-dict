@@ -9,6 +9,7 @@ import android_studio from './android_studio'
 import angularjs from './angularjs'
 import apache_tomcat from './apache_tomcat'
 import asp_net from './asp_net'
+import assembly from './assembly'
 import aws from './aws'
 import azure from './azure'
 import azure_pipelines from './azure_pipelines'
@@ -32,6 +33,7 @@ import ci_cd from './ci_cd'
 import circle_ci from './circle_ci'
 import claude_code from './claude_code'
 import clean_code from './clean_code'
+import clojure from './clojure'
 import cloudflare from './cloudflare'
 import codacy from './codacy'
 import codeigniter from './codeigniter'
@@ -46,6 +48,7 @@ import css_modules from './css_modules'
 import cucumber from './cucumber'
 import cvs from './cvs'
 import cypress from './cypress'
+import dart from './dart'
 import ddd from './ddd'
 import digital_ocean from './digital_ocean'
 import docker from './docker'
@@ -55,17 +58,20 @@ import dreamweaver from './dreamweaver'
 import dynatrace from './dynatrace'
 import e2e from './e2e'
 import encryption from './encryption'
+import erlang from './erlang'
 import es_build from './es_build'
 import eslint from './eslint'
 import excel from './excel'
 import express from './express'
 import expression_engine from './expression_engine'
+import f_sharp from './f_sharp'
 import fhir from './fhir'
 import figma from './figma'
 import filezilla from './filezilla'
 import firebase from './firebase'
 import flamelink from './flamelink'
 import flutter from './flutter'
+import fortran from './fortran'
 import foundation from './foundation'
 import ftp from './ftp'
 import gatsby from './gatsby'
@@ -81,10 +87,12 @@ import google_app_engine from './google_app_engine'
 import google_business from './google_business'
 import google_maps_api from './google_maps_api'
 import graphql from './graphql'
+import groovy from './groovy'
 import grunt from './grunt'
 import gulp from './gulp'
 import handlebars from './handlebars'
 import handsontable from './handsontable'
+import haskell from './haskell'
 import hetzner from './hetzner'
 import hl7 from './hl7'
 import html from './html'
@@ -92,6 +100,7 @@ import htmx from './htmx'
 import i18n from './i18n'
 import ionic from './ionic'
 import jasmine from './jasmine'
+import java from './java'
 import javascript from './javascript'
 import jenkins from './jenkins'
 import jest from './jest'
@@ -100,16 +109,19 @@ import jquery from './jquery'
 import js from './js'
 import kanban from './kanban'
 import karma from './karma'
+import kotlin from './kotlin'
 import kubernetes from './kubernetes'
 import laravel from './laravel'
 import legacy_migration from './legacy_migration'
 import lexical from './lexical'
 import linux from './linux'
+import lua from './lua'
 import mac_os from './mac_os'
 import mail_blaze from './mail_blaze'
 import mailchimp from './mailchimp'
 import make from './make'
 import marionette from './marionette'
+import matlab from './matlab'
 import maven from './maven'
 import meta_mask from './meta_mask'
 import microsoft_sql_server from './microsoft_sql_server'
@@ -131,10 +143,13 @@ import node_js from './node_js'
 import node_mailer from './node_mailer'
 import nosql from './nosql'
 import nx from './nx'
+import objective_c from './objective_c'
+import ocaml from './ocaml'
 import okta from './okta'
 import open_ai from './open_ai'
 import optimizely from './optimizely'
 import pathlogix from './pathlogix'
+import perl from './perl'
 import photoshop from './photoshop'
 import php from './php'
 import pnpm from './pnpm'
@@ -146,6 +161,7 @@ import putty from './putty'
 import pwa from './pwa'
 import python from './python'
 import quickbooks from './quickbooks'
+import r from './r'
 import react from './react'
 import react_hook_form from './react_hook_form'
 import react_pdf from './react_pdf'
@@ -155,8 +171,11 @@ import reflow_soldering from './reflow_soldering'
 import resend from './resend'
 import rest_api from './rest_api'
 import rsync from './rsync'
+import ruby from './ruby'
+import rust from './rust'
 import sanity from './sanity'
 import sass from './sass'
+import scala from './scala'
 import scrum from './scrum'
 import sendgrid from './sendgrid'
 import sentry from './sentry'
@@ -175,6 +194,7 @@ import styled_components from './styled_components'
 import sublime_text from './sublime_text'
 import supabase from './supabase'
 import svn from './svn'
+import swift from './swift'
 import tailwind from './tailwind'
 import tanstack from './tanstack'
 import tanstack_query from './tanstack_query'
@@ -186,6 +206,7 @@ import typescript from './typescript'
 import typesense from './typesense'
 import vercel from './vercel'
 import vim from './vim'
+import visual_basic from './visual_basic'
 import vite from './vite'
 import vitest from './vitest'
 import vue_js from './vue_js'
@@ -200,6 +221,7 @@ import winscp from './winscp'
 import wordpress from './wordpress'
 import yarn from './yarn'
 import zephyr from './zephyr'
+import zig from './zig'
 import zod from './zod'
 
 export const RAW_TERM = {
@@ -209,6 +231,7 @@ export const RAW_TERM = {
   [algolia.id]: algolia,
   [alpine_js.id]: alpine_js,
   [android_studio.id]: android_studio,
+  [assembly.id]: assembly,
   [angularjs.id]: angularjs,
   [apache_tomcat.id]: apache_tomcat,
   [asp_net.id]: asp_net,
@@ -235,6 +258,7 @@ export const RAW_TERM = {
   [circle_ci.id]: circle_ci,
   [claude_code.id]: claude_code,
   [clean_code.id]: clean_code,
+  [clojure.id]: clojure,
   [cloudflare.id]: cloudflare,
   [codacy.id]: codacy,
   [codeigniter.id]: codeigniter,
@@ -249,6 +273,7 @@ export const RAW_TERM = {
   [cucumber.id]: cucumber,
   [cvs.id]: cvs,
   [cypress.id]: cypress,
+  [dart.id]: dart,
   [ddd.id]: ddd,
   [digital_ocean.id]: digital_ocean,
   [docker.id]: docker,
@@ -258,6 +283,7 @@ export const RAW_TERM = {
   [dynatrace.id]: dynatrace,
   [e2e.id]: e2e,
   [encryption.id]: encryption,
+  [erlang.id]: erlang,
   [es_build.id]: es_build,
   [eslint.id]: eslint,
   [excel.id]: excel,
@@ -269,7 +295,9 @@ export const RAW_TERM = {
   [firebase.id]: firebase,
   [flamelink.id]: flamelink,
   [flutter.id]: flutter,
+  [fortran.id]: fortran,
   [foundation.id]: foundation,
+  [f_sharp.id]: f_sharp,
   [ftp.id]: ftp,
   [gatsby.id]: gatsby,
   [gcp.id]: gcp,
@@ -284,10 +312,12 @@ export const RAW_TERM = {
   [google_business.id]: google_business,
   [google_maps_api.id]: google_maps_api,
   [graphql.id]: graphql,
+  [groovy.id]: groovy,
   [grunt.id]: grunt,
   [gulp.id]: gulp,
   [handlebars.id]: handlebars,
   [handsontable.id]: handsontable,
+  [haskell.id]: haskell,
   [hetzner.id]: hetzner,
   [hl7.id]: hl7,
   [html.id]: html,
@@ -295,6 +325,7 @@ export const RAW_TERM = {
   [i18n.id]: i18n,
   [ionic.id]: ionic,
   [jasmine.id]: jasmine,
+  [java.id]: java,
   [javascript.id]: javascript,
   [jenkins.id]: jenkins,
   [jest.id]: jest,
@@ -303,16 +334,19 @@ export const RAW_TERM = {
   [js.id]: js,
   [kanban.id]: kanban,
   [karma.id]: karma,
+  [kotlin.id]: kotlin,
   [kubernetes.id]: kubernetes,
   [laravel.id]: laravel,
   [legacy_migration.id]: legacy_migration,
   [lexical.id]: lexical,
   [linux.id]: linux,
+  [lua.id]: lua,
   [mac_os.id]: mac_os,
   [mail_blaze.id]: mail_blaze,
   [mailchimp.id]: mailchimp,
   [make.id]: make,
   [marionette.id]: marionette,
+  [matlab.id]: matlab,
   [maven.id]: maven,
   [meta_mask.id]: meta_mask,
   [microsoft_sql_server.id]: microsoft_sql_server,
@@ -334,10 +368,13 @@ export const RAW_TERM = {
   [node_mailer.id]: node_mailer,
   [nosql.id]: nosql,
   [nx.id]: nx,
+  [objective_c.id]: objective_c,
+  [ocaml.id]: ocaml,
   [okta.id]: okta,
   [open_ai.id]: open_ai,
   [optimizely.id]: optimizely,
   [pathlogix.id]: pathlogix,
+  [perl.id]: perl,
   [photoshop.id]: photoshop,
   [php.id]: php,
   [pnpm.id]: pnpm,
@@ -349,6 +386,7 @@ export const RAW_TERM = {
   [pwa.id]: pwa,
   [python.id]: python,
   [quickbooks.id]: quickbooks,
+  [r.id]: r,
   [react.id]: react,
   [react_hook_form.id]: react_hook_form,
   [react_pdf.id]: react_pdf,
@@ -358,8 +396,11 @@ export const RAW_TERM = {
   [resend.id]: resend,
   [rest_api.id]: rest_api,
   [rsync.id]: rsync,
+  [ruby.id]: ruby,
+  [rust.id]: rust,
   [sanity.id]: sanity,
   [sass.id]: sass,
+  [scala.id]: scala,
   [scrum.id]: scrum,
   [sendgrid.id]: sendgrid,
   [sentry.id]: sentry,
@@ -378,6 +419,7 @@ export const RAW_TERM = {
   [sublime_text.id]: sublime_text,
   [supabase.id]: supabase,
   [svn.id]: svn,
+  [swift.id]: swift,
   [tailwind.id]: tailwind,
   [tanstack.id]: tanstack,
   [tanstack_query.id]: tanstack_query,
@@ -389,6 +431,7 @@ export const RAW_TERM = {
   [typesense.id]: typesense,
   [vercel.id]: vercel,
   [vim.id]: vim,
+  [visual_basic.id]: visual_basic,
   [vite.id]: vite,
   [vitest.id]: vitest,
   [vue_js.id]: vue_js,
@@ -403,6 +446,7 @@ export const RAW_TERM = {
   [wordpress.id]: wordpress,
   [yarn.id]: yarn,
   [zephyr.id]: zephyr,
+  [zig.id]: zig,
   [zod.id]: zod,
 } as const
 
