@@ -1,3 +1,9 @@
+## [0.6.4](https://github.com/kyco/dev-dict/compare/v0.6.3...v0.6.4) (2025-12-18)
+
+### Chore
+
+* Bump deps ([2ccec08](https://github.com/kyco/dev-dict/commit/2ccec08303554466c0d36b514054d438ff15060c))
+
 ## [0.6.3](https://github.com/kyco/dev-dict/compare/v0.6.2...v0.6.3) (2025-12-08)
 
 ### Bug Fixes
