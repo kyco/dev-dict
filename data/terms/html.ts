@@ -19,7 +19,7 @@ export default {
     [LOCALE.EN_US]: ``,
   },
 
-  type: [],
+  type: [TYPE.language],
 
   tags: [],
 } as const satisfies TTerm
