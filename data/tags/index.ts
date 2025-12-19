@@ -3,6 +3,7 @@ import { interpolateValues } from '@/utils'
 import automation from './automation'
 import backend from './backend'
 import cryptography from './cryptography'
+import e2e from './e2e'
 import frontend from './frontend'
 import javascript from './javascript'
 import open_source from './open_source'
@@ -15,6 +16,7 @@ export const RAW_TAG = {
   [automation.id]: automation,
   [backend.id]: backend,
   [cryptography.id]: cryptography,
+  [e2e.id]: e2e,
   [frontend.id]: frontend,
   [javascript.id]: javascript,
   [open_source.id]: open_source,

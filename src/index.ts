@@ -37,7 +37,7 @@ export function getTerm({
   useFallback?: boolean
 }): TTerm | TTermLocalized {
   // We do not need a null check here because TTermId only allows valid IDs
-  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'label', 'definition'], useFallback })
+  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'altName', 'label', 'definition'], useFallback })
   const term = TERM[id]
 
   if (!localized) {
@@ -47,11 +47,14 @@ export function getTerm({
   return {
     ...term,
     name: getValueLocalized({ obj: term.name, locale, useFallback }),
+    ...('altName' in term && term.altName
+      ? { altName: getValueLocalized({ obj: term.altName, locale, useFallback }) }
+      : {}),
     label: getValueLocalized({ obj: term.label, locale, useFallback }),
     definition: getValueLocalized({ obj: term.definition, locale, useFallback }),
     type: term.type.map((value) => getTermTypeLocalized({ term: value, locale, useFallback })),
     tags: term.tags.map((value) => getTermTagLocalized({ tag: value, locale, useFallback })),
-  }
+  } as TTermLocalized
 }
 
 export function getTerms(params?: { localized: false; useFallback?: boolean }): TTerm[]
@@ -65,7 +68,7 @@ export function getTerms({
   locale?: TLocale
   useFallback?: boolean
 } = {}): TTerm[] | TTermLocalized[] {
-  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'label', 'definition'], useFallback })
+  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'altName', 'label', 'definition'], useFallback })
   const terms = Object.values(TERM)
 
   if (!localized) {
@@ -86,7 +89,7 @@ export function getDict({
   locale?: TLocale
   useFallback?: boolean
 } = {}): TDevDict | TDevDictLocalized {
-  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'label', 'definition'], useFallback })
+  const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'altName', 'label', 'definition'], useFallback })
 
   if (!localized) {
     return TERM as TDevDict

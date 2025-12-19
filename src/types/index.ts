@@ -70,6 +70,10 @@ export type TTerm = {
    */
   name: TLocaleRecord
   /**
+   * An optional short name or abbreviation for the term.
+   */
+  altName?: TLocaleRecord
+  /**
    * The type(s) of the term (e.g., library, framework, language, tool).
    * Multiple types can be assigned if applicable.
    */
@@ -115,8 +119,9 @@ export type TTerm = {
   // relatedTerms?: TTerm['name'][]
 }
 
-export type TTermLocalized = Omit<TTerm, 'name' | 'label' | 'definition' | 'type' | 'tags'> & {
+export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definition' | 'type' | 'tags'> & {
   name: string
+  altName?: string
   label: string
   definition: string
   type: TTermTypeLocalized[]

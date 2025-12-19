@@ -8,7 +8,9 @@ export default {
   id: `sanity`,
 
   name: {
-    [LOCALE.EN_US]: `Sanity CMS`,
+    [LOCALE.EN_US]: `Sanity`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: LOCALE.EN_US,
   },
 
   label: {
@@ -19,7 +21,7 @@ export default {
     [LOCALE.EN_US]: ``,
   },
 
-  type: [],
+  type: [TYPE.cms],
 
   tags: [],
 } as const satisfies TTerm
