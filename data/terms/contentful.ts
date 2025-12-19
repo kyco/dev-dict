@@ -9,6 +9,8 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `Contentful`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: LOCALE.EN_US,
   },
 
   label: {
@@ -19,7 +21,7 @@ export default {
     [LOCALE.EN_US]: ``,
   },
 
-  type: [],
+  type: [TYPE.cms],
 
   tags: [],
 } as const satisfies TTerm
