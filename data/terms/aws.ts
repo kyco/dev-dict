@@ -9,10 +9,20 @@ export default {
 
   name: {
     [LOCALE.EN_US]: `AWS`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: LOCALE.EN_US,
+  },
+
+  altName: {
+    [LOCALE.EN_US]: `Amazon Web Services`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: LOCALE.EN_US,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALE.EN_US]: `Cloud Computing Platform`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: `Cloud-Computing-Plattform`,
   },
 
   definition: {
@@ -24,6 +34,6 @@ export default {
   tags: [],
 
   links: {
-    website: ``,
+    website: `https://aws.amazon.com/`,
   },
 } as const satisfies TTerm
