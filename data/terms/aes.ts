@@ -13,6 +13,12 @@ export default {
     [LOCALE.DE_DE]: LOCALE.EN_US,
   },
 
+  altName: {
+    [LOCALE.EN_US]: `Advanced Encryption Standard`,
+    [LOCALE.EN_GB]: LOCALE.EN_US,
+    [LOCALE.DE_DE]: LOCALE.EN_US,
+  },
+
   label: {
     [LOCALE.EN_US]: `Encryption Standard`,
     [LOCALE.EN_GB]: LOCALE.EN_US,

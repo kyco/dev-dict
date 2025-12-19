@@ -1,4 +1,4 @@
-import { getTags, getTerms, getTypes } from 'dev-dict'
+import { getTags, getTerm, getTerms, getTypes } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
 import { useMemo, useState } from 'react'
 
@@ -20,20 +20,27 @@ function App() {
   const stats = useMemo(() => calculateStats(), [])
 
   const filteredTerms = useMemo(() => {
-    return terms.filter((term) => {
-      const matchesSearch =
-        !searchQuery ||
-        term.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        term.definition.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        term.label.toLowerCase().includes(searchQuery.toLowerCase())
+    return terms
+      .filter((term) => {
+        const matchesSearch =
+          !searchQuery ||
+          term.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          term?.altName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          term.definition.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          term.label.toLowerCase().includes(searchQuery.toLowerCase())
 
-      const matchesType = selectedTypes.length === 0 || term.type.some((t) => selectedTypes.includes(t.id))
+        const matchesType = selectedTypes.length === 0 || term.type.some((t) => selectedTypes.includes(t.id))
 
-      const matchesTags = selectedTags.length === 0 || term.tags.some((tag) => selectedTags.includes(tag.id))
+        const matchesTags = selectedTags.length === 0 || term.tags.some((tag) => selectedTags.includes(tag.id))
 
-      return matchesSearch && matchesType && matchesTags
-    })
-  }, [terms, searchQuery, selectedTypes, selectedTags])
+        return matchesSearch && matchesType && matchesTags
+      })
+      .sort((a, b) => {
+        const aName = a.name.startsWith('.') ? a.name.slice(1) : a.name
+        const bName = b.name.startsWith('.') ? b.name.slice(1) : b.name
+        return aName.localeCompare(bName, selectedLocale)
+      })
+  }, [terms, searchQuery, selectedTypes, selectedTags, selectedLocale])
 
   const toggleType = (typeId: string) => {
     setSelectedTypes((prev) => (prev.includes(typeId) ? prev.filter((t) => t !== typeId) : [...prev, typeId]))
@@ -208,6 +215,7 @@ function App() {
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <div className="flex-1">
                         <h3 className="text-xl font-semibold text-slate-900">{term.name}</h3>
+                        {term?.altName ? <h6 className="text-s font-semibold text-slate-700">{term.altName}</h6> : null}
                         <p className="text-sm text-blue-600 font-medium mt-1">{term.label}</p>
                       </div>
                       <a
