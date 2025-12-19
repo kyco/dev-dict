@@ -1,4 +1,4 @@
-import { getTags, getTerm, getTerms, getTypes } from 'dev-dict'
+import { getTags, getTerms, getTypes } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
 import { useMemo, useState } from 'react'
 
