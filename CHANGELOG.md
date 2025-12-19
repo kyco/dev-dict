@@ -1,3 +1,13 @@
+## [0.7.1](https://github.com/kyco/dev-dict/compare/v0.7.0...v0.7.1) (2025-12-19)
+
+### Bug Fixes
+
+* Add `altName` logic ([20a743c](https://github.com/kyco/dev-dict/commit/20a743c3f37894dd0e189da62e59c0b02c18d079))
+* Cleanup ([77325c1](https://github.com/kyco/dev-dict/commit/77325c10e0d36d99dd91e5e41299a3019d335f2c))
+* Tag CMSes ([8907c5c](https://github.com/kyco/dev-dict/commit/8907c5c982ec52a47075eb595cb7a915b4938d9b))
+* Tag framework ([7a51743](https://github.com/kyco/dev-dict/commit/7a5174368a13b15a01caab8e20c7dcf672848290))
+* Translate ([83bd1ca](https://github.com/kyco/dev-dict/commit/83bd1ca5d6e86e1f7c4d0c989bbc08182f21de1c))
+
 ## [0.7.0](https://github.com/kyco/dev-dict/compare/v0.6.4...v0.7.0) (2025-12-18)
 
 ### Features

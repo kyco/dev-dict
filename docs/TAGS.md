@@ -7,6 +7,7 @@
 | [Automation](../data/tags/automation.ts) | `automation` | ✔ | ✔ |
 | [Backend](../data/tags/backend.ts) | `backend` | ✔ | ✔ |
 | [Cryptography](../data/tags/cryptography.ts) | `cryptography` | ✔ | ✔ |
+| [E2E](../data/tags/e2e.ts) | `e2e` | ✔ | ✔ |
 | [Frontend](../data/tags/frontend.ts) | `frontend` | ✔ | ✔ |
 | [JavaScript](../data/tags/javascript.ts) | `javascript` | ✔ | ✔ |
 | [Open Source](../data/tags/open_source.ts) | `open_source` | ✔ | ✔ |

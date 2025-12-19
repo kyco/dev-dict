@@ -44,8 +44,8 @@
 | [Codacy](../data/terms/codacy.ts) | `codacy` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [CodeIgniter](../data/terms/codeigniter.ts) | `codeigniter` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Confluence](../data/terms/confluence.ts) | `confluence` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [Contentful](../data/terms/contentful.ts) | `contentful` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [Craft CMS](../data/terms/craft_cms.ts) | `craft_cms` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [Contentful](../data/terms/contentful.ts) | `contentful` | Content Management System | ✘ | ✘ | ✘ | ✘ |
+| [Craft CMS](../data/terms/craft_cms.ts) | `craft_cms` | Content Management System | ✘ | ✘ | ✘ | ✘ |
 | [CS-Cart](../data/terms/cs_cart.ts) | `cs_cart` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [CSS](../data/terms/css.ts) | `css` | Language | ✘ | ✘ | ✘ | ✘ |
 | [CSS Modules](../data/terms/css_modules.ts) | `css_modules` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -61,19 +61,19 @@
 | [Dreamweaver](../data/terms/dreamweaver.ts) | `dreamweaver` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Dynatrace](../data/terms/dynatrace.ts) | `dynatrace` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Encryption](../data/terms/encryption.ts) | `encryption` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [End-to-end Testing](../data/terms/e2e.ts) | `e2e` | Concept, Methodology | Testing Methodology | ✔ | Testing, Automation, QA | ✘ |
+| [End-to-end Testing](../data/terms/e2e.ts) | `e2e` | Concept, Methodology | Testing Methodology | ✔ | Testing, Automation, QA, E2E | ✘ |
 | [Erlang](../data/terms/erlang.ts) | `erlang` | Language | ✘ | ✘ | ✘ | ✘ |
 | [esbuild](../data/terms/es_build.ts) | `es_build` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [ESLint](../data/terms/eslint.ts) | `eslint` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Excel](../data/terms/excel.ts) | `excel` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Express](../data/terms/express.ts) | `express` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [ExpressionEngine CMS](../data/terms/expression_engine.ts) | `expression_engine` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [ExpressionEngine](../data/terms/expression_engine.ts) | `expression_engine` | Content Management System | ✘ | ✘ | ✘ | ✘ |
 | [F#](../data/terms/f_sharp.ts) | `f_sharp` | Language | ✘ | ✘ | ✘ | ✘ |
 | [FHIR](../data/terms/fhir.ts) | `fhir` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Figma](../data/terms/figma.ts) | `figma` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [FileZilla](../data/terms/filezilla.ts) | `filezilla` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Firebase](../data/terms/firebase.ts) | `firebase` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [Flamelink CMS](../data/terms/flamelink.ts) | `flamelink` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [Flamelink](../data/terms/flamelink.ts) | `flamelink` | Content Management System | ✘ | ✘ | ✘ | ✘ |
 | [Flutter](../data/terms/flutter.ts) | `flutter` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Fortran](../data/terms/fortran.ts) | `fortran` | Language | ✘ | ✘ | ✘ | ✘ |
 | [Foundation](../data/terms/foundation.ts) | `foundation` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -137,7 +137,7 @@
 | [NetBeans](../data/terms/netbeans.ts) | `netbeans` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Netlify](../data/terms/netlify.ts) | `netlify` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [New Relic](../data/terms/new_relic.ts) | `new_relic` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [Next.js](../data/terms/next_js.ts) | `next_js` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [Next.js](../data/terms/next_js.ts) | `next_js` | Framework | ✘ | ✘ | ✘ | ✘ |
 | [Nexudus](../data/terms/nexudus.ts) | `nexudus` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [NFT](../data/terms/nft.ts) | `nft` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Nginx](../data/terms/nginx.ts) | `nginx` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -177,7 +177,7 @@
 | [rsync](../data/terms/rsync.ts) | `rsync` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Ruby](../data/terms/ruby.ts) | `ruby` | Language | ✘ | ✘ | ✘ | ✘ |
 | [Rust](../data/terms/rust.ts) | `rust` | Language | ✘ | ✘ | ✘ | ✘ |
-| [Sanity CMS](../data/terms/sanity.ts) | `sanity` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [Sanity](../data/terms/sanity.ts) | `sanity` | Content Management System | ✘ | ✘ | ✘ | ✘ |
 | [SASS](../data/terms/sass.ts) | `sass` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Scala](../data/terms/scala.ts) | `scala` | Language | ✘ | ✘ | ✘ | ✘ |
 | [Scrum](../data/terms/scrum.ts) | `scrum` | ✘ | ✘ | ✘ | ✘ | ✘ |
@@ -222,7 +222,7 @@
 | [WebSockets](../data/terms/websockets.ts) | `websockets` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Windows](../data/terms/windows.ts) | `windows` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [WinSCP](../data/terms/winscp.ts) | `winscp` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [WordPress](../data/terms/wordpress.ts) | `wordpress` | ✘ | ✘ | ✘ | ✘ | ✘ |
+| [WordPress](../data/terms/wordpress.ts) | `wordpress` | Content Management System | ✘ | ✘ | ✘ | ✘ |
 | [Yarn](../data/terms/yarn.ts) | `yarn` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Zephyr](../data/terms/zephyr.ts) | `zephyr` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Zig](../data/terms/zig.ts) | `zig` | Language | ✘ | ✘ | ✘ | ✘ |
