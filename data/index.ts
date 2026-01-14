@@ -1,5 +1,0 @@
-export * from './locales'
-export * from './sources'
-export * from './tags'
-export * from './terms'
-export * from './types'

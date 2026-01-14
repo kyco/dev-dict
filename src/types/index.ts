@@ -1,5 +1,9 @@
 import { CONFIG } from '@/common'
-import { LOCALES, SOURCES, TAGS, TERMS, TYPES } from '@data/index'
+import { LOCALES } from '@/data/locales'
+import { SOURCES } from '@/data/sources'
+import { TAGS } from '@/data/tags'
+import { TERMS } from '@/data/terms'
+import { TYPES } from '@/data/types'
 
 export type TLocale = (typeof LOCALES)[keyof typeof LOCALES]
 
