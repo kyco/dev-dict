@@ -1,3 +1,24 @@
+## [0.7.3](https://github.com/kyco/dev-dict/compare/v0.7.2...v0.7.3) (2026-01-14)
+
+### Bug Fixes
+
+* Add links and sources ([ff309e9](https://github.com/kyco/dev-dict/commit/ff309e9f6d8a7cd8660452e083b95fbc5cc76e97))
+* Add logo and favicon ([91c5948](https://github.com/kyco/dev-dict/commit/91c5948c5a29d591285441db7de15ead7787da58))
+* Add translations and sources ([d6941ec](https://github.com/kyco/dev-dict/commit/d6941ec868ce5f621ea782d4d5108091b1d464bc))
+* Lint ([5203b03](https://github.com/kyco/dev-dict/commit/5203b0365a3db1ad5bb0aee1946bb94093979272))
+* Remove inferred ([5d84664](https://github.com/kyco/dev-dict/commit/5d84664c8dfbe71b73990edc902f7739344ee155))
+* Remove path ([b57775f](https://github.com/kyco/dev-dict/commit/b57775f6c5eb05846a9814c3a7276e49d445c79d))
+* Tailwind ([4b36318](https://github.com/kyco/dev-dict/commit/4b363188d6b2563b0ae5b71d76bcf532c2c407dd))
+* Type ([6b174f3](https://github.com/kyco/dev-dict/commit/6b174f39eb60c79c21175850fd2d7895b9435253))
+
+### Chore
+
+* Bump deps ([48f8f7e](https://github.com/kyco/dev-dict/commit/48f8f7e59e924d1dad7d878d36eb34f7d008ff19))
+* Update ([de9a4af](https://github.com/kyco/dev-dict/commit/de9a4af72b20209ea80130dcc411de6f5f21d3ca))
+* Update README ([79d8a84](https://github.com/kyco/dev-dict/commit/79d8a84c7b65bb2e0c3b106283f4c02694091094))
+* Update README ([2a02683](https://github.com/kyco/dev-dict/commit/2a02683a05b9e900ef5df71e49a6c732d62c48b2))
+* Update README and CONTRIBUTING ([e705c8f](https://github.com/kyco/dev-dict/commit/e705c8fe79a55d4295a07fc16944c2d7618104ac))
+
 ## [0.7.2](https://github.com/kyco/dev-dict/compare/v0.7.1...v0.7.2) (2026-01-14)
 
 ### Bug Fixes

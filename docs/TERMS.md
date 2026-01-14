@@ -5,7 +5,7 @@
 | Term | ID | Type | Label | Definition | Tags | Website |
 |-------|-------|-------|-------|-------|-------|-------|
 | [.NET](../src/data/terms/dot_net.ts) | `dot_net` | ✘ | ✘ | ✘ | ✘ | ✘ |
-| [AES](../src/data/terms/aes.ts) | `aes` | Standard | Encryption Standard | ✔ | Security, Cryptography | ✘ |
+| [AES](../src/data/terms/aes.ts) | `aes` | Standard | Encryption Standard | ✔ | Security, Cryptography | https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf |
 | [Agile](../src/data/terms/agile.ts) | `agile` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [AI](../src/data/terms/ai.ts) | `ai` | ✘ | ✘ | ✘ | ✘ | ✘ |
 | [Algolia](../src/data/terms/algolia.ts) | `algolia` | ✘ | ✘ | ✘ | ✘ | ✘ |
