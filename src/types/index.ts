@@ -106,7 +106,7 @@ export type TTerm = {
   links?: TTermLinks
   /**
    * Source attribution for term labels and definitions.
-   * Uses predefined source constants (e.g., SOURCE.official_website, SOURCE.community, SOURCE.inferred).
+   * Uses predefined source constants (e.g., SOURCE.official_website, SOURCE.community).
    *
    * IMPORTANT: If no source is specified, all content is assumed to be AI-generated.
    * Only add sources when the content comes from a specific, verifiable origin.
