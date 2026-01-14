@@ -9,6 +9,8 @@ export default {
 
   name: {
     [LOCALES.EN_US]: `TypeScript`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: LOCALES.EN_US,
   },
 
   label: {
@@ -32,6 +34,7 @@ export default {
   },
 
   sources: {
+    label: SOURCES.community,
     definition: SOURCES.official_website,
   },
 } as const satisfies TTerm

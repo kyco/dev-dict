@@ -6,11 +6,9 @@ import { useMemo, useState } from 'react'
 import { ContributionDialog } from './components/ContributionDialog'
 import { calculateStats, getGithubEditUrl } from './utils/stats'
 
-type Locale = TLocale
-
 function App() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedLocale, setSelectedLocale] = useState<Locale>('en-US')
+  const [selectedLocale, setSelectedLocale] = useState<TLocale>('en-US')
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isContributionDialogOpen, setIsContributionDialogOpen] = useState(false)
@@ -57,7 +55,7 @@ function App() {
     setSearchQuery('')
   }
 
-  const locales: { value: Locale; label: string }[] = [
+  const locales: { value: TLocale; label: string }[] = [
     { value: 'en-US', label: '🇺🇸 English (US)' },
     { value: 'en-GB', label: '🇬🇧 English (GB)' },
     { value: 'de-DE', label: '🇩🇪 Deutsch' },
@@ -76,7 +74,7 @@ function App() {
               <div className="flex items-center gap-4">
                 <select
                   value={selectedLocale}
-                  onChange={(e) => setSelectedLocale(e.target.value as Locale)}
+                  onChange={(e) => setSelectedLocale(e.target.value as TLocale)}
                   className="px-4 py-2 border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   {locales.map((locale) => (

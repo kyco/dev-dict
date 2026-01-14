@@ -9,15 +9,19 @@ export default {
 
   name: {
     [LOCALES.EN_US]: `React`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: LOCALES.EN_US,
   },
 
   label: {
     [LOCALES.EN_US]: `JavaScript Library`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
     [LOCALES.DE_DE]: `JavaScript-Bibliothek`,
   },
 
   definition: {
     [LOCALES.EN_US]: `A JavaScript library for building component-based user interfaces.`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
     [LOCALES.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
   },
 
@@ -33,6 +37,7 @@ export default {
   },
 
   sources: {
+    label: SOURCES.community,
     definition: SOURCES.official_website,
   },
 } as const satisfies TTerm

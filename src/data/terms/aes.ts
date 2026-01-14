@@ -34,4 +34,14 @@ export default {
   type: [TYPES.standard],
 
   tags: [TAGS.security, TAGS.cryptography],
+
+  links: {
+    website: `https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf`,
+    wikipedia: `https://en.wikipedia.org/wiki/Advanced_Encryption_Standard`,
+  },
+
+  sources: {
+    label: SOURCES.community,
+    definition: SOURCES.ai_generated,
+  },
 } as const satisfies TTerm
