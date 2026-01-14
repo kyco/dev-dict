@@ -1,4 +1,4 @@
-import { getTerms } from 'dev-dict'
+import { terms as dict } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
 
 export type LocaleStats = {
@@ -17,7 +17,7 @@ export type ContributionStats = {
 }
 
 export function calculateStats(): ContributionStats {
-  const rawTerms = getTerms({ localized: false, useFallback: false })
+  const rawTerms = Object.values(dict)
   const locales: TLocale[] = ['en-US', 'en-GB', 'de-DE']
 
   const totalTerms = rawTerms.length
@@ -30,9 +30,9 @@ export function calculateStats(): ContributionStats {
     let missingDefinitions = 0
 
     rawTerms.forEach((term) => {
-      if (!term.name[locale]) missingNames++
-      if (!term.label[locale]) missingLabels++
-      if (!term.definition[locale]) missingDefinitions++
+      if (!(term.name as Record<string, string>)[locale]) missingNames++
+      if (!(term.label as Record<string, string>)[locale]) missingLabels++
+      if (!(term.definition as Record<string, string>)[locale]) missingDefinitions++
     })
 
     return {

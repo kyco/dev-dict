@@ -10,7 +10,7 @@ import platform from './platform'
 import runtime_environment from './runtime_environment'
 import standard from './standard'
 
-export const RAW_TYPE = {
+export const RAW_TYPES = {
   [cms.id]: cms,
   [concept.id]: concept,
   [framework.id]: framework,
@@ -22,4 +22,4 @@ export const RAW_TYPE = {
   [standard.id]: standard,
 } as const
 
-export const TYPE = interpolateValues({ obj: RAW_TYPE, keys: ['name'], useFallback: false })
+export const TYPES = interpolateValues({ obj: RAW_TYPES, keys: ['name'], useFallback: false })

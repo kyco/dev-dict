@@ -34,6 +34,22 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./terms": {
+      "types": "./dist/terms-entry.d.ts",
+      "import": "./dist/terms-entry.js"
+    },
+    "./types": {
+      "types": "./dist/types-entry.d.ts",
+      "import": "./dist/types-entry.js"
+    },
+    "./tags": {
+      "types": "./dist/tags-entry.d.ts",
+      "import": "./dist/tags-entry.js"
+    },
+    "./utils": {
+      "types": "./dist/utils-entry.d.ts",
+      "import": "./dist/utils-entry.js"
     }
   },
   "files": [
@@ -43,7 +59,7 @@
     "provenance": true
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && BUILD_UMD=true vite build",
     "build:watch": "vite build --watch",
     "demo:dev": "pnpm build && (pnpm build:watch & cd demo && pnpm dev)",
     "demo:build": "pnpm build && cd demo && pnpm build",
@@ -51,9 +67,10 @@
     "docs:generate": "pnpm build && tsx scripts/generate-docs.ts",
     "prepublishOnly": "pnpm docs:generate",
     "test": "echo \"This project does not have any tests which can be run yet...\"",
+    "bundle-analyzer": "npx vite-bundle-visualizer",
     "update-packages": "pnpm dlx npm-check-updates -u"
   },
-  "packageManager": "pnpm@10.26.0",
+  "packageManager": "pnpm@10.28.0",
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@eslint/json": "^0.14.0",
@@ -62,16 +79,16 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.2",
     "@semantic-release/npm": "^13.1.3",
-    "@types/node": "^25.0.3",
+    "@types/node": "^25.0.8",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.39.2",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "prettier": "^3.7.4",
     "semantic-release": "^25.0.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0",
-    "vite": "^7.3.0",
+    "typescript-eslint": "^8.53.0",
+    "vite": "^7.3.1",
     "vite-plugin-dts": "^4.5.4"
   }
 }

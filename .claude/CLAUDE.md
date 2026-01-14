@@ -124,7 +124,7 @@ Each function supports:
 
 TypeScript paths are configured in `tsconfig.json` and `vite.config.ts`:
 - `@/*` → `src/*`
-- `@data` → `data/index.ts`
+- `@data/*` → `data/*`
 
 Always use these aliases when importing within the codebase.
 
@@ -133,7 +133,7 @@ Always use these aliases when importing within the codebase.
 ### Adding a New Term
 
 1. Create a new file in `data/terms/` named `{term_id}.ts` with a default export (use lowercase with underscores only, no dashes)
-2. Import the term in `data/terms/index.ts` and add to `RAW_TERM` object
+2. Import the term in `data/terms/index.ts` and add to `RAW_TERMS` object
 3. Define translations for at least `en-US` in name, label, and definition
 4. Assign appropriate types and tags from existing constants
 5. Run `pnpm build` to validate (documentation will be generated automatically on merge)

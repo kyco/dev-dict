@@ -1,13 +1,13 @@
 import type { TTermType } from '@/types'
 
-import { LOCALE } from '../locales'
+import { LOCALES } from '../locales'
 
 export default {
   id: `concept`,
 
   name: {
-    [LOCALE.EN_US]: `Concept`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Konzept`,
+    [LOCALES.EN_US]: `Concept`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Konzept`,
   },
 } as const satisfies TTermType

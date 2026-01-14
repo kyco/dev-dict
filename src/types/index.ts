@@ -1,7 +1,7 @@
 import { CONFIG } from '@/common'
-import { LOCALE, SOURCE, TAG, TERM, TYPE } from '@data'
+import { LOCALES, SOURCES, TAGS, TERMS, TYPES } from '@data/index'
 
-export type TLocale = (typeof LOCALE)[keyof typeof LOCALE]
+export type TLocale = (typeof LOCALES)[keyof typeof LOCALES]
 
 export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
@@ -26,7 +26,7 @@ export type TTermTypeLocalized = {
   name: string
 }
 
-export type TTermTypes = (typeof TYPE)[keyof typeof TYPE]
+export type TTermTypes = (typeof TYPES)[keyof typeof TYPES]
 
 export type TTermTag = {
   id: string
@@ -38,7 +38,7 @@ export type TTermTagLocalized = {
   name: string
 }
 
-export type TTermTags = (typeof TAG)[keyof typeof TAG]
+export type TTermTags = (typeof TAGS)[keyof typeof TAGS]
 
 export type TTermSource = {
   id: string
@@ -50,7 +50,7 @@ export type TTermSourceLocalized = {
   name: string
 }
 
-export type TTermSources = (typeof SOURCE)[keyof typeof SOURCE]
+export type TTermSources = (typeof SOURCES)[keyof typeof SOURCES]
 
 export type TSourceMetadata = {
   label?: TTermSources
@@ -128,10 +128,12 @@ export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definit
   tags: TTermTagLocalized[]
 }
 
-export type TTerms = (typeof TERM)[keyof typeof TERM]
+export type TTerms = (typeof TERMS)[keyof typeof TERMS]
 
-export type TTermId = keyof typeof TERM
+export type TTermId = keyof typeof TERMS
 
 export type TDevDict = Record<TTermId, TTerm>
+
+export type TDevDictPartial = Partial<TDevDict>
 
 export type TDevDictLocalized = Record<TTermId, TTermLocalized>

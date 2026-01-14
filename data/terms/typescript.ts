@@ -1,38 +1,38 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { SOURCE } from '../sources'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { SOURCES } from '../sources'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `typescript`,
 
   name: {
-    [LOCALE.EN_US]: `TypeScript`,
+    [LOCALES.EN_US]: `TypeScript`,
   },
 
   label: {
-    [LOCALE.EN_US]: `High-Level Programming Language`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Hochsprache`,
+    [LOCALES.EN_US]: `High-Level Programming Language`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Hochsprache`,
   },
 
   definition: {
-    [LOCALE.EN_US]: `TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
+    [LOCALES.EN_US]: `TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `TypeScript ist eine stark typisierte Programmiersprache, die auf JavaScript aufbaut und Ihnen bei jeder Größenordnung bessere Werkzeuge bietet.`,
   },
 
-  type: [TYPE.language],
+  type: [TYPES.language],
 
-  tags: [TAG.frontend, TAG.backend, TAG.open_source, TAG.javascript],
+  tags: [TAGS.frontend, TAGS.backend, TAGS.open_source, TAGS.javascript],
 
   links: {
     website: `https://www.typescriptlang.org`,
   },
 
   sources: {
-    definition: SOURCE.official_website,
+    definition: SOURCES.official_website,
   },
 } as const satisfies TTerm

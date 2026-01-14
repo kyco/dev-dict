@@ -1,30 +1,30 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { SOURCE } from '../sources'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { SOURCES } from '../sources'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `react`,
 
   name: {
-    [LOCALE.EN_US]: `React`,
+    [LOCALES.EN_US]: `React`,
   },
 
   label: {
-    [LOCALE.EN_US]: `JavaScript Library`,
-    [LOCALE.DE_DE]: `JavaScript-Bibliothek`,
+    [LOCALES.EN_US]: `JavaScript Library`,
+    [LOCALES.DE_DE]: `JavaScript-Bibliothek`,
   },
 
   definition: {
-    [LOCALE.EN_US]: `A JavaScript library for building component-based user interfaces.`,
-    [LOCALE.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
+    [LOCALES.EN_US]: `A JavaScript library for building component-based user interfaces.`,
+    [LOCALES.DE_DE]: `Eine JavaScript-Bibliothek zum Erstellen komponentenbasierter Benutzeroberflächen.`,
   },
 
-  type: [TYPE.library],
+  type: [TYPES.library],
 
-  tags: [TAG.frontend, TAG.backend, TAG.javascript, TAG.open_source, TAG.ui_library],
+  tags: [TAGS.frontend, TAGS.backend, TAGS.javascript, TAGS.open_source, TAGS.ui_library],
 
   links: {
     website: `https://react.dev`,
@@ -34,6 +34,6 @@ export default {
   },
 
   sources: {
-    definition: SOURCE.official_website,
+    definition: SOURCES.official_website,
   },
 } as const satisfies TTerm

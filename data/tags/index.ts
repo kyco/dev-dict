@@ -12,7 +12,7 @@ import security from './security'
 import testing from './testing'
 import ui_library from './ui_library'
 
-export const RAW_TAG = {
+export const RAW_TAGS = {
   [automation.id]: automation,
   [backend.id]: backend,
   [cryptography.id]: cryptography,
@@ -26,4 +26,4 @@ export const RAW_TAG = {
   [ui_library.id]: ui_library,
 } as const
 
-export const TAG = interpolateValues({ obj: RAW_TAG, keys: ['name'], useFallback: false })
+export const TAGS = interpolateValues({ obj: RAW_TAGS, keys: ['name'], useFallback: false })

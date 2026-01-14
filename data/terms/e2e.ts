@@ -1,37 +1,37 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `e2e`,
 
   name: {
-    [LOCALE.EN_US]: `End-to-end Testing`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Ende-zu-Ende-Tests`,
+    [LOCALES.EN_US]: `End-to-end Testing`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Ende-zu-Ende-Tests`,
   },
 
   altName: {
-    [LOCALE.EN_US]: `E2E Testing`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `E2E-Tests`,
+    [LOCALES.EN_US]: `E2E Testing`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `E2E-Tests`,
   },
 
   label: {
-    [LOCALE.EN_US]: `Testing Methodology`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Testmethodik`,
+    [LOCALES.EN_US]: `Testing Methodology`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Testmethodik`,
   },
 
   definition: {
-    [LOCALE.EN_US]: `A software testing methodology that validates the entire application flow from start to finish, simulating real user scenarios to ensure all integrated components work together correctly.`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Eine Software-Testmethodik, die den gesamten Anwendungsablauf von Anfang bis Ende validiert und reale Benutzerszenarien simuliert, um sicherzustellen, dass alle integrierten Komponenten korrekt zusammenarbeiten.`,
+    [LOCALES.EN_US]: `A software testing methodology that validates the entire application flow from start to finish, simulating real user scenarios to ensure all integrated components work together correctly.`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Eine Software-Testmethodik, die den gesamten Anwendungsablauf von Anfang bis Ende validiert und reale Benutzerszenarien simuliert, um sicherzustellen, dass alle integrierten Komponenten korrekt zusammenarbeiten.`,
   },
 
-  type: [TYPE.concept, TYPE.methodology],
+  type: [TYPES.concept, TYPES.methodology],
 
-  tags: [TAG.testing, TAG.automation, TAG.qa, TAG.e2e],
+  tags: [TAGS.testing, TAGS.automation, TAGS.qa, TAGS.e2e],
 } as const satisfies TTerm

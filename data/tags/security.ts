@@ -1,13 +1,13 @@
 import type { TTermTag } from '@/types'
 
-import { LOCALE } from '../locales'
+import { LOCALES } from '../locales'
 
 export default {
   id: `security`,
 
   name: {
-    [LOCALE.EN_US]: `Security`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Sicherheit`,
+    [LOCALES.EN_US]: `Security`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Sicherheit`,
   },
 } as const satisfies TTermTag

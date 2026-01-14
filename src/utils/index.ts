@@ -1,6 +1,6 @@
 import type { TLocale, TLocaleRecord, TTermTag, TTermTagLocalized, TTermType, TTermTypeLocalized } from '@/types'
 import { CONFIG } from '@/common'
-import { LOCALE } from '@data'
+import { LOCALES } from '@data/index'
 
 export const interpolateValue = ({
   obj,
@@ -11,10 +11,10 @@ export const interpolateValue = ({
   value: undefined | string
   useFallback?: boolean
 }): string => {
-  if (value && Object.values<string>(LOCALE).includes(value)) {
-    return obj[value as TLocale] || (useFallback ? obj[LOCALE.EN_US] : '')
+  if (value && Object.values<string>(LOCALES).includes(value)) {
+    return obj[value as TLocale] || (useFallback ? obj[LOCALES.EN_US] : '')
   }
-  return value || (useFallback ? obj[LOCALE.EN_US] : '')
+  return value || (useFallback ? obj[LOCALES.EN_US] : '')
 }
 
 export const interpolateLocaleRecord = ({
@@ -24,7 +24,7 @@ export const interpolateLocaleRecord = ({
   obj: TLocaleRecord
   useFallback?: boolean
 }): TLocaleRecord => {
-  const locales = Object.values<string>(LOCALE) as TLocale[]
+  const locales = Object.values<string>(LOCALES) as TLocale[]
 
   return Object.fromEntries(
     locales.map((locale) => [locale, interpolateValue({ obj, value: obj[locale], useFallback })]),

@@ -1,5 +1,6 @@
-import { getTags, getTerms, getTypes } from 'dev-dict'
+import { terms as dict } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
+import { getTags, getTerms, getTypes } from 'dev-dict/utils'
 import { useMemo, useState } from 'react'
 
 import { ContributionDialog } from './components/ContributionDialog'
@@ -14,9 +15,9 @@ function App() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isContributionDialogOpen, setIsContributionDialogOpen] = useState(false)
 
-  const terms = getTerms({ locale: selectedLocale })
-  const types = getTypes({ locale: selectedLocale })
-  const tags = getTags({ locale: selectedLocale })
+  const terms = getTerms({ dict, locale: selectedLocale })
+  const types = getTypes({ dict, locale: selectedLocale })
+  const tags = getTags({ dict, locale: selectedLocale })
   const stats = useMemo(() => calculateStats(), [])
 
   const filteredTerms = useMemo(() => {

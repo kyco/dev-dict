@@ -224,7 +224,7 @@ import zephyr from './zephyr'
 import zig from './zig'
 import zod from './zod'
 
-export const RAW_TERM = {
+export const RAW_TERMS = {
   [aes.id]: aes,
   [agile.id]: agile,
   [ai.id]: ai,
@@ -450,4 +450,4 @@ export const RAW_TERM = {
   [zod.id]: zod,
 } as const
 
-export const TERM = interpolateValues({ obj: RAW_TERM, keys: ['name', 'label', 'definition'], useFallback: false })
+export const TERMS = interpolateValues({ obj: RAW_TERMS, keys: ['name', 'label', 'definition'], useFallback: false })

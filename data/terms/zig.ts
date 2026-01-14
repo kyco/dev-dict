@@ -1,24 +1,24 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TYPES } from '../types'
 
 export default {
   id: `zig`,
 
   name: {
-    [LOCALE.EN_US]: `Zig`,
+    [LOCALES.EN_US]: `Zig`,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
-  type: [TYPE.language],
+  type: [TYPES.language],
 
   tags: [],
 } as const satisfies TTerm

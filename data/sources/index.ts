@@ -6,7 +6,7 @@ import inferred from './inferred'
 import official_website from './official_website'
 import wikipedia from './wikipedia'
 
-export const RAW_SOURCE = {
+export const RAW_SOURCES = {
   [ai_generated.id]: ai_generated,
   [community.id]: community,
   [inferred.id]: inferred,
@@ -14,4 +14,4 @@ export const RAW_SOURCE = {
   [wikipedia.id]: wikipedia,
 } as const
 
-export const SOURCE = interpolateValues({ obj: RAW_SOURCE, keys: ['name'], useFallback: false })
+export const SOURCES = interpolateValues({ obj: RAW_SOURCES, keys: ['name'], useFallback: false })
