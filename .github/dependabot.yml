@@ -21,4 +21,3 @@ updates:
       interval: 'monthly'
     commit-message:
       prefix: 'chore(dependencies)'
-
