@@ -1,9 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  body {
-    @apply bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900;
-  }
+body {
+  @apply bg-gradient-to-br from-slate-50 to-slate-100 text-slate-900;
 }
