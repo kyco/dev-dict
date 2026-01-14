@@ -71,27 +71,31 @@ The library is built around three main entities:
 
 ### Data Structure
 
-All data lives in the `data/` directory:
+All data lives in the `src/data/` directory:
 
-- `data/terms/` - Individual term definitions
-- `data/types/` - Type definitions (library, language, framework, etc.)
-- `data/tags/` - Tag definitions (frontend, backend, open_source)
-- `data/locales/` - Locale constants (en-US, en-GB, de-DE)
+- `src/data/terms/` - Individual term definitions
+- `src/data/types/` - Type definitions (library, language, framework, etc.)
+- `src/data/tags/` - Tag definitions (frontend, backend, open_source)
+- `src/data/locales/` - Locale constants (en-US, en-GB, de-DE)
 
 Each term file exports an object with this structure:
 ```typescript
 {
   id: string,
   name: TLocaleRecord,        // Translated name
+  altName?: TLocaleRecord,    // Optional short name/abbreviation
   label: TLocaleRecord,       // Concise, verbose type (e.g., "UI Library", "Frontend Framework")
   definition: TLocaleRecord,  // Full definition
   type: TTermTypes[],         // Array of type references
   tags: TTermTags[],          // Array of tag references
-  links?: TTermLinks          // Optional website/github/npm links
+  links?: TTermLinks,         // Optional website/github/npm/wikipedia links
+  sources?: TSourceMetadata   // Optional source attribution for label/definition
 }
 ```
 
 **Note**: The `label` field serves as a more descriptive version of the type(s). It should be short, not a full sentence. For example, if a term has type "library", the label might be "UI Library" to provide more context.
+
+**Source Attribution**: The optional `sources` field tracks where content originated (e.g., `SOURCE.official_website`, `SOURCE.community`, `SOURCE.wikipedia`). If no source is specified, content is assumed to be AI-generated. Only add sources when content comes from a specific, verifiable origin.
 
 ### Localisation System
 
@@ -106,37 +110,51 @@ The interpolation system (in `src/utils/index.ts`) handles missing translations 
 
 ### Public API
 
-Located in `src/index.ts`, the library exports these functions with dual signatures:
+The library has two main entry points:
 
+**1. Main Export (`src/index.ts`)** - Exports raw data and types:
+- `terms` - Raw terms dictionary
+- `types` - Raw types constants
+- `tags` - Raw tags constants
+- `locales` - Locale constants
+- All TypeScript types
+
+**2. Helper Functions (`src/helpers.ts`)** - Provides localisation functions:
 - `getTerm()` - Get a single term by ID
-- `getTerms()` - Get all terms
+- `getTerms()` - Get all terms as array
 - `getDict()` - Get dictionary object keyed by term ID
 - `getTypes()` - Get all types
 - `getTags()` - Get all tags
+- `localizeTerm()` - Localise a single term object
 
-Each function supports:
-- `localized: false` - Returns raw `TLocaleRecord` objects
-- `localized: true` (default) - Returns localised strings for the specified locale
+Each helper function supports:
 - `locale` - Target locale (defaults to en-US)
 - `useFallback` - Whether to fall back to en-US for missing translations (defaults to true)
+
+The helpers are not exported from the main index but are used internally by consuming applications.
 
 ### Path Aliases
 
 TypeScript paths are configured in `tsconfig.json` and `vite.config.ts`:
-- `@/*` → `src/*`
-- `@data/*` → `data/*`
+- `@/*` → `src/*` (includes `@/data`, `@/types`, `@/utils`, etc.)
 
-Always use these aliases when importing within the codebase.
+Always use the `@/` alias when importing within the codebase. For example:
+- Use `@/data` instead of `./data` or `../data`
+- Use `@/types` instead of `./types` or `../types`
+- Use `@/utils` instead of `./utils` or `../utils`
 
 ## Adding New Content
 
 ### Adding a New Term
 
-1. Create a new file in `data/terms/` named `{term_id}.ts` with a default export (use lowercase with underscores only, no dashes)
-2. Import the term in `data/terms/index.ts` and add to `RAW_TERMS` object
+1. Create a new file in `src/data/terms/` named `{term_id}.ts` with a default export (use lowercase with underscores only, no dashes)
+2. Import the term in `src/data/terms/index.ts` and add to `RAW_TERMS` object
 3. Define translations for at least `en-US` in name, label, and definition
-4. Assign appropriate types and tags from existing constants
-5. Run `pnpm build` to validate (documentation will be generated automatically on merge)
+4. Optionally add `altName` for abbreviations or short names (e.g., "AI" for "Artificial Intelligence")
+5. Assign appropriate types and tags from existing constants
+6. Optionally add `links` (website is required if links are provided)
+7. Optionally add `sources` to attribute where content originated (if not AI-generated)
+8. Run `pnpm build` to validate (documentation will be generated automatically on merge)
 
 **ID Naming Convention**:
 - All IDs must use lowercase with underscores only (e.g., `node_js`, `open_source`, `react_native`). Never use dashes/hyphens in IDs.
@@ -146,7 +164,7 @@ Always use these aliases when importing within the codebase.
 
 ### Adding a New Type or Tag
 
-1. Create a file in `data/types/` or `data/tags/` with a default export (use lowercase with underscores only, no dashes)
+1. Create a file in `src/data/types/` or `src/data/tags/` with a default export (use lowercase with underscores only, no dashes)
 2. Import and add to the respective `RAW_TYPE` or `RAW_TAG` object in the index.ts file
 3. Use the new constant in term definitions
 4. Run `pnpm build` to validate (documentation will be generated automatically on merge)
@@ -192,7 +210,7 @@ The project uses TypeScript ESLint with custom rules in `eslint.config.mts`. Mos
 - `docs/TAGS.md`
 
 If you are helping a contributor or making changes yourself:
-1. Only modify files in `data/` and `src/` directories
+1. Only modify files in the `src/` directory (including `src/data/`)
 2. Run `pnpm build` to validate your changes
 3. **DO NOT** run `pnpm docs:generate`
 4. **DO NOT** commit any changes to the `docs/` directory
