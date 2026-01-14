@@ -1,0 +1,22 @@
+import type { TTerm } from '@/types'
+import { LOCALES, SOURCES, TAGS, TYPES } from '@/data'
+
+export default {
+  id: `ci_cd`,
+
+  name: {
+    [LOCALES.EN_US]: `CI/CD`,
+  },
+
+  label: {
+    [LOCALES.EN_US]: ``,
+  },
+
+  definition: {
+    [LOCALES.EN_US]: ``,
+  },
+
+  type: [],
+
+  tags: [],
+} as const satisfies TTerm

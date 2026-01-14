@@ -4,14 +4,14 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig(({ command }) => {
   const isDev = command === 'serve'
+  const isUmd = process.env.BUILD_UMD === 'true'
 
   return {
     root: isDev ? 'examples' : undefined,
-    plugins: [dts({ rollupTypes: true })],
+    plugins: [!isUmd && dts()],
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
-        '@data': resolve(__dirname, './data'),
       },
     },
     build: {
