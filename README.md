@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./demo/public/logo.png" alt="dev-dict" width="125">
+</p>
+
 # dev-dict
 
 > A multilingual dictionary of software development terms
