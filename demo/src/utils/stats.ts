@@ -53,5 +53,5 @@ export function calculateStats(): ContributionStats {
 }
 
 export function getGithubEditUrl(termId: string): string {
-  return `https://github.com/kyco/dev-dict/edit/main/data/terms/${termId}.ts`
+  return `https://github.com/kyco/dev-dict/edit/main/src/data/terms/${termId}.ts`
 }

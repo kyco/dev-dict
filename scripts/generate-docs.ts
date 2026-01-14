@@ -40,7 +40,7 @@ const generateTermsReadme = (): void => {
     (value) => {
       const types = value.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
       const tags = value.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
-      return `| [${value.name[DEFAULT_LOCALE]}](../data/terms/${value.id}.ts) | \`${value.id}\` | ${types || '✘'} | ${value.label[DEFAULT_LOCALE] || '✘'} | ${value.definition[DEFAULT_LOCALE] ? '✔' : '✘'} | ${tags || '✘'} | ${value.links?.website || '✘'} |\n`
+      return `| [${value.name[DEFAULT_LOCALE]}](../src/data/terms/${value.id}.ts) | \`${value.id}\` | ${types || '✘'} | ${value.label[DEFAULT_LOCALE] || '✘'} | ${value.definition[DEFAULT_LOCALE] ? '✔' : '✘'} | ${tags || '✘'} | ${value.links?.website || '✘'} |\n`
     },
   )
 
@@ -56,7 +56,7 @@ const generateTypesReadme = (): void => {
     [`Type (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
     typesList,
     (value) => {
-      return `| [${value.name[DEFAULT_LOCALE]}](../data/types/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
+      return `| [${value.name[DEFAULT_LOCALE]}](../src/data/types/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
     },
   )
 
@@ -72,7 +72,7 @@ const generateTagsReadme = (): void => {
     [`Tag (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
     tagsList,
     (value) => {
-      return `| [${value.name[DEFAULT_LOCALE]}](../data/tags/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
+      return `| [${value.name[DEFAULT_LOCALE]}](../src/data/tags/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
     },
   )
 
