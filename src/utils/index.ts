@@ -1,6 +1,6 @@
 import type { TLocale, TLocaleRecord, TTermTag, TTermTagLocalized, TTermType, TTermTypeLocalized } from '@/types'
 import { CONFIG } from '@/common'
-import { LOCALES } from '@/data'
+import { LOCALES } from '@/data/locales'
 
 export const interpolateValue = ({
   obj,

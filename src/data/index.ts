@@ -1,5 +1,2 @@
-export * from './locales'
-export * from './sources'
-export * from './tags'
-export * from './terms'
-export * from './types'
+// DO NOT ADD IMPORTS AND EXPORTS HERE. IT WILL CAUSE CIRCULAR DEPENDENCIES.
+// ALWAYS IMPORT DIRECTLY FROM THE INDIVIDUAL SUBFOLDERS.
