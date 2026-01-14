@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync } from 'fs'
 
-import { getTags, getTerms, getTypes } from '../dist/index.js'
+import { tags, terms, types } from '../dist/index.js'
 
 const LOCALE = {
   EN_US: 'en-US',
@@ -31,14 +31,12 @@ const generateTable = (
 }
 
 const generateTermsReadme = (): void => {
-  const terms = [...getTerms({ localized: false })].sort((a, b) =>
-    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
-  )
+  const termsList = Object.values(terms).sort((a, b) => a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]))
 
   const content = generateTable(
     'Terms',
     [`Term`, 'ID', `Type`, `Label`, `Definition`, `Tags`, `Website`],
-    terms,
+    termsList,
     (value) => {
       const types = value.type.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
       const tags = value.tags.map((t: any) => t.name[DEFAULT_LOCALE]).join(', ')
@@ -51,14 +49,12 @@ const generateTermsReadme = (): void => {
 }
 
 const generateTypesReadme = (): void => {
-  const types = [...getTypes({ localized: false })].sort((a, b) =>
-    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
-  )
+  const typesList = Object.values(types).sort((a, b) => a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]))
 
   const content = generateTable(
     'Types',
     [`Type (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
-    types,
+    typesList,
     (value) => {
       return `| [${value.name[DEFAULT_LOCALE]}](../data/types/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
     },
@@ -69,14 +65,12 @@ const generateTypesReadme = (): void => {
 }
 
 const generateTagsReadme = (): void => {
-  const tags = [...getTags({ localized: false })].sort((a, b) =>
-    a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]),
-  )
+  const tagsList = Object.values(tags).sort((a, b) => a.name[DEFAULT_LOCALE].localeCompare(b.name[DEFAULT_LOCALE]))
 
   const content = generateTable(
     'Tags',
     [`Tag (${DEFAULT_LOCALE})`, 'ID', LOCALE.EN_GB, LOCALE.DE_DE],
-    tags,
+    tagsList,
     (value) => {
       return `| [${value.name[DEFAULT_LOCALE]}](../data/tags/${value.id}.ts) | \`${value.id}\` | ${value.name[LOCALE.EN_GB] ? '✔' : '✘'} | ${value.name[LOCALE.DE_DE] ? '✔' : '✘'} |\n`
     },
