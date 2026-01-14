@@ -7,10 +7,8 @@
 > A multilingual dictionary of software development terms
 
 [![npm version](https://img.shields.io/npm/v/dev-dict.svg)](https://www.npmjs.com/package/dev-dict)
-[![npm downloads](https://img.shields.io/npm/dm/dev-dict.svg)](https://www.npmjs.com/package/dev-dict)
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/dev-dict)](https://bundlephobia.com/package/dev-dict)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+
 
 **dev-dict** provides an exhaustive, community-driven collection of software industry terms with clear explanations in multiple languages. Perfect for developers, technical writers, educators, and anyone building multilingual developer tools.
 
