@@ -1,7 +1,5 @@
 import type { TTerm } from '@/types'
-
-import { LOCALES } from '../locales'
-import { TYPES } from '../types'
+import { LOCALES, SOURCES, TAGS, TYPES } from '@data/index'
 
 export default {
   id: `matlab`,

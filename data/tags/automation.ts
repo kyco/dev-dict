@@ -1,6 +1,5 @@
 import type { TTermTag } from '@/types'
-
-import { LOCALES } from '../locales'
+import { LOCALES, SOURCES, TAGS, TYPES } from '@data/index'
 
 export default {
   id: `automation`,
