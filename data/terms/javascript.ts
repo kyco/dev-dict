@@ -1,28 +1,28 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `javascript`,
 
   name: {
-    [LOCALE.EN_US]: `JavaScript`,
+    [LOCALES.EN_US]: `JavaScript`,
   },
 
   label: {
-    [LOCALE.EN_US]: `High-Level Programming Language`,
-    [LOCALE.DE_DE]: `Hochsprache`,
+    [LOCALES.EN_US]: `High-Level Programming Language`,
+    [LOCALES.DE_DE]: `Hochsprache`,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
-  type: [TYPE.language],
+  type: [TYPES.language],
 
-  tags: [TAG.frontend, TAG.backend, TAG.open_source],
+  tags: [TAGS.frontend, TAGS.backend, TAGS.open_source],
 
   links: {
     website: 'https://tc39.es/ecma262',

@@ -1,22 +1,22 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `asp_net`,
 
   name: {
-    [LOCALE.EN_US]: `ASP.NET`,
+    [LOCALES.EN_US]: `ASP.NET`,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   type: [],

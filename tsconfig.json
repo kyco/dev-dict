@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@data": ["data/index.ts"]
+      "@data/*": ["data/*"]
     }
   },
   "include": ["src/**/*", "data/**/*", "examples/**/*"],

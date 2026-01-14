@@ -1,22 +1,22 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `mail_blaze`,
 
   name: {
-    [LOCALE.EN_US]: `Mail Blaze`,
+    [LOCALES.EN_US]: `Mail Blaze`,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   type: [],

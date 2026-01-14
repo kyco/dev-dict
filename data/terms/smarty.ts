@@ -1,22 +1,22 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `smarty`,
 
   name: {
-    [LOCALE.EN_US]: `Smarty`,
+    [LOCALES.EN_US]: `Smarty`,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   type: [],

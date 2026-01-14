@@ -87,7 +87,7 @@ Open `data/terms/index.ts` and add your term:
 ```typescript
 import vue from './vue' // Add import
 
-export const RAW_TERM = {
+export const RAW_TERMS = {
   [node_js.id]: node_js,
   [react.id]: react,
   [typescript.id]: typescript,
@@ -356,8 +356,8 @@ npx prettier --write .
 ### TypeScript Conventions
 
 - Use `as const satisfies TTerm/TType/TTag` for all data files
-- Import from path aliases: `@/types`, `@/utils`, `@data`
-- Use the locale constants: `LOCALE.EN_US`, never hardcode `'en-US'`
+- Import from path aliases: `@/types`, `@/utils`, `@data/*`
+- Use the locale constants: `LOCALE.EN_US`, never hardcode `'en-US'``
 - Use type/tag constants: `TYPE.framework`, `TAG.frontend`
 
 ### File Naming

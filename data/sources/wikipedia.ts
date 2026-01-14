@@ -1,13 +1,13 @@
 import type { TTermSource } from '@/types'
 
-import { LOCALE } from '../locales'
+import { LOCALES } from '../locales'
 
 export default {
   id: `wikipedia`,
 
   name: {
-    [LOCALE.EN_US]: `Wikipedia`,
-    [LOCALE.EN_GB]: LOCALE.EN_US,
-    [LOCALE.DE_DE]: `Wikipedia`,
+    [LOCALES.EN_US]: `Wikipedia`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: `Wikipedia`,
   },
 } as const satisfies TTermSource

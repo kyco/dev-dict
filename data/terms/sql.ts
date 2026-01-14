@@ -1,25 +1,25 @@
 import type { TTerm } from '@/types'
 
-import { LOCALE } from '../locales'
-import { TAG } from '../tags'
-import { TYPE } from '../types'
+import { LOCALES } from '../locales'
+import { TAGS } from '../tags'
+import { TYPES } from '../types'
 
 export default {
   id: `sql`,
 
   name: {
-    [LOCALE.EN_US]: `SQL`,
+    [LOCALES.EN_US]: `SQL`,
   },
 
   label: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
   definition: {
-    [LOCALE.EN_US]: ``,
+    [LOCALES.EN_US]: ``,
   },
 
-  type: [TYPE.language],
+  type: [TYPES.language],
 
   tags: [],
 } as const satisfies TTerm
