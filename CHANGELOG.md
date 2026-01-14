@@ -1,3 +1,23 @@
+## [0.7.2](https://github.com/kyco/dev-dict/compare/v0.7.1...v0.7.2) (2026-01-14)
+
+### Bug Fixes
+
+* Add label and website ([ebb7716](https://github.com/kyco/dev-dict/commit/ebb77168fa37a11315a85e6d4c1331446655e8c2))
+* Circular dependencies ([98e92e9](https://github.com/kyco/dev-dict/commit/98e92e93407bed1ef078ac62536f12fd5939530b))
+* Docs script ([3851e1f](https://github.com/kyco/dev-dict/commit/3851e1f9ebcc712707460086b2eb0a0af2238e3d))
+* Paths ([c876b48](https://github.com/kyco/dev-dict/commit/c876b48dc601728f54dda362a445b38035bc6a23))
+* Translate ([2dbee76](https://github.com/kyco/dev-dict/commit/2dbee76698e7a5942cc61c1837986cc5016b9df9))
+
+### Chore
+
+* Bump deps ([420e60b](https://github.com/kyco/dev-dict/commit/420e60bb05b88f284cc3af205837c2961cf7f6b0))
+
+### Refactoring
+
+* Imports ([5f080a4](https://github.com/kyco/dev-dict/commit/5f080a487cb8987b9a21cf2d9c18eb071e6a2af0))
+* Move `data` dir and refactor imports ([4214270](https://github.com/kyco/dev-dict/commit/421427087c0634faab772d31ba41d8d18ce8c263))
+* Simplify API [BREAKING] ([0e33f96](https://github.com/kyco/dev-dict/commit/0e33f963ab7e3ef5fa5d9ec23fa7e8a441697f7e))
+
 ## [0.7.1](https://github.com/kyco/dev-dict/compare/v0.7.0...v0.7.1) (2025-12-19)
 
 ### Bug Fixes
