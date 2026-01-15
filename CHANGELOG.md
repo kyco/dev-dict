@@ -1,3 +1,15 @@
+## [0.9.1](https://github.com/kyco/dev-dict/compare/v0.9.0...v0.9.1) (2026-01-15)
+
+### Bug Fixes
+
+* Auto focus ([f43112f](https://github.com/kyco/dev-dict/commit/f43112f55796668c2676efe60c16928951333db1))
+* Import ([46d9137](https://github.com/kyco/dev-dict/commit/46d91374c2d67dbb089a3ebb1534978e07866012))
+* Remove duplicate ([875d78a](https://github.com/kyco/dev-dict/commit/875d78aa30b02e0cb59e645ac08b6881ee0c735e))
+
+### Chore
+
+* Remove old docs ([d0d62f1](https://github.com/kyco/dev-dict/commit/d0d62f1831aedcf6d365e720cb17ba5ac3db6a2e))
+
 ## [0.9.0](https://github.com/kyco/dev-dict/compare/v0.8.0...v0.9.0) (2026-01-15)
 
 ### Features

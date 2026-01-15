@@ -1,6 +1,6 @@
 {
   "name": "dev-dict",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A community-driven collection of software development terms with explanations in multiple languages. Perfect for building multilingual developer tools, documentation sites, and educational platforms.",
   "author": "Cornelius Weidmann <cornelius@kyco.io> (https://kyco.io)",
   "license": "MIT",
