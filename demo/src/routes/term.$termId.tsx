@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useRouter } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { Chip } from '~/components/ui'
 import { terms } from 'dev-dict'
 import type { TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'

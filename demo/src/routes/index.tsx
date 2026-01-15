@@ -3,7 +3,7 @@ import { Dropdown, SearchBar, TermCard } from '~/components/ui'
 import { terms } from 'dev-dict'
 import type { TLocale, TTerm } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { CheckCircle, Globe, Layers, ListChecks, Plus, Search, Tag } from 'lucide-react'
+import { CheckCircle, Globe, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 import { useAppContext } from './__root'
