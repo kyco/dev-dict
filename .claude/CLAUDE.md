@@ -120,12 +120,11 @@ The library has two main entry points:
 - All TypeScript types
 
 **2. Helper Functions (`src/helpers.ts`)** - Provides localisation functions:
+- `getDict()` - Get dictionary object keyed by term ID
 - `getTerm()` - Get a single term by ID
 - `getTerms()` - Get all terms as array
-- `getDict()` - Get dictionary object keyed by term ID
 - `getTypes()` - Get all types
 - `getTags()` - Get all tags
-- `localizeTerm()` - Localise a single term object
 
 Each helper function supports:
 - `locale` - Target locale (defaults to en-US)

@@ -1,7 +1,11 @@
-import { getDict, getTags, getTerm, getTerms, getTypes, localizeTerm } from './helpers'
 import {
+  getDict,
+  getTags,
+  getTerm,
+  getTerms,
   getTermTagLocalized,
   getTermTypeLocalized,
+  getTypes,
   getValueLocalized,
   interpolateLocaleRecord,
   interpolateValue,
@@ -16,16 +20,15 @@ export { TYPES as types } from '@/data/types'
 export type * from '@/types'
 
 export const utils = {
+  getDict,
   getTerm,
   getTerms,
-  getDict,
   getTypes,
   getTags,
-  localizeTerm,
-  getValueLocalized,
-  getTermTagLocalized,
-  getTermTypeLocalized,
   interpolateValue,
   interpolateLocaleRecord,
   interpolateValues,
+  getValueLocalized,
+  getTermTagLocalized,
+  getTermTypeLocalized,
 }
