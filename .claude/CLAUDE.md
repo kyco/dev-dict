@@ -128,7 +128,7 @@ The library has two main entry points:
 - `getTags()` - Get all tags as an array
 
 Each helper function supports:
-- `dict` - The terms dictionary (required)
+- `terms` - The terms dictionary (required)
 - `locale` - Target locale (defaults to en-US)
 - `populateEmpty` - Populate empty locale records with en-US values (defaults to true)
 

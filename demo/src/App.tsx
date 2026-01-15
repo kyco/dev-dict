@@ -1,4 +1,4 @@
-import { terms as dict } from 'dev-dict'
+import { terms } from 'dev-dict'
 import type { TLocale } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
 import { useMemo, useState } from 'react'
@@ -13,13 +13,13 @@ function App() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [isContributionDialogOpen, setIsContributionDialogOpen] = useState(false)
 
-  const terms = getTerms({ dict, locale: selectedLocale })
-  const types = getTypes({ dict, locale: selectedLocale })
-  const tags = getTags({ dict, locale: selectedLocale })
+  const dictionary = getTerms({ terms, locale: selectedLocale })
+  const types = getTypes({ terms, locale: selectedLocale })
+  const tags = getTags({ terms, locale: selectedLocale })
   const stats = useMemo(() => calculateStats(), [])
 
   const filteredTerms = useMemo(() => {
-    return terms
+    return dictionary
       .filter((term) => {
         const matchesSearch =
           !searchQuery ||
@@ -39,7 +39,7 @@ function App() {
         const bName = b.name.startsWith('.') ? b.name.slice(1) : b.name
         return aName.localeCompare(bName, selectedLocale)
       })
-  }, [terms, searchQuery, selectedTypes, selectedTags, selectedLocale])
+  }, [dictionary, searchQuery, selectedTypes, selectedTags, selectedLocale])
 
   const toggleType = (typeId: string) => {
     setSelectedTypes((prev) => (prev.includes(typeId) ? prev.filter((t) => t !== typeId) : [...prev, typeId]))
@@ -187,7 +187,7 @@ function App() {
             <div className="mb-6 flex items-center justify-between">
               <p className="text-slate-600">
                 Showing <span className="font-semibold text-slate-900">{filteredTerms.length}</span> of{' '}
-                <span className="font-semibold text-slate-900">{terms.length}</span> terms
+                <span className="font-semibold text-slate-900">{dictionary.length}</span> terms
               </p>
             </div>
 

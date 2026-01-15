@@ -18,18 +18,18 @@ import { CONFIG, MISC } from '@/common'
 import { getTag, getTerm, getType, interpolateValues } from '@/utils'
 
 export const getTermsDict = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): Partial<TTermsDictLocalized> => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
+  const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const localizedTerms: Partial<TTermsDictLocalized> = {}
 
-  for (const [key, term] of Object.entries(terms)) {
+  for (const [key, term] of Object.entries(interpolatedTerms)) {
     localizedTerms[key as TTermId] = getTerm({ term, locale, populateEmpty })
   }
 
@@ -37,30 +37,30 @@ export const getTermsDict = ({
 }
 
 export const getTerms = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermLocalized[] => {
-  return Object.values(getTermsDict({ dict, locale, populateEmpty }))
+  return Object.values(getTermsDict({ terms, locale, populateEmpty }))
 }
 
 export const getTypesDict = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermTypesDictLocalized => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
+  const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const typesDict: TTermTypesDict = {}
 
-  Object.values(terms).forEach((term) => {
+  Object.values(interpolatedTerms).forEach((term) => {
     term.type.forEach((type) => {
       if (!typesDict[type.id]) {
         typesDict[type.id] = type
@@ -78,30 +78,30 @@ export const getTypesDict = ({
 }
 
 export const getTypes = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermTypeLocalized[] => {
-  return Object.values(getTypesDict({ dict, locale, populateEmpty }))
+  return Object.values(getTypesDict({ terms, locale, populateEmpty }))
 }
 
 export const getTagsDict = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermTagsDictLocalized => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
+  const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const tagsDict: TTermTagsDict = {}
 
-  Object.values(terms).forEach((term) => {
+  Object.values(interpolatedTerms).forEach((term) => {
     term.tags.forEach((tag) => {
       if (!tagsDict[tag.id]) {
         tagsDict[tag.id] = tag
@@ -119,13 +119,13 @@ export const getTagsDict = ({
 }
 
 export const getTags = ({
-  dict,
+  terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  dict: TTermsDict | TTermsDictPartial
+  terms: TTermsDict | TTermsDictPartial
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermTagLocalized[] => {
-  return Object.values(getTagsDict({ dict, locale, populateEmpty }))
+  return Object.values(getTagsDict({ terms, locale, populateEmpty }))
 }
