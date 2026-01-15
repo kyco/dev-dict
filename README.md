@@ -92,10 +92,12 @@ const dictionary = getTerms({ terms, locale: 'en-US' })
 import { terms, types, tags, locales } from 'dev-dict'
 ```
 
-- `terms` - Raw terms dictionary
-- `types` - Type constants and definitions
-- `tags` - Tag constants and definitions
-- `locales` - Locale constants
+| Export | Description |
+|--------|-------------|
+| `terms` | Raw terms dictionary |
+| `types` | Type constants and definitions |
+| `tags` | Tag constants and definitions |
+| `locales` | Locale constants |
 
 ### Helper Functions
 
@@ -105,92 +107,40 @@ Import from `dev-dict/utils`:
 import { getTerms, getTermsDict, getTypes, getTypesDict, getTags, getTagsDict } from 'dev-dict/utils'
 ```
 
-#### `getTermsDict(options)`
-
-Get all terms as a dictionary object.
+**Example usage:**
 
 ```typescript
-const termsDict = getTermsDict({
-  terms,
-  locale: 'en-US',
-  populateEmpty: true
+// Get terms as an array
+const dictionary = getTerms({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',    // Optional: defaults to 'en-US'
+  populateEmpty: true // Optional: defaults to true
 })
+// [{ id: "react", name: "React", ... }, { id: "vue", name: "Vue", ... }]
+
+// Get terms as a dictionary object
+const termsDict = getTermsDict({ terms, locale: 'en-US' })
 // { react: { id: "react", name: "React", ... }, vue: { id: "vue", name: "Vue", ... } }
 ```
 
 **Options:**
-- `terms: TTermsDict` - The terms dictionary (required)
-- `locale?: string` - Target locale (default: `'en-US'`)
-- `populateEmpty?: boolean` - Populate empty locale records with en-US values (default: `true`)
 
-**Returns:** `Partial<TTermsDictLocalized>` - Dictionary of localised terms
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `terms` | `TTermsDict` | Yes | - | The terms dictionary |
+| `locale` | `string` | No | `'en-US'` | Target locale |
+| `populateEmpty` | `boolean` | No | `true` | Populate empty locale records with en-US values |
 
-#### `getTerms(options)`
+**Available functions:**
 
-Get all terms as an array.
-
-```typescript
-const dictionary = getTerms({
-  terms,
-  locale: 'en-US',
-  populateEmpty: true
-})
-```
-
-**Options:**
-- `terms: TTermsDict` - The terms dictionary (required)
-- `locale?: string` - Target locale (default: `'en-US'`)
-- `populateEmpty?: boolean` - Populate empty locale records with en-US values (default: `true`)
-
-**Returns:** `TTermLocalized[]` - Array of localised terms
-
-#### `getTypesDict(options)`
-
-Get all term types as a dictionary object.
-
-```typescript
-const typesDict = getTypesDict({
-  terms,
-  locale: 'en-US'
-})
-// { library: { id: "library", name: "Library" }, framework: { id: "framework", name: "Framework" }, ... }
-```
-
-#### `getTypes(options)`
-
-Get all term types as an array.
-
-```typescript
-const types = getTypes({
-  terms,
-  locale: 'en-US'
-})
-// [{ id: "library", name: "Library" }, { id: "framework", name: "Framework" }, ...]
-```
-
-#### `getTagsDict(options)`
-
-Get all term tags as a dictionary object.
-
-```typescript
-const tagsDict = getTagsDict({
-  terms,
-  locale: 'en-US'
-})
-// { frontend: { id: "frontend", name: "Frontend" }, backend: { id: "backend", name: "Backend" }, ... }
-```
-
-#### `getTags(options)`
-
-Get all term tags as an array.
-
-```typescript
-const tags = getTags({
-  terms,
-  locale: 'en-US'
-})
-// [{ id: "frontend", name: "Frontend" }, { id: "backend", name: "Backend" }, ...]
-```
+| Function | Returns | Description |
+|----------|---------|-------------|
+| `getTermsDict(options)` | `Partial<TTermsDictLocalized>` | Get all terms as a dictionary object |
+| `getTerms(options)` | `TTermLocalized[]` | Get all terms as an array |
+| `getTypesDict(options)` | Dictionary | Get all term types as a dictionary object |
+| `getTypes(options)` | Array | Get all term types as an array |
+| `getTagsDict(options)` | Dictionary | Get all term tags as a dictionary object |
+| `getTags(options)` | Array | Get all term tags as an array |
 
 ### Term Structure
 
@@ -228,12 +178,6 @@ const tags = getTags({
 
 Want to add a language? See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-a-new-language)
 
-## Browse Terms
-
-- **[Terms](./docs/TERMS.md)** - All software development terms
-- **[Types](./docs/TYPES.md)** - Term categories
-- **[Tags](./docs/TAGS.md)** - Additional classifications
-
 ## Contributing
 
 Contributions welcome! Add terms, provide translations, fix errors, or suggest improvements.
@@ -250,7 +194,3 @@ pnpm demo:build   # Build demo site
 ```
 
 See [CLAUDE.md](./.claude/CLAUDE.md) for detailed development guidance.
-
-## License
-
-MIT
