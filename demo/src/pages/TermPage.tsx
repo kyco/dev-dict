@@ -2,10 +2,9 @@ import { useRouter } from '@tanstack/react-router'
 import { Chip } from '~/components/Chip'
 import { getGithubEditUrl } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
-import { getSourceDisplayName } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
-import type { TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
+import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
+import { getSources, getTerms } from 'dev-dict/utils'
 import { ArrowLeft, Book, Check, Copy, ExternalLink, Globe, Layers, Pencil, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
@@ -34,6 +33,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   }
 
   const dictionary = useMemo(() => getTerms({ terms, locale: lang }), [lang])
+  const sources = useMemo(() => getSources({ terms, locale: lang }), [lang])
   const term = dictionary.find((t) => t.id === termId)
 
   if (!term) {
@@ -209,19 +209,15 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   {term.sources.label && (
                     <p>
                       <span className="text-slate-400">Label:</span>{' '}
-                      {getSourceDisplayName(
-                        term.sources.label as unknown as { id: string; name: Record<string, string> },
-                        lang,
-                      )}
+                      {sources.find((s: TTermSourceLocalized) => s.id === term.sources?.label?.id)?.name ||
+                        term.sources.label.id}
                     </p>
                   )}
                   {term.sources.definition && (
                     <p>
                       <span className="text-slate-400">Definition:</span>{' '}
-                      {getSourceDisplayName(
-                        term.sources.definition as unknown as { id: string; name: Record<string, string> },
-                        lang,
-                      )}
+                      {sources.find((s: TTermSourceLocalized) => s.id === term.sources?.definition?.id)?.name ||
+                        term.sources.definition.id}
                     </p>
                   )}
                 </div>

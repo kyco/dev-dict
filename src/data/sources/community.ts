@@ -8,8 +8,8 @@ export default {
   id: `community`,
 
   name: {
-    [LOCALES.EN_US]: `Community Consensus`,
+    [LOCALES.EN_US]: `Community`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
-    [LOCALES.DE_DE]: `Gemeinschaftskonsens`,
+    [LOCALES.DE_DE]: `Gemeinschaft`,
   },
 } as const satisfies TTermSource

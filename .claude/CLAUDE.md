@@ -163,6 +163,8 @@ The library has two main entry points:
 - `getTypes()` - Get all types as an array
 - `getTagsDict()` - Get all tags as a dictionary object
 - `getTags()` - Get all tags as an array
+- `getSourcesDict()` - Get all sources as a dictionary object
+- `getSources()` - Get all sources as an array
 
 Each helper function supports:
 - `terms` - The terms dictionary (required)

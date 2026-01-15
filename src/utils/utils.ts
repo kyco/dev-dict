@@ -5,6 +5,10 @@ import type {
   TTermsDict,
   TTermsDictLocalized,
   TTermsDictPartial,
+  TTermSourceId,
+  TTermSourceLocalized,
+  TTermSourcesDict,
+  TTermSourcesDictLocalized,
   TTermTagId,
   TTermTagLocalized,
   TTermTagsDict,
@@ -16,7 +20,7 @@ import type {
 } from '@/types'
 import { CONFIG, MISC } from '@/common'
 
-import { getTag, getTerm, getType, interpolateValues } from './helpers'
+import { getSource, getTag, getTerm, getType, interpolateValues } from './helpers'
 
 export const getTermsDict = ({
   terms,
@@ -129,4 +133,46 @@ export const getTags = ({
   populateEmpty?: boolean
 }): TTermTagLocalized[] => {
   return Object.values(getTagsDict({ terms, locale, populateEmpty }))
+}
+
+export const getSourcesDict = ({
+  terms,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  terms: TTermsDict | TTermsDictPartial
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermSourcesDictLocalized => {
+  const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
+  const sourcesDict: TTermSourcesDict = {}
+
+  Object.values(interpolatedTerms).forEach((term) => {
+    if (term.sources?.label && !sourcesDict[term.sources.label.id]) {
+      sourcesDict[term.sources.label.id] = term.sources.label
+    }
+    if (term.sources?.definition && !sourcesDict[term.sources.definition.id]) {
+      sourcesDict[term.sources.definition.id] = term.sources.definition
+    }
+  })
+
+  const localizedSources: TTermSourcesDictLocalized = {}
+
+  for (const [key, source] of Object.entries(sourcesDict)) {
+    localizedSources[key as TTermSourceId] = getSource({ source, locale, populateEmpty })
+  }
+
+  return localizedSources
+}
+
+export const getSources = ({
+  terms,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  terms: TTermsDict | TTermsDictPartial
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermSourceLocalized[] => {
+  return Object.values(getSourcesDict({ terms, locale, populateEmpty }))
 }

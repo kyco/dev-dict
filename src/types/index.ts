@@ -153,3 +153,9 @@ export type TTermTagId = TTermTag['id']
 export type TTermTagsDict = Record<TTermTagId, TTermTag>
 
 export type TTermTagsDictLocalized = Record<TTermTagId, TTermTagLocalized>
+
+export type TTermSourceId = TTermSource['id']
+
+export type TTermSourcesDict = Record<TTermSourceId, TTermSource>
+
+export type TTermSourcesDictLocalized = Record<TTermSourceId, TTermSourceLocalized>

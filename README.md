@@ -104,7 +104,16 @@ import { terms, types, tags, locales } from 'dev-dict'
 Import from `dev-dict/utils`:
 
 ```typescript
-import { getTerms, getTermsDict, getTypes, getTypesDict, getTags, getTagsDict } from 'dev-dict/utils'
+import {
+  getTerms,
+  getTermsDict,
+  getTypes,
+  getTypesDict,
+  getTags,
+  getTagsDict,
+  getSources,
+  getSourcesDict
+} from 'dev-dict/utils'
 ```
 
 **Example usage:**
@@ -141,6 +150,8 @@ const termsDict = getTermsDict({ terms, locale: 'en-US' })
 | `getTypes(options)` | Array | Get all term types as an array |
 | `getTagsDict(options)` | Dictionary | Get all term tags as a dictionary object |
 | `getTags(options)` | Array | Get all term tags as an array |
+| `getSourcesDict(options)` | Dictionary | Get all sources as a dictionary object |
+| `getSources(options)` | Array | Get all sources as an array |
 
 ### Term Structure
 

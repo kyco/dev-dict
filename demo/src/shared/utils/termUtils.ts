@@ -14,16 +14,3 @@ export function isTermComplete(termId: string): boolean {
 
   return hasType && hasLabel && hasDefinition && hasTags && hasWebsite
 }
-
-export function formatSourceName(sourceId: string): string {
-  return sourceId.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-}
-
-export function getSourceDisplayName(source: { id: string; name: Record<string, string> }, locale: string): string {
-  const name = source.name[locale] || source.name['en-US'] || source.id
-  // If the name is a locale reference, use the referenced locale
-  if (name === 'en-US' || name === 'en-GB' || name === 'de-DE') {
-    return source.name[name] || formatSourceName(source.id)
-  }
-  return name
-}
