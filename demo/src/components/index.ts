@@ -1,5 +1,3 @@
-// Legacy export file - all components are now in separate files
-// This file exists for backwards compatibility
 export { Chip } from './Chip'
 export { Dropdown } from './Dropdown'
 export { SearchBar } from './SearchBar'
