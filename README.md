@@ -4,22 +4,19 @@
 
 # dev-dict
 
-
-
-A community-driven collection of software development terms with explanations in multiple languages. Perfect for building multilingual developer tools, documentation sites, and educational platforms.
-
 [![npm version](https://img.shields.io/npm/v/dev-dict.svg)](https://www.npmjs.com/package/dev-dict)
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/dev-dict)](https://bundlephobia.com/package/dev-dict)
+
+A community-driven collection of software development terms with explanations in multiple languages. Perfect for building multilingual developer tools, documentation sites, and educational platforms.
 
 **[Browse All Terms](https://kyco.github.io/dev-dict/)**
 
 ## Features
 
-- **Multilingual** - English (US/GB), German, and growing
 - **Type-Safe** - Full TypeScript support
+- **Multilingual** - English (US/GB), German, and growing
 - **Flexible** - Access localised strings or raw translation objects
 - **Lightweight** - Tree-shakeable ESM and UMD builds
-- **Comprehensive** - Frameworks, libraries, languages, tools, and concepts
 
 ## Installation
 
@@ -39,53 +36,52 @@ yarn add dev-dict
 <script src="https://unpkg.com/dev-dict@latest/dist/dev-dict.min.js"></script>
 <script>
   // Access the library via the global 'devdict' object
-  const { terms: dict, types, tags, locales, utils } = devdict
+  const { terms, types, tags, locales, utils } = devdict
 
   // Get all terms for a locale
-  const allTerms = utils.getTerms({ dict, locale: 'en-US' })
+  const dictionary = utils.getTerms({ terms, locale: 'en-US' })
 
-  console.log(allTerms)
+  console.log(dictionary)
 </script>
 ```
 
 ## Quick Start
 
-### Option 1: Use All Terms
+### Option 1: Full Dictionary
 
-Import the complete dictionary to access all available terms.
+Import the complete dictionary to access all terms.
 
 ```typescript
-import { terms as dict } from 'dev-dict'
+import { terms } from 'dev-dict'
 import { getTerms, getTags, getTypes } from 'dev-dict/utils'
 
 // Get all terms for a locale
-const allTerms = getTerms({ dict, locale: 'en-US' })
+const dictionary = getTerms({ terms, locale: 'en-US' })
 
 // Get types and tags
-const types = getTypes({ dict, locale: 'en-US' })
-const tags = getTags({ dict, locale: 'en-US' })
+const types = getTypes({ terms, locale: 'en-US' })
+const tags = getTags({ terms, locale: 'en-US' })
 
-// Display a term
-allTerms.forEach(term => {
-  console.log(term.name)       // "React"
-  console.log(term.label)      // "JavaScript Library"
-  console.log(term.definition) // "A JavaScript library for..."
-  console.log(term.type)       // [{ id: "library", name: "Library" }]
-  console.log(term.tags)       // [{ id: "frontend", name: "Frontend" }, ...]
+// Display terms
+dictionary.forEach(term => {
+  console.log(term.name) // "React"
+  console.log(term.label) // "JavaScript Library"
 })
 ```
 
-### Option 2: Use Custom Terms
+### Option 2: Selected Terms Only
 
 Import only the specific terms you need for better tree-shaking and smaller bundle size.
 
 ```typescript
 import { react, typescript, node_js } from 'dev-dict/terms'
+import { getTerms } from 'dev-dict/utils'
 
 // Create a custom dictionary with only the terms you need
-const dict = { react, typescript, node_js }
+const terms = { react, typescript, node_js }
 
 // Then use the same helper functions as Option 1
+const dictionary = getTerms({ terms, locale: 'en-US' })
 ```
 
 ## API Reference
@@ -106,47 +102,91 @@ import { terms, types, tags, locales } from 'dev-dict'
 Import from `dev-dict/utils`:
 
 ```typescript
-import { getTerms, getTypes, getTags } from 'dev-dict/utils'
+import { getTerms, getTermsDict, getTypes, getTypesDict, getTags, getTagsDict } from 'dev-dict/utils'
 ```
+
+#### `getTermsDict(options)`
+
+Get all terms as a dictionary object.
+
+```typescript
+const termsDict = getTermsDict({
+  terms,
+  locale: 'en-US',
+  populateEmpty: true
+})
+// { react: { id: "react", name: "React", ... }, vue: { id: "vue", name: "Vue", ... } }
+```
+
+**Options:**
+- `terms: TTermsDict` - The terms dictionary (required)
+- `locale?: string` - Target locale (default: `'en-US'`)
+- `populateEmpty?: boolean` - Populate empty locale records with en-US values (default: `true`)
+
+**Returns:** `Partial<TTermsDictLocalized>` - Dictionary of localised terms
 
 #### `getTerms(options)`
 
 Get all terms as an array.
 
 ```typescript
-const terms = getTerms({
-  dict,
+const dictionary = getTerms({
+  terms,
   locale: 'en-US',
-  useFallback: true
+  populateEmpty: true
 })
 ```
 
 **Options:**
-- `dict: TDevDict` - The terms dictionary (required)
+- `terms: TTermsDict` - The terms dictionary (required)
 - `locale?: string` - Target locale (default: `'en-US'`)
-- `useFallback?: boolean` - Fall back to en-US for missing translations (default: `true`)
+- `populateEmpty?: boolean` - Populate empty locale records with en-US values (default: `true`)
 
 **Returns:** `TTermLocalized[]` - Array of localised terms
 
+#### `getTypesDict(options)`
+
+Get all term types as a dictionary object.
+
+```typescript
+const typesDict = getTypesDict({
+  terms,
+  locale: 'en-US'
+})
+// { library: { id: "library", name: "Library" }, framework: { id: "framework", name: "Framework" }, ... }
+```
+
 #### `getTypes(options)`
 
-Get all term types.
+Get all term types as an array.
 
 ```typescript
 const types = getTypes({
-  dict,
+  terms,
   locale: 'en-US'
 })
 // [{ id: "library", name: "Library" }, { id: "framework", name: "Framework" }, ...]
 ```
 
+#### `getTagsDict(options)`
+
+Get all term tags as a dictionary object.
+
+```typescript
+const tagsDict = getTagsDict({
+  terms,
+  locale: 'en-US'
+})
+// { frontend: { id: "frontend", name: "Frontend" }, backend: { id: "backend", name: "Backend" }, ... }
+```
+
 #### `getTags(options)`
 
-Get all term tags.
+Get all term tags as an array.
 
 ```typescript
 const tags = getTags({
-  dict,
+  terms,
   locale: 'en-US'
 })
 // [{ id: "frontend", name: "Frontend" }, { id: "backend", name: "Backend" }, ...]

@@ -1,10 +1,15 @@
 export {
+  getTerm,
+  getTerms,
+  getTermsDict,
+  getType,
+  getTypes,
+  getTypesDict,
+  getTag,
+  getTags,
+  getTagsDict,
   interpolateValue,
   interpolateLocaleRecord,
   interpolateValues,
   getValueLocalized,
-  getTermTagLocalized,
-  getTermTypeLocalized,
 } from './utils'
-
-export { getTerm, getTerms, getDict, getTypes, getTags, localizeTerm } from './helpers'

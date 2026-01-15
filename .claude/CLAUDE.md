@@ -106,7 +106,7 @@ type TLocaleRecord = {
 } & Partial<Record<'en-GB' | 'de-DE', string>>
 ```
 
-The interpolation system (in `src/utils/index.ts`) handles missing translations by falling back to en-US when `useFallback: true` (default behaviour).
+The interpolation system (in `src/utils/index.ts`) handles missing translations by falling back to en-US when `populateEmpty: true` (default behaviour).
 
 ### Public API
 
@@ -119,19 +119,20 @@ The library has two main entry points:
 - `locales` - Locale constants
 - All TypeScript types
 
-**2. Helper Functions (`src/helpers.ts`)** - Provides localisation functions:
-- `getTerm()` - Get a single term by ID
-- `getTerms()` - Get all terms as array
-- `getDict()` - Get dictionary object keyed by term ID
-- `getTypes()` - Get all types
-- `getTags()` - Get all tags
-- `localizeTerm()` - Localise a single term object
+**2. Helper Functions (`src/utils/`)** - Provides localisation functions:
+- `getTermsDict()` - Get all terms as a dictionary object
+- `getTerms()` - Get all terms as an array
+- `getTypesDict()` - Get all types as a dictionary object
+- `getTypes()` - Get all types as an array
+- `getTagsDict()` - Get all tags as a dictionary object
+- `getTags()` - Get all tags as an array
 
 Each helper function supports:
+- `terms` - The terms dictionary (required)
 - `locale` - Target locale (defaults to en-US)
-- `useFallback` - Whether to fall back to en-US for missing translations (defaults to true)
+- `populateEmpty` - Populate empty locale records with en-US values (defaults to true)
 
-The helpers are not exported from the main index but are used internally by consuming applications.
+The helpers are exported from `dev-dict/utils` for use by consuming applications.
 
 ### Path Aliases
 

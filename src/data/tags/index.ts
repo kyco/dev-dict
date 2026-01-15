@@ -26,4 +26,4 @@ export const RAW_TAGS = {
   [ui_library.id]: ui_library,
 } as const
 
-export const TAGS = interpolateValues({ obj: RAW_TAGS, keys: ['name'], useFallback: false })
+export const TAGS = interpolateValues({ obj: RAW_TAGS, keys: ['name'], populateEmpty: false })

@@ -12,4 +12,4 @@ export const RAW_SOURCES = {
   [wikipedia.id]: wikipedia,
 } as const
 
-export const SOURCES = interpolateValues({ obj: RAW_SOURCES, keys: ['name'], useFallback: false })
+export const SOURCES = interpolateValues({ obj: RAW_SOURCES, keys: ['name'], populateEmpty: false })

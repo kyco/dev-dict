@@ -1,8 +1,10 @@
 import { LOCALES } from '@/data/locales'
 
-export const MISC = {} as const
+export const MISC = {
+  TERM_INTERPOLATION_KEYS: ['name', 'altName', 'label', 'definition'],
+}
 
 export const CONFIG = {
   DEFAULT_LOCALE: LOCALES.EN_US,
-  USE_FALLBACK: true,
-} as const
+  POPULATE_EMPTY: true,
+}
