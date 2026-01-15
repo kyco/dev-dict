@@ -1,32 +1,17 @@
-# dev-dict Demo Site
+# dev-dict-demo
 
-This is the live demo and showcase for the [dev-dict](https://github.com/kyco/dev-dict) library.
+Interactive showcase on how to use [dev-dict](https://www.npmjs.com/package/dev-dict). Browse and search software development terms with multilingual support.
 
-## Features
-
-- 🔍 **Search** - Real-time search across term names, labels, and definitions
-- 🏷️ **Filtering** - Filter by types (library, framework, etc.) and tags (frontend, backend, etc.)
-- 🌍 **Multilingual** - Switch between English (US/GB) and German
-- 📱 **Responsive** - Beautiful interface that works on all devices
+**[View Demo](https://kyco.github.io/dev-dict/)**
 
 ## Development
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Start dev server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Preview production build
-pnpm preview
+pnpm demo:dev     # Start dev server (http://localhost:5173)
+pnpm demo:build   # Build for production
+pnpm demo:preview # Preview production build
 ```
 
 ## Deployment
 
-The demo is automatically deployed to GitHub Pages when changes are merged to the `main` branch.
-
-Live demo: https://kyco.github.io/dev-dict/
+The demo is automatically deployed to GitHub Pages when changes are merged to `main` after npm publish succeeds.
