@@ -236,8 +236,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                       <span className="text-slate-400">Label:</span>{' '}
                       {term.sources.label
                         .map(
-                          (source) =>
-                            sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
+                          (source) => sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
                         )
                         .join(', ')}
                     </p>
@@ -247,8 +246,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                       <span className="text-slate-400">Definition:</span>{' '}
                       {term.sources.definition
                         .map(
-                          (source) =>
-                            sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
+                          (source) => sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
                         )
                         .join(', ')}
                     </p>
