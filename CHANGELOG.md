@@ -1,3 +1,18 @@
+## [0.8.0](https://github.com/kyco/dev-dict/compare/v0.7.4...v0.8.0) (2026-01-15)
+
+### Features
+
+* Add new demo ([122cd5f](https://github.com/kyco/dev-dict/commit/122cd5f7c9abeb7de10e82e2d86e34d94360fc2a))
+
+### Bug Fixes
+
+* Lint ([d9f4a34](https://github.com/kyco/dev-dict/commit/d9f4a346ac8f8aa7e12b722ed620d79ddd85dad7))
+* Remove docs generation ([1f911b0](https://github.com/kyco/dev-dict/commit/1f911b0c9d4140c2d5fb90b5c853498af616d785))
+
+### Chore
+
+* Update README ([610c95d](https://github.com/kyco/dev-dict/commit/610c95d475232aeca2c057a94e495708a50823d2))
+
 ## [0.7.4](https://github.com/kyco/dev-dict/compare/v0.7.3...v0.7.4) (2026-01-15)
 
 ### Bug Fixes
