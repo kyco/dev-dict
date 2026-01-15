@@ -1,3 +1,28 @@
+## [0.9.0](https://github.com/kyco/dev-dict/compare/v0.8.0...v0.9.0) (2026-01-15)
+
+### Features
+
+* Expose `getSources` and `getSourcesDict` methods ([bf33aa7](https://github.com/kyco/dev-dict/commit/bf33aa70d40cbcc423afb108b11a1e8d1cac4f4f))
+
+### Bug Fixes
+
+* Lint ([dffb2b4](https://github.com/kyco/dev-dict/commit/dffb2b4e4f9d02cc16284764f4937954f4ed3be0))
+* Make sources an array [BREAKING] ([6014d18](https://github.com/kyco/dev-dict/commit/6014d184b5311477f5f305d91a0bbf103b5ee434))
+* Query param and cursor ([d6910ad](https://github.com/kyco/dev-dict/commit/d6910adf6c36f8cc4fad27736112cd56bc893dd4))
+* Redirect ([c1a744a](https://github.com/kyco/dev-dict/commit/c1a744a64388bb811ed0282e31b11bb1e9dbe50c))
+* Type ([35dd9ea](https://github.com/kyco/dev-dict/commit/35dd9ea7508d908d5dbbf27ebe6954cfefe0dd9a))
+* Update empty view ([b246f2b](https://github.com/kyco/dev-dict/commit/b246f2ba7a487975ad50bbebceb6ab1f98965561))
+* Update language dropdown to show/hide empty values ([c4fb151](https://github.com/kyco/dev-dict/commit/c4fb151a5fa1f1aeafcb6e0464a4978926e1d5c1))
+* Wording ([4041dca](https://github.com/kyco/dev-dict/commit/4041dca06e421ba0248aea7cc7cd62a8aa9af8d5))
+
+### Chore
+
+* Update README ([06fe4c7](https://github.com/kyco/dev-dict/commit/06fe4c78778557cd4fa097f976f58219354566d2))
+
+### Refactoring
+
+* Split into components ([00c8aa0](https://github.com/kyco/dev-dict/commit/00c8aa0602006e99b2caca2cd61d0265de756aa0))
+
 ## [0.8.0](https://github.com/kyco/dev-dict/compare/v0.7.4...v0.8.0) (2026-01-15)
 
 ### Features
