@@ -153,31 +153,9 @@ const termsDict = getTermsDict({ terms, locale: 'en-US' })
 | `getSourcesDict(options)` | Dictionary | Get all sources as a dictionary object |
 | `getSources(options)` | Array | Get all sources as an array |
 
-### Term Structure
+### Types
 
-```typescript
-{
-  id: string              // Unique identifier
-  name: string            // Display name
-  altName?: string        // Optional abbreviation/short name
-  label: string           // Descriptive type (e.g., "UI Library")
-  definition: string      // Full explanation
-  type: Array<{           // Categories
-    id: string
-    name: string
-  }>
-  tags: Array<{           // Additional classifications
-    id: string
-    name: string
-  }>
-  links?: {               // Optional external links
-    website: string
-    github?: string
-    npm?: string
-    wikipedia?: string
-  }
-}
-```
+See [src/types/index.ts](https://github.com/kyco/dev-dict/blob/main/src/types/index.ts) for all type definitions.
 
 ## Supported Languages
 
