@@ -41,7 +41,7 @@ export default {
   },
 
   sources: {
-    label: SOURCES.community,
-    definition: SOURCES.ai_generated,
+    label: [SOURCES.community],
+    definition: [SOURCES.ai_generated, SOURCES.wikipedia],
   },
 } as const satisfies TTerm

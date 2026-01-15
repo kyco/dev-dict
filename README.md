@@ -104,7 +104,16 @@ import { terms, types, tags, locales } from 'dev-dict'
 Import from `dev-dict/utils`:
 
 ```typescript
-import { getTerms, getTermsDict, getTypes, getTypesDict, getTags, getTagsDict } from 'dev-dict/utils'
+import {
+  getTerms,
+  getTermsDict,
+  getTypes,
+  getTypesDict,
+  getTags,
+  getTagsDict,
+  getSources,
+  getSourcesDict
+} from 'dev-dict/utils'
 ```
 
 **Example usage:**
@@ -141,32 +150,12 @@ const termsDict = getTermsDict({ terms, locale: 'en-US' })
 | `getTypes(options)` | Array | Get all term types as an array |
 | `getTagsDict(options)` | Dictionary | Get all term tags as a dictionary object |
 | `getTags(options)` | Array | Get all term tags as an array |
+| `getSourcesDict(options)` | Dictionary | Get all sources as a dictionary object |
+| `getSources(options)` | Array | Get all sources as an array |
 
-### Term Structure
+### Types
 
-```typescript
-{
-  id: string              // Unique identifier
-  name: string            // Display name
-  altName?: string        // Optional abbreviation/short name
-  label: string           // Descriptive type (e.g., "UI Library")
-  definition: string      // Full explanation
-  type: Array<{           // Categories
-    id: string
-    name: string
-  }>
-  tags: Array<{           // Additional classifications
-    id: string
-    name: string
-  }>
-  links?: {               // Optional external links
-    website: string
-    github?: string
-    npm?: string
-    wikipedia?: string
-  }
-}
-```
+See [src/types/index.ts](https://github.com/kyco/dev-dict/blob/main/src/types/index.ts) for all type definitions.
 
 ## Supported Languages
 

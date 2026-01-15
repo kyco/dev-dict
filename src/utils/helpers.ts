@@ -3,6 +3,8 @@ import type {
   TLocaleRecord,
   TTerm,
   TTermLocalized,
+  TTermSource,
+  TTermSourceLocalized,
   TTermTag,
   TTermTagLocalized,
   TTermType,
@@ -127,5 +129,20 @@ export const getType = ({
   return {
     id: type.id,
     name: getValueLocalized({ obj: type.name, locale, populateEmpty }),
+  }
+}
+
+export const getSource = ({
+  source,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  source: TTermSource
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermSourceLocalized => {
+  return {
+    id: source.id,
+    name: getValueLocalized({ obj: source.name, locale, populateEmpty }),
   }
 }

@@ -39,6 +39,51 @@ Previews the production build of the demo site.
 
 **Auto-deployment**: The demo is automatically deployed to GitHub Pages after a successful npm publish when changes are merged to the `main` branch. The deployment workflow ensures the package is published first before deploying the demo. The live demo is available at https://kyco.github.io/dev-dict/
 
+#### Demo Architecture
+
+The demo follows a clean, domain-driven architecture:
+
+**Directory Structure:**
+```
+demo/src/
+├── components/          # Reusable UI components
+│   ├── Chip.tsx        # Tag/type chip component
+│   ├── Dropdown.tsx    # Dropdown selector
+│   ├── SearchBar.tsx   # Search input
+│   ├── StatusIcon.tsx  # Status indicator
+│   ├── TermCard.tsx    # Term card display
+│   ├── index.ts        # Component exports
+│   └── ui.tsx          # Legacy compatibility exports
+├── pages/              # Page-level components
+│   ├── HomePage.tsx    # Main dictionary page
+│   ├── StatusPage.tsx  # Contribution status page
+│   └── TermPage.tsx    # Individual term details
+├── routes/             # TanStack Router route definitions (minimal)
+│   ├── __root.tsx      # Root layout with AppProvider
+│   ├── index.tsx       # Home route (delegates to HomePage)
+│   ├── status.tsx      # Status route (delegates to StatusPage)
+│   └── term.$termId.tsx # Term detail route (delegates to TermPage)
+├── shared/             # Shared utilities and configuration
+│   ├── constants.ts    # Common constants (languages, options, URLs)
+│   ├── context/
+│   │   └── AppContext.tsx # Global app context (language state)
+│   └── utils/
+│       └── termUtils.ts # Term-related utility functions
+├── main.tsx            # Application entry point
+└── routeTree.gen.ts    # Auto-generated TanStack Router tree
+```
+
+**Path Aliases (Demo):**
+- `~/` → `demo/src/` (use this for all imports within the demo)
+- Examples: `~/components/Chip`, `~/pages/HomePage`, `~/shared/constants`
+
+**Key Principles:**
+1. **Route files are minimal** - They only define routes and delegate to page components
+2. **Pages contain business logic** - All state management and data fetching happens in page components
+3. **Components are atomic** - Each component is in its own file
+4. **Shared code is centralised** - Constants, utils, and context are in `~/shared`
+5. **Domain-driven organisation** - Code is organised by feature/domain, not by technical layer
+
 ### Linting
 ```bash
 npx eslint .
@@ -118,6 +163,8 @@ The library has two main entry points:
 - `getTypes()` - Get all types as an array
 - `getTagsDict()` - Get all tags as a dictionary object
 - `getTags()` - Get all tags as an array
+- `getSourcesDict()` - Get all sources as a dictionary object
+- `getSources()` - Get all sources as an array
 
 Each helper function supports:
 - `terms` - The terms dictionary (required)
