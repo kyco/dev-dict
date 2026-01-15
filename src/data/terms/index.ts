@@ -139,7 +139,6 @@ import nexudus from './nexudus'
 import nft from './nft'
 import nginx from './nginx'
 import nightsbridge from './nightsbridge'
-import node from './node'
 import node_js from './node_js'
 import node_mailer from './node_mailer'
 import nosql from './nosql'
@@ -364,7 +363,6 @@ export const RAW_TERMS = {
   [nft.id]: nft,
   [nginx.id]: nginx,
   [nightsbridge.id]: nightsbridge,
-  [node.id]: node,
   [node_js.id]: node_js,
   [node_mailer.id]: node_mailer,
   [nosql.id]: nosql,
