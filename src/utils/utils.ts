@@ -15,7 +15,8 @@ import type {
   TTermTypesDictLocalized,
 } from '@/types'
 import { CONFIG, MISC } from '@/common'
-import { getTag, getTerm, getType, interpolateValues } from '@/utils'
+
+import { getTag, getTerm, getType, interpolateValues } from './helpers'
 
 export const getTermsDict = ({
   terms,
