@@ -38,7 +38,7 @@ export function Dropdown<T extends string | string[]>({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`h-10 px-3 bg-white rounded-lg border ${isOpen ? 'border-blue-300 ring-2 ring-blue-100' : 'border-slate-200 hover:border-slate-300'} flex items-center gap-2 transition-all text-sm min-w-[140px]`}
+        className={`h-10 px-3 bg-white rounded-lg border ${isOpen ? 'border-blue-300 ring-2 ring-blue-100' : 'border-slate-200 hover:border-slate-300'} flex items-center gap-2 transition-all text-sm min-w-[140px] cursor-pointer`}
       >
         <Icon size={16} className="text-slate-400" />
         <span
@@ -70,7 +70,7 @@ export function Dropdown<T extends string | string[]>({
                         setIsOpen(false)
                       }
                     }}
-                    className="w-full px-3 py-2 text-left text-sm hover:bg-slate-50 flex items-center justify-between gap-2"
+                    className="w-full px-3 py-2 text-left text-sm hover:bg-slate-50 flex items-center justify-between gap-2 cursor-pointer"
                   >
                     <span
                       className={`truncate whitespace-nowrap ${isSelected ? 'text-slate-800 font-medium' : 'text-slate-600'}`}

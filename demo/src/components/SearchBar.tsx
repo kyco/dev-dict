@@ -19,7 +19,7 @@ export function SearchBar({ value, onChange }: SearchBarProps) {
       {value && (
         <button
           onClick={() => onChange('')}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
         >
           <X size={20} />
         </button>

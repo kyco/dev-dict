@@ -111,7 +111,7 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
                   setSelectedTags([])
                   setCompleteness('all')
                 }}
-                className="text-sm text-slate-500 hover:text-blue-600 transition-colors"
+                className="text-sm text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
               >
                 Clear filters
               </button>

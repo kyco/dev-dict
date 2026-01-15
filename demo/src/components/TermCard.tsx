@@ -25,7 +25,7 @@ export function TermCard({ term, searchQuery }: TermCardProps) {
     <Link
       to="/term/$termId"
       params={{ termId: term.id }}
-      search={{ from: searchQuery || '' }}
+      search={{ from: searchQuery || undefined }}
       className="group bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-lg hover:border-blue-300 transition-all cursor-pointer block"
     >
       <div className="flex items-start justify-between gap-3 mb-3">
