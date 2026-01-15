@@ -75,10 +75,7 @@ export const getTerms = ({
   locale?: TLocale
   useFallback?: boolean
 }): TTermLocalized[] => {
-  const TERMS = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
-  return Object.values(TERMS)
-    .map((term) => getTerm({ dict, id: term.id as TTermId, locale, useFallback }))
-    .filter((term): term is TTermLocalized => term !== undefined)
+  return Object.values(getDict({ dict, locale, useFallback }))
 }
 
 export const getTypes = ({
