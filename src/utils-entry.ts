@@ -1,13 +1,15 @@
 export {
-  getDict,
   getTerm,
   getTerms,
+  getTermsDict,
+  getType,
   getTypes,
+  getTypesDict,
+  getTag,
   getTags,
+  getTagsDict,
   interpolateValue,
   interpolateLocaleRecord,
   interpolateValues,
   getValueLocalized,
-  getTag,
-  getType,
 } from './utils'

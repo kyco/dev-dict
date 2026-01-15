@@ -136,8 +136,20 @@ export type TTerms = (typeof TERMS)[keyof typeof TERMS]
 
 export type TTermId = keyof typeof TERMS
 
-export type TDevDict = Record<TTermId, TTerm>
+export type TTermsDict = Record<TTermId, TTerm>
 
-export type TDevDictPartial = Partial<TDevDict>
+export type TTermsDictPartial = Partial<TTermsDict>
 
-export type TDevDictLocalized = Record<TTermId, TTermLocalized>
+export type TTermsDictLocalized = Record<TTermId, TTermLocalized>
+
+export type TTermTypeId = TTermType['id']
+
+export type TTermTypesDict = Record<TTermTypeId, TTermType>
+
+export type TTermTypesDictLocalized = Record<TTermTypeId, TTermTypeLocalized>
+
+export type TTermTagId = TTermTag['id']
+
+export type TTermTagsDict = Record<TTermTagId, TTermTag>
+
+export type TTermTagsDictLocalized = Record<TTermTagId, TTermTagLocalized>
