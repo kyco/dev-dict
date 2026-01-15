@@ -227,22 +227,30 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               )}
             </div>
 
-            {term.sources && (term.sources.label || term.sources.definition) && (
+            {term.sources && (term.sources.label?.length || term.sources.definition?.length) && (
               <div className="pt-6 border-t border-slate-200">
                 <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Sources</h2>
                 <div className="text-sm text-slate-500 space-y-1">
-                  {term.sources.label && (
+                  {term.sources.label && term.sources.label.length > 0 && (
                     <p>
                       <span className="text-slate-400">Label:</span>{' '}
-                      {sources.find((s: TTermSourceLocalized) => s.id === term.sources?.label?.id)?.name ||
-                        term.sources.label.id}
+                      {term.sources.label
+                        .map(
+                          (source) =>
+                            sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
+                        )
+                        .join(', ')}
                     </p>
                   )}
-                  {term.sources.definition && (
+                  {term.sources.definition && term.sources.definition.length > 0 && (
                     <p>
                       <span className="text-slate-400">Definition:</span>{' '}
-                      {sources.find((s: TTermSourceLocalized) => s.id === term.sources?.definition?.id)?.name ||
-                        term.sources.definition.id}
+                      {term.sources.definition
+                        .map(
+                          (source) =>
+                            sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
+                        )
+                        .join(', ')}
                     </p>
                   )}
                 </div>

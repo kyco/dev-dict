@@ -37,7 +37,7 @@ export default {
   },
 
   sources: {
-    label: SOURCES.community,
-    definition: SOURCES.official_website,
+    label: [SOURCES.community],
+    definition: [SOURCES.official_website],
   },
 } as const satisfies TTerm

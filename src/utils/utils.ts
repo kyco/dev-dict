@@ -148,11 +148,19 @@ export const getSourcesDict = ({
   const sourcesDict: TTermSourcesDict = {}
 
   Object.values(interpolatedTerms).forEach((term) => {
-    if (term.sources?.label && !sourcesDict[term.sources.label.id]) {
-      sourcesDict[term.sources.label.id] = term.sources.label
+    if (term.sources?.label) {
+      term.sources.label.forEach((source) => {
+        if (!sourcesDict[source.id]) {
+          sourcesDict[source.id] = source
+        }
+      })
     }
-    if (term.sources?.definition && !sourcesDict[term.sources.definition.id]) {
-      sourcesDict[term.sources.definition.id] = term.sources.definition
+    if (term.sources?.definition) {
+      term.sources.definition.forEach((source) => {
+        if (!sourcesDict[source.id]) {
+          sourcesDict[source.id] = source
+        }
+      })
     }
   })
 

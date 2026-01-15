@@ -57,8 +57,8 @@ export type TTermSourceLocalized = {
 export type TTermSources = (typeof SOURCES)[keyof typeof SOURCES]
 
 export type TSourceMetadata = {
-  label?: TTermSources
-  definition?: TTermSources
+  label?: TTermSources[]
+  definition?: TTermSources[]
 }
 
 export type TTerm = {
