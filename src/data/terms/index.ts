@@ -451,4 +451,4 @@ export const RAW_TERMS = {
   [zod.id]: zod,
 } as const
 
-export const TERMS = interpolateValues({ obj: RAW_TERMS, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback: false })
+export const TERMS = interpolateValues({ obj: RAW_TERMS, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty: false })

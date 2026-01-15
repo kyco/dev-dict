@@ -6,5 +6,5 @@ export const MISC = {
 
 export const CONFIG = {
   DEFAULT_LOCALE: LOCALES.EN_US,
-  USE_FALLBACK: true,
+  POPULATE_EMPTY: true,
 }

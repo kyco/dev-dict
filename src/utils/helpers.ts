@@ -18,46 +18,46 @@ import { LOCALES } from '@/data/locales'
 export const interpolateValue = ({
   obj,
   value,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   obj: TLocaleRecord
   value: undefined | string
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): string => {
   if (value && Object.values<string>(LOCALES).includes(value)) {
-    return obj[value as TLocale] || (useFallback ? obj[LOCALES.EN_US] : '')
+    return obj[value as TLocale] || (populateEmpty ? obj[LOCALES.EN_US] : '')
   }
-  return value || (useFallback ? obj[LOCALES.EN_US] : '')
+  return value || (populateEmpty ? obj[LOCALES.EN_US] : '')
 }
 
 export const interpolateLocaleRecord = ({
   obj,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   obj: TLocaleRecord
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TLocaleRecord => {
   const locales = Object.values<string>(LOCALES) as TLocale[]
 
   return Object.fromEntries(
-    locales.map((locale) => [locale, interpolateValue({ obj, value: obj[locale], useFallback })]),
+    locales.map((locale) => [locale, interpolateValue({ obj, value: obj[locale], populateEmpty })]),
   ) as TLocaleRecord
 }
 
 export const interpolateValues = <T extends Record<string, any>>({
   obj,
   keys,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   obj: T
   keys: string[]
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): T => {
   return Object.fromEntries(
     Object.entries(obj).map(([itemKey, item]) => {
       const interpolatedFields = keys
         .filter((key) => key in item && typeof item[key] === 'object')
-        .map((key) => [key, interpolateLocaleRecord({ obj: item[key], useFallback })])
+        .map((key) => [key, interpolateLocaleRecord({ obj: item[key], populateEmpty })])
 
       return [itemKey, { ...item, ...Object.fromEntries(interpolatedFields) }]
     }),
@@ -67,34 +67,34 @@ export const interpolateValues = <T extends Record<string, any>>({
 export const getValueLocalized = ({
   obj,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   obj: TLocaleRecord
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): string => {
-  return interpolateValue({ obj, value: obj[locale], useFallback })
+  return interpolateValue({ obj, value: obj[locale], populateEmpty })
 }
 
 export const getTerm = ({
   term,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   term: TTerm
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermLocalized => {
   return {
     id: term.id,
-    name: getValueLocalized({ obj: term.name, locale, useFallback }),
+    name: getValueLocalized({ obj: term.name, locale, populateEmpty }),
     ...('altName' in term && term.altName
-      ? { altName: getValueLocalized({ obj: term.altName, locale, useFallback }) }
+      ? { altName: getValueLocalized({ obj: term.altName, locale, populateEmpty }) }
       : {}),
-    type: term.type.map((value) => getType({ type: value, locale, useFallback })),
-    label: getValueLocalized({ obj: term.label, locale, useFallback }),
-    definition: getValueLocalized({ obj: term.definition, locale, useFallback }),
-    tags: term.tags.map((value) => getTag({ tag: value, locale, useFallback })),
+    type: term.type.map((value) => getType({ type: value, locale, populateEmpty })),
+    label: getValueLocalized({ obj: term.label, locale, populateEmpty }),
+    definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
+    tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
     links: term.links,
     sources: term.sources,
   }
@@ -103,29 +103,29 @@ export const getTerm = ({
 export const getTag = ({
   tag,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   tag: TTermTag
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTagLocalized => {
   return {
     id: tag.id,
-    name: getValueLocalized({ obj: tag.name, locale, useFallback }),
+    name: getValueLocalized({ obj: tag.name, locale, populateEmpty }),
   }
 }
 
 export const getType = ({
   type,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   type: TTermType
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTypeLocalized => {
   return {
     id: type.id,
-    name: getValueLocalized({ obj: type.name, locale, useFallback }),
+    name: getValueLocalized({ obj: type.name, locale, populateEmpty }),
   }
 }

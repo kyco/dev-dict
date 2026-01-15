@@ -20,17 +20,17 @@ import { getTag, getTerm, getType, interpolateValues } from '@/utils'
 export const getTermsDict = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): Partial<TTermsDictLocalized> => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const localizedTerms: Partial<TTermsDictLocalized> = {}
 
   for (const [key, term] of Object.entries(terms)) {
-    localizedTerms[key as TTermId] = getTerm({ term, locale, useFallback })
+    localizedTerms[key as TTermId] = getTerm({ term, locale, populateEmpty })
   }
 
   return localizedTerms
@@ -39,25 +39,25 @@ export const getTermsDict = ({
 export const getTerms = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermLocalized[] => {
-  return Object.values(getTermsDict({ dict, locale, useFallback }))
+  return Object.values(getTermsDict({ dict, locale, populateEmpty }))
 }
 
 export const getTypesDict = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTypesDictLocalized => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const typesDict: TTermTypesDict = {}
 
   Object.values(terms).forEach((term) => {
@@ -71,7 +71,7 @@ export const getTypesDict = ({
   const localizedTypes: TTermTypesDictLocalized = {}
 
   for (const [key, type] of Object.entries(typesDict)) {
-    localizedTypes[key as TTermTypeId] = getType({ type, locale, useFallback })
+    localizedTypes[key as TTermTypeId] = getType({ type, locale, populateEmpty })
   }
 
   return localizedTypes
@@ -80,25 +80,25 @@ export const getTypesDict = ({
 export const getTypes = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTypeLocalized[] => {
-  return Object.values(getTypesDict({ dict, locale, useFallback }))
+  return Object.values(getTypesDict({ dict, locale, populateEmpty }))
 }
 
 export const getTagsDict = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTagsDictLocalized => {
-  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
   const tagsDict: TTermTagsDict = {}
 
   Object.values(terms).forEach((term) => {
@@ -112,7 +112,7 @@ export const getTagsDict = ({
   const localizedTags: TTermTagsDictLocalized = {}
 
   for (const [key, tag] of Object.entries(tagsDict)) {
-    localizedTags[key as TTermTagId] = getTag({ tag, locale, useFallback })
+    localizedTags[key as TTermTagId] = getTag({ tag, locale, populateEmpty })
   }
 
   return localizedTags
@@ -121,11 +121,11 @@ export const getTagsDict = ({
 export const getTags = ({
   dict,
   locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
   dict: TTermsDict | TTermsDictPartial
   locale?: TLocale
-  useFallback?: boolean
+  populateEmpty?: boolean
 }): TTermTagLocalized[] => {
-  return Object.values(getTagsDict({ dict, locale, useFallback }))
+  return Object.values(getTagsDict({ dict, locale, populateEmpty }))
 }

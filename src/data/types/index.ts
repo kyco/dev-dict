@@ -22,4 +22,4 @@ export const RAW_TYPES = {
   [standard.id]: standard,
 } as const
 
-export const TYPES = interpolateValues({ obj: RAW_TYPES, keys: ['name'], useFallback: false })
+export const TYPES = interpolateValues({ obj: RAW_TYPES, keys: ['name'], populateEmpty: false })
