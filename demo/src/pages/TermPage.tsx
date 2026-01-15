@@ -1,7 +1,9 @@
 import { useRouter } from '@tanstack/react-router'
 import { Chip } from '~/components/Chip'
-import { getGithubEditUrl } from '~/shared/constants'
+import { LanguageDropdown } from '~/components/LanguageDropdown'
+import { getGithubEditUrl, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
+import { hasTermFieldInLocale } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { getSources, getTerms } from 'dev-dict/utils'
@@ -14,7 +16,7 @@ interface TermPageProps {
 }
 
 export function TermPage({ termId, fromQuery }: TermPageProps) {
-  const { lang } = useAppContext()
+  const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const router = useRouter()
   const [copied, setCopied] = useState(false)
 
@@ -32,9 +34,13 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const dictionary = useMemo(() => getTerms({ terms, locale: lang }), [lang])
-  const sources = useMemo(() => getSources({ terms, locale: lang }), [lang])
+  const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const sources = useMemo(() => getSources({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const term = dictionary.find((t) => t.id === termId)
+
+  const hasName = term ? hasTermFieldInLocale(term.id, 'name', lang) : false
+  const hasLabel = term ? hasTermFieldInLocale(term.id, 'label', lang) : false
+  const hasDefinition = term ? hasTermFieldInLocale(term.id, 'definition', lang) : false
 
   if (!term) {
     return (
@@ -52,13 +58,22 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-3xl mx-auto px-4 py-8">
-        <button
-          onClick={goBack}
-          className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors mb-6 group cursor-pointer"
-        >
-          <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="font-medium">Back to Dictionary</span>
-        </button>
+        <div className="flex items-center justify-between mb-6">
+          <button
+            onClick={goBack}
+            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group cursor-pointer"
+          >
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            <span className="font-medium">Back to Dictionary</span>
+          </button>
+          <LanguageDropdown
+            options={LANGUAGES}
+            selected={lang}
+            setSelected={setLang}
+            populateEmpty={populateEmpty}
+            setPopulateEmpty={setPopulateEmpty}
+          />
+        </div>
 
         <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-cyan-600 px-8 py-10 text-white">
@@ -68,12 +83,16 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <Book size={28} />
                   <span className="text-blue-200 text-sm font-medium uppercase tracking-wider">Definition</span>
                 </div>
-                <h1 className="text-3xl font-bold mb-2">{term.name}</h1>
-                {term.label ? (
-                  <p className="text-blue-200 text-lg">{term.label}</p>
+                {!hasName && !populateEmpty ? (
+                  <h1 className="text-3xl font-bold mb-2 text-white/60 italic">Not provided in selected language</h1>
                 ) : (
-                  <p className="text-blue-200/60 text-lg italic">No label provided</p>
+                  <h1 className="text-3xl font-bold mb-2">{term.name}</h1>
                 )}
+                {!hasLabel && !populateEmpty ? (
+                  <p className="text-blue-200/60 text-lg italic">Not provided in selected language</p>
+                ) : term.label ? (
+                  <p className="text-blue-200 text-lg">{term.label}</p>
+                ) : null}
                 <button
                   onClick={copyId}
                   className={`mt-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded transition-all ${
@@ -112,7 +131,9 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
           <div className="px-8 py-8">
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
-              {term.definition ? (
+              {!hasDefinition && !populateEmpty ? (
+                <p className="text-slate-400 italic">Not provided in selected language</p>
+              ) : term.definition ? (
                 <p className="text-slate-700 text-lg leading-relaxed">{term.definition}</p>
               ) : (
                 <p className="text-slate-400 italic">No definition provided yet. Help us by contributing!</p>
@@ -126,7 +147,9 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {term.type.length > 0 ? (
-                    term.type.map((t: TTermTypeLocalized) => <Chip key={t.id} label={t.name} variant="type" />)
+                    term.type.map((t: TTermTypeLocalized) => (
+                      <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="type" />
+                    ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No type specified</span>
                   )}
@@ -138,7 +161,9 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {term.tags.length > 0 ? (
-                    term.tags.map((t: TTermTagLocalized) => <Chip key={t.id} label={t.name} variant="tag" />)
+                    term.tags.map((t: TTermTagLocalized) => (
+                      <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="tag" />
+                    ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No tags specified</span>
                   )}

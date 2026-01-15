@@ -1,5 +1,6 @@
 export { Chip } from './Chip'
 export { Dropdown } from './Dropdown'
+export { LanguageDropdown } from './LanguageDropdown'
 export { SearchBar } from './SearchBar'
 export { StatusIcon } from './StatusIcon'
 export { TermCard } from './TermCard'

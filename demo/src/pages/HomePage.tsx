@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { Dropdown } from '~/components/Dropdown'
+import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
 import { COMPLETENESS_OPTIONS, LANGUAGES } from '~/shared/constants'
@@ -7,7 +8,7 @@ import { useAppContext } from '~/shared/context/AppContext'
 import { isTermComplete } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { CheckCircle, Globe, Layers, Plus, Search, Tag } from 'lucide-react'
+import { CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 interface HomePageProps {
@@ -16,14 +17,14 @@ interface HomePageProps {
 }
 
 export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
-  const { lang, setLang } = useAppContext()
+  const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [completeness, setCompleteness] = useState<string>('all')
 
-  const dictionary = useMemo(() => getTerms({ terms, locale: lang }), [lang])
-  const types = useMemo(() => getTypes({ terms, locale: lang }), [lang])
-  const tags = useMemo(() => getTags({ terms, locale: lang }), [lang])
+  const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const tags = useMemo(() => getTags({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
 
   const typesOptions = useMemo(
     () => types.map((t) => ({ id: t.id, label: t.name })).sort((a, b) => a.label.localeCompare(b.label, lang)),
@@ -79,7 +80,13 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
           <SearchBar value={searchQuery} onChange={onSearchChange} />
 
           <div className="flex flex-wrap items-center gap-3">
-            <Dropdown icon={Globe} placeholder="Language" options={LANGUAGES} selected={lang} setSelected={setLang} />
+            <LanguageDropdown
+              options={LANGUAGES}
+              selected={lang}
+              setSelected={setLang}
+              populateEmpty={populateEmpty}
+              setPopulateEmpty={setPopulateEmpty}
+            />
             <Dropdown
               icon={CheckCircle}
               placeholder="Status"
@@ -127,7 +134,7 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
 
         <div className="grid gap-4 md:grid-cols-2">
           {filteredTerms.map((term) => (
-            <TermCard key={term.id} term={term} searchQuery={searchQuery} />
+            <TermCard key={term.id} term={term} searchQuery={searchQuery} populateEmpty={populateEmpty} />
           ))}
         </div>
 

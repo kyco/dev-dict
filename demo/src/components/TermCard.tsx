@@ -1,4 +1,6 @@
 import { Link } from '@tanstack/react-router'
+import { useAppContext } from '~/shared/context/AppContext'
+import { hasTermFieldInLocale } from '~/shared/utils/termUtils'
 import type { TTermLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { Book, Check, Copy, ExternalLink, Globe } from 'lucide-react'
 import { useState } from 'react'
@@ -8,10 +10,16 @@ import { Chip } from './Chip'
 interface TermCardProps {
   term: TTermLocalized
   searchQuery?: string
+  populateEmpty?: boolean
 }
 
-export function TermCard({ term, searchQuery }: TermCardProps) {
+export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardProps) {
+  const { lang } = useAppContext()
   const [copied, setCopied] = useState(false)
+
+  const hasName = hasTermFieldInLocale(term.id, 'name', lang)
+  const hasLabel = hasTermFieldInLocale(term.id, 'label', lang)
+  const hasDefinition = hasTermFieldInLocale(term.id, 'definition', lang)
 
   const copyId = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -30,8 +38,20 @@ export function TermCard({ term, searchQuery }: TermCardProps) {
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
-          <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">{term.name}</h3>
-          {term.label ? <p className="text-sm text-slate-500">{term.label}</p> : null}
+          {!hasName && !populateEmpty ? (
+            <h3 className="text-lg font-bold text-slate-400 italic group-hover:text-blue-600 transition-colors">
+              Not provided in selected language
+            </h3>
+          ) : (
+            <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+              {term.name}
+            </h3>
+          )}
+          {!hasLabel && !populateEmpty ? (
+            <p className="text-sm text-slate-400 italic">Not provided in selected language</p>
+          ) : term.label ? (
+            <p className="text-sm text-slate-500">{term.label}</p>
+          ) : null}
           <button
             onClick={copyId}
             className={`inline-flex items-center gap-1 px-2 pt-0.5 mt-2 text-xs rounded transition-all mb-1 ${
@@ -56,17 +76,19 @@ export function TermCard({ term, searchQuery }: TermCardProps) {
         </div>
         <Book size={20} className="text-slate-300 group-hover:text-blue-400 transition-colors flex-shrink-0 mt-1" />
       </div>
-      {term.definition ? (
+      {!hasDefinition && !populateEmpty ? (
+        <p className="text-slate-400 text-sm leading-relaxed mb-4 italic">Not provided in selected language</p>
+      ) : term.definition ? (
         <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">{term.definition}</p>
       ) : null}
 
       {term.type.length || term.tags.length ? (
         <div className="flex flex-wrap items-center gap-1.5">
           {term.type.map((t: TTermTypeLocalized) => (
-            <Chip key={t.id} label={t.name} variant="type" />
+            <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="type" />
           ))}
           {term.tags.map((t: TTermTagLocalized) => (
-            <Chip key={t.id} label={t.name} variant="tag" />
+            <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="tag" />
           ))}
         </div>
       ) : null}
