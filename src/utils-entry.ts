@@ -8,6 +8,6 @@ export {
   interpolateLocaleRecord,
   interpolateValues,
   getValueLocalized,
-  getTermTagLocalized,
-  getTermTypeLocalized,
+  getTag,
+  getType,
 } from './utils'

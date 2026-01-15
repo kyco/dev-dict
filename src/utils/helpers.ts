@@ -1,4 +1,13 @@
-import type { TLocale, TLocaleRecord, TTermTag, TTermTagLocalized, TTermType, TTermTypeLocalized } from '@/types'
+import type {
+  TLocale,
+  TLocaleRecord,
+  TTerm,
+  TTermLocalized,
+  TTermTag,
+  TTermTagLocalized,
+  TTermType,
+  TTermTypeLocalized,
+} from '@/types'
 import { CONFIG } from '@/common'
 import { LOCALES } from '@/data/locales'
 
@@ -67,7 +76,31 @@ export const getValueLocalized = ({
   return interpolateValue({ obj, value: obj[locale], useFallback })
 }
 
-export const getTermTagLocalized = ({
+export const getTerm = ({
+  term,
+  locale = CONFIG.DEFAULT_LOCALE,
+  useFallback = CONFIG.USE_FALLBACK,
+}: {
+  term: TTerm
+  locale?: TLocale
+  useFallback?: boolean
+}): TTermLocalized => {
+  return {
+    id: term.id,
+    name: getValueLocalized({ obj: term.name, locale, useFallback }),
+    ...('altName' in term && term.altName
+      ? { altName: getValueLocalized({ obj: term.altName, locale, useFallback }) }
+      : {}),
+    type: term.type.map((value) => getType({ type: value, locale, useFallback })),
+    label: getValueLocalized({ obj: term.label, locale, useFallback }),
+    definition: getValueLocalized({ obj: term.definition, locale, useFallback }),
+    tags: term.tags.map((value) => getTag({ tag: value, locale, useFallback })),
+    links: term.links,
+    sources: term.sources,
+  }
+}
+
+export const getTag = ({
   tag,
   locale = CONFIG.DEFAULT_LOCALE,
   useFallback = CONFIG.USE_FALLBACK,
@@ -82,17 +115,17 @@ export const getTermTagLocalized = ({
   }
 }
 
-export const getTermTypeLocalized = ({
-  term,
+export const getType = ({
+  type,
   locale = CONFIG.DEFAULT_LOCALE,
   useFallback = CONFIG.USE_FALLBACK,
 }: {
-  term: TTermType
+  type: TTermType
   locale?: TLocale
   useFallback?: boolean
 }): TTermTypeLocalized => {
   return {
-    id: term.id,
-    name: getValueLocalized({ obj: term.name, locale, useFallback }),
+    id: type.id,
+    name: getValueLocalized({ obj: type.name, locale, useFallback }),
   }
 }

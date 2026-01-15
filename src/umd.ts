@@ -1,10 +1,10 @@
 import {
   getDict,
+  getTag,
   getTags,
   getTerm,
   getTerms,
-  getTermTagLocalized,
-  getTermTypeLocalized,
+  getType,
   getTypes,
   getValueLocalized,
   interpolateLocaleRecord,
@@ -29,6 +29,6 @@ export const utils = {
   interpolateLocaleRecord,
   interpolateValues,
   getValueLocalized,
-  getTermTagLocalized,
-  getTermTypeLocalized,
+  getTag,
+  getType,
 }

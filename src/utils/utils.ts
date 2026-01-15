@@ -3,15 +3,15 @@ import type {
   TDevDictLocalized,
   TDevDictPartial,
   TLocale,
+  TTerm,
   TTermId,
   TTermLocalized,
   TTermTag,
   TTermTagLocalized,
-  TTermType,
   TTermTypeLocalized,
 } from '@/types'
 import { CONFIG, MISC } from '@/common'
-import { getTermTagLocalized, getTermTypeLocalized, getValueLocalized, interpolateValues } from '@/utils'
+import { getTag, getTerm, getType, interpolateValues } from '@/utils'
 
 export const getDict = ({
   dict,
@@ -22,48 +22,14 @@ export const getDict = ({
   locale?: TLocale
   useFallback?: boolean
 }): Partial<TDevDictLocalized> => {
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
   const localizedDict: Partial<TDevDictLocalized> = {}
-  const TERMS = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
 
-  for (const [key, term] of Object.entries(TERMS)) {
-    const localizedTerm = getTerm({ dict, id: term.id as TTermId, locale, useFallback })
-    if (localizedTerm) {
-      localizedDict[key as TTermId] = localizedTerm
-    }
+  for (const [key, term] of Object.entries(terms)) {
+    localizedDict[key as TTermId] = getTerm({ term, locale, useFallback })
   }
 
   return localizedDict
-}
-
-export const getTerm = ({
-  dict,
-  id,
-  locale = CONFIG.DEFAULT_LOCALE,
-  useFallback = CONFIG.USE_FALLBACK,
-}: {
-  dict: TDevDict | TDevDictPartial
-  id: TTermId
-  locale?: TLocale
-  useFallback?: boolean
-}): TTermLocalized | undefined => {
-  const TERMS = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
-  const term = TERMS[id]
-
-  if (!term) {
-    return undefined
-  }
-
-  return {
-    ...term,
-    name: getValueLocalized({ obj: term.name, locale, useFallback }),
-    ...('altName' in term && term.altName
-      ? { altName: getValueLocalized({ obj: term.altName, locale, useFallback }) }
-      : {}),
-    label: getValueLocalized({ obj: term.label, locale, useFallback }),
-    definition: getValueLocalized({ obj: term.definition, locale, useFallback }),
-    type: term.type.map((value) => getTermTypeLocalized({ term: value, locale, useFallback })),
-    tags: term.tags.map((value) => getTermTagLocalized({ tag: value, locale, useFallback })),
-  } as TTermLocalized
 }
 
 export const getTerms = ({
@@ -87,10 +53,10 @@ export const getTypes = ({
   locale?: TLocale
   useFallback?: boolean
 }): TTermTypeLocalized[] => {
-  const TERMS = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
-  const typesMap = new Map<string, TTermType>()
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
+  const typesMap = new Map<string, TTerm['type'][number]>()
 
-  Object.values(TERMS).forEach((term) => {
+  Object.values(terms).forEach((term) => {
     term.type.forEach((type) => {
       if (!typesMap.has(type.id)) {
         typesMap.set(type.id, type)
@@ -99,7 +65,7 @@ export const getTypes = ({
   })
 
   const types = Array.from(typesMap.values())
-  return types.map((type) => getTermTypeLocalized({ term: type, locale, useFallback }))
+  return types.map((type) => getType({ type, locale, useFallback }))
 }
 
 export const getTags = ({
@@ -111,10 +77,10 @@ export const getTags = ({
   locale?: TLocale
   useFallback?: boolean
 }): TTermTagLocalized[] => {
-  const TERMS = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
+  const terms = interpolateValues({ obj: dict, keys: MISC.TERM_INTERPOLATION_KEYS, useFallback })
   const tagsMap = new Map<string, TTermTag>()
 
-  Object.values(TERMS).forEach((term) => {
+  Object.values(terms).forEach((term) => {
     term.tags.forEach((tag) => {
       if (!tagsMap.has(tag.id)) {
         tagsMap.set(tag.id, tag)
@@ -123,5 +89,5 @@ export const getTags = ({
   })
 
   const tags = Array.from(tagsMap.values())
-  return tags.map((tag) => getTermTagLocalized({ tag, locale, useFallback }))
+  return tags.map((tag) => getTag({ tag, locale, useFallback }))
 }
