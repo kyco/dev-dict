@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-
 import { TermPage } from '~/pages/TermPage'
 
 export const Route = createFileRoute('/term/$termId')({

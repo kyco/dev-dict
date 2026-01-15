@@ -1,13 +1,12 @@
 import { Link } from '@tanstack/react-router'
+import { Dropdown } from '~/components/Dropdown'
+import { StatusIcon } from '~/components/StatusIcon'
+import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
 import { terms } from 'dev-dict'
 import type { TTerm } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 import { ArrowLeft, ArrowUpDown, Filter, Pencil } from 'lucide-react'
 import { useMemo, useState } from 'react'
-
-import { Dropdown } from '~/components/Dropdown'
-import { StatusIcon } from '~/components/StatusIcon'
-import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
 
 type TermStatus = {
   id: string

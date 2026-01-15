@@ -1,15 +1,14 @@
 import { Link } from '@tanstack/react-router'
-import { terms } from 'dev-dict'
-import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { CheckCircle, Globe, Layers, Plus, Search, Tag } from 'lucide-react'
-import { useMemo, useState } from 'react'
-
 import { Dropdown } from '~/components/Dropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
 import { COMPLETENESS_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { isTermComplete } from '~/shared/utils/termUtils'
+import { terms } from 'dev-dict'
+import { getTags, getTerms, getTypes } from 'dev-dict/utils'
+import { CheckCircle, Globe, Layers, Plus, Search, Tag } from 'lucide-react'
+import { useMemo, useState } from 'react'
 
 interface HomePageProps {
   searchQuery: string

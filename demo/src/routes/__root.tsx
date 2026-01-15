@@ -1,5 +1,4 @@
 import { createRootRoute, Outlet, ScrollRestoration } from '@tanstack/react-router'
-
 import { AppProvider } from '~/shared/context/AppContext'
 
 function RootComponent() {

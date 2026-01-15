@@ -1,14 +1,13 @@
 import { useRouter } from '@tanstack/react-router'
+import { Chip } from '~/components/Chip'
+import { getGithubEditUrl } from '~/shared/constants'
+import { useAppContext } from '~/shared/context/AppContext'
+import { getSourceDisplayName } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import type { TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 import { ArrowLeft, Book, Check, Copy, ExternalLink, Globe, Layers, Pencil, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'
-
-import { Chip } from '~/components/Chip'
-import { getGithubEditUrl } from '~/shared/constants'
-import { useAppContext } from '~/shared/context/AppContext'
-import { getSourceDisplayName } from '~/shared/utils/termUtils'
 
 interface TermPageProps {
   termId: string
