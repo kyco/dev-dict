@@ -69,7 +69,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <span className="text-blue-200 text-sm font-medium uppercase tracking-wider">Definition</span>
                 </div>
                 <h1 className="text-3xl font-bold mb-2">{term.name}</h1>
-                <p className="text-blue-200 text-lg">{term.label}</p>
+                {term.label ? (
+                  <p className="text-blue-200 text-lg">{term.label}</p>
+                ) : (
+                  <p className="text-blue-200/60 text-lg italic">No label provided</p>
+                )}
                 <button
                   onClick={copyId}
                   className={`mt-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded transition-all ${
@@ -108,7 +112,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
           <div className="px-8 py-8">
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
-              <p className="text-slate-700 text-lg leading-relaxed">{term.definition}</p>
+              {term.definition ? (
+                <p className="text-slate-700 text-lg leading-relaxed">{term.definition}</p>
+              ) : (
+                <p className="text-slate-400 italic">No definition provided yet. Help us by contributing!</p>
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -117,9 +125,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <Layers size={14} /> Type
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                  {term.type.map((t: TTermTypeLocalized) => (
-                    <Chip key={t.id} label={t.name} variant="type" />
-                  ))}
+                  {term.type.length > 0 ? (
+                    term.type.map((t: TTermTypeLocalized) => <Chip key={t.id} label={t.name} variant="type" />)
+                  ) : (
+                    <span className="text-sm text-slate-400 italic">No type specified</span>
+                  )}
                 </div>
               </div>
               <div>
@@ -127,18 +137,20 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <Tag size={14} /> Tags
                 </h2>
                 <div className="flex flex-wrap gap-2">
-                  {term.tags.map((t: TTermTagLocalized) => (
-                    <Chip key={t.id} label={t.name} variant="tag" />
-                  ))}
+                  {term.tags.length > 0 ? (
+                    term.tags.map((t: TTermTagLocalized) => <Chip key={t.id} label={t.name} variant="tag" />)
+                  ) : (
+                    <span className="text-sm text-slate-400 italic">No tags specified</span>
+                  )}
                 </div>
               </div>
             </div>
 
-            {term.links && Object.keys(term.links).length > 0 && (
-              <div className="mb-8">
-                <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1">
-                  <ExternalLink size={14} /> Links
-                </h2>
+            <div className="mb-8">
+              <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1">
+                <ExternalLink size={14} /> Links
+              </h2>
+              {term.links && Object.keys(term.links).length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {term.links.website && (
                     <a
@@ -185,8 +197,10 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                     </a>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-slate-400 italic">No links available</p>
+              )}
+            </div>
 
             {term.sources && (term.sources.label || term.sources.definition) && (
               <div className="pt-6 border-t border-slate-200">
