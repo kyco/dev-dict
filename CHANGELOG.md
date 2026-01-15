@@ -1,3 +1,24 @@
+## [0.7.4](https://github.com/kyco/dev-dict/compare/v0.7.3...v0.7.4) (2026-01-15)
+
+### Bug Fixes
+
+* Circular dependency ([f521eff](https://github.com/kyco/dev-dict/commit/f521eff3a2c98f37d6f12b25e3b0d9a5965a3b35))
+* Remove `getDict` method [BREAKING] ([6ce444a](https://github.com/kyco/dev-dict/commit/6ce444a2bda4eaf6b9d5b3a95ff7ef25c42171b7))
+* Rename `useFallback` param to `populateEmpty` [BREAKING] ([fd48e82](https://github.com/kyco/dev-dict/commit/fd48e82fcf4ab9f2ebec32d763b1ebe0b3d782f2))
+
+### Chore
+
+* Bump deps ([3a9945c](https://github.com/kyco/dev-dict/commit/3a9945cfb40038cabe22f6c5a957f992d5bb6d11))
+* Update description and keywords ([8132af3](https://github.com/kyco/dev-dict/commit/8132af30c24188a4236b06642ad65bb76cb1d51e))
+* Update README ([c0f444a](https://github.com/kyco/dev-dict/commit/c0f444a64f33443b8edae9c439e7f9c95536e6e1))
+
+### Refactoring
+
+* Move "get term" logic to helper ([2a9aa95](https://github.com/kyco/dev-dict/commit/2a9aa95f156145cc21f888538d00ed9359fa94dc))
+* Move files ([86ad5cc](https://github.com/kyco/dev-dict/commit/86ad5ccfa97fbad3fcaa38a426a9301db97f47e6))
+* Rename `dict` param to `terms` [BREAKING] ([96c90d9](https://github.com/kyco/dev-dict/commit/96c90d996ea60cf32f3320693335476031af7bc6))
+* Simplify ([30962c4](https://github.com/kyco/dev-dict/commit/30962c4d4577316bab30330820a8971c28530675))
+
 ## [0.7.3](https://github.com/kyco/dev-dict/compare/v0.7.2...v0.7.3) (2026-01-14)
 
 ### Bug Fixes
