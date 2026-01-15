@@ -14,13 +14,14 @@ import { useMemo, useState } from 'react'
 interface HomePageProps {
   searchQuery: string
   onSearchChange: (value: string) => void
+  completeness: string
+  onCompletenessChange: (value: string) => void
 }
 
-export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
+export function HomePage({ searchQuery, onSearchChange, completeness, onCompletenessChange }: HomePageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [completeness, setCompleteness] = useState<string>('all')
 
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
@@ -92,7 +93,7 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
               placeholder="Status"
               options={COMPLETENESS_OPTIONS}
               selected={completeness}
-              setSelected={setCompleteness as (value: string) => void}
+              setSelected={onCompletenessChange}
             />
             <div className="w-px h-6 bg-slate-200 hidden sm:block" />
             <Dropdown
@@ -116,7 +117,7 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
                 onClick={() => {
                   setSelectedTypes([])
                   setSelectedTags([])
-                  setCompleteness('all')
+                  onCompletenessChange('all')
                 }}
                 className="text-sm text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
               >
