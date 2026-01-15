@@ -84,12 +84,12 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <span className="text-blue-200 text-sm font-medium uppercase tracking-wider">Definition</span>
                 </div>
                 {!hasName && !populateEmpty ? (
-                  <h1 className="text-3xl font-bold mb-2 text-white/60 italic">Not provided in selected language</h1>
+                  <h1 className="text-3xl font-bold mb-2 text-white/60 italic">Not defined in selected language</h1>
                 ) : (
                   <h1 className="text-3xl font-bold mb-2">{term.name}</h1>
                 )}
                 {!hasLabel && !populateEmpty ? (
-                  <p className="text-blue-200/60 text-lg italic">Not provided in selected language</p>
+                  <p className="text-blue-200/60 text-lg italic">Not defined in selected language</p>
                 ) : term.label ? (
                   <p className="text-blue-200 text-lg">{term.label}</p>
                 ) : null}
@@ -132,7 +132,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
               {!hasDefinition && !populateEmpty ? (
-                <p className="text-slate-400 italic">Not provided in selected language</p>
+                <p className="text-slate-400 italic">Not defined in selected language</p>
               ) : term.definition ? (
                 <p className="text-slate-700 text-lg leading-relaxed">{term.definition}</p>
               ) : (
@@ -148,7 +148,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 <div className="flex flex-wrap gap-2">
                   {term.type.length > 0 ? (
                     term.type.map((t: TTermTypeLocalized) => (
-                      <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="type" />
+                      <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="type" />
                     ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No type specified</span>
@@ -162,7 +162,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 <div className="flex flex-wrap gap-2">
                   {term.tags.length > 0 ? (
                     term.tags.map((t: TTermTagLocalized) => (
-                      <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="tag" />
+                      <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="tag" />
                     ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No tags specified</span>

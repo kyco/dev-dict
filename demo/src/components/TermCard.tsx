@@ -40,7 +40,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
         <div>
           {!hasName && !populateEmpty ? (
             <h3 className="text-lg font-bold text-slate-400 italic group-hover:text-blue-600 transition-colors">
-              Not provided in selected language
+              Not defined in selected language
             </h3>
           ) : (
             <h3 className="text-lg font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
@@ -48,7 +48,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
             </h3>
           )}
           {!hasLabel && !populateEmpty ? (
-            <p className="text-sm text-slate-400 italic">Not provided in selected language</p>
+            <p className="text-sm text-slate-400 italic">Not defined in selected language</p>
           ) : term.label ? (
             <p className="text-sm text-slate-500">{term.label}</p>
           ) : null}
@@ -77,7 +77,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
         <Book size={20} className="text-slate-300 group-hover:text-blue-400 transition-colors flex-shrink-0 mt-1" />
       </div>
       {!hasDefinition && !populateEmpty ? (
-        <p className="text-slate-400 text-sm leading-relaxed mb-4 italic">Not provided in selected language</p>
+        <p className="text-slate-400 text-sm leading-relaxed mb-4 italic">Not defined in selected language</p>
       ) : term.definition ? (
         <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">{term.definition}</p>
       ) : null}
@@ -85,10 +85,10 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
       {term.type.length || term.tags.length ? (
         <div className="flex flex-wrap items-center gap-1.5">
           {term.type.map((t: TTermTypeLocalized) => (
-            <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="type" />
+            <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="type" />
           ))}
           {term.tags.map((t: TTermTagLocalized) => (
-            <Chip key={t.id} label={t.name || 'Not provided in selected language'} variant="tag" />
+            <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="tag" />
           ))}
         </div>
       ) : null}
