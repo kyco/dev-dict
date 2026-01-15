@@ -12,8 +12,6 @@ Thank you for your interest in contributing! This guide will help you add terms,
 6. Commit and push (follow [commit guidelines](#commit-guidelines))
 7. Open a pull request
 
-**Note**: Documentation is auto-generated on merge to main. Do not run `pnpm docs:generate` or commit docs changes.
-
 ## Adding a New Term
 
 ### 1. Create the term file
@@ -160,11 +158,9 @@ export type TLocaleRecord = {
 } & Partial<Record<'en-GB' | 'de-DE' | 'fr-FR', string>>
 ```
 
-3. Update `scripts/generate-docs.ts` to include the new locale in table headers and columns
+3. Add translations to term/type/tag files using `[LOCALES.FR_FR]: '...'`
 
-4. Add translations to term/type/tag files using `[LOCALES.FR_FR]: '...'`
-
-5. Validate: `pnpm build`
+4. Validate: `pnpm build`
 
 ## Code Style
 
