@@ -77,8 +77,6 @@
     "demo:dev": "pnpm build && (pnpm build:watch & cd demo && pnpm dev)",
     "demo:build": "pnpm build && cd demo && pnpm build",
     "demo:preview": "cd demo && pnpm preview",
-    "docs:generate": "pnpm build && tsx scripts/generate-docs.ts",
-    "prepublishOnly": "pnpm docs:generate",
     "test": "echo \"This project does not have any tests which can be run yet...\"",
     "bundle-analyzer": "npx vite-bundle-visualizer",
     "update-packages": "pnpm dlx npm-check-updates -u"

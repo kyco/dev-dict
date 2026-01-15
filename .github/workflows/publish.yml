@@ -43,9 +43,6 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Generate docs
-        run: pnpm docs:generate
-
       - name: Publish to npm
         run: npx semantic-release
         env:
