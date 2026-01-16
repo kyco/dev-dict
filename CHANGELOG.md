@@ -1,3 +1,9 @@
+## [0.11.1](https://github.com/kyco/dev-dict/compare/v0.11.0...v0.11.1) (2026-01-16)
+
+### Bug Fixes
+
+* Move docs from README to demo ([2bc3d04](https://github.com/kyco/dev-dict/commit/2bc3d041ada69bdbc16d9351f60b7d3e4e2004c2))
+
 ## [0.11.0](https://github.com/kyco/dev-dict/compare/v0.10.3...v0.11.0) (2026-01-16)
 
 ### Features
