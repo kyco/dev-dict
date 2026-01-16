@@ -94,7 +94,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
             Help us grow! We have <span className="font-semibold text-slate-700">{stats.total}</span> terms —{' '}
             <span className="font-semibold text-amber-600">{stats.incomplete}</span> need more info, while{' '}
             <span className="font-semibold text-blue-600">{stats.baselineComplete}</span> are baseline complete and{' '}
-            <span className="font-semibold text-emerald-600">{stats.complete}</span> fully complete,{' '}
+            <span className="font-semibold text-emerald-600">{stats.complete}</span> fully complete.
           </p>
         </div>
 
