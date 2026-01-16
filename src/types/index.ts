@@ -5,6 +5,10 @@ import { TAGS } from '@/data/tags'
 import { TERMS } from '@/data/terms'
 import { TYPES } from '@/data/types'
 
+type AtLeastOne<T> = {
+  [K in keyof T]: Pick<T, K> & Partial<T>
+}[keyof T]
+
 export type TLocale = (typeof LOCALES)[keyof typeof LOCALES]
 
 export type TLocaleRecord = {
@@ -13,12 +17,7 @@ export type TLocaleRecord = {
 
 export type TLinkType = 'website' | 'github' | 'npm' | 'wikipedia'
 
-export type TTermLinks = {
-  /**
-   * Link to the official website.
-   */
-  website: string
-} & Partial<Record<Exclude<TLinkType, 'website'>, string>>
+export type TTermLinks = AtLeastOne<Record<TLinkType, string>>
 
 export type TTermType = {
   id: string
