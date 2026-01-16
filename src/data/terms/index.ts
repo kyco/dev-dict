@@ -14,7 +14,7 @@ import assembly from './assembly'
 import aws from './aws'
 import azure from './azure'
 import azure_pipelines from './azure_pipelines'
-import backbone from './backbone_js'
+import backbone_js from './backbone_js'
 import bash from './bash'
 import bdd from './bdd'
 import beanstalk from './beanstalk'
@@ -238,7 +238,7 @@ export const RAW_TERMS = {
   [aws.id]: aws,
   [azure.id]: azure,
   [azure_pipelines.id]: azure_pipelines,
-  [backbone.id]: backbone,
+  [backbone_js.id]: backbone_js,
   [bash.id]: bash,
   [bdd.id]: bdd,
   [beanstalk.id]: beanstalk,
