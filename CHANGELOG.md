@@ -1,3 +1,12 @@
+## [0.10.1](https://github.com/kyco/dev-dict/compare/v0.10.0...v0.10.1) (2026-01-16)
+
+### Bug Fixes
+
+* **demo:** Add proper 404 and error handling ([c7ac2ee](https://github.com/kyco/dev-dict/commit/c7ac2ee56792e9d7e6eb255bbca5117ee30b9a97))
+* Export sources ([7011e65](https://github.com/kyco/dev-dict/commit/7011e656e55830fef95005fe144e4623686aed8e))
+* Simplify dev command ([84760d4](https://github.com/kyco/dev-dict/commit/84760d4c21306022b49c6a8b39a5134da4ea2f9f))
+* Update sources type to require at least one ([87965d2](https://github.com/kyco/dev-dict/commit/87965d261f5164419faec18ac6aab1485da4cc0e))
+
 ## [0.10.0](https://github.com/kyco/dev-dict/compare/v0.9.1...v0.10.0) (2026-01-16)
 
 ### Features
