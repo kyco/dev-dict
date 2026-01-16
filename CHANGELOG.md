@@ -1,3 +1,21 @@
+## [0.11.0](https://github.com/kyco/dev-dict/compare/v0.10.3...v0.11.0) (2026-01-16)
+
+### Features
+
+* **demo:** Show completeness ([3ffeae6](https://github.com/kyco/dev-dict/commit/3ffeae623cf0bcee912192b156c86590958c263a))
+
+### Bug Fixes
+
+* **demo:** Show missing values as keys ([3401847](https://github.com/kyco/dev-dict/commit/34018474380c945522982eb5ea609cf5bbe6ac41))
+* **demo:** Simplify weights ([2ea2d9b](https://github.com/kyco/dev-dict/commit/2ea2d9b6f92f71ecc35c4b042e7087c523f841c5))
+* **demo:** Typo ([8c1e6ab](https://github.com/kyco/dev-dict/commit/8c1e6ab1e391e8040993c1bee7fea0d0079ead66))
+* **demo:** Update complteness selector ([e6119ff](https://github.com/kyco/dev-dict/commit/e6119ff233e7096f2c1e7904551bc40f0f03bdfc))
+* **demo:** Update sorting ([8a5c844](https://github.com/kyco/dev-dict/commit/8a5c844b93e25371c544a8c02454141414b4f131))
+
+### Chore
+
+* Update README ([946f5ce](https://github.com/kyco/dev-dict/commit/946f5ce10f2a864c5e3d6f33c3069857de889211))
+
 ## [0.10.3](https://github.com/kyco/dev-dict/compare/v0.10.2...v0.10.3) (2026-01-16)
 
 ### Bug Fixes
