@@ -3,7 +3,7 @@ import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
-import { COMPLETENESS_OPTIONS, LANGUAGES } from '~/shared/constants'
+import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
 import { isTermComplete } from '~/shared/utils/termUtils'
@@ -82,7 +82,7 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
             <Dropdown
               icon={CheckCircle}
               placeholder="Status"
-              options={COMPLETENESS_OPTIONS}
+              options={FILTER_OPTIONS}
               selected={completeness}
               setSelected={onCompletenessChange}
             />
