@@ -5,7 +5,6 @@ import { TermLinks } from '~/components/TermLinks'
 import { getGithubEditUrl, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { useCopyToClipboard } from '~/shared/hooks'
-import { hasTermFieldInLocale } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { getSources, getTerms } from 'dev-dict/utils'
@@ -35,10 +34,6 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const sources = useMemo(() => getSources({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const term = dictionary.find((t) => t.id === termId)
-
-  const hasName = term ? hasTermFieldInLocale(term.id, 'name', lang) : false
-  const hasLabel = term ? hasTermFieldInLocale(term.id, 'label', lang) : false
-  const hasDefinition = term ? hasTermFieldInLocale(term.id, 'definition', lang) : false
 
   if (!term) {
     return (
@@ -81,16 +76,25 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   <Book size={28} />
                   <span className="text-blue-200 text-sm font-medium uppercase tracking-wider">Definition</span>
                 </div>
-                {!hasName && !populateEmpty ? (
-                  <h1 className="text-3xl font-bold mb-2 text-white/60 italic">Not defined in selected language</h1>
-                ) : (
-                  <h1 className="text-3xl font-bold mb-2">{term.name}</h1>
-                )}
-                {!hasLabel && !populateEmpty ? (
-                  <p className="text-blue-200/60 text-lg italic">Not defined in selected language</p>
-                ) : term.label ? (
-                  <p className="text-blue-200 text-lg">{term.label}</p>
-                ) : null}
+
+                <h1 className="text-3xl font-bold mb-2">
+                  {typeof term.name === 'string' && !term.name && !populateEmpty ? `terms[${term.id}].name` : term.name}
+                </h1>
+
+                <p className="text-xl leading-relaxed mb-1">
+                  {typeof term.altName === 'string' && !term.altName ? (
+                    `terms[${term.id}].altName`
+                  ) : (
+                    <strong>{term.altName}</strong>
+                  )}
+                </p>
+
+                <p className="text-lg text-blue-200">
+                  {typeof term.label === 'string' && !term.label && !populateEmpty
+                    ? `terms[${term.id}].label`
+                    : term.label}
+                </p>
+
                 <button
                   onClick={copyId}
                   className={`mt-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded transition-all ${
@@ -113,6 +117,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   )}
                 </button>
               </div>
+
               <a
                 href={getGithubEditUrl(term.id)}
                 target="_blank"
@@ -129,13 +134,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
           <div className="px-8 py-8">
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
-              {!hasDefinition && !populateEmpty ? (
-                <p className="text-slate-400 italic">Not defined in selected language</p>
-              ) : term.definition ? (
-                <p className="text-slate-700 text-lg leading-relaxed">{term.definition}</p>
-              ) : (
-                <p className="text-slate-400 italic">No definition provided yet. Help us by contributing!</p>
-              )}
+              <p className="text-slate-700 text-lg leading-relaxed">
+                {typeof term.definition === 'string' && !term.definition && !populateEmpty
+                  ? `terms[${term.id}].definition`
+                  : term.definition}
+              </p>
             </div>
 
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -145,8 +148,16 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {term.type.length > 0 ? (
-                    term.type.map((t: TTermTypeLocalized) => (
-                      <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="type" />
+                    term.type.map((ttype: TTermTypeLocalized) => (
+                      <Chip
+                        key={ttype.id}
+                        label={
+                          typeof ttype.name === 'string' && !ttype.name && !populateEmpty
+                            ? `types[${ttype.id}].name`
+                            : ttype.name
+                        }
+                        variant="type"
+                      />
                     ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No type specified</span>
@@ -159,8 +170,16 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </h2>
                 <div className="flex flex-wrap gap-2">
                   {term.tags.length > 0 ? (
-                    term.tags.map((t: TTermTagLocalized) => (
-                      <Chip key={t.id} label={t.name || 'Not defined in selected language'} variant="tag" />
+                    term.tags.map((ttag: TTermTagLocalized) => (
+                      <Chip
+                        key={ttag.id}
+                        label={
+                          typeof ttag.name === 'string' && !ttag.name && !populateEmpty
+                            ? `tags[${ttag.id}].name`
+                            : ttag.name
+                        }
+                        variant="tag"
+                      />
                     ))
                   ) : (
                     <span className="text-sm text-slate-400 italic">No tags specified</span>
@@ -173,7 +192,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1">
                 <ExternalLink size={14} /> Links
               </h2>
-              <TermLinks links={term.links} variant="button" />
+              <TermLinks links={term.links} variant="button" showEmpty />
             </div>
 
             {term.sources && (term.sources.label?.length || term.sources.definition?.length) && (

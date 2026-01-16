@@ -1,5 +1,5 @@
-import { locales, terms } from 'dev-dict'
-import type { TLocale, TLocaleRecord, TTerm } from 'dev-dict'
+import { terms } from 'dev-dict'
+import type { TTerm } from 'dev-dict'
 
 export interface TermCompleteness {
   hasType: boolean
@@ -50,30 +50,4 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
 export function isTermComplete(termId: string): boolean {
   return getTermCompleteness(termId).isComplete
-}
-
-export function hasTermFieldInLocale(
-  termId: string,
-  field: 'name' | 'altName' | 'label' | 'definition',
-  locale: TLocale,
-): boolean {
-  const rawTermsMap = terms as unknown as Record<string, TTerm>
-  const rawTerm = rawTermsMap[termId]
-
-  if (!rawTerm) return false
-
-  const localeRecord = rawTerm[field] as TLocaleRecord | undefined
-  if (!localeRecord) return false
-
-  const value = localeRecord[locale]
-
-  // Check if the value exists and is not a reference to another locale
-  if (!value) return false
-
-  // Check if it's a reference to another locale (like 'en-US')
-  if (Object.values(locales).includes(value as TLocale)) {
-    return false
-  }
-
-  return true
 }
