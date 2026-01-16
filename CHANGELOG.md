@@ -1,3 +1,26 @@
+## [0.10.0](https://github.com/kyco/dev-dict/compare/v0.9.1...v0.10.0) (2026-01-16)
+
+### Features
+
+* Add unit tests ([4a6a634](https://github.com/kyco/dev-dict/commit/4a6a634e5570c4fac11980f8902a96fc04058fd2))
+
+### Bug Fixes
+
+* **demo:** Add search input on status page ([5d43530](https://github.com/kyco/dev-dict/commit/5d43530c0065853c388986c5e1149aa880d7fcb3))
+* **demo:** Remember state ([7a46a77](https://github.com/kyco/dev-dict/commit/7a46a772ecb66cd906cf8904634dc6b7ee445dcd))
+* **demo:** Remove unnecessary var ([0fa733d](https://github.com/kyco/dev-dict/commit/0fa733d03cf3070ab95ad1c90242792f05c2cf04))
+* **demo:** Update wording ([98bbccc](https://github.com/kyco/dev-dict/commit/98bbcccfacb2199e3828c9e8e9d9e1313941cfbf))
+* Update "Agile" term ([c58b898](https://github.com/kyco/dev-dict/commit/c58b8983209837772729456b3bcc66ddafa9c4b5))
+* Update type to require any property instead of the "website" property ([5d9be08](https://github.com/kyco/dev-dict/commit/5d9be08acb26b4988a74042a1ded66e68e5761da))
+
+### Style
+
+* **demo:** Button ([bf31d2d](https://github.com/kyco/dev-dict/commit/bf31d2d65869e4b8d7bb8dd2dc84bb2c6f86988d))
+
+### Refactoring
+
+* **demo:** Move common logic into components and utils ([6434f39](https://github.com/kyco/dev-dict/commit/6434f397349624113401a381583549ecba52e603))
+
 ## [0.9.1](https://github.com/kyco/dev-dict/compare/v0.9.0...v0.9.1) (2026-01-15)
 
 ### Bug Fixes
