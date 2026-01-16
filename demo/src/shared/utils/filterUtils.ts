@@ -20,12 +20,18 @@ export function matchesTags(term: TTermLocalized, selectedTags: string[]): boole
 
 export function matchesCompleteness(
   termId: string,
-  completeness: 'all' | 'complete' | 'incomplete',
-  isComplete: (termId: string) => boolean,
+  completeness: 'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete',
+  getCompleteness: (termId: string) => { baselineComplete: boolean; fullPercentage: number },
 ): boolean {
   if (completeness === 'all') return true
-  if (completeness === 'complete') return isComplete(termId)
-  return !isComplete(termId)
+
+  const { baselineComplete, fullPercentage } = getCompleteness(termId)
+
+  if (completeness === 'baseline_incomplete') return !baselineComplete
+  if (completeness === 'baseline_complete') return baselineComplete
+  if (completeness === 'fully_complete') return fullPercentage === 100
+
+  return true
 }
 
 export function filterTerms(
@@ -34,8 +40,8 @@ export function filterTerms(
     searchQuery?: string
     selectedTypes?: string[]
     selectedTags?: string[]
-    completeness?: 'all' | 'complete' | 'incomplete'
-    isComplete?: (termId: string) => boolean
+    completeness?: 'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete'
+    getCompleteness?: (termId: string) => { baselineComplete: boolean; fullPercentage: number }
   },
 ): TTermLocalized[] {
   const {
@@ -43,7 +49,7 @@ export function filterTerms(
     selectedTypes = [],
     selectedTags = [],
     completeness = 'all',
-    isComplete = () => true,
+    getCompleteness = () => ({ baselineComplete: true, fullPercentage: 100 }),
   } = filters
 
   return terms.filter((term) => {
@@ -51,7 +57,7 @@ export function filterTerms(
       matchesSearch(term, searchQuery) &&
       matchesTypes(term, selectedTypes) &&
       matchesTags(term, selectedTags) &&
-      matchesCompleteness(term.id, completeness, isComplete)
+      matchesCompleteness(term.id, completeness, getCompleteness)
     )
   })
 }

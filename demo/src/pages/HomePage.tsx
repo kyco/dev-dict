@@ -6,7 +6,7 @@ import { TermCard } from '~/components/TermCard'
 import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
-import { isTermComplete } from '~/shared/utils/termUtils'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
 import { CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
@@ -42,8 +42,11 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
       searchQuery,
       selectedTypes,
       selectedTags,
-      completeness: completeness as 'all' | 'complete' | 'incomplete',
-      isComplete: isTermComplete,
+      completeness: completeness as 'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete',
+      getCompleteness: (termId: string) => {
+        const comp = getTermCompleteness(termId)
+        return { baselineComplete: comp.baselineComplete, fullPercentage: comp.fullPercentage }
+      },
     })
   }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness])
 

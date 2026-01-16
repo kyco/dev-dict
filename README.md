@@ -7,16 +7,9 @@
 [![npm version](https://img.shields.io/npm/v/dev-dict.svg)](https://www.npmjs.com/package/dev-dict)
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/dev-dict)](https://bundlephobia.com/package/dev-dict)
 
-A community-driven collection of software development terms with explanations in multiple languages. Perfect for building multilingual developer tools, documentation sites, and educational platforms.
+A community-driven collection of software development terms with explanations in multiple languages. Perfect for building developer tools, documentation sites, educational content and much more.
 
 **[Browse All Terms](https://kyco.github.io/dev-dict/)**
-
-## Features
-
-- **Type-Safe** - Full TypeScript support
-- **Multilingual** - English (US/GB), German, and growing
-- **Flexible** - Access localised strings or raw translation objects
-- **Lightweight** - Tree-shakeable ESM and UMD builds
 
 ## Installation
 
@@ -24,10 +17,6 @@ A community-driven collection of software development terms with explanations in
 
 ```bash
 npm install dev-dict
-# or
-pnpm add dev-dict
-# or
-yarn add dev-dict
 ```
 
 ### via CDN (unpkg)
@@ -36,9 +25,9 @@ yarn add dev-dict
 <script src="https://unpkg.com/dev-dict@latest/dist/dev-dict.min.js"></script>
 <script>
   // Access the library via the global 'devdict' object
-  const { terms, types, tags, locales, utils } = devdict
+  const { terms, utils } = devdict
 
-  // Get all terms for a locale
+  // Translate to specified locale
   const dictionary = utils.getTerms({ terms, locale: 'en-US' })
 
   console.log(dictionary)
@@ -47,20 +36,14 @@ yarn add dev-dict
 
 ## Quick Start
 
-### Option 1: Full Dictionary
-
-Import the complete dictionary to access all terms.
+### Option 1: All Terms
 
 ```typescript
 import { terms } from 'dev-dict'
-import { getTerms, getTags, getTypes } from 'dev-dict/utils'
+import { getTerms } from 'dev-dict/utils'
 
-// Get all terms for a locale
+// Translate to specified locale
 const dictionary = getTerms({ terms, locale: 'en-US' })
-
-// Get types and tags
-const types = getTypes({ terms, locale: 'en-US' })
-const tags = getTags({ terms, locale: 'en-US' })
 
 // Display terms
 dictionary.forEach(term => {
@@ -69,15 +52,14 @@ dictionary.forEach(term => {
 })
 ```
 
-### Option 2: Selected Terms Only
-
-Import only the specific terms you need for better tree-shaking and smaller bundle size.
+### Option 2: Selected Terms (smaller bundle size with tree-shaking)
 
 ```typescript
+// Import a selection of terms
 import { react, typescript, node_js } from 'dev-dict/terms'
 import { getTerms } from 'dev-dict/utils'
 
-// Create a custom dictionary with only the terms you need
+// Create a list with only the terms you need
 const terms = { react, typescript, node_js }
 
 // Then use the same helper functions as Option 1

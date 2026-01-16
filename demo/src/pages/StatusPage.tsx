@@ -15,8 +15,10 @@ type TermStatus = {
   hasLabel: boolean
   hasDefinition: boolean
   hasTags: boolean
-  hasWebsite: boolean
+  hasLinks: boolean
   missingCount: number
+  fullPercentage: number
+  baselineComplete: boolean
 }
 
 interface StatusPageProps {
@@ -52,15 +54,15 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
     }
 
     if (filter === 'incomplete') {
-      result = result.filter((t) => t.missingCount > 0)
+      result = result.filter((t) => t.fullPercentage < 100)
     } else if (filter === 'complete') {
-      result = result.filter((t) => t.missingCount === 0)
+      result = result.filter((t) => t.fullPercentage === 100)
     }
 
     if (sortBy === 'name') {
       result = [...result].sort((a, b) => a.name.localeCompare(b.name))
     } else {
-      result = [...result].sort((a, b) => b.missingCount - a.missingCount || a.name.localeCompare(b.name))
+      result = [...result].sort((a, b) => a.fullPercentage - b.fullPercentage || a.name.localeCompare(b.name))
     }
 
     return result
@@ -68,9 +70,10 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
 
   const stats = useMemo(() => {
     const total = termStatuses.length
-    const complete = termStatuses.filter((t) => t.missingCount === 0).length
-    const incomplete = total - complete
-    return { total, complete, incomplete }
+    const complete = termStatuses.filter((t) => t.fullPercentage === 100).length
+    const baselineComplete = termStatuses.filter((t) => t.baselineComplete).length
+    const incomplete = total - baselineComplete
+    return { total, complete, baselineComplete, incomplete }
   }, [termStatuses])
 
   return (
@@ -89,8 +92,9 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Contribute</h1>
           <p className="text-slate-500">
             Help us grow! We have <span className="font-semibold text-slate-700">{stats.total}</span> terms —{' '}
-            <span className="font-semibold text-emerald-600">{stats.complete}</span> complete and{' '}
-            <span className="font-semibold text-amber-600">{stats.incomplete}</span> need more info.
+            <span className="font-semibold text-amber-600">{stats.incomplete}</span> need more info, while{' '}
+            <span className="font-semibold text-blue-600">{stats.baselineComplete}</span> are baseline complete and{' '}
+            <span className="font-semibold text-emerald-600">{stats.complete}</span> fully complete.
           </p>
         </div>
 
@@ -140,6 +144,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-600">Term</th>
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-600">ID</th>
+                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Complete</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Type</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Label</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Definition</th>
@@ -168,6 +173,19 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                       <code className="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600">{term.id}</code>
                     </td>
                     <td className="px-4 py-3 text-center">
+                      <span
+                        className={`text-sm font-semibold ${
+                          term.fullPercentage === 100
+                            ? 'text-emerald-600'
+                            : term.baselineComplete
+                              ? 'text-blue-600'
+                              : 'text-amber-600'
+                        }`}
+                      >
+                        {term.fullPercentage}%
+                      </span>
+                    </td>
+                    <td className="px-4 py-3 text-center">
                       <StatusIcon has={term.hasType} />
                     </td>
                     <td className="px-4 py-3 text-center">
@@ -180,7 +198,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                       <StatusIcon has={term.hasTags} />
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <StatusIcon has={term.hasWebsite} />
+                      <StatusIcon has={term.hasLinks} />
                     </td>
                     <td className="px-4 py-3 text-center">
                       <a

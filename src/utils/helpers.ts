@@ -87,6 +87,17 @@ export const getTerm = ({
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermLocalized => {
+  const sourcesLocalized = term.sources
+    ? {
+        ...(term.sources.label && {
+          label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
+        }),
+        ...(term.sources.definition && {
+          definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
+        }),
+      }
+    : undefined
+
   return {
     id: term.id,
     name: getValueLocalized({ obj: term.name, locale, populateEmpty }),
@@ -98,17 +109,8 @@ export const getTerm = ({
     definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
     tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
     links: term.links,
-    sources: term.sources
-      ? {
-          ...(term.sources.label && {
-            label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
-          }),
-          ...(term.sources.definition && {
-            definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
-          }),
-        }
-      : undefined,
-  }
+    ...(sourcesLocalized && Object.keys(sourcesLocalized).length > 0 ? { sources: sourcesLocalized } : {}),
+  } as TTermLocalized
 }
 
 export const getTag = ({

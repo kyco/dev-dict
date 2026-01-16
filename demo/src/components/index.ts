@@ -1,4 +1,5 @@
 export { Chip } from './Chip'
+export { CompletenessChart } from './CompletenessChart'
 export { Dropdown } from './Dropdown'
 export { LanguageDropdown } from './LanguageDropdown'
 export { SearchBar } from './SearchBar'
