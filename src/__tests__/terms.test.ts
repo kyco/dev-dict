@@ -91,7 +91,7 @@ describe('Terms', () => {
 
   it('should have terms with website link if links are provided', () => {
     Object.entries(RAW_TERMS).forEach(([id, term]) => {
-      if (term.links) {
+      if ('links' in term && term.links) {
         expect(term.links.website, `Term ${id} has links but missing website`).toBeDefined()
         expect(term.links.website, `Term ${id} has empty website URL`).not.toBe('')
       }

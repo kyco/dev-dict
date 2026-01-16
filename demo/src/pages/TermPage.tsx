@@ -1,15 +1,17 @@
 import { useRouter } from '@tanstack/react-router'
 import { Chip } from '~/components/Chip'
+import { CompletenessChart } from '~/components/CompletenessChart'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { TermLinks } from '~/components/TermLinks'
 import { getGithubEditUrl, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { useCopyToClipboard } from '~/shared/hooks'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
-import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
+import type { TTerm, TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { getSources, getTerms } from 'dev-dict/utils'
-import { ArrowLeft, Book, Check, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
-import { useMemo } from 'react'
+import { ArrowLeft, Book, Check, ChevronDown, ChevronUp, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
+import { useMemo, useState } from 'react'
 
 interface TermPageProps {
   termId: string
@@ -20,6 +22,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const router = useRouter()
   const { copied, copy } = useCopyToClipboard()
+  const [showCompleteness, setShowCompleteness] = useState(false)
 
   const goBack = () => {
     if (window.history.length > 1) {
@@ -34,6 +37,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const sources = useMemo(() => getSources({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const term = dictionary.find((t) => t.id === termId)
+  const completeness = useMemo(() => getTermCompleteness(termId), [termId])
 
   if (!term) {
     return (
@@ -134,10 +138,10 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
           <div className="px-8 py-8">
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
-              <p className="text-slate-700 text-lg leading-relaxed">
+              <p className={`leading-relaxed ${term.definition ? 'text-lg text-slate-700' : 'text-base text-slate-400 italic'}`}>
                 {typeof term.definition === 'string' && !term.definition && !populateEmpty
                   ? `terms[${term.id}].definition`
-                  : term.definition}
+                  : term.definition || 'No definition provided yet. Help us by contributing!'}
               </p>
             </div>
 
@@ -222,6 +226,63 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </div>
               </div>
             )}
+
+            <div className="pt-8 mt-6 border-t border-slate-200">
+              <div className="flex items-center justify-between gap-6">
+                <div className="flex items-center gap-6">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        Completeness
+                      </span>
+                    </div>
+                    <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
+                      {completeness.fullPercentage}%
+                    </div>
+                    <div className="flex items-center gap-3 mt-2">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+                        <span className="text-xs text-slate-600">Baseline {completeness.baselinePercentage}%</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-600"></div>
+                        <span className="text-xs text-slate-600">Additional {completeness.additionalPercentage}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setShowCompleteness(!showCompleteness)}
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                >
+                  {showCompleteness ? (
+                    <>
+                      <ChevronUp size={16} />
+                      Hide Details
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown size={16} />
+                      Show Details
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {showCompleteness && (
+                <div className="mt-4">
+                  <CompletenessChart
+                    baselineFields={completeness.baselineFields}
+                    additionalFields={completeness.additionalFields}
+                    baselinePercentage={completeness.baselinePercentage}
+                    additionalPercentage={completeness.additionalPercentage}
+                    fullPercentage={completeness.fullPercentage}
+                    term={(terms as unknown as Record<string, TTerm>)[termId]}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

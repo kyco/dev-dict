@@ -5,6 +5,7 @@ import { Book, Check, Copy } from 'lucide-react'
 
 import { Chip } from './Chip'
 import { TermLinks } from './TermLinks'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
 
 interface TermCardProps {
   term: TTermLocalized
@@ -14,6 +15,7 @@ interface TermCardProps {
 
 export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardProps) {
   const { copied, copy } = useCopyToClipboard()
+  const completeness = getTermCompleteness(term.id)
 
   const copyId = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -68,7 +70,10 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
             )}
           </button>
         </div>
-        <Book size={20} className="text-slate-300 group-hover:text-blue-400 transition-colors flex-shrink-0 mt-1" />
+        <div className="flex flex-col items-end gap-1">
+          <Book size={20} className="text-slate-300 group-hover:text-blue-400 transition-colors flex-shrink-0" />
+          <span className="text-xs font-semibold text-slate-400">{completeness.fullPercentage}%</span>
+        </div>
       </div>
 
       <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">

@@ -11,9 +11,9 @@ interface TermLinksProps {
 
 const linkData = [
   { key: 'website' as const, label: 'Official Website', icon: Globe },
+  { key: 'wikipedia' as const, label: 'Wikipedia', icon: ExternalLink },
   { key: 'github' as const, label: 'GitHub', icon: ExternalLink },
   { key: 'npm' as const, label: 'npm', icon: ExternalLink },
-  { key: 'wikipedia' as const, label: 'Wikipedia', icon: ExternalLink },
 ]
 
 export function TermLinks({ links, variant = 'button', onLinkClick, showEmpty = false }: TermLinksProps) {
