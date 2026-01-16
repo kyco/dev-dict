@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // GitHub Pages SPA redirect workaround
+      // This script stores the requested path and redirects to index.html
+      // The router will then handle the navigation client-side
+      sessionStorage.setItem('redirectPath', location.pathname + location.search + location.hash);
+      location.replace('/dev-dict/');
+    </script>
+  </head>
+  <body></body>
+</html>
