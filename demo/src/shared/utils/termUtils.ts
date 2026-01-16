@@ -75,7 +75,8 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
   const baselineTotalWeight = applicableBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
-  // Calculate additional completeness (filter out conditional fields that don't exist)
+
+  // For additional completeness, exclude altName fields from weight calculation but keep them for display
   const applicableAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter((config) => {
     // If field is conditional, only include it if the field exists in the term
     if (config.conditional) {
@@ -85,6 +86,11 @@ export function getTermCompleteness(termId: string): TermCompleteness {
     return true
   })
 
+  // Separate configs for weight calculation (exclude altName fields)
+  const weightedAdditionalConfigs = applicableAdditionalConfigs.filter(
+    (config) => !config.field.startsWith('altName.')
+  )
+
   const additionalFields: FieldCompleteness[] = applicableAdditionalConfigs.map((config) => ({
     field: config.field,
     label: config.label,
@@ -93,10 +99,10 @@ export function getTermCompleteness(termId: string): TermCompleteness {
   }))
 
   const additionalCompletedWeight = additionalFields
-    .filter((f) => f.completed)
-    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + applicableAdditionalConfigs[idx].weight, 0)
+    .filter((f, idx) => !applicableAdditionalConfigs[idx].field.startsWith('altName.') && f.completed)
+    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + weightedAdditionalConfigs[idx]?.weight || 0, 0)
 
-  const additionalTotalWeight = applicableAdditionalConfigs.reduce((sum: number, f) => sum + f.weight, 0)
+  const additionalTotalWeight = weightedAdditionalConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
   // Calculate percentages based on actual weights (not forced 50/50 split)
   const totalWeight = baselineTotalWeight + additionalTotalWeight
