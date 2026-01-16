@@ -2,8 +2,8 @@ import { Link } from '@tanstack/react-router'
 import { Dropdown } from '~/components/Dropdown'
 import { StatusIcon } from '~/components/StatusIcon'
 import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
-import type { TTerm } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 import { ArrowLeft, ArrowUpDown, Filter, Pencil, Search, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
@@ -29,33 +29,15 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
   const [sortBy, setSortBy] = useState<'name' | 'missing'>('name')
 
   const termStatuses = useMemo(() => {
-    // Get localized terms to get proper names
     const localizedTerms = getTerms({ terms, locale: 'en-US' })
 
-    // Also get raw terms for checking what's actually filled in
-    const rawTermsMap = terms as Record<string, TTerm>
-
     return localizedTerms.map((localizedTerm) => {
-      const rawTerm = rawTermsMap[localizedTerm.id]
-
-      // Check if raw data has meaningful values (not just locale references)
-      const hasType = localizedTerm.type.length > 0
-      const hasLabel = !!localizedTerm.label && localizedTerm.label.trim() !== ''
-      const hasDefinition = !!localizedTerm.definition && localizedTerm.definition.trim() !== ''
-      const hasTags = localizedTerm.tags.length > 0
-      const hasWebsite = !!rawTerm?.links?.website
-
-      const missingCount = [hasType, hasLabel, hasDefinition, hasTags, hasWebsite].filter((v) => !v).length
+      const completeness = getTermCompleteness(localizedTerm.id)
 
       return {
         id: localizedTerm.id,
         name: localizedTerm.name,
-        hasType,
-        hasLabel,
-        hasDefinition,
-        hasTags,
-        hasWebsite,
-        missingCount,
+        ...completeness,
       } satisfies TermStatus
     })
   }, [])

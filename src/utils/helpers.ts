@@ -98,7 +98,16 @@ export const getTerm = ({
     definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
     tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
     links: term.links,
-    sources: term.sources,
+    sources: term.sources
+      ? {
+          ...(term.sources.label && {
+            label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
+          }),
+          ...(term.sources.definition && {
+            definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
+          }),
+        }
+      : undefined,
   }
 }
 

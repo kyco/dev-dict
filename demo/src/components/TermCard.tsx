@@ -1,11 +1,12 @@
 import { Link } from '@tanstack/react-router'
 import { useAppContext } from '~/shared/context/AppContext'
+import { useCopyToClipboard } from '~/shared/hooks'
 import { hasTermFieldInLocale } from '~/shared/utils/termUtils'
 import type { TTermLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { Book, Check, Copy, ExternalLink, Globe } from 'lucide-react'
-import { useState } from 'react'
+import { Book, Check, Copy } from 'lucide-react'
 
 import { Chip } from './Chip'
+import { TermLinks } from './TermLinks'
 
 interface TermCardProps {
   term: TTermLocalized
@@ -15,7 +16,7 @@ interface TermCardProps {
 
 export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardProps) {
   const { lang } = useAppContext()
-  const [copied, setCopied] = useState(false)
+  const { copied, copy } = useCopyToClipboard()
 
   const hasName = hasTermFieldInLocale(term.id, 'name', lang)
   const hasLabel = hasTermFieldInLocale(term.id, 'label', lang)
@@ -24,9 +25,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
   const copyId = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    navigator.clipboard.writeText(term.id)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    copy(term.id)
   }
 
   return (
@@ -93,67 +92,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
         </div>
       ) : null}
 
-      {term.links && Object.keys(term.links).length > 0 && (
-        <div className="flex flex-wrap items-center gap-1.5 mt-4 pt-3 border-t border-slate-100 text-xs text-slate-400">
-          {term.links.website && (
-            <a
-              href={term.links.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 hover:text-blue-500 transition-colors"
-            >
-              <Globe size={10} />
-              Official Website
-            </a>
-          )}
-          {term.links.github && (
-            <>
-              {term.links.website && <span>·</span>}
-              <a
-                href={term.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 hover:text-blue-500 transition-colors"
-              >
-                <ExternalLink size={10} />
-                GitHub
-              </a>
-            </>
-          )}
-          {term.links.npm && (
-            <>
-              {(term.links.website || term.links.github) && <span>·</span>}
-              <a
-                href={term.links.npm}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 hover:text-blue-500 transition-colors"
-              >
-                <ExternalLink size={10} />
-                npm
-              </a>
-            </>
-          )}
-          {term.links.wikipedia && (
-            <>
-              {(term.links.website || term.links.github || term.links.npm) && <span>·</span>}
-              <a
-                href={term.links.wikipedia}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1 hover:text-blue-500 transition-colors"
-              >
-                <ExternalLink size={10} />
-                Wikipedia
-              </a>
-            </>
-          )}
-        </div>
-      )}
+      <TermLinks links={term.links} variant="inline" onLinkClick={(e) => e.stopPropagation()} />
     </Link>
   )
 }

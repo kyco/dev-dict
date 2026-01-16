@@ -5,6 +5,7 @@ import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
 import { COMPLETENESS_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
+import { filterTerms } from '~/shared/utils/filterUtils'
 import { isTermComplete } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
@@ -37,23 +38,12 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
   )
 
   const filteredTerms = useMemo(() => {
-    return dictionary.filter((term) => {
-      const searchFields = [term.name, term.definition, term.label, term.altName]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-      const matchesSearch = !searchQuery || searchFields.includes(searchQuery.toLowerCase())
-      const matchesType = selectedTypes.length === 0 || term.type.some((t) => selectedTypes.includes(t.id))
-      const matchesTags = selectedTags.length === 0 || term.tags.some((t) => selectedTags.includes(t.id))
-
-      let matchesCompleteness = true
-      if (completeness === 'complete') {
-        matchesCompleteness = isTermComplete(term.id)
-      } else if (completeness === 'incomplete') {
-        matchesCompleteness = !isTermComplete(term.id)
-      }
-
-      return matchesSearch && matchesType && matchesTags && matchesCompleteness
+    return filterTerms(dictionary, {
+      searchQuery,
+      selectedTypes,
+      selectedTags,
+      completeness: completeness as 'all' | 'complete' | 'incomplete',
+      isComplete: isTermComplete,
     })
   }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness])
 
@@ -70,6 +60,7 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
           </div>
           <Link
             to="/status"
+            search={{ q: undefined }}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
           >
             <Plus size={16} />

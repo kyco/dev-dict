@@ -61,6 +61,11 @@ export type TSourceMetadata = {
   definition?: TTermSources[]
 }
 
+export type TSourceMetadataLocalized = {
+  label?: TTermSourceLocalized[]
+  definition?: TTermSourceLocalized[]
+}
+
 export type TTerm = {
   /**
    * Unique identifier for the term.
@@ -123,13 +128,14 @@ export type TTerm = {
   // relatedTerms?: TTerm['name'][]
 }
 
-export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definition' | 'type' | 'tags'> & {
+export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definition' | 'type' | 'tags' | 'sources'> & {
   name: string
   altName?: string
   label: string
   definition: string
   type: TTermTypeLocalized[]
   tags: TTermTagLocalized[]
+  sources?: TSourceMetadataLocalized
 }
 
 export type TTerms = (typeof TERMS)[keyof typeof TERMS]

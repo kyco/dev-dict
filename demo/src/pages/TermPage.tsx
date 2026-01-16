@@ -1,14 +1,16 @@
 import { useRouter } from '@tanstack/react-router'
 import { Chip } from '~/components/Chip'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
+import { TermLinks } from '~/components/TermLinks'
 import { getGithubEditUrl, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
+import { useCopyToClipboard } from '~/shared/hooks'
 import { hasTermFieldInLocale } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { getSources, getTerms } from 'dev-dict/utils'
-import { ArrowLeft, Book, Check, Copy, ExternalLink, Globe, Layers, Pencil, Tag } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { ArrowLeft, Book, Check, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
+import { useMemo } from 'react'
 
 interface TermPageProps {
   termId: string
@@ -18,21 +20,17 @@ interface TermPageProps {
 export function TermPage({ termId, fromQuery }: TermPageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const router = useRouter()
-  const [copied, setCopied] = useState(false)
+  const { copied, copy } = useCopyToClipboard()
 
   const goBack = () => {
     if (window.history.length > 1) {
       router.history.back()
     } else {
-      router.navigate({ to: '/', search: { q: fromQuery } })
+      router.navigate({ to: '/', search: { q: fromQuery, status: undefined } })
     }
   }
 
-  const copyId = () => {
-    navigator.clipboard.writeText(termId)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+  const copyId = () => copy(termId)
 
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const sources = useMemo(() => getSources({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
@@ -175,56 +173,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-1">
                 <ExternalLink size={14} /> Links
               </h2>
-              {term.links && Object.keys(term.links).length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {term.links.website && (
-                    <a
-                      href={term.links.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-lg border border-slate-200 hover:border-blue-200 transition-colors"
-                    >
-                      <Globe size={14} />
-                      Official Website
-                    </a>
-                  )}
-                  {term.links.github && (
-                    <a
-                      href={term.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-lg border border-slate-200 hover:border-blue-200 transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      GitHub
-                    </a>
-                  )}
-                  {term.links.npm && (
-                    <a
-                      href={term.links.npm}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-lg border border-slate-200 hover:border-blue-200 transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      npm
-                    </a>
-                  )}
-                  {term.links.wikipedia && (
-                    <a
-                      href={term.links.wikipedia}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-lg border border-slate-200 hover:border-blue-200 transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                      Wikipedia
-                    </a>
-                  )}
-                </div>
-              ) : (
-                <p className="text-sm text-slate-400 italic">No links available</p>
-              )}
+              <TermLinks links={term.links} variant="button" />
             </div>
 
             {term.sources && (term.sources.label?.length || term.sources.definition?.length) && (
