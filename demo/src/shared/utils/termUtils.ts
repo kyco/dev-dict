@@ -75,7 +75,6 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
   const baselineTotalWeight = applicableBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
-
   // For additional completeness, exclude altName fields from weight calculation but keep them for display
   const applicableAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter((config) => {
     // If field is conditional, only include it if the field exists in the term
@@ -87,9 +86,7 @@ export function getTermCompleteness(termId: string): TermCompleteness {
   })
 
   // Separate configs for weight calculation (exclude altName fields)
-  const weightedAdditionalConfigs = applicableAdditionalConfigs.filter(
-    (config) => !config.field.startsWith('altName.')
-  )
+  const weightedAdditionalConfigs = applicableAdditionalConfigs.filter((config) => !config.field.startsWith('altName.'))
 
   const additionalFields: FieldCompleteness[] = applicableAdditionalConfigs.map((config) => ({
     field: config.field,
