@@ -1,3 +1,9 @@
+## [0.10.2](https://github.com/kyco/dev-dict/compare/v0.10.1...v0.10.2) (2026-01-16)
+
+### Bug Fixes
+
+* **demo:** GitHub pages 404 logic ([98fc9de](https://github.com/kyco/dev-dict/commit/98fc9deff9a406d96f45f12c778256db9455ac4f))
+
 ## [0.10.1](https://github.com/kyco/dev-dict/compare/v0.10.0...v0.10.1) (2026-01-16)
 
 ### Bug Fixes
