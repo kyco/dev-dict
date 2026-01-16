@@ -1,3 +1,10 @@
+## [0.11.2](https://github.com/kyco/dev-dict/compare/v0.11.1...v0.11.2) (2026-01-16)
+
+### Bug Fixes
+
+* **demo:** Completeness calc ([77c69f4](https://github.com/kyco/dev-dict/commit/77c69f43dfd461c5bcdf356c4c593ab6e65dadc6))
+* **demo:** Selector order ([835dd54](https://github.com/kyco/dev-dict/commit/835dd54bca0262224c212f4d41f03d9331b88883))
+
 ## [0.11.1](https://github.com/kyco/dev-dict/compare/v0.11.0...v0.11.1) (2026-01-16)
 
 ### Bug Fixes
