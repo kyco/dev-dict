@@ -3,8 +3,11 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { routeTree } from './routeTree.gen'
+import { handleSpaRedirect } from './spa-redirect'
 
 import './styles/app.css'
+
+handleSpaRedirect()
 
 const router = createRouter({
   routeTree,
