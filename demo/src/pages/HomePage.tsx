@@ -65,7 +65,7 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
             <img src="/dev-dict/logo.png" alt="dev-dict logo" className="w-16 h-16 rounded-2xl" />
             <div>
               <h1 className="text-3xl font-bold text-slate-800 mb-1">dev-dict</h1>
-              <p className="text-slate-500 text-sm">Multilingual Software Development Dictionary</p>
+              <p className="text-slate-500 text-sm">Developer Dictionary</p>
             </div>
           </div>
           <Link
