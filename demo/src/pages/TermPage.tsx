@@ -44,8 +44,8 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-slate-600 font-medium mb-4">Term not found</p>
-          <button onClick={goBack} className="text-blue-600 hover:text-blue-700">
+          <p className="text-slate-600 font-medium mb-4">Term not found!</p>
+          <button onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
             Back to Dictionary
           </button>
         </div>
