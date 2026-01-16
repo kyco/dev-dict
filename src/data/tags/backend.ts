@@ -10,6 +10,6 @@ export default {
   name: {
     [LOCALES.EN_US]: `Backend`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
-    [LOCALES.DE_DE]: `Backend`,
+    [LOCALES.DE_DE]: LOCALES.EN_US,
   },
 } as const satisfies TTermTag

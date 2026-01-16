@@ -10,6 +10,6 @@ export default {
   name: {
     [LOCALES.EN_US]: `JavaScript`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
-    [LOCALES.DE_DE]: `JavaScript`,
+    [LOCALES.DE_DE]: LOCALES.EN_US,
   },
 } as const satisfies TTermTag
