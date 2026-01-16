@@ -73,7 +73,7 @@ export function CompletenessChart({
       { name: 'Website', completed: !!links?.website },
       { name: 'Wikipedia', completed: !!links?.wikipedia },
       { name: 'GitHub', completed: !!links?.github },
-      { name: 'NPM', completed: !!links?.npm },
+      { name: 'npm', completed: !!links?.npm },
     ]
 
     return (
