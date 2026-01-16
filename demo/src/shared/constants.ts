@@ -8,8 +8,9 @@ export const LANGUAGES = [
 
 export const FILTER_OPTIONS = [
   { id: 'all', label: 'All terms' },
-  { id: 'complete', label: 'Complete only' },
-  { id: 'incomplete', label: 'Incomplete only' },
+  { id: 'baseline_incomplete', label: 'Baseline incomplete' },
+  { id: 'baseline_complete', label: 'Baseline complete' },
+  { id: 'fully_complete', label: 'Fully complete' },
 ]
 
 export const SORT_OPTIONS = [

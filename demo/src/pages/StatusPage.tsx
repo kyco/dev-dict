@@ -17,6 +17,8 @@ type TermStatus = {
   hasTags: boolean
   hasWebsite: boolean
   missingCount: number
+  fullPercentage: number
+  baselineComplete: boolean
 }
 
 interface StatusPageProps {
@@ -140,6 +142,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-600">Term</th>
                   <th className="text-left px-4 py-3 text-sm font-semibold text-slate-600">ID</th>
+                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Complete</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Type</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Label</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Definition</th>
@@ -166,6 +169,19 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                     </td>
                     <td className="px-4 py-3">
                       <code className="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600">{term.id}</code>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <span
+                        className={`text-sm font-semibold ${
+                          term.fullPercentage === 100
+                            ? 'text-emerald-600'
+                            : term.baselineComplete
+                              ? 'text-blue-600'
+                              : 'text-amber-600'
+                        }`}
+                      >
+                        {term.fullPercentage}%
+                      </span>
                     </td>
                     <td className="px-4 py-3 text-center">
                       <StatusIcon has={term.hasType} />
