@@ -6,12 +6,6 @@ export const LANGUAGES = [
   { code: 'de-DE' as TLocale, label: '🇩🇪 Deutsch' },
 ]
 
-export const COMPLETENESS_OPTIONS = [
-  { id: 'all', label: 'All terms' },
-  { id: 'complete', label: 'Complete only' },
-  { id: 'incomplete', label: 'Incomplete only' },
-]
-
 export const FILTER_OPTIONS = [
   { id: 'all', label: 'All terms' },
   { id: 'complete', label: 'Complete only' },

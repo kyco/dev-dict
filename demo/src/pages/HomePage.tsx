@@ -3,8 +3,9 @@ import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
-import { COMPLETENESS_OPTIONS, LANGUAGES } from '~/shared/constants'
+import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
+import { filterTerms } from '~/shared/utils/filterUtils'
 import { isTermComplete } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
@@ -14,13 +15,14 @@ import { useMemo, useState } from 'react'
 interface HomePageProps {
   searchQuery: string
   onSearchChange: (value: string) => void
+  completeness: string
+  onCompletenessChange: (value: string) => void
 }
 
-export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
+export function HomePage({ searchQuery, onSearchChange, completeness, onCompletenessChange }: HomePageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [completeness, setCompleteness] = useState<string>('all')
 
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
@@ -36,23 +38,12 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
   )
 
   const filteredTerms = useMemo(() => {
-    return dictionary.filter((term) => {
-      const searchFields = [term.name, term.definition, term.label, term.altName]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-      const matchesSearch = !searchQuery || searchFields.includes(searchQuery.toLowerCase())
-      const matchesType = selectedTypes.length === 0 || term.type.some((t) => selectedTypes.includes(t.id))
-      const matchesTags = selectedTags.length === 0 || term.tags.some((t) => selectedTags.includes(t.id))
-
-      let matchesCompleteness = true
-      if (completeness === 'complete') {
-        matchesCompleteness = isTermComplete(term.id)
-      } else if (completeness === 'incomplete') {
-        matchesCompleteness = !isTermComplete(term.id)
-      }
-
-      return matchesSearch && matchesType && matchesTags && matchesCompleteness
+    return filterTerms(dictionary, {
+      searchQuery,
+      selectedTypes,
+      selectedTags,
+      completeness: completeness as 'all' | 'complete' | 'incomplete',
+      isComplete: isTermComplete,
     })
   }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness])
 
@@ -64,11 +55,12 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
             <img src="/dev-dict/logo.png" alt="dev-dict logo" className="w-16 h-16 rounded-2xl" />
             <div>
               <h1 className="text-3xl font-bold text-slate-800 mb-1">dev-dict</h1>
-              <p className="text-slate-500 text-sm">Multilingual Software Development Dictionary</p>
+              <p className="text-slate-500 text-sm">Developer Dictionary</p>
             </div>
           </div>
           <Link
             to="/status"
+            search={{ q: undefined }}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
           >
             <Plus size={16} />
@@ -90,9 +82,9 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
             <Dropdown
               icon={CheckCircle}
               placeholder="Status"
-              options={COMPLETENESS_OPTIONS}
+              options={FILTER_OPTIONS}
               selected={completeness}
-              setSelected={setCompleteness as (value: string) => void}
+              setSelected={onCompletenessChange}
             />
             <div className="w-px h-6 bg-slate-200 hidden sm:block" />
             <Dropdown
@@ -116,7 +108,7 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
                 onClick={() => {
                   setSelectedTypes([])
                   setSelectedTags([])
-                  setCompleteness('all')
+                  onCompletenessChange('all')
                 }}
                 className="text-sm text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
               >

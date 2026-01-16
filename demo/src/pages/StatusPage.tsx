@@ -2,10 +2,10 @@ import { Link } from '@tanstack/react-router'
 import { Dropdown } from '~/components/Dropdown'
 import { StatusIcon } from '~/components/StatusIcon'
 import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
-import type { TTerm } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
-import { ArrowLeft, ArrowUpDown, Filter, Pencil } from 'lucide-react'
+import { ArrowLeft, ArrowUpDown, Filter, Pencil, Search, X } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 type TermStatus = {
@@ -19,44 +19,37 @@ type TermStatus = {
   missingCount: number
 }
 
-export function StatusPage() {
+interface StatusPageProps {
+  searchQuery: string
+  onSearchChange: (value: string) => void
+}
+
+export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
   const [filter, setFilter] = useState<'all' | 'incomplete' | 'complete'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'missing'>('name')
 
   const termStatuses = useMemo(() => {
-    // Get localized terms to get proper names
     const localizedTerms = getTerms({ terms, locale: 'en-US' })
 
-    // Also get raw terms for checking what's actually filled in
-    const rawTermsMap = terms as Record<string, TTerm>
-
     return localizedTerms.map((localizedTerm) => {
-      const rawTerm = rawTermsMap[localizedTerm.id]
-
-      // Check if raw data has meaningful values (not just locale references)
-      const hasType = localizedTerm.type.length > 0
-      const hasLabel = !!localizedTerm.label && localizedTerm.label.trim() !== ''
-      const hasDefinition = !!localizedTerm.definition && localizedTerm.definition.trim() !== ''
-      const hasTags = localizedTerm.tags.length > 0
-      const hasWebsite = !!rawTerm?.links?.website
-
-      const missingCount = [hasType, hasLabel, hasDefinition, hasTags, hasWebsite].filter((v) => !v).length
+      const completeness = getTermCompleteness(localizedTerm.id)
 
       return {
         id: localizedTerm.id,
         name: localizedTerm.name,
-        hasType,
-        hasLabel,
-        hasDefinition,
-        hasTags,
-        hasWebsite,
-        missingCount,
+        ...completeness,
       } satisfies TermStatus
     })
   }, [])
 
   const filteredTerms = useMemo(() => {
     let result = termStatuses
+
+    // Apply search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase()
+      result = result.filter((t) => t.name.toLowerCase().includes(query) || t.id.toLowerCase().includes(query))
+    }
 
     if (filter === 'incomplete') {
       result = result.filter((t) => t.missingCount > 0)
@@ -71,7 +64,7 @@ export function StatusPage() {
     }
 
     return result
-  }, [termStatuses, filter, sortBy])
+  }, [termStatuses, filter, sortBy, searchQuery])
 
   const stats = useMemo(() => {
     const total = termStatuses.length
@@ -85,8 +78,8 @@ export function StatusPage() {
       <div className="max-w-6xl mx-auto px-4 py-8">
         <Link
           to="/"
-          search={{ q: '' }}
-          className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors mb-6 group"
+          search={{ q: undefined, status: undefined }}
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors mb-6 group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium">Back to Dictionary</span>
@@ -116,7 +109,26 @@ export function StatusPage() {
             selected={sortBy}
             setSelected={setSortBy as (value: string) => void}
           />
-          <p className="text-sm text-slate-500 ml-auto">
+          <div className="relative flex-1 min-w-48">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder="Search terms..."
+              autoFocus
+              className="w-full pl-9 pr-8 py-2 text-sm bg-white rounded-lg border border-slate-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder-slate-400"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => onSearchChange('')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+              >
+                <X size={16} />
+              </button>
+            )}
+          </div>
+          <p className="text-sm text-slate-500">
             Showing {filteredTerms.length} term{filteredTerms.length !== 1 ? 's' : ''}
           </p>
         </div>

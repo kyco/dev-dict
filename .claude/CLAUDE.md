@@ -96,6 +96,35 @@ npx prettier --write .
 ```
 Formats the code with Prettier.
 
+### Testing
+```bash
+pnpm test
+```
+Runs the data integrity test suite using Vitest. These tests validate:
+- All term/tag/type files are properly imported and exported
+- All entries have required fields (id, name, label, definition, etc.)
+- All entries have en-US name (label and definition can be empty for stub terms)
+- All locale records use valid locale codes
+- Entry files maintain alphabetical order
+- ID naming conventions are followed (lowercase with underscores)
+- Filenames match the IDs exactly (e.g., `backbone_js.ts` must have `id: 'backbone_js'`)
+
+```bash
+pnpm test:watch
+```
+Runs tests in watch mode for development.
+
+```bash
+pnpm test:ui
+```
+Opens the Vitest UI for interactive test debugging.
+
+**IMPORTANT**: Always run `pnpm test` before committing changes. The tests will catch common mistakes like:
+- Forgetting to add exports to entry files
+- Using incorrect ID naming conventions
+- Missing required fields
+- Empty name (label and definition can be empty for stub terms)
+
 ## Architecture
 
 ### Core Concepts
@@ -189,27 +218,66 @@ Always use the `@/` alias when importing within the codebase. For example:
 
 1. Create a new file in `src/data/terms/` named `{term_id}.ts` with a default export (use lowercase with underscores only, no dashes)
 2. Import the term in `src/data/terms/index.ts` and add to `RAW_TERMS` object
-3. Define translations for at least `en-US` in name, label, and definition
-4. Optionally add `altName` for abbreviations or short names (e.g., "AI" for "Artificial Intelligence")
-5. Assign appropriate types and tags from existing constants
-6. Optionally add `links` (website is required if links are provided)
-7. Optionally add `sources` to attribute where content originated (if not AI-generated)
-8. Run `pnpm build` to validate (documentation will be generated automatically on merge)
+3. **IMPORTANT**: Add an export in `src/terms-entry.ts` in alphabetical order (e.g., `export { default as term_name } from '@/data/terms/term_name'`)
+4. Define translations for at least `en-US` in name, label, and definition
+5. Optionally add `altName` for abbreviations or short names (e.g., "AI" for "Artificial Intelligence")
+6. Assign appropriate types and tags from existing constants
+7. Optionally add `links` (website is required if links are provided)
+8. Optionally add `sources` to attribute where content originated (if not AI-generated)
+9. Run `pnpm test` to validate all changes (tests will catch missing exports, invalid IDs, etc.)
+10. Run `pnpm build` to ensure the build succeeds (documentation will be generated automatically on merge)
 
 **ID Naming Convention**:
 - All IDs must use lowercase with underscores only (e.g., `node_js`, `open_source`, `react_native`). Never use dashes/hyphens in IDs.
 - The filename must match the ID exactly (e.g., if `id: 'node_js'`, the file must be `node_js.ts`) to make it easier to find and modify.
 
-### Adding a New Type or Tag
+### Adding a New Type
 
-1. Create a file in `src/data/types/` or `src/data/tags/` with a default export (use lowercase with underscores only, no dashes)
-2. Import and add to the respective `RAW_TYPE` or `RAW_TAG` object in the index.ts file
-3. Use the new constant in term definitions
-4. Run `pnpm build` to validate (documentation will be generated automatically on merge)
+1. Create a file in `src/data/types/` named `{type_id}.ts` with a default export (use lowercase with underscores only, no dashes)
+2. Import and add to the `RAW_TYPES` object in `src/data/types/index.ts`
+3. **IMPORTANT**: Add an export in `src/types-entry.ts` in alphabetical order (e.g., `export { default as type_name } from '@/data/types/type_name'`)
+4. Use the new type in term definitions
+5. Run `pnpm test` to validate all changes
+6. Run `pnpm build` to ensure the build succeeds (documentation will be generated automatically on merge)
 
 **ID Naming Convention**:
-- All IDs must use lowercase with underscores only (e.g., `node_js`, `open_source`). Never use dashes/hyphens in IDs.
+- All IDs must use lowercase with underscores only (e.g., `runtime_environment`, `cms`). Never use dashes/hyphens in IDs.
+- The filename must match the ID exactly (e.g., if `id: 'runtime_environment'`, the file must be `runtime_environment.ts`) to make it easier to find and modify.
+
+### Adding a New Tag
+
+1. Create a file in `src/data/tags/` named `{tag_id}.ts` with a default export (use lowercase with underscores only, no dashes)
+2. Import and add to the `RAW_TAGS` object in `src/data/tags/index.ts`
+3. **IMPORTANT**: Add an export in `src/tags-entry.ts` in alphabetical order (e.g., `export { default as tag_name } from '@/data/tags/tag_name'`)
+4. Use the new tag in term definitions
+5. Run `pnpm test` to validate all changes
+6. Run `pnpm build` to ensure the build succeeds (documentation will be generated automatically on merge)
+
+**ID Naming Convention**:
+- All IDs must use lowercase with underscores only (e.g., `open_source`, `project_management`). Never use dashes/hyphens in IDs.
 - The filename must match the ID exactly (e.g., if `id: 'open_source'`, the file must be `open_source.ts`) to make it easier to find and modify.
+
+### Entry Files
+
+The library uses dedicated entry files for tree-shakeable exports. When adding new content, you **must** update the corresponding entry file:
+
+- **Terms**: `src/terms-entry.ts` - Individual term exports for `dev-dict/terms`
+- **Types**: `src/types-entry.ts` - Individual type exports for `dev-dict/types`
+- **Tags**: `src/tags-entry.ts` - Individual tag exports for `dev-dict/tags`
+
+These entry files enable consumers to import only what they need:
+```typescript
+// Import specific terms
+import { react, typescript, node_js } from 'dev-dict/terms'
+
+// Import specific tags
+import { frontend, backend, open_source } from 'dev-dict/tags'
+
+// Import specific types
+import { library, framework, language } from 'dev-dict/types'
+```
+
+**Always maintain alphabetical order** in these entry files for consistency and ease of maintenance.
 
 ## Build Output
 
