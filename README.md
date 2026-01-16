@@ -9,34 +9,15 @@
 
 A community-driven collection of software development terms with explanations in multiple languages. Perfect for building developer tools, documentation sites, educational content and much more.
 
-**[Browse All Terms](https://kyco.github.io/dev-dict/)**
+**[Browse All Terms](https://kyco.github.io/dev-dict/)** · **[Documentation](https://kyco.github.io/dev-dict/docs)**
 
 ## Installation
-
-### via Package Manager
 
 ```bash
 npm install dev-dict
 ```
 
-### via CDN (unpkg)
-
-```html
-<script src="https://unpkg.com/dev-dict@latest/dist/dev-dict.min.js"></script>
-<script>
-  // Access the library via the global 'devdict' object
-  const { terms, utils } = devdict
-
-  // Translate to specified locale
-  const dictionary = utils.getTerms({ terms, locale: 'en-US' })
-
-  console.log(dictionary)
-</script>
-```
-
 ## Quick Start
-
-### Option 1: All Terms
 
 ```typescript
 import { terms } from 'dev-dict'
@@ -52,92 +33,7 @@ dictionary.forEach(term => {
 })
 ```
 
-### Option 2: Selected Terms (smaller bundle size with tree-shaking)
-
-```typescript
-// Import a selection of terms
-import { react, typescript, node_js } from 'dev-dict/terms'
-import { getTerms } from 'dev-dict/utils'
-
-// Create a list with only the terms you need
-const terms = { react, typescript, node_js }
-
-// Then use the same helper functions as Option 1
-const dictionary = getTerms({ terms, locale: 'en-US' })
-```
-
-## API Reference
-
-### Import Data
-
-```typescript
-import { terms, types, tags, locales } from 'dev-dict'
-```
-
-| Export | Description |
-|--------|-------------|
-| `terms` | Raw terms dictionary |
-| `types` | Type constants and definitions |
-| `tags` | Tag constants and definitions |
-| `locales` | Locale constants |
-
-### Helper Functions
-
-Import from `dev-dict/utils`:
-
-```typescript
-import {
-  getTerms,
-  getTermsDict,
-  getTypes,
-  getTypesDict,
-  getTags,
-  getTagsDict,
-  getSources,
-  getSourcesDict
-} from 'dev-dict/utils'
-```
-
-**Example usage:**
-
-```typescript
-// Get terms as an array
-const dictionary = getTerms({
-  terms,              // Required: the terms dictionary
-  locale: 'en-US',    // Optional: defaults to 'en-US'
-  populateEmpty: true // Optional: defaults to true
-})
-// [{ id: "react", name: "React", ... }, { id: "vue", name: "Vue", ... }]
-
-// Get terms as a dictionary object
-const termsDict = getTermsDict({ terms, locale: 'en-US' })
-// { react: { id: "react", name: "React", ... }, vue: { id: "vue", name: "Vue", ... } }
-```
-
-**Options:**
-
-| Parameter | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `terms` | `TTermsDict` | Yes | - | The terms dictionary |
-| `locale` | `string` | No | `'en-US'` | Target locale |
-| `populateEmpty` | `boolean` | No | `true` | Populate empty locale records with en-US values |
-
-**Available functions:**
-
-| Function | Returns | Description |
-|----------|---------|-------------|
-| `getTermsDict(options)` | `Partial<TTermsDictLocalized>` | Get all terms as a dictionary object |
-| `getTerms(options)` | `TTermLocalized[]` | Get all terms as an array |
-| `getTypesDict(options)` | Dictionary | Get all term types as a dictionary object |
-| `getTypes(options)` | Array | Get all term types as an array |
-| `getTagsDict(options)` | Dictionary | Get all term tags as a dictionary object |
-| `getTags(options)` | Array | Get all term tags as an array |
-| `getSourcesDict(options)` | Dictionary | Get all sources as a dictionary object |
-| `getSources(options)` | Array | Get all sources as an array |
-
-### Types
-
-See [src/types/index.ts](https://github.com/kyco/dev-dict/blob/main/src/types/index.ts) for all type definitions.
+For detailed API documentation, code examples, and more, visit the **[Documentation](https://kyco.github.io/dev-dict/docs)**.
 
 ## Supported Languages
 
