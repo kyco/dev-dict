@@ -15,7 +15,7 @@ type TermStatus = {
   hasLabel: boolean
   hasDefinition: boolean
   hasTags: boolean
-  hasWebsite: boolean
+  hasLinks: boolean
   missingCount: number
   fullPercentage: number
   baselineComplete: boolean
@@ -196,7 +196,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                       <StatusIcon has={term.hasTags} />
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <StatusIcon has={term.hasWebsite} />
+                      <StatusIcon has={term.hasLinks} />
                     </td>
                     <td className="px-4 py-3 text-center">
                       <a

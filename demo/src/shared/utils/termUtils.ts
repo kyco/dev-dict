@@ -14,7 +14,7 @@ export interface TermCompleteness {
   hasLabel: boolean
   hasDefinition: boolean
   hasTags: boolean
-  hasWebsite: boolean
+  hasLinks: boolean
   isComplete: boolean
   missingCount: number
 
@@ -38,7 +38,7 @@ export function getTermCompleteness(termId: string): TermCompleteness {
       hasLabel: false,
       hasDefinition: false,
       hasTags: false,
-      hasWebsite: false,
+      hasLinks: false,
       isComplete: false,
       missingCount: 5,
 
@@ -75,10 +75,6 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
   const baselineTotalWeight = applicableBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
-  // Baseline is out of 50%
-  const baselinePercentage = Math.round((baselineCompletedWeight / baselineTotalWeight) * 50)
-  const baselineComplete = baselinePercentage === 50
-
   // Calculate additional completeness (filter out conditional fields that don't exist)
   const applicableAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter((config) => {
     // If field is conditional, only include it if the field exists in the term
@@ -102,21 +98,27 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
   const additionalTotalWeight = applicableAdditionalConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
-  // Additional is out of 50%
-  const additionalPercentage =
-    additionalTotalWeight > 0 ? Math.round((additionalCompletedWeight / additionalTotalWeight) * 50) : 0
+  // Calculate percentages based on actual weights (not forced 50/50 split)
+  const totalWeight = baselineTotalWeight + additionalTotalWeight
+  const totalCompletedWeight = baselineCompletedWeight + additionalCompletedWeight
 
-  // Full percentage is baseline (0-50%) + additional (0-50%) = 0-100%
-  const fullPercentage = baselinePercentage + additionalPercentage
+  const baselinePercentage = baselineTotalWeight > 0 ? Math.round((baselineCompletedWeight / totalWeight) * 100) : 0
+  const baselineComplete = baselineCompletedWeight === baselineTotalWeight
+
+  const additionalPercentage =
+    additionalTotalWeight > 0 ? Math.round((additionalCompletedWeight / totalWeight) * 100) : 0
+
+  // Full percentage is the combined completed weight out of total weight
+  const fullPercentage = totalWeight > 0 ? Math.round((totalCompletedWeight / totalWeight) * 100) : 0
 
   // Legacy fields for backwards compatibility
   const hasType = rawTerm.type.length > 0
   const hasLabel = Object.values(rawTerm.label as Record<string, string>).some((v) => v && v.trim() !== '')
   const hasDefinition = Object.values(rawTerm.definition as Record<string, string>).some((v) => v && v.trim() !== '')
   const hasTags = rawTerm.tags.length > 0
-  const hasWebsite = !!rawTerm.links?.website
+  const hasLinks = rawTerm.links ? !!Object.keys(rawTerm.links).length : false
 
-  const legacyFields = [hasType, hasLabel, hasDefinition, hasTags, hasWebsite]
+  const legacyFields = [hasType, hasLabel, hasDefinition, hasTags, hasLinks]
   const missingCount = legacyFields.filter((v) => !v).length
   const isComplete = missingCount === 0
 
@@ -126,7 +128,7 @@ export function getTermCompleteness(termId: string): TermCompleteness {
     hasLabel,
     hasDefinition,
     hasTags,
-    hasWebsite,
+    hasLinks,
     isComplete,
     missingCount,
 
