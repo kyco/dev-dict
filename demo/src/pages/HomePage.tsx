@@ -9,7 +9,7 @@ import { filterTerms } from '~/shared/utils/filterUtils'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
+import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 interface HomePageProps {
@@ -61,14 +61,23 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
               <p className="text-slate-500 text-sm">Developer Dictionary</p>
             </div>
           </div>
-          <Link
-            to="/status"
-            search={{ q: undefined }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
-          >
-            <Plus size={16} />
-            Contribute
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/docs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            >
+              <BookOpen size={16} />
+              Docs
+            </Link>
+            <Link
+              to="/status"
+              search={{ q: undefined }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            >
+              <Plus size={16} />
+              Contribute
+            </Link>
+          </div>
         </div>
 
         <div className="sticky top-4 z-10 bg-cyan-50 p-4 rounded-2xl shadow-md ring-1 ring-cyan-200/50 mb-6">
