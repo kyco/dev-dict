@@ -79,7 +79,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
         <Link
           to="/"
           search={{ q: undefined, status: undefined }}
-          className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors mb-6 group"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors mb-6 group"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium">Back to Dictionary</span>
