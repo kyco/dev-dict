@@ -1,3 +1,10 @@
+## [0.11.3](https://github.com/kyco/dev-dict/compare/v0.11.2...v0.11.3) (2026-01-17)
+
+### Bug Fixes
+
+* **demo:** Add virtual scrolling ([fd4213c](https://github.com/kyco/dev-dict/commit/fd4213c046ad4e45c6532332fbeed64f14a515fb))
+* **demo:** Typo ([f3c668e](https://github.com/kyco/dev-dict/commit/f3c668e56506d0b16bd78e2b58872482bf36ffca))
+
 ## [0.11.2](https://github.com/kyco/dev-dict/compare/v0.11.1...v0.11.2) (2026-01-16)
 
 ### Bug Fixes
