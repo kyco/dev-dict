@@ -1,12 +1,10 @@
 import { Link } from '@tanstack/react-router'
 import { useCopyToClipboard } from '~/shared/hooks'
-import { terms } from 'dev-dict'
 import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-console.log(terms)
 function CodeBlock({ code, language = 'typescript' }: { code: string; language?: string }) {
   const { copied, copy } = useCopyToClipboard()
 
