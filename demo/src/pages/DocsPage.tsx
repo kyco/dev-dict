@@ -1,7 +1,12 @@
 import { Link } from '@tanstack/react-router'
 import { useCopyToClipboard } from '~/shared/hooks'
-import { ArrowLeft, BookOpen, Check, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
+import { terms } from 'dev-dict'
+import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
+import { useState } from 'react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
+console.log(terms)
 function CodeBlock({ code, language = 'typescript' }: { code: string; language?: string }) {
   const { copied, copy } = useCopyToClipboard()
 
@@ -12,16 +17,60 @@ function CodeBlock({ code, language = 'typescript' }: { code: string; language?:
 
   return (
     <div className="relative group">
-      <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm">
-        <code className={`language-${language}`}>{code}</code>
-      </pre>
+      <SyntaxHighlighter
+        language={language}
+        style={oneDark}
+        customStyle={{
+          margin: 0,
+          borderRadius: '0.5rem',
+          fontSize: '0.875rem',
+          border: '1px solid rgb(51 65 85)',
+        }}
+      >
+        {code}
+      </SyntaxHighlighter>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-2 bg-slate-700 hover:bg-slate-600 rounded-md transition-colors opacity-0 group-hover:opacity-100"
+        className="absolute top-2 right-2 p-2 bg-slate-600 hover:bg-slate-500 rounded-md transition-colors opacity-0 group-hover:opacity-100"
         title="Copy to clipboard"
       >
-        {copied ? <Check size={16} className="text-green-400" /> : <Copy size={16} className="text-slate-300" />}
+        {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} className="text-slate-200" />}
       </button>
+    </div>
+  )
+}
+
+function Accordion({
+  title,
+  description,
+  children,
+  defaultOpen = false,
+}: {
+  title: string
+  description?: string
+  children: React.ReactNode
+  defaultOpen?: boolean
+}) {
+  const [isOpen, setIsOpen] = useState(defaultOpen)
+
+  return (
+    <div className="border-b border-slate-200 last:border-b-0">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-start justify-between py-4 px-4 my-2 text-left hover:bg-slate-50 transition-colors rounded-lg cursor-pointer group"
+      >
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base font-semibold text-slate-700 group-hover:text-cyan-600 transition-colors">
+            {title}
+          </h3>
+          {description && <p className="text-sm text-slate-500 mt-0.5">{description}</p>}
+        </div>
+        <ChevronDown
+          size={18}
+          className={`text-slate-400 group-hover:text-cyan-600 transition-all flex-shrink-0 ml-3 mt-0.5 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+      {isOpen && <div className="pb-4">{children}</div>}
     </div>
   )
 }
@@ -38,7 +87,7 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section id={id} className="mb-12 scroll-mt-8">
+    <section id={id} className="mb-12 scroll-mt-32">
       <div className="flex items-center gap-3 mb-4">
         <div className="p-2 bg-cyan-100 rounded-lg">
           <Icon size={20} className="text-cyan-600" />
@@ -50,7 +99,7 @@ function Section({
   )
 }
 
-function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
+function Table({ headers, rows }: { headers: string[]; rows: Array<Array<{ text: string; code?: boolean }>> }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm border-collapse">
@@ -68,7 +117,11 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
             <tr key={i} className="border-b border-slate-100 hover:bg-slate-50">
               {row.map((cell, j) => (
                 <td key={j} className="py-3 px-4 text-slate-600">
-                  <code className="text-sm bg-slate-100 px-1.5 py-0.5 rounded">{cell}</code>
+                  {cell.code ? (
+                    <code className="text-sm bg-slate-100 px-1.5 py-0.5 rounded">{cell.text}</code>
+                  ) : (
+                    cell.text
+                  )}
                 </td>
               ))}
             </tr>
@@ -106,18 +159,18 @@ export function DocsPage() {
               href="https://github.com/kyco/dev-dict"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors font-medium"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors"
             >
-              <Github size={18} />
+              <Github size={16} />
               GitHub
             </a>
             <a
               href="https://www.npmjs.com/package/dev-dict"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors font-medium"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
             >
-              <Package size={18} />
+              <Package size={16} />
               npm
             </a>
           </div>
@@ -133,7 +186,7 @@ export function DocsPage() {
         </div>
 
         {/* Quick Nav */}
-        <nav className="mb-12 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+        <nav className="sticky top-4 z-10 mb-12 p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
           <div className="flex flex-wrap gap-2 justify-center">
             {navItems.map((item) => (
               <a
@@ -217,30 +270,120 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
 
         {/* API Reference */}
         <Section id="api-reference" title="API Reference" icon={Code}>
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+          <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="mb-6">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">Import Data</h3>
-              <CodeBlock code={`import { terms, types, tags, locales } from 'dev-dict'`} />
+              <CodeBlock code={`import { terms, types, tags, sources, locales } from 'dev-dict'`} />
+            </div>
 
-              <div className="mt-6">
-                <Table
-                  headers={['Export', 'Description']}
-                  rows={[
-                    ['terms', 'Raw terms dictionary'],
-                    ['types', 'Type constants and definitions'],
-                    ['tags', 'Tag constants and definitions'],
-                    ['locales', 'Locale constants'],
-                  ]}
+            <div className="space-y-0">
+              <Accordion title="terms" description="Raw terms dictionary with TLocaleRecord values">
+                <CodeBlock
+                  code={`{
+  react: {
+    id: 'react',
+    name: { 'en-US': 'React', ... },
+    label: { 'en-US': 'JavaScript Library', ... },
+    definition: { 'en-US': 'A JavaScript library for ...', ... },
+    type: [
+      { id: 'library', name: { 'en-US': 'Library', ... } }
+    ],
+    tags: [
+      { id: 'frontend', name: { 'en-US': 'Frontend', ... } },
+      ...
+    ],
+    links: { website: 'https://react.dev', wikipedia: '...', ... },
+    sources: {
+      label: [ { id: 'community', name: { 'en-US': 'Community', ... } } ],
+      ...
+    }
+  },
+  typescript: { id: 'typescript', ... },
+  // ... more terms
+}`}
                 />
-              </div>
+              </Accordion>
+
+              <Accordion title="types" description="Type constants with TLocaleRecord values">
+                <CodeBlock
+                  code={`{
+  library: {
+    id: 'library',
+    name: { 'en-US': 'Library', 'en-GB': 'Library', 'de-DE': 'Bibliothek' }
+  },
+  framework: {
+    id: 'framework',
+    name: { 'en-US': 'Framework', 'en-GB': 'Framework', 'de-DE': 'Framework' }
+  },
+  language: {
+    id: 'language',
+    name: { 'en-US': 'Language', 'en-GB': 'Language', 'de-DE': 'Sprache' }
+  },
+  // ... more types
+}`}
+                />
+              </Accordion>
+
+              <Accordion title="tags" description="Tag constants with TLocaleRecord values">
+                <CodeBlock
+                  code={`{
+  frontend: {
+    id: 'frontend',
+    name: { 'en-US': 'Frontend', 'en-GB': 'Frontend', 'de-DE': 'Frontend' }
+  },
+  backend: {
+    id: 'backend',
+    name: { 'en-US': 'Backend', 'en-GB': 'Backend', 'de-DE': 'Backend' }
+  },
+  open_source: {
+    id: 'open_source',
+    name: { 'en-US': 'Open Source', 'en-GB': 'Open Source', 'de-DE': 'Open Source' }
+  },
+  // ... more tags
+}`}
+                />
+              </Accordion>
+
+              <Accordion title="sources" description="Source attribution constants with TLocaleRecord values">
+                <CodeBlock
+                  code={`{
+  official_website: {
+    id: 'official_website',
+    name: { 'en-US': 'Official Website', 'en-GB': 'Official Website', 'de-DE': 'Offizielle Website' }
+  },
+  wikipedia: {
+    id: 'wikipedia',
+    name: { 'en-US': 'Wikipedia', 'en-GB': 'Wikipedia', 'de-DE': 'Wikipedia' }
+  },
+  community: {
+    id: 'community',
+    name: { 'en-US': 'Community', 'en-GB': 'Community', 'de-DE': 'Gemeinschaft' }
+  },
+  ai_generated: {
+    id: 'ai_generated',
+    name: { 'en-US': 'AI Generated', 'en-GB': 'AI Generated', 'de-DE': 'KI-generiert' }
+  }
+}`}
+                />
+              </Accordion>
+
+              <Accordion title="locales" description="Available locale constants">
+                <CodeBlock
+                  code={`{
+  'en-US': 'en-US',
+  'en-GB': 'en-GB',
+  'de-DE': 'de-DE'
+}`}
+                />
+              </Accordion>
             </div>
           </div>
         </Section>
 
         {/* Helper Functions */}
         <Section id="helper-functions" title="Helper Functions" icon={BookOpen}>
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+          <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="mb-6">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">Import</h3>
               <CodeBlock
                 code={`import {
@@ -256,56 +399,205 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
               />
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
-              <h3 className="text-lg font-semibold text-slate-700 mb-4">Example Usage</h3>
-              <CodeBlock
-                code={`// Get terms as an array
+            <div className="space-y-0">
+              <Accordion title="getTerms()" description="Get all terms as an array">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTerms } from 'dev-dict/utils'
+
 const dictionary = getTerms({
   terms,              // Required: the terms dictionary
   locale: 'en-US',    // Optional: defaults to 'en-US'
   populateEmpty: true // Optional: defaults to true
 })
-// [{ id: "react", name: "React", ... }, { id: "vue", name: "Vue", ... }]
 
-// Get terms as a dictionary object
-const termsDict = getTermsDict({ terms, locale: 'en-US' })
-// { react: { id: "react", name: "React", ... }, vue: { id: "vue", name: "Vue", ... } }`}
-              />
+// Returns: [
+//   { id: "react", name: "React", label: "JavaScript Library", ... },
+//   { id: "vue", name: "Vue", label: "JavaScript Framework", ... },
+//   ...
+// ]`}
+                />
+              </Accordion>
+
+              <Accordion title="getTermsDict()" description="Get all terms as a dictionary object">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTermsDict } from 'dev-dict/utils'
+
+const termsDict = getTermsDict({
+  terms,
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: {
+//   react: { id: "react", name: "React", label: "JavaScript Library", ... },
+//   vue: { id: "vue", name: "Vue", label: "JavaScript Framework", ... },
+//   ...
+// }`}
+                />
+              </Accordion>
+
+              <Accordion title="getTypes()" description="Get all types as an array (extracted from terms)">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTypes } from 'dev-dict/utils'
+
+const typesList = getTypes({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: [
+//   { id: "library", name: "Library" },
+//   { id: "framework", name: "Framework" },
+//   ...
+// ]`}
+                />
+              </Accordion>
+
+              <Accordion
+                title="getTypesDict()"
+                description="Get all types as a dictionary object (extracted from terms)"
+              >
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTypesDict } from 'dev-dict/utils'
+
+const typesDict = getTypesDict({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: {
+//   library: { id: "library", name: "Library" },
+//   framework: { id: "framework", name: "Framework" },
+//   ...
+// }`}
+                />
+              </Accordion>
+
+              <Accordion title="getTags()" description="Get all tags as an array (extracted from terms)">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTags } from 'dev-dict/utils'
+
+const tagsList = getTags({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: [
+//   { id: "frontend", name: "Frontend" },
+//   { id: "backend", name: "Backend" },
+//   ...
+// ]`}
+                />
+              </Accordion>
+
+              <Accordion title="getTagsDict()" description="Get all tags as a dictionary object (extracted from terms)">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getTagsDict } from 'dev-dict/utils'
+
+const tagsDict = getTagsDict({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: {
+//   frontend: { id: "frontend", name: "Frontend" },
+//   backend: { id: "backend", name: "Backend" },
+//   ...
+// }`}
+                />
+              </Accordion>
+
+              <Accordion title="getSources()" description="Get all sources as an array (extracted from terms)">
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getSources } from 'dev-dict/utils'
+
+const sourcesList = getSources({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: [
+//   { id: "official_website", name: "Official Website" },
+//   { id: "wikipedia", name: "Wikipedia" },
+//   ...
+// ]`}
+                />
+              </Accordion>
+
+              <Accordion
+                title="getSourcesDict()"
+                description="Get all sources as a dictionary object (extracted from terms)"
+              >
+                <CodeBlock
+                  code={`import { terms } from 'dev-dict'
+import { getSourcesDict } from 'dev-dict/utils'
+
+const sourcesDict = getSourcesDict({
+  terms,              // Required: the terms dictionary
+  locale: 'en-US',
+  populateEmpty: true
+})
+
+// Returns: {
+//   official_website: { id: "official_website", name: "Official Website" },
+//   wikipedia: { id: "wikipedia", name: "Wikipedia" },
+//   ...
+// }`}
+                />
+              </Accordion>
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
+            <div className="mt-8 pt-6 border-t border-slate-200">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">Options</h3>
+              <p className="text-slate-600 mb-4">
+                All helper functions accept the same options. Note that all functions take{' '}
+                <code className="text-sm bg-slate-100 px-1.5 py-0.5 rounded">terms</code> as input, even when extracting
+                types, tags or sources.
+              </p>
               <Table
                 headers={['Parameter', 'Type', 'Required', 'Default', 'Description']}
                 rows={[
-                  ['terms', 'TTermsDict', 'Yes', '-', 'The terms dictionary'],
-                  ['locale', 'string', 'No', "'en-US'", 'Target locale'],
-                  ['populateEmpty', 'boolean', 'No', 'true', 'Populate empty locale records with en-US values'],
+                  [
+                    { text: 'terms', code: true },
+                    { text: 'TTermsDict', code: true },
+                    { text: 'Yes', code: false },
+                    { text: '-', code: false },
+                    { text: 'The terms dictionary (all functions use terms as input)', code: false },
+                  ],
+                  [
+                    { text: 'locale', code: true },
+                    { text: 'string', code: true },
+                    { text: 'No', code: false },
+                    { text: "'en-US'", code: true },
+                    { text: 'Target locale (en-US, en-GB, de-DE)', code: false },
+                  ],
+                  [
+                    { text: 'populateEmpty', code: true },
+                    { text: 'boolean', code: true },
+                    { text: 'No', code: false },
+                    { text: 'true', code: true },
+                    { text: 'Populate empty locale records with en-US values', code: false },
+                  ],
                 ]}
               />
             </div>
 
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
-              <h3 className="text-lg font-semibold text-slate-700 mb-4">Available Functions</h3>
-              <Table
-                headers={['Function', 'Returns', 'Description']}
-                rows={[
-                  ['getTermsDict(options)', 'Dictionary', 'Get all terms as a dictionary object'],
-                  ['getTerms(options)', 'Array', 'Get all terms as an array'],
-                  ['getTypesDict(options)', 'Dictionary', 'Get all term types as a dictionary object'],
-                  ['getTypes(options)', 'Array', 'Get all term types as an array'],
-                  ['getTagsDict(options)', 'Dictionary', 'Get all term tags as a dictionary object'],
-                  ['getTags(options)', 'Array', 'Get all term tags as an array'],
-                  ['getSourcesDict(options)', 'Dictionary', 'Get all sources as a dictionary object'],
-                  ['getSources(options)', 'Array', 'Get all sources as an array'],
-                ]}
-              />
-            </div>
-
-            <div className="bg-white p-6 rounded-xl border border-slate-200">
-              <h3 className="text-lg font-semibold text-slate-700 mb-4">Types</h3>
-              <p className="text-slate-600">
-                See{' '}
+            <div className="mt-8 pt-6 border-t border-slate-200">
+              <h3 className="text-lg font-semibold text-slate-700 mb-4">TypeScript Types</h3>
+              <p className="text-slate-600 mb-4">
+                All TypeScript type definitions are available in the package. See{' '}
                 <a
                   href="https://github.com/kyco/dev-dict/blob/main/src/types/index.ts"
                   target="_blank"
@@ -314,8 +606,16 @@ const termsDict = getTermsDict({ terms, locale: 'en-US' })
                 >
                   src/types/index.ts
                 </a>{' '}
-                for all type definitions.
+                for complete type definitions.
               </p>
+              <CodeBlock
+                code={`import type {
+  TTermsDict,
+  TTermEntry,
+  TLocaleRecord,
+  // ... more types
+} from 'dev-dict'`}
+              />
             </div>
           </div>
         </Section>
@@ -326,9 +626,21 @@ const termsDict = getTermsDict({ terms, locale: 'en-US' })
             <Table
               headers={['Locale', 'Language', 'Status']}
               rows={[
-                ['en-US', 'English (United States)', '✅ Primary'],
-                ['en-GB', 'English (Great Britain)', '✅ Supported'],
-                ['de-DE', 'German (Germany)', '✅ Supported'],
+                [
+                  { text: 'en-US', code: true },
+                  { text: 'English (United States)', code: false },
+                  { text: '✅ Primary', code: false },
+                ],
+                [
+                  { text: 'en-GB', code: true },
+                  { text: 'English (Great Britain)', code: false },
+                  { text: '✅ Supported', code: false },
+                ],
+                [
+                  { text: 'de-DE', code: true },
+                  { text: 'German (Germany)', code: false },
+                  { text: '✅ Supported', code: false },
+                ],
               ]}
             />
             <p className="mt-4 text-slate-600">
