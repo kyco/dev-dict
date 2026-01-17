@@ -1,3 +1,14 @@
+## [0.11.5](https://github.com/kyco/dev-dict/compare/v0.11.4...v0.11.5) (2026-01-17)
+
+### Bug Fixes
+
+* **demo:** Remove log ([60a0a68](https://github.com/kyco/dev-dict/commit/60a0a681c2c8ea668a0cbc29820b58f7ff4df0c9))
+* **demo:** Update docs with correct values ([cb04cd1](https://github.com/kyco/dev-dict/commit/cb04cd170b62eee2296dd62720afca3b7b01a81e))
+
+### Chore
+
+* Update deps ([1323ec9](https://github.com/kyco/dev-dict/commit/1323ec9314b78cc2068a7bd83e2c0559b780184b))
+
 ## [0.11.4](https://github.com/kyco/dev-dict/compare/v0.11.3...v0.11.4) (2026-01-17)
 
 ### Bug Fixes
