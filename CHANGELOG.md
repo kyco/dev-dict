@@ -1,3 +1,17 @@
+## [0.11.4](https://github.com/kyco/dev-dict/compare/v0.11.3...v0.11.4) (2026-01-17)
+
+### Bug Fixes
+
+* Narrow down types ([c055fc9](https://github.com/kyco/dev-dict/commit/c055fc97df371c1df3486af67b224e4f81bd02c8))
+
+### Chore
+
+* Bump deps ([40d8357](https://github.com/kyco/dev-dict/commit/40d8357851f27f5f52a60708b0a50b9d7bcbda95))
+
+### Refactoring
+
+* **docs:** Use hook ([7784ab4](https://github.com/kyco/dev-dict/commit/7784ab431c4402c2a8d939dc770af334589127a3))
+
 ## [0.11.3](https://github.com/kyco/dev-dict/compare/v0.11.2...v0.11.3) (2026-01-17)
 
 ### Bug Fixes
