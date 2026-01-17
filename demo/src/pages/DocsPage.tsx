@@ -1,14 +1,13 @@
 import { Link } from '@tanstack/react-router'
+import { useCopyToClipboard } from '~/shared/hooks'
 import { ArrowLeft, BookOpen, Check, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
-import { useState } from 'react'
 
 function CodeBlock({ code, language = 'typescript' }: { code: string; language?: string }) {
-  const [copied, setCopied] = useState(false)
+  const { copied, copy } = useCopyToClipboard()
 
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(code)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+  const handleCopy = (e: React.MouseEvent) => {
+    e.preventDefault()
+    copy(code)
   }
 
   return (
