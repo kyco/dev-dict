@@ -1,9 +1,7 @@
 import type {
   TLocale,
-  TTermId,
   TTermLocalized,
   TTermsDict,
-  TTermsDictLocalized,
   TTermsDictPartial,
   TTermSourceId,
   TTermSourceLocalized,
@@ -22,20 +20,20 @@ import { CONFIG, MISC } from '@/common'
 
 import { getSource, getTag, getTerm, getType, interpolateValues } from './helpers'
 
-export const getTermsDict = ({
+export const getTermsDict = <T extends TTermsDict | TTermsDictPartial>({
   terms,
   locale = CONFIG.DEFAULT_LOCALE,
   populateEmpty = CONFIG.POPULATE_EMPTY,
 }: {
-  terms: TTermsDict | TTermsDictPartial
+  terms: T
   locale?: TLocale
   populateEmpty?: boolean
-}): Partial<TTermsDictLocalized> => {
+}): { [K in keyof T]: TTermLocalized } => {
   const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
-  const localizedTerms: Partial<TTermsDictLocalized> = {}
+  const localizedTerms = {} as { [K in keyof T]: TTermLocalized }
 
   for (const [key, term] of Object.entries(interpolatedTerms)) {
-    localizedTerms[key as TTermId] = getTerm({ term, locale, populateEmpty })
+    localizedTerms[key as keyof T] = getTerm({ term, locale, populateEmpty })
   }
 
   return localizedTerms
