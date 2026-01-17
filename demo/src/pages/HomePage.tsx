@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
@@ -10,7 +11,7 @@ import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
 import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 interface HomePageProps {
   searchQuery: string
@@ -23,10 +24,20 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [columns, setColumns] = useState(2)
 
   const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
   const tags = useMemo(() => getTags({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setColumns(window.innerWidth >= 768 ? 2 : 1)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const typesOptions = useMemo(
     () => types.map((t) => ({ id: t.id, label: t.name })).sort((a, b) => a.label.localeCompare(b.label, lang)),
@@ -49,6 +60,16 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
       },
     })
   }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness])
+
+  const rowCount = Math.ceil(filteredTerms.length / columns)
+
+  const rowVirtualizer = useWindowVirtualizer({
+    count: rowCount,
+    estimateSize: () => 220,
+    overscan: 3,
+  })
+
+  const virtualItems = rowVirtualizer.getVirtualItems()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
@@ -136,19 +157,47 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          {filteredTerms.map((term) => (
-            <TermCard key={term.id} term={term} searchQuery={searchQuery} populateEmpty={populateEmpty} />
-          ))}
-        </div>
-
-        {filteredTerms.length === 0 && (
+        {filteredTerms.length === 0 ? (
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 rounded-full mb-4">
               <Search size={24} className="text-slate-400" />
             </div>
             <p className="text-slate-600 font-medium">No terms found</p>
             <p className="text-slate-400 text-sm mt-1">Try adjusting your search or filters</p>
+          </div>
+        ) : (
+          <div
+            style={{
+              height: `${rowVirtualizer.getTotalSize()}px`,
+              width: '100%',
+              position: 'relative',
+            }}
+          >
+            {virtualItems.map((virtualRow) => {
+              const startIndex = virtualRow.index * columns
+              const rowTerms = filteredTerms.slice(startIndex, startIndex + columns)
+
+              return (
+                <div
+                  key={virtualRow.key}
+                  data-index={virtualRow.index}
+                  ref={rowVirtualizer.measureElement}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  <div className="grid gap-4 md:grid-cols-2 mb-4">
+                    {rowTerms.map((term) => (
+                      <TermCard key={term.id} term={term} searchQuery={searchQuery} populateEmpty={populateEmpty} />
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         )}
       </div>
