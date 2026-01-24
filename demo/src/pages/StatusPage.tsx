@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { Dropdown } from '~/components/Dropdown'
 import { StatusIcon } from '~/components/StatusIcon'
 import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
+import { sortTermsByName } from '~/shared/utils/sortUtils'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
@@ -60,9 +61,9 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
     }
 
     if (sortBy === 'name') {
-      result = [...result].sort((a, b) => a.name.localeCompare(b.name))
+      result = [...result].sort((a, b) => sortTermsByName(a, b))
     } else {
-      result = [...result].sort((a, b) => a.fullPercentage - b.fullPercentage || a.name.localeCompare(b.name))
+      result = [...result].sort((a, b) => a.fullPercentage - b.fullPercentage || sortTermsByName(a, b))
     }
 
     return result
