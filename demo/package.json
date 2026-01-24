@@ -10,18 +10,18 @@
     "update-packages": "pnpm dlx npm-check-updates -u"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.150.0",
+    "@tanstack/react-router": "^1.156.0",
     "@tanstack/react-virtual": "^3.13.18",
     "dev-dict": "link:..",
-    "lucide-react": "^0.562.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-syntax-highlighter": "^16.1.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
-    "@tanstack/router-plugin": "^1.150.0",
-    "@types/react": "^19.2.8",
+    "@tanstack/router-plugin": "^1.156.0",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@vitejs/plugin-react": "^5.1.2",
