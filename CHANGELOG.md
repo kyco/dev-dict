@@ -1,3 +1,13 @@
+## [0.11.7](https://github.com/kyco/dev-dict/compare/v0.11.6...v0.11.7) (2026-01-24)
+
+### Bug Fixes
+
+* Add sort util ([590badb](https://github.com/kyco/dev-dict/commit/590badbee995ea20291968b3716dba2b1cfb305a))
+
+### Chore
+
+* Update README ([4a41355](https://github.com/kyco/dev-dict/commit/4a413555476a29bc5359ad7c759922c63ed15758))
+
 ## [0.11.6](https://github.com/kyco/dev-dict/compare/v0.11.5...v0.11.6) (2026-01-24)
 
 ### Chore
