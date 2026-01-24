@@ -7,6 +7,7 @@ import { TermCard } from '~/components/TermCard'
 import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
+import { sortTermsByName } from '~/shared/utils/sortUtils'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
 import { terms } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
@@ -49,7 +50,7 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
   )
 
   const filteredTerms = useMemo(() => {
-    return filterTerms(dictionary, {
+    const filtered = filterTerms(dictionary, {
       searchQuery,
       selectedTypes,
       selectedTags,
@@ -59,7 +60,8 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
         return { baselineComplete: comp.baselineComplete, fullPercentage: comp.fullPercentage }
       },
     })
-  }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness])
+    return filtered.sort((a, b) => sortTermsByName(a, b, lang))
+  }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness, lang])
 
   const rowCount = Math.ceil(filteredTerms.length / columns)
 
