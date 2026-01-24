@@ -9,7 +9,7 @@
 
 A community-driven collection of software development terms with explanations in multiple languages. Perfect for building developer tools, documentation sites, educational content and much more.
 
-**[Browse All Terms](https://kyco.github.io/dev-dict/)** · **[Documentation](https://kyco.github.io/dev-dict/docs)**
+**[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse All Terms](https://kyco.github.io/dev-dict/)**
 
 ## Installation
 
@@ -33,7 +33,7 @@ dictionary.forEach(term => {
 })
 ```
 
-For detailed API documentation, code examples, and more, visit the **[Documentation](https://kyco.github.io/dev-dict/docs)**.
+For detailed API documentation, code examples, and more, visit the **[documentation](https://kyco.github.io/dev-dict/docs)**.
 
 ## Supported Languages
 
@@ -47,7 +47,7 @@ Want to add a language? See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-a-new-lan
 
 ## Contributing
 
-Contributions welcome! Add terms, provide translations, fix errors, or suggest improvements.
+Contributions welcome! Add terms, provide translations, fix errors or suggest improvements.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
