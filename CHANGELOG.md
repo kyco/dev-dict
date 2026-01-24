@@ -1,3 +1,10 @@
+## [0.11.6](https://github.com/kyco/dev-dict/compare/v0.11.5...v0.11.6) (2026-01-24)
+
+### Chore
+
+* Add skills ([8ecda44](https://github.com/kyco/dev-dict/commit/8ecda4436f8c34d84d0d03905dde2d567bda47c9))
+* Bump deps ([bf8aef3](https://github.com/kyco/dev-dict/commit/bf8aef33377d4e37ffa2caff568c2ba0fe0b4e20))
+
 ## [0.11.5](https://github.com/kyco/dev-dict/compare/v0.11.4...v0.11.5) (2026-01-17)
 
 ### Bug Fixes
