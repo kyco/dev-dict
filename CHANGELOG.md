@@ -1,3 +1,9 @@
+## [0.11.9](https://github.com/kyco/dev-dict/compare/v0.11.8...v0.11.9) (2026-01-30)
+
+### Bug Fixes
+
+* Update wdio ([f31697e](https://github.com/kyco/dev-dict/commit/f31697ec105ef5910df736a13d08b124a6970760))
+
 ## [0.11.8](https://github.com/kyco/dev-dict/compare/v0.11.7...v0.11.8) (2026-01-30)
 
 ### Bug Fixes
