@@ -1,3 +1,9 @@
+## [0.11.8](https://github.com/kyco/dev-dict/compare/v0.11.7...v0.11.8) (2026-01-30)
+
+### Bug Fixes
+
+* Update PWA ([f92a5ae](https://github.com/kyco/dev-dict/commit/f92a5ae72b035a580f90d26caa3a0d05d878b57d))
+
 ## [0.11.7](https://github.com/kyco/dev-dict/compare/v0.11.6...v0.11.7) (2026-01-24)
 
 ### Bug Fixes
