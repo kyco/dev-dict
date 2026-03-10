@@ -1,3 +1,13 @@
+## [0.11.11](https://github.com/kyco/dev-dict/compare/v0.11.10...v0.11.11) (2026-03-10)
+
+### Bug Fixes
+
+* Read version from package.json ([54cf510](https://github.com/kyco/dev-dict/commit/54cf5106a5faaae19587d7004d5889f84444872f))
+
+### Chore
+
+* Bump deps ([4c93578](https://github.com/kyco/dev-dict/commit/4c93578a1f91e1b59cad7e773438c1d6dfa53634))
+
 ## [0.11.10](https://github.com/kyco/dev-dict/compare/v0.11.9...v0.11.10) (2026-02-09)
 
 ### Chore
