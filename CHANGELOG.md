@@ -1,3 +1,21 @@
+## [0.11.12](https://github.com/kyco/dev-dict/compare/v0.11.11...v0.11.12) (2026-03-18)
+
+### Chore
+
+* Bump deps ([1972363](https://github.com/kyco/dev-dict/commit/1972363a0e615186b9761f829f26b703ea34698c))
+* **docs:** Remove badges ([074ecac](https://github.com/kyco/dev-dict/commit/074ecac15c93099bcc2f43a9243902cbae4fb58c))
+* Update CLAUDE.md ([e58ba16](https://github.com/kyco/dev-dict/commit/e58ba163c83a58637e7ef2498b2aa3ba921fada3))
+* Update script ([8e5de8c](https://github.com/kyco/dev-dict/commit/8e5de8cb69281b1beb545ab6e40c98eefa9b156c))
+* Update skills ([ac138c7](https://github.com/kyco/dev-dict/commit/ac138c7516774e5f460fa2a40c56bde16e963688))
+
+### Style
+
+* **demo:** Cursor pointer ([495dd4c](https://github.com/kyco/dev-dict/commit/495dd4cfb165a0d2d1140d8738b6c91d3e5938fe))
+
+### Refactoring
+
+* **demo:** Change label names ([df3c7a2](https://github.com/kyco/dev-dict/commit/df3c7a2222b1e90f18526348307be370dea76bc7))
+
 ## [0.11.11](https://github.com/kyco/dev-dict/compare/v0.11.10...v0.11.11) (2026-03-10)
 
 ### Bug Fixes
