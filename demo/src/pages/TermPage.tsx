@@ -242,11 +242,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                     <div className="flex items-center gap-3 mt-2">
                       <div className="flex items-center gap-1.5">
                         <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-                        <span className="text-xs text-slate-600">Baseline {completeness.baselinePercentage}%</span>
+                        <span className="text-xs text-slate-600">Core fields {completeness.baselinePercentage}%</span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <div className="w-2.5 h-2.5 rounded-full bg-green-600"></div>
-                        <span className="text-xs text-slate-600">Additional {completeness.additionalPercentage}%</span>
+                        <span className="text-xs text-slate-600">Translations {completeness.additionalPercentage}%</span>
                       </div>
                     </div>
                   </div>

@@ -102,11 +102,11 @@ export function CompletenessChart({
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-blue-600"></div>
-              <span className="text-sm text-gray-600">Baseline: {baselinePercentage}%</span>
+              <span className="text-sm text-gray-600">Core fields: {baselinePercentage}%</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-green-600"></div>
-              <span className="text-sm text-gray-600">Additional: {additionalPercentage}%</span>
+              <span className="text-sm text-gray-600">Translations: {additionalPercentage}%</span>
             </div>
           </div>
           <span className="text-2xl font-bold text-gray-900">{fullPercentage}%</span>
@@ -116,18 +116,18 @@ export function CompletenessChart({
           <div
             className="bg-blue-600 h-3 transition-all"
             style={{ width: `${baselinePercentage}%` }}
-            title={`Baseline: ${baselinePercentage}% (out of 50%)`}
+            title={`Core fields: ${baselinePercentage}%`}
           />
           <div
             className="bg-green-600 h-3 transition-all"
             style={{ width: `${additionalPercentage}%` }}
-            title={`Additional: ${additionalPercentage}% (out of 50%)`}
+            title={`Translations: ${additionalPercentage}%`}
           />
         </div>
       </div>
 
       <div className="border-t pt-4">
-        <h3 className="text-md font-semibold mb-3">Baseline Requirements</h3>
+        <h3 className="text-md font-semibold mb-3">Core Fields</h3>
         {renderCategory('Content', baselineGroups.content)}
         {renderCategory(
           'Metadata',
@@ -137,7 +137,7 @@ export function CompletenessChart({
       </div>
 
       <div className="border-t pt-4 mt-4">
-        <h3 className="text-md font-semibold mb-3">Additional Fields</h3>
+        <h3 className="text-md font-semibold mb-3">Translations</h3>
         {renderCategory('en-US', additionalGroups['en-US'])}
         {renderCategory('Metadata', additionalGroups.metadata)}
         {renderCategory('en-GB Translation', additionalGroups['en-GB'])}
