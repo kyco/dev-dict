@@ -13,7 +13,7 @@
     "@tanstack/react-router": "^1.156.0",
     "@tanstack/react-virtual": "^3.13.18",
     "dev-dict": "link:..",
-    "lucide-react": "^0.563.0",
+    "lucide-react": "^0.575.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-syntax-highlighter": "^16.1.0"
