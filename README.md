@@ -4,9 +4,6 @@
 
 # dev-dict
 
-[![npm version](https://img.shields.io/npm/v/dev-dict.svg)](https://www.npmjs.com/package/dev-dict)
-[![Bundle size](https://img.shields.io/bundlephobia/minzip/dev-dict)](https://bundlephobia.com/package/dev-dict)
-
 A community-driven collection of software development terms with explanations in multiple languages. Perfect for building developer tools, documentation sites, educational content and much more.
 
 **[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse All Terms](https://kyco.github.io/dev-dict/)**

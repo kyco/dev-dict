@@ -93,9 +93,9 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
           <h1 className="text-3xl font-bold text-slate-800 mb-2">Contribute</h1>
           <p className="text-slate-500">
             Help us grow! We have <span className="font-semibold text-slate-700">{stats.total}</span> terms —{' '}
-            <span className="font-semibold text-amber-600">{stats.incomplete}</span> need more info, while{' '}
-            <span className="font-semibold text-blue-600">{stats.baselineComplete}</span> are baseline complete and{' '}
-            <span className="font-semibold text-emerald-600">{stats.complete}</span> fully complete.
+            <span className="font-semibold text-amber-600">{stats.incomplete}</span> need work,{' '}
+            <span className="font-semibold text-blue-600">{stats.baselineComplete}</span> are ready, and{' '}
+            <span className="font-semibold text-emerald-600">{stats.complete}</span> are fully translated.
           </p>
         </div>
 

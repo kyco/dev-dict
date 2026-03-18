@@ -86,7 +86,7 @@ export function Dropdown<T extends string | string[]>({
               <div className="border-t border-slate-100 p-1">
                 <button
                   onClick={() => (setSelected as React.Dispatch<React.SetStateAction<string[]>>)([])}
-                  className="w-full px-3 py-1.5 text-xs text-slate-500 hover:bg-slate-50 rounded"
+                  className="w-full px-3 py-1.5 text-xs text-slate-500 hover:bg-slate-50 rounded cursor-pointer"
                 >
                   Clear all
                 </button>
