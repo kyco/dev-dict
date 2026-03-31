@@ -1,3 +1,13 @@
+## [0.12.1](https://github.com/kyco/dev-dict/compare/v0.12.0...v0.12.1) (2026-03-31)
+
+### Bug Fixes
+
+* No side-effects ([659b6f6](https://github.com/kyco/dev-dict/commit/659b6f634995c78aa68ded6b7d4adad5a0c85956))
+
+### Docs
+
+* Include section on tree-shaking ([fcfacbf](https://github.com/kyco/dev-dict/commit/fcfacbf71002895d3fe5c5a1885c1d3e9f892aa3))
+
 ## [0.12.0](https://github.com/kyco/dev-dict/compare/v0.11.13...v0.12.0) (2026-03-31)
 
 ### Features
