@@ -1,3 +1,29 @@
+## [0.11.13](https://github.com/kyco/dev-dict/compare/v0.11.12...v0.11.13) (2026-03-31)
+
+### Bug Fixes
+
+* Add translations and sources ([81084a2](https://github.com/kyco/dev-dict/commit/81084a277e5cddb2d42ecc276bb6d074c40b6d57))
+* Filtering ([d5a4282](https://github.com/kyco/dev-dict/commit/d5a42827515a1e0a97b9d4a605aed16b0319f100))
+* Filtering ([0c287c7](https://github.com/kyco/dev-dict/commit/0c287c7c885f9275f70c94b2c4e7762d3006ce52))
+* Type ([08b3d1e](https://github.com/kyco/dev-dict/commit/08b3d1ed8e0435ce5293d980fd0d55befb0dd371))
+* Type ([a90f8d8](https://github.com/kyco/dev-dict/commit/a90f8d8a05ca2f436f552607286113a47cc23e3f))
+* Type ([6bce148](https://github.com/kyco/dev-dict/commit/6bce1488e88a357a9b7c6679ec9425e835290d7c))
+* Type ([2867a1b](https://github.com/kyco/dev-dict/commit/2867a1b22f311e02914d98f7166a874e857b9e91))
+* Update completeness logic and display in demo ([d79ab97](https://github.com/kyco/dev-dict/commit/d79ab976543fc389247c3412ac4c7753d7b063dd))
+
+### Chore
+
+* Bump deps ([f27144c](https://github.com/kyco/dev-dict/commit/f27144cd3095cddcb45a1194227648ecfd28177e))
+
+### Docs
+
+* Type ([676161c](https://github.com/kyco/dev-dict/commit/676161cd519ed996860b0bc3a07f5fc639837bd2))
+* Type ([973490a](https://github.com/kyco/dev-dict/commit/973490adf3bfc0901099dbc478622a795e14394e))
+
+### Refactoring
+
+* Simplify ([f33eedd](https://github.com/kyco/dev-dict/commit/f33eeddffd2ef226c3953a0256b6ea4eb85d3018))
+
 ## [0.11.12](https://github.com/kyco/dev-dict/compare/v0.11.11...v0.11.12) (2026-03-18)
 
 ### Chore
