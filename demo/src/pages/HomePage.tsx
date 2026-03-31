@@ -138,12 +138,11 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
               setSelected={setSelectedTags}
               multi
             />
-            {(selectedTypes.length > 0 || selectedTags.length > 0 || completeness !== 'all') && (
+            {(selectedTypes.length > 0 || selectedTags.length > 0) && (
               <button
                 onClick={() => {
                   setSelectedTypes([])
                   setSelectedTags([])
-                  onCompletenessChange('all')
                 }}
                 className="text-sm text-slate-500 hover:text-blue-600 transition-colors cursor-pointer"
               >

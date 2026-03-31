@@ -28,7 +28,7 @@ export default {
   tags: [TAGS.software_development, TAGS.project_management, TAGS.scrum, TAGS.kanban],
 
   links: {
-    website: 'https://agilemanifesto.org',
+    official_website: 'https://agilemanifesto.org',
     wikipedia: 'https://en.wikipedia.org/wiki/Agile_software_development',
   },
 

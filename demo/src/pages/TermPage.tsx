@@ -85,13 +85,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                   {typeof term.name === 'string' && !term.name && !populateEmpty ? `terms[${term.id}].name` : term.name}
                 </h1>
 
-                <p className="text-xl leading-relaxed mb-1">
-                  {typeof term.altName === 'string' && !term.altName ? (
-                    `terms[${term.id}].altName`
-                  ) : (
-                    <strong>{term.altName}</strong>
-                  )}
-                </p>
+                {term.altName && <p className="text-sm text-blue-100 mb-1 italic">{term.altName}</p>}
 
                 <p className="text-lg text-blue-200">
                   {typeof term.label === 'string' && !term.label && !populateEmpty
@@ -138,7 +132,9 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
           <div className="px-8 py-8">
             <div className="mb-8">
               <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Definition</h2>
-              <p className={`leading-relaxed ${term.definition ? 'text-lg text-slate-700' : 'text-base text-slate-400 italic'}`}>
+              <p
+                className={`leading-relaxed ${term.definition ? 'text-lg text-slate-700' : 'text-base text-slate-400 italic'}`}
+              >
                 {typeof term.definition === 'string' && !term.definition && !populateEmpty
                   ? `terms[${term.id}].definition`
                   : term.definition || 'No definition provided yet. Help us by contributing!'}
@@ -242,11 +238,15 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                     <div className="flex items-center gap-3 mt-2">
                       <div className="flex items-center gap-1.5">
                         <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
-                        <span className="text-xs text-slate-600">Core fields {completeness.baselinePercentage}%</span>
+                        <span className="text-xs text-slate-600">
+                          Core fields {completeness.baselineCount}/{completeness.baselineTotal}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1.5">
                         <div className="w-2.5 h-2.5 rounded-full bg-green-600"></div>
-                        <span className="text-xs text-slate-600">Translations {completeness.additionalPercentage}%</span>
+                        <span className="text-xs text-slate-600">
+                          Translations {completeness.additionalCount}/{completeness.additionalTotal}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -278,6 +278,10 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                     baselinePercentage={completeness.baselinePercentage}
                     additionalPercentage={completeness.additionalPercentage}
                     fullPercentage={completeness.fullPercentage}
+                    baselineCount={completeness.baselineCount}
+                    baselineTotal={completeness.baselineTotal}
+                    additionalCount={completeness.additionalCount}
+                    additionalTotal={completeness.additionalTotal}
                     term={(terms as unknown as Record<string, TTerm>)[termId]}
                   />
                 </div>

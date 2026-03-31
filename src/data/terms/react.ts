@@ -30,7 +30,7 @@ export default {
   tags: [TAGS.frontend, TAGS.backend, TAGS.javascript, TAGS.open_source, TAGS.ui_library],
 
   links: {
-    website: `https://react.dev`,
+    official_website: `https://react.dev`,
     npm: `https://www.npmjs.com/package/react`,
     github: `https://github.com/facebook/react`,
     wikipedia: `https://en.wikipedia.org/wiki/React_(software)`,

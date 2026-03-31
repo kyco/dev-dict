@@ -25,7 +25,7 @@ export default {
   tags: [TAGS.frontend, TAGS.backend, TAGS.open_source],
 
   links: {
-    website: 'https://tc39.es/ecma262',
+    official_website: 'https://tc39.es/ecma262',
     wikipedia: `https://en.wikipedia.org/wiki/JavaScript`,
   },
 } as const satisfies TTerm

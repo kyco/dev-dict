@@ -28,8 +28,8 @@ interface StatusPageProps {
 }
 
 export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
-  const [filter, setFilter] = useState<'all' | 'incomplete' | 'complete'>('all')
-  const [sortBy, setSortBy] = useState<'name' | 'missing'>('name')
+  const [filter, setFilter] = useState<'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete'>('all')
+  const [sortBy, setSortBy] = useState<'name' | 'missing' | 'least_missing'>('name')
 
   const termStatuses = useMemo(() => {
     const localizedTerms = getTerms({ terms, locale: 'en-US' })
@@ -54,16 +54,20 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
       result = result.filter((t) => t.name.toLowerCase().includes(query) || t.id.toLowerCase().includes(query))
     }
 
-    if (filter === 'incomplete') {
-      result = result.filter((t) => t.fullPercentage < 100)
-    } else if (filter === 'complete') {
+    if (filter === 'baseline_incomplete') {
+      result = result.filter((t) => !t.baselineComplete)
+    } else if (filter === 'baseline_complete') {
+      result = result.filter((t) => t.baselineComplete && t.fullPercentage < 100)
+    } else if (filter === 'fully_complete') {
       result = result.filter((t) => t.fullPercentage === 100)
     }
 
     if (sortBy === 'name') {
       result = [...result].sort((a, b) => sortTermsByName(a, b))
-    } else {
+    } else if (sortBy === 'missing') {
       result = [...result].sort((a, b) => a.fullPercentage - b.fullPercentage || sortTermsByName(a, b))
+    } else {
+      result = [...result].sort((a, b) => b.fullPercentage - a.fullPercentage || sortTermsByName(a, b))
     }
 
     return result
@@ -150,7 +154,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Label</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Definition</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Tags</th>
-                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Website</th>
+                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Links</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Actions</th>
                 </tr>
               </thead>

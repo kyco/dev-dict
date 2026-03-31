@@ -34,6 +34,6 @@ export default {
   tags: [],
 
   links: {
-    website: `https://aws.amazon.com/`,
+    official_website: `https://aws.amazon.com/`,
   },
 } as const satisfies TTerm
