@@ -290,7 +290,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
       { id: 'frontend', name: { 'en-US': 'Frontend', ... } },
       ...
     ],
-    links: { website: 'https://react.dev', wikipedia: '...', ... },
+    links: { official_website: 'https://react.dev', wikipedia: '...', ... },
     sources: {
       label: [ { id: 'community', name: { 'en-US': 'Community', ... } } ],
       ...
