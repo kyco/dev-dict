@@ -1,3 +1,28 @@
+## [0.12.0](https://github.com/kyco/dev-dict/compare/v0.11.13...v0.12.0) (2026-03-31)
+
+### Features
+
+* Add "database" type ([8a6b848](https://github.com/kyco/dev-dict/commit/8a6b84848ad93607eb789feaba1dd2e6d8f03694))
+* Add golang definition ([053c3e5](https://github.com/kyco/dev-dict/commit/053c3e54e14222d7fed9d792b26fc6994fe078d2))
+* Add postgres definition ([a58d1f5](https://github.com/kyco/dev-dict/commit/a58d1f5c5145322d5af80ab2dfc40e914867f902))
+
+### Bug Fixes
+
+* Add definition ([ba60aea](https://github.com/kyco/dev-dict/commit/ba60aead5e7afc6eb16ea345d7a8301f85ec781e))
+* Alt name ([c9ac983](https://github.com/kyco/dev-dict/commit/c9ac98357f39c1846a6cf521e3eacbd93b145998))
+* **demo:** Empty sources ([2970958](https://github.com/kyco/dev-dict/commit/297095838d5c9a934e08d22067233ba3e9099b01))
+* **demo:** Exclude "Ready" from filtering options ([e6839cb](https://github.com/kyco/dev-dict/commit/e6839cbeebe2473a0b4942bee16f77468ccde5dd))
+* Missing import ([19ee261](https://github.com/kyco/dev-dict/commit/19ee2618e785d5b7aa67bf95cb1582700cc14d5b))
+* Wording ([2fba7d7](https://github.com/kyco/dev-dict/commit/2fba7d7802f1f6afe65cefa0b365bc363a542a73))
+
+### Chore
+
+* Lint ([6e28d58](https://github.com/kyco/dev-dict/commit/6e28d58952a5547a81d8c8c96b317a1d342eea18))
+
+### Style
+
+* **demo:** External links ([811b5cd](https://github.com/kyco/dev-dict/commit/811b5cd8248e3c3198a2b677cc68eac9cab8a7f8))
+
 ## [0.11.13](https://github.com/kyco/dev-dict/compare/v0.11.12...v0.11.13) (2026-03-31)
 
 ### Bug Fixes
