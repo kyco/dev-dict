@@ -2,11 +2,11 @@ import type { TTermType } from '@/types'
 import { LOCALES } from '@/data/locales'
 
 export default {
-  id: `library`,
+  id: `database`,
 
   name: {
-    [LOCALES.EN_US]: `Library`,
+    [LOCALES.EN_US]: `Database`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
-    [LOCALES.DE_DE]: `Bibliothek`,
+    [LOCALES.DE_DE]: `Datenbank`,
   },
 } as const satisfies TTermType

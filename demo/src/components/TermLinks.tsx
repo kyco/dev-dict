@@ -1,5 +1,5 @@
 import type { TTermLinks } from 'dev-dict'
-import { ExternalLink, Globe } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { Fragment } from 'react'
 
 interface TermLinksProps {
@@ -10,7 +10,7 @@ interface TermLinksProps {
 }
 
 const linkData = [
-  { key: 'official_website' as const, label: 'Official Website', icon: Globe },
+  { key: 'official_website' as const, label: 'Official Website', icon: ExternalLink },
   { key: 'wikipedia' as const, label: 'Wikipedia', icon: ExternalLink },
   { key: 'github' as const, label: 'GitHub', icon: ExternalLink },
   { key: 'npm' as const, label: 'npm', icon: ExternalLink },
@@ -34,8 +34,8 @@ export function TermLinks({ links, variant = 'button', onLinkClick, showEmpty = 
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-lg border border-slate-200 hover:border-blue-200 transition-colors"
           >
-            <Icon size={14} />
             {label}
+            <Icon size={14} />
           </a>
         ))}
       </div>
@@ -57,8 +57,8 @@ export function TermLinks({ links, variant = 'button', onLinkClick, showEmpty = 
             }}
             className="inline-flex items-center gap-1 hover:text-blue-500 transition-colors cursor-pointer bg-transparent border-0 p-0 font-inherit"
           >
-            <Icon size={10} />
             {label}
+            <Icon size={10} />
           </button>
         </Fragment>
       ))}

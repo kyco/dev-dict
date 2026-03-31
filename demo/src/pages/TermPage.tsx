@@ -195,11 +195,11 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               <TermLinks links={term.links} variant="button" showEmpty />
             </div>
 
-            {term.sources && (term.sources.label?.length || term.sources.definition?.length) && (
+            {term.sources && (term.sources.label?.length || term.sources.definition?.length) ? (
               <div className="pt-6 border-t border-slate-200">
                 <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Sources</h2>
                 <div className="text-sm text-slate-500 space-y-1">
-                  {term.sources.label && term.sources.label.length > 0 && (
+                  {term.sources.label && term.sources.label.length ? (
                     <p>
                       <span className="text-slate-400">Label:</span>{' '}
                       {term.sources.label
@@ -208,8 +208,8 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                         )
                         .join(', ')}
                     </p>
-                  )}
-                  {term.sources.definition && term.sources.definition.length > 0 && (
+                  ) : null}
+                  {term.sources.definition && term.sources.definition.length ? (
                     <p>
                       <span className="text-slate-400">Definition:</span>{' '}
                       {term.sources.definition
@@ -218,10 +218,10 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                         )
                         .join(', ')}
                     </p>
-                  )}
+                  ) : null}
                 </div>
               </div>
-            )}
+            ) : null}
 
             <div className="pt-8 mt-6 border-t border-slate-200">
               <div className="flex items-center justify-between gap-6">
