@@ -32,6 +32,26 @@ dictionary.forEach(term => {
 
 For detailed API documentation, code examples, and more, visit the **[documentation](https://kyco.github.io/dev-dict/docs)**.
 
+## Bundle Size & Tree-Shaking
+
+Dev-dict contains 200+ terms. To keep your bundle small, import only the terms you need via sub-path entry points.
+
+**Preferred — import specific terms from `dev-dict/terms`:**
+
+```typescript
+// GOOD - Only react and typescript are included in your bundle
+import { react, typescript } from 'dev-dict/terms'
+```
+
+**Avoid importing from the root entry point** when you only need a subset of terms — it pulls in the entire dictionary at once and cannot be tree-shaken:
+
+```typescript
+// BAD - Includes all 200+ terms regardless of what you use
+import { terms } from 'dev-dict'
+```
+
+The root entry is best suited for server-side or build-time use cases where you need the full dataset (e.g. generating a static glossary page).
+
 ## Supported Languages
 
 | Locale | Language | Status |
