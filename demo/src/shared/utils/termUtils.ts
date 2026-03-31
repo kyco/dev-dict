@@ -1,5 +1,5 @@
 import { checkField, COMPLETENESS_CONFIG, terms } from 'dev-dict'
-import type { TTerm } from 'dev-dict'
+import type { CompletenessField, TTerm } from 'dev-dict'
 
 export interface FieldCompleteness {
   field: string
@@ -32,13 +32,32 @@ export interface TermCompleteness {
   additionalTotal: number
 }
 
+const isAltName = (field: string) => field.startsWith('altName.')
+
+function toFieldCompleteness(config: CompletenessField, term: TTerm): FieldCompleteness {
+  return {
+    field: config.field,
+    label: config.label,
+    completed: checkField(term, config.field),
+    optional: isAltName(config.field),
+    category: config.category,
+  }
+}
+
+function sumCompletedWeight(fields: FieldCompleteness[], configs: CompletenessField[]): number {
+  return configs.reduce((sum, config, idx) => sum + (fields[idx].completed ? config.weight : 0), 0)
+}
+
+function totalWeight(configs: CompletenessField[]): number {
+  return configs.reduce((sum, c) => sum + c.weight, 0)
+}
+
 export function getTermCompleteness(termId: string): TermCompleteness {
   const rawTermsMap = terms as unknown as Record<string, TTerm>
   const rawTerm = rawTermsMap[termId]
 
   if (!rawTerm) {
     return {
-      // Legacy fields
       hasType: false,
       hasLabel: false,
       hasDefinition: false,
@@ -46,8 +65,6 @@ export function getTermCompleteness(termId: string): TermCompleteness {
       hasLinks: false,
       isComplete: false,
       missingCount: 5,
-
-      // New fields
       baselineComplete: false,
       baselinePercentage: 0,
       additionalPercentage: 0,
@@ -61,54 +78,28 @@ export function getTermCompleteness(termId: string): TermCompleteness {
     }
   }
 
-  // All baseline fields are always included for display; altName fields are never counted in totals/weights
-  const baselineFields: FieldCompleteness[] = COMPLETENESS_CONFIG.baseline.map((config) => ({
-    field: config.field,
-    label: config.label,
-    completed: checkField(rawTerm, config.field),
-    optional: config.field.startsWith('altName.'),
-    category: config.category,
-  }))
+  // All fields included for display; altName excluded from weight/count calculations
+  const baselineFields = COMPLETENESS_CONFIG.baseline.map((c) => toFieldCompleteness(c, rawTerm))
+  const additionalFields = COMPLETENESS_CONFIG.additional.map((c) => toFieldCompleteness(c, rawTerm))
 
-  const weightedBaselineConfigs = COMPLETENESS_CONFIG.baseline.filter((config) => !config.field.startsWith('altName.'))
+  const weightedBaseline = COMPLETENESS_CONFIG.baseline.filter((c) => !isAltName(c.field))
+  const weightedAdditional = COMPLETENESS_CONFIG.additional.filter((c) => !isAltName(c.field))
 
-  const baselineCompletedWeight = baselineFields
-    .filter((f) => !f.field.startsWith('altName.') && f.completed)
-    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + weightedBaselineConfigs[idx].weight, 0)
+  const weightedBaselineFields = baselineFields.filter((f) => !isAltName(f.field))
+  const weightedAdditionalFields = additionalFields.filter((f) => !isAltName(f.field))
 
-  const baselineTotalWeight = weightedBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
+  const baselineCompletedWeight = sumCompletedWeight(weightedBaselineFields, weightedBaseline)
+  const additionalCompletedWeight = sumCompletedWeight(weightedAdditionalFields, weightedAdditional)
+  const baselineTotalWeight = totalWeight(weightedBaseline)
+  const additionalTotalWeight = totalWeight(weightedAdditional)
 
-  // All additional fields are always included for display; altName fields are never counted in totals/weights
-  const weightedAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter(
-    (config) => !config.field.startsWith('altName.'),
-  )
+  const combinedWeight = baselineTotalWeight + additionalTotalWeight
+  const combinedCompletedWeight = baselineCompletedWeight + additionalCompletedWeight
 
-  const additionalFields: FieldCompleteness[] = COMPLETENESS_CONFIG.additional.map((config) => ({
-    field: config.field,
-    label: config.label,
-    completed: checkField(rawTerm, config.field),
-    optional: config.field.startsWith('altName.'),
-    category: config.category,
-  }))
-
-  const additionalCompletedWeight = additionalFields
-    .filter((f) => !f.field.startsWith('altName.') && f.completed)
-    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + weightedAdditionalConfigs[idx]?.weight || 0, 0)
-
-  const additionalTotalWeight = weightedAdditionalConfigs.reduce((sum: number, f) => sum + f.weight, 0)
-
-  // Calculate percentages based on actual weights (not forced 50/50 split)
-  const totalWeight = baselineTotalWeight + additionalTotalWeight
-  const totalCompletedWeight = baselineCompletedWeight + additionalCompletedWeight
-
-  const baselinePercentage = baselineTotalWeight > 0 ? Math.round((baselineCompletedWeight / totalWeight) * 100) : 0
+  const baselinePercentage = combinedWeight > 0 ? Math.round((baselineCompletedWeight / combinedWeight) * 100) : 0
+  const additionalPercentage = combinedWeight > 0 ? Math.round((additionalCompletedWeight / combinedWeight) * 100) : 0
+  const fullPercentage = combinedWeight > 0 ? Math.round((combinedCompletedWeight / combinedWeight) * 100) : 0
   const baselineComplete = baselineCompletedWeight === baselineTotalWeight
-
-  const additionalPercentage =
-    additionalTotalWeight > 0 ? Math.round((additionalCompletedWeight / totalWeight) * 100) : 0
-
-  // Full percentage is the combined completed weight out of total weight
-  const fullPercentage = totalWeight > 0 ? Math.round((totalCompletedWeight / totalWeight) * 100) : 0
 
   // Legacy fields for backwards compatibility
   const hasType = rawTerm.type.length > 0
@@ -119,29 +110,25 @@ export function getTermCompleteness(termId: string): TermCompleteness {
 
   const legacyFields = [hasType, hasLabel, hasDefinition, hasTags, hasLinks]
   const missingCount = legacyFields.filter((v) => !v).length
-  const isComplete = missingCount === 0
 
   return {
-    // Legacy fields
     hasType,
     hasLabel,
     hasDefinition,
     hasTags,
     hasLinks,
-    isComplete,
+    isComplete: missingCount === 0,
     missingCount,
-
-    // New fields
     baselineComplete,
     baselinePercentage,
     additionalPercentage,
     fullPercentage,
     baselineFields,
     additionalFields,
-    baselineCount: baselineFields.filter((f) => !f.field.startsWith('altName.') && f.completed).length,
-    baselineTotal: baselineFields.filter((f) => !f.field.startsWith('altName.')).length,
-    additionalCount: additionalFields.filter((f) => !f.field.startsWith('altName.') && f.completed).length,
-    additionalTotal: additionalFields.filter((f) => !f.field.startsWith('altName.')).length,
+    baselineCount: weightedBaselineFields.filter((f) => f.completed).length,
+    baselineTotal: weightedBaselineFields.length,
+    additionalCount: weightedAdditionalFields.filter((f) => f.completed).length,
+    additionalTotal: weightedAdditionalFields.length,
   }
 }
 

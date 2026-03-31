@@ -71,15 +71,17 @@ export const COMPLETENESS_CONFIG: CompletenessConfig = {
   ],
 }
 
+function getFieldValue(term: TTerm, fieldPath: string): unknown {
+  return fieldPath.split('.').reduce<unknown>((obj, part) => {
+    if (obj === undefined || obj === null) return undefined
+    return (obj as Record<string, unknown>)[part]
+  }, term)
+}
+
+const LOCALE_REFS = new Set(['en-US', 'en-GB', 'de-DE'])
+
 export function fieldExists(term: TTerm, fieldPath: string): boolean {
-  const parts = fieldPath.split('.')
-  let value: any = term
-
-  for (const part of parts) {
-    if (value === undefined || value === null) return false
-    value = value[part]
-  }
-
+  const value = getFieldValue(term, fieldPath)
   return value !== undefined && value !== null
 }
 
@@ -91,34 +93,19 @@ export function checkField(term: TTerm, fieldPath: string): boolean {
     return !!(links.official_website || links.github || links.npm || links.wikipedia)
   }
 
-  const parts = fieldPath.split('.')
-  let value: any = term
+  const value = getFieldValue(term, fieldPath)
+  if (value === undefined || value === null) return false
 
-  for (const part of parts) {
-    value = value?.[part]
-    if (value === undefined || value === null) return false
-  }
-
-  // Check if value is meaningful (not empty string, not empty array, not empty object)
-  if (typeof value === 'string') {
-    // Check if it's a reference to another locale (like 'en-US' string)
-    if (value === 'en-US' || value === 'en-GB' || value === 'de-DE') return false
-    return value.trim() !== ''
-  }
+  if (typeof value === 'string') return !LOCALE_REFS.has(value) && value.trim() !== ''
 
   if (Array.isArray(value)) return value.length > 0
 
   if (typeof value === 'object') {
     return (
       Object.keys(value).length > 0 &&
-      Object.values(value).some((v) => {
-        if (typeof v === 'string') {
-          // Check if it's a reference to another locale
-          if (v === 'en-US' || v === 'en-GB' || v === 'de-DE') return false
-          return v.trim() !== ''
-        }
-        return v !== null && v !== undefined
-      })
+      Object.values(value).some(
+        (v) => v !== null && v !== undefined && !(typeof v === 'string' && (LOCALE_REFS.has(v) || v.trim() === '')),
+      )
     )
   }
 
