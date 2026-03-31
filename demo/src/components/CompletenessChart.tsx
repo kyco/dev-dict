@@ -97,7 +97,7 @@ export function CompletenessChart({
 
     const links = term.links
     const linkStatuses = [
-      { name: 'Website', completed: !!links?.website },
+      { name: 'Official Website', completed: !!links?.official_website },
       { name: 'Wikipedia', completed: !!links?.wikipedia },
       { name: 'GitHub', completed: !!links?.github },
       { name: 'npm', completed: !!links?.npm },

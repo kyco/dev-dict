@@ -150,7 +150,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Label</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Definition</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Tags</th>
-                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Website</th>
+                  <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Links</th>
                   <th className="text-center px-4 py-3 text-sm font-semibold text-slate-600">Actions</th>
                 </tr>
               </thead>
