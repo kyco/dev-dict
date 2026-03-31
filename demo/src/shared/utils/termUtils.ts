@@ -1,10 +1,11 @@
-import { checkField, COMPLETENESS_CONFIG, fieldExists, terms } from 'dev-dict'
+import { checkField, COMPLETENESS_CONFIG, terms } from 'dev-dict'
 import type { TTerm } from 'dev-dict'
 
 export interface FieldCompleteness {
   field: string
   label: string
   completed: boolean
+  optional?: boolean
   category?: 'content' | 'metadata' | 'en-US' | 'en-GB' | 'de-DE'
 }
 
@@ -25,6 +26,10 @@ export interface TermCompleteness {
   fullPercentage: number
   baselineFields: FieldCompleteness[]
   additionalFields: FieldCompleteness[]
+  baselineCount: number
+  baselineTotal: number
+  additionalCount: number
+  additionalTotal: number
 }
 
 export function getTermCompleteness(termId: string): TermCompleteness {
@@ -49,54 +54,45 @@ export function getTermCompleteness(termId: string): TermCompleteness {
       fullPercentage: 0,
       baselineFields: [],
       additionalFields: [],
+      baselineCount: 0,
+      baselineTotal: 0,
+      additionalCount: 0,
+      additionalTotal: 0,
     }
   }
 
-  // Calculate baseline completeness (filter out conditional fields that don't exist)
-  const applicableBaselineConfigs = COMPLETENESS_CONFIG.baseline.filter((config) => {
-    // If field is conditional, only include it if the field exists in the term
-    if (config.conditional) {
-      return fieldExists(rawTerm, config.field)
-    }
-    // Always include non-conditional fields
-    return true
-  })
-
-  const baselineFields: FieldCompleteness[] = applicableBaselineConfigs.map((config) => ({
+  // All baseline fields are always included for display; altName fields are never counted in totals/weights
+  const baselineFields: FieldCompleteness[] = COMPLETENESS_CONFIG.baseline.map((config) => ({
     field: config.field,
     label: config.label,
     completed: checkField(rawTerm, config.field),
+    optional: config.field.startsWith('altName.'),
     category: config.category,
   }))
 
+  const weightedBaselineConfigs = COMPLETENESS_CONFIG.baseline.filter((config) => !config.field.startsWith('altName.'))
+
   const baselineCompletedWeight = baselineFields
-    .filter((f) => f.completed)
-    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + applicableBaselineConfigs[idx].weight, 0)
+    .filter((f) => !f.field.startsWith('altName.') && f.completed)
+    .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + weightedBaselineConfigs[idx].weight, 0)
 
-  const baselineTotalWeight = applicableBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
+  const baselineTotalWeight = weightedBaselineConfigs.reduce((sum: number, f) => sum + f.weight, 0)
 
-  // For additional completeness, exclude altName fields from weight calculation but keep them for display
-  const applicableAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter((config) => {
-    // If field is conditional, only include it if the field exists in the term
-    if (config.conditional) {
-      return fieldExists(rawTerm, config.field)
-    }
-    // Always include non-conditional fields
-    return true
-  })
+  // All additional fields are always included for display; altName fields are never counted in totals/weights
+  const weightedAdditionalConfigs = COMPLETENESS_CONFIG.additional.filter(
+    (config) => !config.field.startsWith('altName.'),
+  )
 
-  // Separate configs for weight calculation (exclude altName fields)
-  const weightedAdditionalConfigs = applicableAdditionalConfigs.filter((config) => !config.field.startsWith('altName.'))
-
-  const additionalFields: FieldCompleteness[] = applicableAdditionalConfigs.map((config) => ({
+  const additionalFields: FieldCompleteness[] = COMPLETENESS_CONFIG.additional.map((config) => ({
     field: config.field,
     label: config.label,
     completed: checkField(rawTerm, config.field),
+    optional: config.field.startsWith('altName.'),
     category: config.category,
   }))
 
   const additionalCompletedWeight = additionalFields
-    .filter((f, idx) => !applicableAdditionalConfigs[idx].field.startsWith('altName.') && f.completed)
+    .filter((f) => !f.field.startsWith('altName.') && f.completed)
     .reduce((sum: number, _: FieldCompleteness, idx: number) => sum + weightedAdditionalConfigs[idx]?.weight || 0, 0)
 
   const additionalTotalWeight = weightedAdditionalConfigs.reduce((sum: number, f) => sum + f.weight, 0)
@@ -142,6 +138,10 @@ export function getTermCompleteness(termId: string): TermCompleteness {
     fullPercentage,
     baselineFields,
     additionalFields,
+    baselineCount: baselineFields.filter((f) => !f.field.startsWith('altName.') && f.completed).length,
+    baselineTotal: baselineFields.filter((f) => !f.field.startsWith('altName.')).length,
+    additionalCount: additionalFields.filter((f) => !f.field.startsWith('altName.') && f.completed).length,
+    additionalTotal: additionalFields.filter((f) => !f.field.startsWith('altName.')).length,
   }
 }
 

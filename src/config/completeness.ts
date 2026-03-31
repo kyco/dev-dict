@@ -31,7 +31,7 @@ const WEIGHT_SOURCES = 1
 export const COMPLETENESS_CONFIG: CompletenessConfig = {
   baseline: [
     { field: 'name.en-US', label: 'Name (en-US)', weight: WEIGHT_NAME, category: 'content' },
-    { field: 'altName.en-US', label: 'Alternative Name (en-US)', weight: 0, category: 'content', conditional: true },
+    { field: 'altName.en-US', label: 'Alternative Name (en-US)', weight: 0, category: 'content' },
     { field: 'label.en-US', label: 'Label (en-US)', weight: WEIGHT_LABEL, category: 'content' },
     { field: 'definition.en-US', label: 'Definition (en-US)', weight: WEIGHT_DEFINITION, category: 'content' },
     { field: 'type', label: 'Type', weight: WEIGHT_TYPE, category: 'metadata' },
@@ -42,9 +42,6 @@ export const COMPLETENESS_CONFIG: CompletenessConfig = {
       weight: WEIGHT_LINKS_BASE,
       category: 'metadata',
     },
-  ],
-
-  additional: [
     {
       field: 'sources.label',
       label: 'Label Sources',
@@ -59,14 +56,16 @@ export const COMPLETENESS_CONFIG: CompletenessConfig = {
       category: 'metadata',
       conditional: false,
     },
+  ],
 
+  additional: [
     { field: 'name.en-GB', label: 'Name', weight: WEIGHT_NAME_TRANSLATION, category: 'en-GB' },
-    { field: 'altName.en-GB', label: 'Alternative Name', weight: 0, category: 'en-GB', conditional: true },
+    { field: 'altName.en-GB', label: 'Alternative Name', weight: 0, category: 'en-GB' },
     { field: 'label.en-GB', label: 'Label', weight: WEIGHT_LABEL_TRANSLATION, category: 'en-GB' },
     { field: 'definition.en-GB', label: 'Definition', weight: WEIGHT_DEFINITION_TRANSLATION, category: 'en-GB' },
 
     { field: 'name.de-DE', label: 'Name', weight: WEIGHT_NAME_TRANSLATION, category: 'de-DE' },
-    { field: 'altName.de-DE', label: 'Alternative Name', weight: 0, category: 'de-DE', conditional: true },
+    { field: 'altName.de-DE', label: 'Alternative Name', weight: 0, category: 'de-DE' },
     { field: 'label.de-DE', label: 'Label', weight: WEIGHT_LABEL_TRANSLATION, category: 'de-DE' },
     { field: 'definition.de-DE', label: 'Definition', weight: WEIGHT_DEFINITION_TRANSLATION, category: 'de-DE' },
   ],
