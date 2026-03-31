@@ -88,7 +88,7 @@ export function checkField(term: TTerm, fieldPath: string): boolean {
   if (fieldPath === 'links') {
     if (!term.links) return false
     const { links } = term
-    return !!(links.website || links.github || links.npm || links.wikipedia)
+    return !!(links.official_website || links.github || links.npm || links.wikipedia)
   }
 
   const parts = fieldPath.split('.')
