@@ -9,7 +9,7 @@ export const LANGUAGES = [
 export const FILTER_OPTIONS = [
   { id: 'all', label: 'All terms' },
   { id: 'baseline_incomplete', label: 'Needs work' },
-  { id: 'baseline_complete', label: 'Ready' },
+  // { id: 'baseline_complete', label: 'Ready' },
   { id: 'fully_complete', label: 'Fully translated' },
 ]
 
