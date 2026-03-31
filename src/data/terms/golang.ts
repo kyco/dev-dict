@@ -13,6 +13,12 @@ export default {
     [LOCALES.DE_DE]: LOCALES.EN_US,
   },
 
+  altName: {
+    [LOCALES.EN_US]: `Golang`,
+    [LOCALES.EN_GB]: LOCALES.EN_US,
+    [LOCALES.DE_DE]: LOCALES.EN_US,
+  },
+
   label: {
     [LOCALES.EN_US]: `High-Level Programming Language`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
