@@ -1,5 +1,6 @@
 export { default as cms } from '@/data/types/cms'
 export { default as concept } from '@/data/types/concept'
+export { default as database } from '@/data/types/database'
 export { default as framework } from '@/data/types/framework'
 export { default as language } from '@/data/types/language'
 export { default as library } from '@/data/types/library'
