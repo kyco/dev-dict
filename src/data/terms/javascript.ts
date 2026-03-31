@@ -20,9 +20,9 @@ export default {
   },
 
   definition: {
-    [LOCALES.EN_US]: `JavaScript (JS) is a high-level, dynamically typed programming language and one of the three core technologies of the Web alongside HTML and CSS. Created by Brendan Eich in 1995, it runs in browsers for client-side scripting and on servers via runtimes like Node.js.`,
+    [LOCALES.EN_US]: `JavaScript is a high-level, dynamically typed programming language and one of the three core technologies of the Web alongside HTML and CSS. Created by Brendan Eich in 1995, it runs in browsers for client-side scripting and on servers via runtimes like Node.js.`,
     [LOCALES.EN_GB]: LOCALES.EN_US,
-    [LOCALES.DE_DE]: `JavaScript (JS) ist eine hochsprachige, dynamisch typisierte Programmiersprache und eine der drei Kerntechnologien des Webs neben HTML und CSS. Sie wurde 1995 von Brendan Eich entwickelt und läuft in Browsern für clientseitiges Scripting sowie auf Servern über Laufzeitumgebungen wie Node.js.`,
+    [LOCALES.DE_DE]: `JavaScript ist eine hochsprachige, dynamisch typisierte Programmiersprache und eine der drei Kerntechnologien des Webs neben HTML und CSS. Sie wurde 1995 von Brendan Eich entwickelt und läuft in Browsern für clientseitiges Scripting sowie auf Servern über Laufzeitumgebungen wie Node.js.`,
   },
 
   type: [TYPES.language],
