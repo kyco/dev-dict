@@ -48,7 +48,7 @@ export default {
   tags: [TAGS.frontend, TAGS.open_source],
 
   links: {
-    website: 'https://vuejs.org',
+    official_website: 'https://vuejs.org',
     github: 'https://github.com/vuejs/core',
     npm: 'https://www.npmjs.com/package/vue',
   },
