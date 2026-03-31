@@ -16,6 +16,7 @@ export const FILTER_OPTIONS = [
 export const SORT_OPTIONS = [
   { id: 'name', label: 'Name' },
   { id: 'missing', label: 'Most missing' },
+  { id: 'least_missing', label: 'Least missing' },
 ]
 
 export const GITHUB_REPO_URL = 'https://github.com/kyco/dev-dict'
