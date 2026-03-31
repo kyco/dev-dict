@@ -30,7 +30,7 @@ export default {
   tags: [TAGS.backend],
 
   links: {
-    website: `https://nodejs.org`,
+    official_website: `https://nodejs.org`,
   },
 
   sources: {

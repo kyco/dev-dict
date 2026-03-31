@@ -36,7 +36,7 @@ export default {
   tags: [TAGS.security, TAGS.cryptography],
 
   links: {
-    website: `https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf`,
+    official_website: `https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197-upd1.pdf`,
     wikipedia: `https://en.wikipedia.org/wiki/Advanced_Encryption_Standard`,
   },
 

@@ -15,7 +15,7 @@ export type TLocaleRecord = {
   [CONFIG.DEFAULT_LOCALE]: string
 } & Partial<Record<Exclude<TLocale, typeof CONFIG.DEFAULT_LOCALE>, string>>
 
-export type TLinkType = 'website' | 'github' | 'npm' | 'wikipedia'
+export type TLinkType = 'official_website' | 'github' | 'npm' | 'wikipedia'
 
 export type TTermLinks = AtLeastOne<Record<TLinkType, string>>
 

@@ -30,7 +30,7 @@ export default {
   tags: [TAGS.frontend, TAGS.backend, TAGS.open_source, TAGS.javascript],
 
   links: {
-    website: `https://www.typescriptlang.org`,
+    official_website: `https://www.typescriptlang.org`,
   },
 
   sources: {
