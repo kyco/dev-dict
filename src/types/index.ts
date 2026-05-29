@@ -1,9 +1,9 @@
+import type { LOCALES } from '@/data/locales'
+import type { SOURCES } from '@/data/sources'
+import type { TAGS } from '@/data/tags'
+import type { TERMS } from '@/data/terms'
+import type { TYPES } from '@/data/types'
 import { CONFIG } from '@/common'
-import { LOCALES } from '@/data/locales'
-import { SOURCES } from '@/data/sources'
-import { TAGS } from '@/data/tags'
-import { TERMS } from '@/data/terms'
-import { TYPES } from '@/data/types'
 
 type AtLeastOne<T> = {
   [K in keyof T]: Pick<T, K> & Partial<T>

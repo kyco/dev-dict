@@ -29,6 +29,7 @@ export function LanguageDropdown({
   return (
     <div className="relative">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`h-10 px-3 bg-white rounded-lg border ${isOpen ? 'border-blue-300 ring-2 ring-blue-100' : 'border-slate-200 hover:border-slate-300'} flex items-center gap-2 transition-all text-sm min-w-[140px] cursor-pointer`}
       >
@@ -46,6 +47,7 @@ export function LanguageDropdown({
                 const isSelected = selected === option.code
                 return (
                   <button
+                    type="button"
                     key={option.code}
                     onClick={() => {
                       setSelected(option.code)

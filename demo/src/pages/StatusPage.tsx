@@ -1,13 +1,14 @@
 import { Link } from '@tanstack/react-router'
+import { terms } from 'dev-dict'
+import { getTerms } from 'dev-dict/utils'
+import { ArrowLeft, ArrowUpDown, Filter, Pencil, Search, X } from 'lucide-react'
+import { useMemo, useState } from 'react'
+
 import { Dropdown } from '~/components/Dropdown'
 import { StatusIcon } from '~/components/StatusIcon'
 import { FILTER_OPTIONS, getGithubEditUrl, SORT_OPTIONS } from '~/shared/constants'
 import { sortTermsByName } from '~/shared/utils/sortUtils'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
-import { terms } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
-import { ArrowLeft, ArrowUpDown, Filter, Pencil, Search, X } from 'lucide-react'
-import { useMemo, useState } from 'react'
 
 type TermStatus = {
   id: string
@@ -130,6 +131,7 @@ export function StatusPage({ searchQuery, onSearchChange }: StatusPageProps) {
             />
             {searchQuery && (
               <button
+                type="button"
                 onClick={() => onSearchChange('')}
                 className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
               >

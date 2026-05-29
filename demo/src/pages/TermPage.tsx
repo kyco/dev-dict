@@ -1,4 +1,10 @@
 import { useRouter } from '@tanstack/react-router'
+import type { TTerm, TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
+import { terms } from 'dev-dict'
+import { getSources, getTerms } from 'dev-dict/utils'
+import { ArrowLeft, Book, Check, ChevronDown, ChevronUp, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
+import { useMemo, useState } from 'react'
+
 import { Chip } from '~/components/Chip'
 import { CompletenessChart } from '~/components/CompletenessChart'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
@@ -7,11 +13,6 @@ import { getGithubEditUrl, LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { useCopyToClipboard } from '~/shared/hooks'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
-import { terms } from 'dev-dict'
-import type { TTerm, TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { getSources, getTerms } from 'dev-dict/utils'
-import { ArrowLeft, Book, Check, ChevronDown, ChevronUp, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
-import { useMemo, useState } from 'react'
 
 interface TermPageProps {
   termId: string
@@ -44,7 +45,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
         <div className="text-center">
           <p className="text-slate-600 font-medium mb-4">Term not found!</p>
-          <button onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
+          <button type="button" onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
             Back to Dictionary
           </button>
         </div>
@@ -57,6 +58,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
           <button
+            type="button"
             onClick={goBack}
             className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors group cursor-pointer"
           >
@@ -94,6 +96,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </p>
 
                 <button
+                  type="button"
                   onClick={copyId}
                   className={`mt-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs rounded transition-all ${
                     copied
@@ -199,7 +202,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               <div className="pt-6 border-t border-slate-200">
                 <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Sources</h2>
                 <div className="text-sm text-slate-500 space-y-1">
-                  {term.sources.label && term.sources.label.length ? (
+                  {term.sources.label?.length ? (
                     <p>
                       <span className="text-slate-400">Label:</span>{' '}
                       {term.sources.label
@@ -209,7 +212,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                         .join(', ')}
                     </p>
                   ) : null}
-                  {term.sources.definition && term.sources.definition.length ? (
+                  {term.sources.definition?.length ? (
                     <p>
                       <span className="text-slate-400">Definition:</span>{' '}
                       {term.sources.definition
@@ -253,6 +256,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => setShowCompleteness(!showCompleteness)}
                   className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
                 >

@@ -1,5 +1,5 @@
-import { checkField, COMPLETENESS_CONFIG, terms } from 'dev-dict'
 import type { CompletenessField, TTerm } from 'dev-dict'
+import { COMPLETENESS_CONFIG, checkField, terms } from 'dev-dict'
 
 export interface FieldCompleteness {
   field: string

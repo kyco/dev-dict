@@ -34,7 +34,7 @@ For detailed API documentation, code examples, and more, visit the **[documentat
 
 ## Bundle Size & Tree-Shaking
 
-Dev-dict contains 200+ terms. To keep your bundle small, import only the terms you need via sub-path entry points.
+Dev-dict contains 220+ terms. To keep your bundle small, import only the terms you need via sub-path entry points.
 
 **Preferred — import specific terms from `dev-dict/terms`:**
 
@@ -46,7 +46,7 @@ import { react, typescript } from 'dev-dict/terms'
 **Avoid importing from the root entry point** when you only need a subset of terms — it pulls in the entire dictionary at once and cannot be tree-shaken:
 
 ```typescript
-// BAD - Includes all 200+ terms regardless of what you use
+// BAD - Includes all 220+ terms regardless of what you use
 import { terms } from 'dev-dict'
 ```
 
@@ -73,6 +73,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 ```bash
 pnpm install      # Install dependencies
 pnpm build        # Build library
+pnpm test         # Run tests
 pnpm demo:dev     # Run demo site (http://localhost:5173)
 pnpm demo:build   # Build demo site
 ```

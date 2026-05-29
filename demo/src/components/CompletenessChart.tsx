@@ -1,5 +1,6 @@
-import type { FieldCompleteness } from '~/shared/utils/termUtils'
 import type { TTerm } from 'dev-dict'
+
+import type { FieldCompleteness } from '~/shared/utils/termUtils'
 
 interface CompletenessChartProps {
   baselineFields: FieldCompleteness[]

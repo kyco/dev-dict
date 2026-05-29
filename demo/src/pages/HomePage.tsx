@@ -1,5 +1,10 @@
 import { Link } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
+import { terms } from 'dev-dict'
+import { getTags, getTerms, getTypes } from 'dev-dict/utils'
+import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
+
 import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
@@ -9,10 +14,6 @@ import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
 import { sortTermsByName } from '~/shared/utils/sortUtils'
 import { getTermCompleteness } from '~/shared/utils/termUtils'
-import { terms } from 'dev-dict'
-import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
 
 interface HomePageProps {
   searchQuery: string
@@ -140,6 +141,7 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
             />
             {(selectedTypes.length > 0 || selectedTags.length > 0) && (
               <button
+                type="button"
                 onClick={() => {
                   setSelectedTypes([])
                   setSelectedTags([])
