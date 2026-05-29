@@ -1,3 +1,9 @@
+## [0.12.3](https://github.com/kyco/dev-dict/compare/v0.12.2...v0.12.3) (2026-05-29)
+
+### Docs
+
+* Update README ([e8ef096](https://github.com/kyco/dev-dict/commit/e8ef0969ad2d77ed097b2ec3e81fab3181b2bd0b))
+
 ## [0.12.2](https://github.com/kyco/dev-dict/compare/v0.12.1...v0.12.2) (2026-05-29)
 
 ### Bug Fixes
