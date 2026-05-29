@@ -1,3 +1,19 @@
+## [0.12.2](https://github.com/kyco/dev-dict/compare/v0.12.1...v0.12.2) (2026-05-29)
+
+### Bug Fixes
+
+* **demo:** Remove icon ([86e2b15](https://github.com/kyco/dev-dict/commit/86e2b158c8ee757a706c5c02d71d88c7579b077f))
+* Sorts ([cfcfaf9](https://github.com/kyco/dev-dict/commit/cfcfaf98fa3e62f451d572b643e046c277ce13d7))
+* Update AI term ([96e12f7](https://github.com/kyco/dev-dict/commit/96e12f712d9e8c0672a9587cce23213be163d757))
+
+### Chore
+
+* Bump deps ([7cf8b09](https://github.com/kyco/dev-dict/commit/7cf8b091a96f5a851a9a91a282e608c799ad9ba5))
+* **demo:** Bump deps ([2b21ce7](https://github.com/kyco/dev-dict/commit/2b21ce739d6007919e0b20e2e1c052fc722e9337))
+* **dependencies:** bump pnpm/action-setup from 4 to 6 ([5d1bc65](https://github.com/kyco/dev-dict/commit/5d1bc65add40c5b87232504f5c8b06e9877007f5))
+* Update ([858ab32](https://github.com/kyco/dev-dict/commit/858ab321d7853fd92dbc9bf0e6bc8d3bfdc742e4))
+* Use biome ([66c7d4a](https://github.com/kyco/dev-dict/commit/66c7d4a336333821d4d80909e7c4781271f70afd))
+
 ## [0.12.1](https://github.com/kyco/dev-dict/compare/v0.12.0...v0.12.1) (2026-03-31)
 
 ### Bug Fixes
