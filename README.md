@@ -4,7 +4,7 @@
 
 # dev-dict
 
-A collection of software development terms (with multilingual support). Useful for building developer tools, documentation sites, personal portfolios, etc.
+A multilingual collection of software development terms. Useful for building developer tools, documentation sites, personal portfolios, etc.
 
 **[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse all terms](https://kyco.github.io/dev-dict/)**
 
