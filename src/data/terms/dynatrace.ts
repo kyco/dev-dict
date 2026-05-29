@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data'
+import { SOURCES, TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `dynatrace`,

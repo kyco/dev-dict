@@ -1,6 +1,5 @@
 import type { TTermTag } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data'
 
 export default {
   id: `backend`,
