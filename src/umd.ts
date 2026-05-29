@@ -15,7 +15,7 @@ import {
 } from './utils'
 
 export type * from '@/types'
-export { LOCALES as locales } from '@/data/locales'
+export { LOCALES } from '@/common'
 export { TAGS as tags } from '@/data/tags'
 export { TERMS } from '@/data/terms'
 export { TYPES as types } from '@/data/types'

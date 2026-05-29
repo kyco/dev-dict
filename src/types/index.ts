@@ -1,4 +1,4 @@
-import type { LOCALES } from '@/data/locales'
+import type { LOCALES } from '@/common'
 import type { SOURCES } from '@/data/sources'
 import type { TAGS } from '@/data/tags'
 import type { TERMS } from '@/data/terms'

@@ -20,7 +20,7 @@ Create `src/data/terms/{term_id}.ts` (lowercase with underscores only):
 
 ```typescript
 import type { TTerm } from '@/types'
-import { LOCALES } from '@/data/locales'
+import { LOCALES } from '@/common'
 import { SOURCES } from '@/data/sources'
 import { TAGS } from '@/data/tags'
 import { TYPES } from '@/data/types'
@@ -96,7 +96,7 @@ Create `src/data/types/{type_id}.ts` or `src/data/tags/{tag_id}.ts`:
 
 ```typescript
 import type { TType } from '@/types'
-import { LOCALES } from '@/data/locales'
+import { LOCALES } from '@/common'
 
 export default {
   id: 'database',
@@ -141,7 +141,7 @@ label: {
 
 ## Adding a New Language
 
-1. Add locale to `src/data/locales/index.ts`:
+1. Add locale to `src/common/index.ts`:
 ```typescript
 export const LOCALES = {
   EN_US: 'en-US',

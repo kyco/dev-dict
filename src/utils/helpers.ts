@@ -10,8 +10,7 @@ import type {
   TTermType,
   TTermTypeLocalized,
 } from '@/types'
-import { CONFIG } from '@/common'
-import { LOCALES } from '@/data/locales'
+import { CONFIG, LOCALES } from '@/common'
 
 /**
  * This method will convert e.g. `[LOCALES.EN_GB]: LOCALES.EN_US` to the actual value

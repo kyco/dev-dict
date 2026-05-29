@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, expect, it } from 'vitest'
 
-import { LOCALES } from '@/data/locales'
+import { LOCALES } from '@/common'
 import { RAW_TAGS } from '@/data/tags'
 
 import * as tagsEntry from '../tags-entry'

@@ -1,5 +1,5 @@
 import type { TTermSource } from '@/types'
-import { LOCALES } from '@/data/locales'
+import { LOCALES } from '@/common'
 import { SOURCES } from '@/data/sources'
 import { TAGS } from '@/data/tags'
 import { TYPES } from '@/data/types'
