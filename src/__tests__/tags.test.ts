@@ -80,7 +80,7 @@ describe('Tags', () => {
 
   it('should have tags-entry.ts exports in alphabetical order', () => {
     const exports = Object.keys(tagsEntry)
-    const sorted = [...exports].sort()
+    const sorted = [...exports].sort((a, b) => a.localeCompare(b))
 
     exports.forEach((key, index) => {
       expect(key, `tags-entry.ts export "${key}" is out of order (should be "${sorted[index]}")`).toBe(sorted[index])

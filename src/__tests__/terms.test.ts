@@ -125,7 +125,7 @@ describe('Terms', () => {
 
   it('should have terms-entry.ts exports in alphabetical order', () => {
     const exports = Object.keys(termsEntry)
-    const sorted = [...exports].sort()
+    const sorted = [...exports].sort((a, b) => a.localeCompare(b))
 
     exports.forEach((key, index) => {
       expect(key, `terms-entry.ts export "${key}" is out of order (should be "${sorted[index]}")`).toBe(sorted[index])
