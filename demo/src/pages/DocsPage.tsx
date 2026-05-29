@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Globe, Package, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
@@ -162,7 +162,6 @@ export function DocsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors"
             >
-              <Github size={16} />
               GitHub
             </a>
             <a
