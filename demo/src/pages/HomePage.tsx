@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
-import { TERMS } from 'dev-dict'
-import { getTags, getTerms, getTypes } from 'dev-dict/utils'
+import { getTags, getTerms, getTypes, TERMS } from 'dev-dict'
 import { BookOpen, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 

@@ -213,10 +213,10 @@ export function DocsPage() {
                 code={`<script src="https://unpkg.com/dev-dict@latest/dist/dev-dict.min.js"></script>
 <script>
   // Access the library via the global 'devdict' object
-  const { terms, utils } = devdict
+  const { TERMS, getTerms } = window.devdict
 
   // Translate to specified locale
-  const dictionary = utils.getTerms({ terms, locale: 'en-US' })
+  const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
   console.log(dictionary)
 </script>`}
@@ -233,11 +233,10 @@ export function DocsPage() {
               <h3 className="text-lg font-semibold text-slate-700 mb-2">Option 1: All Terms</h3>
               <p className="text-slate-600 mb-4">Import all terms at once for full access to the dictionary.</p>
               <CodeBlock
-                code={`import { TERMS } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
+                code={`import { TERMS, getTerms } from 'dev-dict'
 
 // Translate to specified locale
-const dictionary = getTerms({ terms, locale: 'en-US' })
+const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
 // Display terms
 dictionary.forEach(term => {
@@ -255,7 +254,7 @@ dictionary.forEach(term => {
               <CodeBlock
                 code={`// Import a selection of terms
 import { react, typescript, node_js } from 'dev-dict/terms'
-import { getTerms } from 'dev-dict/utils'
+import { getTerms } from 'dev-dict'
 
 // Create a list with only the terms you need
 const terms = { react, typescript, node_js }
@@ -272,11 +271,11 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
           <div className="bg-white p-6 rounded-xl border border-slate-200">
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">Import Data</h3>
-              <CodeBlock code={`import { terms, types, tags, sources, locales } from 'dev-dict'`} />
+              <CodeBlock code={`import { TERMS, TYPES, TAGS, SOURCES, LOCALES } from 'dev-dict'`} />
             </div>
 
             <div className="space-y-0">
-              <Accordion title="terms" description="Raw terms dictionary with TLocaleRecord values">
+              <Accordion title="TERMS" description="Terms dictionary with TLocaleRecord values">
                 <CodeBlock
                   code={`{
   react: {
@@ -303,7 +302,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
                 />
               </Accordion>
 
-              <Accordion title="types" description="Type constants with TLocaleRecord values">
+              <Accordion title="TYPES" description="Type constants with TLocaleRecord values">
                 <CodeBlock
                   code={`{
   library: {
@@ -323,7 +322,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
                 />
               </Accordion>
 
-              <Accordion title="tags" description="Tag constants with TLocaleRecord values">
+              <Accordion title="TAGS" description="Tag constants with TLocaleRecord values">
                 <CodeBlock
                   code={`{
   frontend: {
@@ -343,7 +342,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
                 />
               </Accordion>
 
-              <Accordion title="sources" description="Source attribution constants with TLocaleRecord values">
+              <Accordion title="SOURCES" description="Source attribution constants with TLocaleRecord values">
                 <CodeBlock
                   code={`{
   official_website: {
@@ -366,12 +365,12 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
                 />
               </Accordion>
 
-              <Accordion title="locales" description="Available locale constants">
+              <Accordion title="LOCALES" description="Available locale constants">
                 <CodeBlock
                   code={`{
-  'en-US': 'en-US',
-  'en-GB': 'en-GB',
-  'de-DE': 'de-DE'
+  EN_US: 'en-US',
+  EN_GB: 'en-GB',
+  DE_DE: 'de-DE'
 }`}
                 />
               </Accordion>
@@ -394,18 +393,17 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
   getTagsDict,
   getSources,
   getSourcesDict
-} from 'dev-dict/utils'`}
+} from 'dev-dict'`}
               />
             </div>
 
             <div className="space-y-0">
               <Accordion title="getTerms()" description="Get all terms as an array">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
+                  code={`import { TERMS, getTerms } from 'dev-dict'
 
 const dictionary = getTerms({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',    // Optional: defaults to 'en-US'
   populateEmpty: true // Optional: defaults to true
 })
@@ -420,11 +418,10 @@ const dictionary = getTerms({
 
               <Accordion title="getTermsDict()" description="Get all terms as a dictionary object">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTermsDict } from 'dev-dict/utils'
+                  code={`import { TERMS, getTermsDict } from 'dev-dict'
 
 const termsDict = getTermsDict({
-  terms,
+  terms: TERMS,
   locale: 'en-US',
   populateEmpty: true
 })
@@ -439,11 +436,10 @@ const termsDict = getTermsDict({
 
               <Accordion title="getTypes()" description="Get all types as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTypes } from 'dev-dict/utils'
+                  code={`import { TERMS, getTypes } from 'dev-dict'
 
 const typesList = getTypes({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })
@@ -461,11 +457,10 @@ const typesList = getTypes({
                 description="Get all types as a dictionary object (extracted from terms)"
               >
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTypesDict } from 'dev-dict/utils'
+                  code={`import { TERMS, getTypesDict } from 'dev-dict'
 
 const typesDict = getTypesDict({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })
@@ -480,11 +475,10 @@ const typesDict = getTypesDict({
 
               <Accordion title="getTags()" description="Get all tags as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTags } from 'dev-dict/utils'
+                  code={`import { TERMS, getTags } from 'dev-dict'
 
 const tagsList = getTags({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })
@@ -499,11 +493,10 @@ const tagsList = getTags({
 
               <Accordion title="getTagsDict()" description="Get all tags as a dictionary object (extracted from terms)">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getTagsDict } from 'dev-dict/utils'
+                  code={`import { TERMS, getTagsDict } from 'dev-dict'
 
 const tagsDict = getTagsDict({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })
@@ -518,11 +511,10 @@ const tagsDict = getTagsDict({
 
               <Accordion title="getSources()" description="Get all sources as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getSources } from 'dev-dict/utils'
+                  code={`import { TERMS, getSources } from 'dev-dict'
 
 const sourcesList = getSources({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })
@@ -540,11 +532,10 @@ const sourcesList = getSources({
                 description="Get all sources as a dictionary object (extracted from terms)"
               >
                 <CodeBlock
-                  code={`import { TERMS } from 'dev-dict'
-import { getSourcesDict } from 'dev-dict/utils'
+                  code={`import { TERMS, getSourcesDict } from 'dev-dict'
 
 const sourcesDict = getSourcesDict({
-  terms,              // Required: the terms dictionary
+  terms: TERMS,       // Required: the terms dictionary
   locale: 'en-US',
   populateEmpty: true
 })

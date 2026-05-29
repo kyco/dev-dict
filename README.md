@@ -17,11 +17,10 @@ npm install dev-dict
 ## Usage
 
 ```typescript
-import { TERMS } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
+import { TERMS, getTerms } from 'dev-dict'
 
 // Define dictionary
-const dictionary = getTerms({ TERMS })
+const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
 // Display terms
 dictionary.forEach(term => {
