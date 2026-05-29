@@ -84,14 +84,15 @@ export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
               <BookOpen size={16} />
               Docs
             </Link>
-            <Link
-              to="/status"
-              search={{ q: undefined }}
+            <a
+              href="https://github.com/kyco/dev-dict/blob/main/CONTRIBUTING.md"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
             >
               <Plus size={16} />
               Contribute
-            </Link>
+            </a>
           </div>
         </div>
 
