@@ -1,9 +1,9 @@
 import { interpolateValues } from '@/utils'
 
-import ai_generated from './ai_generated'
-import community from './community'
-import official_website from './official_website'
-import wikipedia from './wikipedia'
+import ai_generated from './sources/ai_generated'
+import community from './sources/community'
+import official_website from './sources/official_website'
+import wikipedia from './sources/wikipedia'
 
 export const RAW_SOURCES = {
   [ai_generated.id]: ai_generated,
