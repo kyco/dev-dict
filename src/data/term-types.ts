@@ -1,13 +1,13 @@
-import cms from './types/cms'
-import concept from './types/concept'
-import database from './types/database'
-import framework from './types/framework'
-import language from './types/language'
-import library from './types/library'
-import methodology from './types/methodology'
-import platform from './types/platform'
-import runtime_environment from './types/runtime_environment'
-import standard from './types/standard'
+import cms from './term-types/cms'
+import concept from './term-types/concept'
+import database from './term-types/database'
+import framework from './term-types/framework'
+import language from './term-types/language'
+import library from './term-types/library'
+import methodology from './term-types/methodology'
+import platform from './term-types/platform'
+import runtime_environment from './term-types/runtime_environment'
+import standard from './term-types/standard'
 
 export const RAW_TYPES = {
   [cms.id]: cms,
