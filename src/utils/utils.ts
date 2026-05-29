@@ -1,16 +1,20 @@
 import type {
   TLocale,
+  TTerm,
   TTermLocalized,
+  TTermSource,
   TTermSourceId,
   TTermSourceLocalized,
   TTermSourcesDict,
   TTermSourcesDictLocalized,
   TTermsDict,
   TTermsDictPartial,
+  TTermTag,
   TTermTagId,
   TTermTagLocalized,
   TTermTagsDict,
   TTermTagsDictLocalized,
+  TTermType,
   TTermTypeId,
   TTermTypeLocalized,
   TTermTypesDict,
@@ -18,7 +22,43 @@ import type {
 } from '@/types'
 import { CONFIG, MISC } from '@/common'
 
-import { getSource, getTag, getTerm, getType, interpolateValues } from './helpers'
+import { getValueLocalized, interpolateValues } from './helpers'
+
+// ------------------------ TERMS ------------------------
+export const getTerm = ({
+  term,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  term: TTerm
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermLocalized => {
+  const sourcesLocalized = term.sources
+    ? {
+        ...(term.sources.label && {
+          label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
+        }),
+        ...(term.sources.definition && {
+          definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
+        }),
+      }
+    : undefined
+
+  return {
+    id: term.id,
+    name: getValueLocalized({ obj: term.name, locale, populateEmpty }),
+    ...('altName' in term && term.altName
+      ? { altName: getValueLocalized({ obj: term.altName, locale, populateEmpty }) }
+      : {}),
+    type: term.type.map((value) => getType({ type: value, locale, populateEmpty })),
+    label: getValueLocalized({ obj: term.label, locale, populateEmpty }),
+    definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
+    tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
+    links: term.links,
+    ...(sourcesLocalized && Object.keys(sourcesLocalized).length > 0 ? { sources: sourcesLocalized } : {}),
+  } as TTermLocalized
+}
 
 export const getTermsDict = <T extends TTermsDict | TTermsDictPartial>({
   terms,
@@ -49,6 +89,22 @@ export const getTerms = ({
   populateEmpty?: boolean
 }): TTermLocalized[] => {
   return Object.values(getTermsDict({ terms, locale, populateEmpty }))
+}
+
+// ------------------------ TYPES ------------------------
+export const getType = ({
+  type,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  type: TTermType
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermTypeLocalized => {
+  return {
+    id: type.id,
+    name: getValueLocalized({ obj: type.name, locale, populateEmpty }),
+  }
 }
 
 export const getTypesDict = ({
@@ -92,6 +148,22 @@ export const getTypes = ({
   return Object.values(getTypesDict({ terms, locale, populateEmpty }))
 }
 
+// ------------------------ TAGS ------------------------
+export const getTag = ({
+  tag,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  tag: TTermTag
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermTagLocalized => {
+  return {
+    id: tag.id,
+    name: getValueLocalized({ obj: tag.name, locale, populateEmpty }),
+  }
+}
+
 export const getTagsDict = ({
   terms,
   locale = CONFIG.DEFAULT_LOCALE,
@@ -131,6 +203,22 @@ export const getTags = ({
   populateEmpty?: boolean
 }): TTermTagLocalized[] => {
   return Object.values(getTagsDict({ terms, locale, populateEmpty }))
+}
+
+// ------------------------ SOURCES ------------------------
+export const getSource = ({
+  source,
+  locale = CONFIG.DEFAULT_LOCALE,
+  populateEmpty = CONFIG.POPULATE_EMPTY,
+}: {
+  source: TTermSource
+  locale?: TLocale
+  populateEmpty?: boolean
+}): TTermSourceLocalized => {
+  return {
+    id: source.id,
+    name: getValueLocalized({ obj: source.name, locale, populateEmpty }),
+  }
 }
 
 export const getSourcesDict = ({
