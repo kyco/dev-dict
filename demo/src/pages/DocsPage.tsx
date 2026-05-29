@@ -170,7 +170,6 @@ export function DocsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
             >
-              <Package size={16} />
               npm
             </a>
           </div>
