@@ -16,6 +16,7 @@ import {
 
 export type * from '@/types'
 export { LOCALES } from '@/common'
+export { SOURCES as sources } from '@/data/sources'
 export { TAGS as tags } from '@/data/tags'
 export { TERMS } from '@/data/terms'
 export { TYPES as types } from '@/data/types'
