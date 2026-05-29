@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '@/common'
-import { RAW_TYPES } from '@/data/term-types'
+import { RAW_TYPES } from '@/data'
 
 import * as typesEntry from '../types-entry'
 
@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 describe('Types', () => {
-  const typesDir = join(__dirname, '../data/types')
+  const typesDir = join(__dirname, '../data/term-types')
   const typeFiles = readdirSync(typesDir)
     .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
     .map((file) => file.replace('.ts', ''))

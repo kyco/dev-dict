@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 describe('Tags', () => {
-  const tagsDir = join(__dirname, '../data/tags')
+  const tagsDir = join(__dirname, '../data/term-tags')
   const tagFiles = readdirSync(tagsDir)
     .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
     .map((file) => file.replace('.ts', ''))
