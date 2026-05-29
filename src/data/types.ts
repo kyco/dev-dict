@@ -1,15 +1,15 @@
 import { interpolateValues } from '@/utils'
 
-import cms from './cms'
-import concept from './concept'
-import database from './database'
-import framework from './framework'
-import language from './language'
-import library from './library'
-import methodology from './methodology'
-import platform from './platform'
-import runtime_environment from './runtime_environment'
-import standard from './standard'
+import cms from './types/cms'
+import concept from './types/concept'
+import database from './types/database'
+import framework from './types/framework'
+import language from './types/language'
+import library from './types/library'
+import methodology from './types/methodology'
+import platform from './types/platform'
+import runtime_environment from './types/runtime_environment'
+import standard from './types/standard'
 
 export const RAW_TYPES = {
   [cms.id]: cms,
