@@ -1,5 +1,3 @@
-import { interpolateValues } from '@/utils'
-
 import ai_generated from './sources/ai_generated'
 import community from './sources/community'
 import official_website from './sources/official_website'
@@ -11,5 +9,3 @@ export const RAW_SOURCES = {
   [official_website.id]: official_website,
   [wikipedia.id]: wikipedia,
 } as const
-
-export const SOURCES = interpolateValues({ obj: RAW_SOURCES, keys: ['name'], populateEmpty: false })

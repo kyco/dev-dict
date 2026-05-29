@@ -1,5 +1,3 @@
-import { interpolateValues } from '@/utils'
-
 import cms from './types/cms'
 import concept from './types/concept'
 import database from './types/database'
@@ -23,5 +21,3 @@ export const RAW_TYPES = {
   [runtime_environment.id]: runtime_environment,
   [standard.id]: standard,
 } as const
-
-export const TYPES = interpolateValues({ obj: RAW_TYPES, keys: ['name'], populateEmpty: false })

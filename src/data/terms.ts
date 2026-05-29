@@ -1,6 +1,3 @@
-import { MISC } from '@/common'
-import { interpolateValues } from '@/utils'
-
 import aes from './terms/aes'
 import agile from './terms/agile'
 import ai from './terms/ai'
@@ -448,5 +445,3 @@ export const RAW_TERMS = {
   [zig.id]: zig,
   [zod.id]: zod,
 } as const
-
-export const TERMS = interpolateValues({ obj: RAW_TERMS, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty: false })

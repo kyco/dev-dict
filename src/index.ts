@@ -2,10 +2,7 @@ export type { CompletenessConfig, CompletenessField } from '@/config/completenes
 export type * from '@/types'
 export { LOCALES } from '@/common'
 export { COMPLETENESS_CONFIG, checkField, fieldExists } from '@/config/completeness'
-export { SOURCES as sources } from '@/data/term-sources'
-export { TERM_TAGS } from '@/data/term-tags'
-export { TYPES as types } from '@/data/term-types'
-export { TERMS } from '@/data/terms'
+export { SOURCES as sources, TAGS, TERMS, TYPES as types } from '@/data'
 
 export {
   getSource,

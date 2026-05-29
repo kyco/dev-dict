@@ -1,8 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES } from '@/data/term-sources'
-import { TAGS } from '@/data/term-tags'
-import { TYPES } from '@/data/term-types'
+import { SOURCES, TAGS, TYPES } from '@/data'
 
 export default {
   id: `yarn`,

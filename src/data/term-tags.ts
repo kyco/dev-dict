@@ -1,5 +1,3 @@
-import { interpolateValues } from '@/utils'
-
 import automation from './tags/automation'
 import backend from './tags/backend'
 import cryptography from './tags/cryptography'
@@ -33,5 +31,3 @@ export const RAW_TAGS = {
   [testing.id]: testing,
   [ui_library.id]: ui_library,
 } as const
-
-export const TERM_TAGS = interpolateValues({ obj: RAW_TAGS, keys: ['name'], populateEmpty: false })
