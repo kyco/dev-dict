@@ -1,6 +1,7 @@
-import { readdirSync } from 'fs'
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
+import { readdirSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '@/data/locales'
@@ -79,7 +80,7 @@ describe('Types', () => {
 
   it('should have types-entry.ts exports in alphabetical order', () => {
     const exports = Object.keys(typesEntry)
-    const sorted = [...exports].sort()
+    const sorted = [...exports].sort((a, b) => a.localeCompare(b))
 
     exports.forEach((key, index) => {
       expect(key, `types-entry.ts export "${key}" is out of order (should be "${sorted[index]}")`).toBe(sorted[index])

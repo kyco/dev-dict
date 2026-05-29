@@ -1,11 +1,12 @@
 import { Link } from '@tanstack/react-router'
-import { useCopyToClipboard } from '~/shared/hooks'
 import type { TTermLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
 import { Book, Check, Copy } from 'lucide-react'
 
+import { useCopyToClipboard } from '~/shared/hooks'
+import { getTermCompleteness } from '~/shared/utils/termUtils'
+
 import { Chip } from './Chip'
 import { TermLinks } from './TermLinks'
-import { getTermCompleteness } from '~/shared/utils/termUtils'
 
 interface TermCardProps {
   term: TTermLocalized
@@ -49,6 +50,7 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
           </p>
 
           <button
+            type="button"
             onClick={copyId}
             className={`inline-flex items-center gap-1 px-2 pt-0.5 mt-2 text-xs rounded transition-all mb-1 ${
               copied

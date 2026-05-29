@@ -1,4 +1,5 @@
 import { createRootRoute, Outlet, useRouter } from '@tanstack/react-router'
+
 import { AppProvider } from '~/shared/context/AppContext'
 
 const RootLayout = () => {
@@ -20,7 +21,7 @@ const Global404 = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
       <div className="text-center">
         <p className="text-slate-600 font-medium mb-4">Not found!</p>
-        <button onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
+        <button type="button" onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
           Back to Dictionary
         </button>
       </div>
@@ -39,7 +40,7 @@ const GlobalError = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
       <div className="text-center">
         <p className="text-slate-600 font-medium mb-4">An unknown error occured!</p>
-        <button onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
+        <button type="button" onClick={goBack} className="text-blue-600 hover:text-blue-700 cursor-pointer">
           Back to Dictionary
         </button>
       </div>

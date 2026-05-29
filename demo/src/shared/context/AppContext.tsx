@@ -21,5 +21,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<TLocale>('en-US')
   const [populateEmpty, setPopulateEmpty] = useState(true)
 
-  return <AppContext.Provider value={{ lang, setLang, populateEmpty, setPopulateEmpty }}>{children}</AppContext.Provider>
+  return (
+    <AppContext.Provider value={{ lang, setLang, populateEmpty, setPopulateEmpty }}>{children}</AppContext.Provider>
+  )
 }

@@ -37,6 +37,7 @@ export function Dropdown<T extends string | string[]>({
   return (
     <div className="relative">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`h-10 px-3 bg-white rounded-lg border ${isOpen ? 'border-blue-300 ring-2 ring-blue-100' : 'border-slate-200 hover:border-slate-300'} flex items-center gap-2 transition-all text-sm min-w-[140px] cursor-pointer`}
       >
@@ -59,6 +60,7 @@ export function Dropdown<T extends string | string[]>({
                 const isSelected = multi ? (selected as string[]).includes(key) : selected === key
                 return (
                   <button
+                    type="button"
                     key={key}
                     onClick={() => {
                       if (multi) {
@@ -85,6 +87,7 @@ export function Dropdown<T extends string | string[]>({
             {multi && (selected as string[]).length > 0 && (
               <div className="border-t border-slate-100 p-1">
                 <button
+                  type="button"
                   onClick={() => (setSelected as React.Dispatch<React.SetStateAction<string[]>>)([])}
                   className="w-full px-3 py-1.5 text-xs text-slate-500 hover:bg-slate-50 rounded cursor-pointer"
                 >

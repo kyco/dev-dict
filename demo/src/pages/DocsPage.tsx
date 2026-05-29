@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router'
-import { useCopyToClipboard } from '~/shared/hooks'
-import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Github, Globe, Package, Zap } from 'lucide-react'
+import { ArrowLeft, BookOpen, Check, ChevronDown, Code, Copy, Globe, Package, Zap } from 'lucide-react'
 import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+import { useCopyToClipboard } from '~/shared/hooks'
 
 function CodeBlock({ code, language = 'typescript' }: { code: string; language?: string }) {
   const { copied, copy } = useCopyToClipboard()
@@ -28,6 +29,7 @@ function CodeBlock({ code, language = 'typescript' }: { code: string; language?:
         {code}
       </SyntaxHighlighter>
       <button
+        type="button"
         onClick={handleCopy}
         className="absolute top-2 right-2 p-2 bg-slate-600 hover:bg-slate-500 rounded-md transition-colors opacity-0 group-hover:opacity-100"
         title="Copy to clipboard"
@@ -54,6 +56,7 @@ function Accordion({
   return (
     <div className="border-b border-slate-200 last:border-b-0">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-start justify-between py-4 px-4 my-2 text-left hover:bg-slate-50 transition-colors rounded-lg cursor-pointer group"
       >
@@ -159,7 +162,6 @@ export function DocsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors"
             >
-              <Github size={16} />
               GitHub
             </a>
             <a
@@ -168,7 +170,6 @@ export function DocsPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors"
             >
-              <Package size={16} />
               npm
             </a>
           </div>
