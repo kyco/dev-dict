@@ -4,8 +4,8 @@ export { LOCALES } from '@/common'
 export { COMPLETENESS_CONFIG, checkField, fieldExists } from '@/config/completeness'
 export { SOURCES as sources } from '@/data/sources'
 export { TAGS as tags } from '@/data/tags'
+export { TYPES as types } from '@/data/term-types'
 export { TERMS } from '@/data/terms'
-export { TYPES as types } from '@/data/types'
 
 export {
   getSource,

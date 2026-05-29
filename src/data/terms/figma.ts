@@ -2,7 +2,7 @@ import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
 import { SOURCES } from '@/data/sources'
 import { TAGS } from '@/data/tags'
-import { TYPES } from '@/data/types'
+import { TYPES } from '@/data/term-types'
 
 export default {
   id: `figma`,
