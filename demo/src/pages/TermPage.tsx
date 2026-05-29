@@ -25,7 +25,7 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
     if (window.history.length > 1) {
       router.history.back()
     } else {
-      router.navigate({ to: '/', search: { q: fromQuery, status: undefined } })
+      router.navigate({ to: '/', search: { q: fromQuery } })
     }
   }
 

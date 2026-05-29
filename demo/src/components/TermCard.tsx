@@ -1,7 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import type { TTermLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy, Pencil } from 'lucide-react'
 
+import { getGithubEditUrl } from '~/shared/constants'
 import { useCopyToClipboard } from '~/shared/hooks'
 
 import { Chip } from './Chip'
@@ -70,6 +71,18 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
             )}
           </button>
         </div>
+
+        <a
+          href={getGithubEditUrl(term.id)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex-shrink-0 px-2.5 py-1 text-xs font-medium text-slate-500 bg-slate-100 border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 rounded-lg transition-colors flex items-center gap-1"
+          title="Edit this term on GitHub"
+        >
+          <Pencil size={12} />
+          Edit
+        </a>
       </div>
 
       <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">
