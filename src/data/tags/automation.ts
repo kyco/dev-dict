@@ -1,6 +1,6 @@
 import type { TTermTag } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES } from '@/data/sources'
+import { SOURCES } from '@/data/term-sources'
 import { TAGS } from '@/data/term-tags'
 import { TYPES } from '@/data/term-types'
 
