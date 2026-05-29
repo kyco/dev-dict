@@ -4,9 +4,9 @@
 
 # dev-dict
 
-A community-driven collection of software development terms with explanations in multiple languages. Perfect for building developer tools, documentation sites, educational content and much more.
+A collection of software development terms (with multilingual support). Useful for building developer tools, documentation sites, personal portfolios, etc.
 
-**[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse All Terms](https://kyco.github.io/dev-dict/)**
+**[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse all terms](https://kyco.github.io/dev-dict/)**
 
 ## Installation
 
@@ -14,57 +14,47 @@ A community-driven collection of software development terms with explanations in
 npm install dev-dict
 ```
 
-## Quick Start
+## Usage
 
 ```typescript
 import { terms } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 
-// Translate to specified locale
-const dictionary = getTerms({ terms, locale: 'en-US' })
+// Define dictionary
+const dictionary = getTerms({ terms })
 
 // Display terms
 dictionary.forEach(term => {
-  console.log(term.name) // "React"
-  console.log(term.label) // "JavaScript Library"
+  console.log(term.name) // "React", "TypeScript", etc.
 })
 ```
 
-For detailed API documentation, code examples, and more, visit the **[documentation](https://kyco.github.io/dev-dict/docs)**.
 
-## Bundle Size & Tree-Shaking
+## Bundle size
 
-Dev-dict contains 220+ terms. To keep your bundle small, import only the terms you need via sub-path entry points.
-
-**Preferred — import specific terms from `dev-dict/terms`:**
+Dev-dict contains 220+ terms. To keep your bundle small import only the terms you need.
 
 ```typescript
-// GOOD - Only react and typescript are included in your bundle
+// GOOD
 import { react, typescript } from 'dev-dict/terms'
-```
 
-**Avoid importing from the root entry point** when you only need a subset of terms — it pulls in the entire dictionary at once and cannot be tree-shaken:
-
-```typescript
-// BAD - Includes all 220+ terms regardless of what you use
+// BAD
 import { terms } from 'dev-dict'
 ```
 
 The root entry is best suited for server-side or build-time use cases where you need the full dataset (e.g. generating a static glossary page).
 
-## Supported Languages
+## Supported languages
 
-| Locale | Language | Status |
-|--------|----------|--------|
-| `en-US` | English (United States) | ✅ Primary |
-| `en-GB` | English (Great Britain) | ✅ Supported |
-| `de-DE` | German (Germany) | ✅ Supported |
-
-Want to add a language? See [CONTRIBUTING.md](./CONTRIBUTING.md#adding-a-new-language)
+| Locale  | Language                            |
+|---------|-------------------------------------|
+| `en-US` | English (United States) - _Default_ |
+| `en-GB` | English (Great Britain)             |
+| `de-DE` | German (Germany)                    |
 
 ## Contributing
 
-Contributions welcome! Add terms, provide translations, fix errors or suggest improvements.
+Contributions welcome! Please help add terms, provide translations, fix errors and/or suggest improvements.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 
@@ -74,8 +64,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 pnpm install      # Install dependencies
 pnpm build        # Build library
 pnpm test         # Run tests
-pnpm demo:dev     # Run demo site (http://localhost:5173)
+pnpm demo:dev     # Run demo site (http://localhost:5173/dev-dict)
 pnpm demo:build   # Build demo site
 ```
-
-See [CLAUDE.md](./.claude/CLAUDE.md) for detailed development guidance.
