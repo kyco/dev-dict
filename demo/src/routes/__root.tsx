@@ -14,7 +14,7 @@ const Global404 = () => {
   const router = useRouter()
 
   const goBack = () => {
-    router.navigate({ to: '/', search: { q: undefined, status: undefined } })
+    router.navigate({ to: '/', search: { q: undefined } })
   }
 
   return (
@@ -33,7 +33,7 @@ const GlobalError = () => {
   const router = useRouter()
 
   const goBack = () => {
-    router.navigate({ to: '/', search: { q: undefined, status: undefined } })
+    router.navigate({ to: '/', search: { q: undefined } })
   }
 
   return (

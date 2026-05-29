@@ -149,7 +149,7 @@ export function DocsPage() {
         <div className="flex items-center justify-between mb-8">
           <Link
             to="/"
-            search={{ q: undefined, status: undefined }}
+            search={{ q: undefined }}
             className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-800 transition-colors"
           >
             <ArrowLeft size={20} />
