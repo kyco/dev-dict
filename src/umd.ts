@@ -16,7 +16,7 @@ import {
 
 export type * from '@/types'
 export { LOCALES } from '@/common'
-export { SOURCES as sources, TAGS as tags, TERMS, TYPES as types } from '@/data'
+export * from '@/data'
 
 export const utils = {
   getTerm,
