@@ -1,5 +1,5 @@
 import type { CompletenessField, TTerm } from 'dev-dict'
-import { COMPLETENESS_CONFIG, checkField, terms } from 'dev-dict'
+import { COMPLETENESS_CONFIG, checkField, TERMS } from 'dev-dict'
 
 export interface FieldCompleteness {
   field: string
@@ -53,7 +53,7 @@ function totalWeight(configs: CompletenessField[]): number {
 }
 
 export function getTermCompleteness(termId: string): TermCompleteness {
-  const rawTermsMap = terms as unknown as Record<string, TTerm>
+  const rawTermsMap = TERMS as unknown as Record<string, TTerm>
   const rawTerm = rawTermsMap[termId]
 
   if (!rawTerm) {

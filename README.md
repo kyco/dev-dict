@@ -17,11 +17,11 @@ npm install dev-dict
 ## Usage
 
 ```typescript
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 
 // Define dictionary
-const dictionary = getTerms({ terms })
+const dictionary = getTerms({ TERMS })
 
 // Display terms
 dictionary.forEach(term => {
@@ -39,7 +39,7 @@ Dev-dict contains 220+ terms. To keep your bundle small import only the terms yo
 import { react, typescript } from 'dev-dict/terms'
 
 // BAD
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 ```
 
 The root entry is best suited for server-side or build-time use cases where you need the full dataset (e.g. generating a static glossary page).

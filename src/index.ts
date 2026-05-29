@@ -4,7 +4,7 @@ export { COMPLETENESS_CONFIG, checkField, fieldExists } from '@/config/completen
 export { LOCALES as locales } from '@/data/locales'
 export { SOURCES as sources } from '@/data/sources'
 export { TAGS as tags } from '@/data/tags'
-export { TERMS as terms } from '@/data/terms'
+export { TERMS } from '@/data/terms'
 export { TYPES as types } from '@/data/types'
 
 export {

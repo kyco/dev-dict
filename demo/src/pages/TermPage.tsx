@@ -1,6 +1,6 @@
 import { useRouter } from '@tanstack/react-router'
 import type { TTerm, TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 import { getSources, getTerms } from 'dev-dict/utils'
 import { ArrowLeft, Book, Check, ChevronDown, ChevronUp, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
 import { useMemo, useState } from 'react'

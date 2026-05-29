@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 import { ArrowLeft, ArrowUpDown, Filter, Pencil, Search, X } from 'lucide-react'
 import { useMemo, useState } from 'react'

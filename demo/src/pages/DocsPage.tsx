@@ -233,7 +233,7 @@ export function DocsPage() {
               <h3 className="text-lg font-semibold text-slate-700 mb-2">Option 1: All Terms</h3>
               <p className="text-slate-600 mb-4">Import all terms at once for full access to the dictionary.</p>
               <CodeBlock
-                code={`import { terms } from 'dev-dict'
+                code={`import { TERMS } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 
 // Translate to specified locale
@@ -401,7 +401,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
             <div className="space-y-0">
               <Accordion title="getTerms()" description="Get all terms as an array">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTerms } from 'dev-dict/utils'
 
 const dictionary = getTerms({
@@ -420,7 +420,7 @@ const dictionary = getTerms({
 
               <Accordion title="getTermsDict()" description="Get all terms as a dictionary object">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTermsDict } from 'dev-dict/utils'
 
 const termsDict = getTermsDict({
@@ -439,7 +439,7 @@ const termsDict = getTermsDict({
 
               <Accordion title="getTypes()" description="Get all types as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTypes } from 'dev-dict/utils'
 
 const typesList = getTypes({
@@ -461,7 +461,7 @@ const typesList = getTypes({
                 description="Get all types as a dictionary object (extracted from terms)"
               >
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTypesDict } from 'dev-dict/utils'
 
 const typesDict = getTypesDict({
@@ -480,7 +480,7 @@ const typesDict = getTypesDict({
 
               <Accordion title="getTags()" description="Get all tags as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTags } from 'dev-dict/utils'
 
 const tagsList = getTags({
@@ -499,7 +499,7 @@ const tagsList = getTags({
 
               <Accordion title="getTagsDict()" description="Get all tags as a dictionary object (extracted from terms)">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getTagsDict } from 'dev-dict/utils'
 
 const tagsDict = getTagsDict({
@@ -518,7 +518,7 @@ const tagsDict = getTagsDict({
 
               <Accordion title="getSources()" description="Get all sources as an array (extracted from terms)">
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getSources } from 'dev-dict/utils'
 
 const sourcesList = getSources({
@@ -540,7 +540,7 @@ const sourcesList = getSources({
                 description="Get all sources as a dictionary object (extracted from terms)"
               >
                 <CodeBlock
-                  code={`import { terms } from 'dev-dict'
+                  code={`import { TERMS } from 'dev-dict'
 import { getSourcesDict } from 'dev-dict/utils'
 
 const sourcesDict = getSourcesDict({

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
 import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
@@ -28,9 +28,9 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [columns, setColumns] = useState(2)
 
-  const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
-  const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
-  const tags = useMemo(() => getTags({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const dictionary = useMemo(() => getTerms({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const types = useMemo(() => getTypes({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const tags = useMemo(() => getTags({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
 
   useEffect(() => {
     const handleResize = () => {
