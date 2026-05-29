@@ -1,17 +1,5 @@
-import type {
-  TLocale,
-  TLocaleRecord,
-  TTerm,
-  TTermLocalized,
-  TTermSource,
-  TTermSourceLocalized,
-  TTermTag,
-  TTermTagLocalized,
-  TTermType,
-  TTermTypeLocalized,
-} from '@/types'
-import { CONFIG } from '@/common'
-import { LOCALES } from '@/data/locales'
+import type { TLocale, TLocaleRecord } from '@/types'
+import { CONFIG, LOCALES } from '@/common'
 
 /**
  * This method will convert e.g. `[LOCALES.EN_GB]: LOCALES.EN_US` to the actual value
@@ -76,84 +64,4 @@ export const getValueLocalized = ({
   populateEmpty?: boolean
 }): string => {
   return interpolateValue({ obj, value: obj[locale], populateEmpty })
-}
-
-export const getTerm = ({
-  term,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  term: TTerm
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermLocalized => {
-  const sourcesLocalized = term.sources
-    ? {
-        ...(term.sources.label && {
-          label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
-        }),
-        ...(term.sources.definition && {
-          definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
-        }),
-      }
-    : undefined
-
-  return {
-    id: term.id,
-    name: getValueLocalized({ obj: term.name, locale, populateEmpty }),
-    ...('altName' in term && term.altName
-      ? { altName: getValueLocalized({ obj: term.altName, locale, populateEmpty }) }
-      : {}),
-    type: term.type.map((value) => getType({ type: value, locale, populateEmpty })),
-    label: getValueLocalized({ obj: term.label, locale, populateEmpty }),
-    definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
-    tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
-    links: term.links,
-    ...(sourcesLocalized && Object.keys(sourcesLocalized).length > 0 ? { sources: sourcesLocalized } : {}),
-  } as TTermLocalized
-}
-
-export const getTag = ({
-  tag,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  tag: TTermTag
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermTagLocalized => {
-  return {
-    id: tag.id,
-    name: getValueLocalized({ obj: tag.name, locale, populateEmpty }),
-  }
-}
-
-export const getType = ({
-  type,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  type: TTermType
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermTypeLocalized => {
-  return {
-    id: type.id,
-    name: getValueLocalized({ obj: type.name, locale, populateEmpty }),
-  }
-}
-
-export const getSource = ({
-  source,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  source: TTermSource
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermSourceLocalized => {
-  return {
-    id: source.id,
-    name: getValueLocalized({ obj: source.name, locale, populateEmpty }),
-  }
 }

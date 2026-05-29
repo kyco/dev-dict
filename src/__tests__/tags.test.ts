@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, expect, it } from 'vitest'
 
-import { LOCALES } from '@/data/locales'
-import { RAW_TAGS } from '@/data/tags'
+import { LOCALES } from '@/common'
+import { RAW_TAGS } from '@/data/term-tags'
 
 import * as tagsEntry from '../tags-entry'
 
@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 describe('Tags', () => {
-  const tagsDir = join(__dirname, '../data/tags')
+  const tagsDir = join(__dirname, '../data/term-tags')
   const tagFiles = readdirSync(tagsDir)
     .filter((file) => file.endsWith('.ts') && file !== 'index.ts')
     .map((file) => file.replace('.ts', ''))

@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url'
 
 import { describe, expect, it } from 'vitest'
 
-import { LOCALES } from '@/data/locales'
-import { RAW_TERMS } from '@/data/terms'
+import { LOCALES } from '@/common'
+import { RAW_TERMS } from '@/data'
 
 import * as termsEntry from '../terms-entry'
 

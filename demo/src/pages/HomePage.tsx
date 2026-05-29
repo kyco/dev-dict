@@ -1,36 +1,32 @@
 import { Link } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
-import { terms } from 'dev-dict'
-import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
+import { getTags, getTerms, getTypes, TERMS } from 'dev-dict'
+import { BookOpen, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
-import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
+import { LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
 import { sortTermsByName } from '~/shared/utils/sortUtils'
-import { getTermCompleteness } from '~/shared/utils/termUtils'
 
 interface HomePageProps {
   searchQuery: string
   onSearchChange: (value: string) => void
-  completeness: string
-  onCompletenessChange: (value: string) => void
 }
 
-export function HomePage({ searchQuery, onSearchChange, completeness, onCompletenessChange }: HomePageProps) {
+export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [columns, setColumns] = useState(2)
 
-  const dictionary = useMemo(() => getTerms({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
-  const types = useMemo(() => getTypes({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
-  const tags = useMemo(() => getTags({ terms, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const dictionary = useMemo(() => getTerms({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const types = useMemo(() => getTypes({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
+  const tags = useMemo(() => getTags({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,14 +51,9 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
       searchQuery,
       selectedTypes,
       selectedTags,
-      completeness: completeness as 'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete',
-      getCompleteness: (termId: string) => {
-        const comp = getTermCompleteness(termId)
-        return { baselineComplete: comp.baselineComplete, fullPercentage: comp.fullPercentage }
-      },
     })
     return filtered.sort((a, b) => sortTermsByName(a, b, lang))
-  }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness, lang])
+  }, [dictionary, searchQuery, selectedTypes, selectedTags, lang])
 
   const rowCount = Math.ceil(filteredTerms.length / columns)
 
@@ -93,14 +84,15 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
               <BookOpen size={16} />
               Docs
             </Link>
-            <Link
-              to="/status"
-              search={{ q: undefined }}
+            <a
+              href="https://github.com/kyco/dev-dict/blob/main/CONTRIBUTING.md"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors"
             >
               <Plus size={16} />
               Contribute
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -114,13 +106,6 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
               setSelected={setLang}
               populateEmpty={populateEmpty}
               setPopulateEmpty={setPopulateEmpty}
-            />
-            <Dropdown
-              icon={CheckCircle}
-              placeholder="Status"
-              options={FILTER_OPTIONS}
-              selected={completeness}
-              setSelected={onCompletenessChange}
             />
             <div className="w-px h-6 bg-slate-200 hidden sm:block" />
             <Dropdown

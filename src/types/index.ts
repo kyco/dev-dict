@@ -1,8 +1,5 @@
-import type { LOCALES } from '@/data/locales'
-import type { SOURCES } from '@/data/sources'
-import type { TAGS } from '@/data/tags'
-import type { TERMS } from '@/data/terms'
-import type { TYPES } from '@/data/types'
+import type { LOCALES } from '@/common'
+import type { SOURCES, TAGS, TERMS, TYPES } from '@/data'
 import { CONFIG } from '@/common'
 
 type AtLeastOne<T> = {

@@ -4,7 +4,7 @@
 
 # dev-dict
 
-A collection of software development terms (with multilingual support). Useful for building developer tools, documentation sites, personal portfolios, etc.
+A multilingual collection of software development terms. Useful for building developer tools, documentation sites, personal portfolios, etc.
 
 **[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse all terms](https://kyco.github.io/dev-dict/)**
 
@@ -17,11 +17,10 @@ npm install dev-dict
 ## Usage
 
 ```typescript
-import { terms } from 'dev-dict'
-import { getTerms } from 'dev-dict/utils'
+import { TERMS, getTerms } from 'dev-dict'
 
 // Define dictionary
-const dictionary = getTerms({ terms })
+const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
 // Display terms
 dictionary.forEach(term => {
@@ -39,7 +38,7 @@ Dev-dict contains 220+ terms. To keep your bundle small import only the terms yo
 import { react, typescript } from 'dev-dict/terms'
 
 // BAD
-import { terms } from 'dev-dict'
+import { TERMS } from 'dev-dict'
 ```
 
 The root entry is best suited for server-side or build-time use cases where you need the full dataset (e.g. generating a static glossary page).

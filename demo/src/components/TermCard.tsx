@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router'
 import type { TTermLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { Book, Check, Copy } from 'lucide-react'
+import { Check, Copy, Pencil } from 'lucide-react'
 
+import { getGithubEditUrl } from '~/shared/constants'
 import { useCopyToClipboard } from '~/shared/hooks'
-import { getTermCompleteness } from '~/shared/utils/termUtils'
 
 import { Chip } from './Chip'
 import { TermLinks } from './TermLinks'
@@ -16,7 +16,6 @@ interface TermCardProps {
 
 export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardProps) {
   const { copied, copy } = useCopyToClipboard()
-  const completeness = getTermCompleteness(term.id)
 
   const copyId = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -72,10 +71,18 @@ export function TermCard({ term, searchQuery, populateEmpty = true }: TermCardPr
             )}
           </button>
         </div>
-        <div className="flex flex-col items-end gap-1">
-          <Book size={20} className="text-slate-300 group-hover:text-blue-400 transition-colors flex-shrink-0" />
-          <span className="text-xs font-semibold text-slate-400">{completeness.fullPercentage}%</span>
-        </div>
+
+        <a
+          href={getGithubEditUrl(term.id)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex-shrink-0 px-2.5 py-1 text-xs font-medium text-slate-500 bg-slate-100 border border-slate-200 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 rounded-lg transition-colors flex items-center gap-1"
+          title="Edit this term on GitHub"
+        >
+          <Pencil size={12} />
+          Edit
+        </a>
       </div>
 
       <p className="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">

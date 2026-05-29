@@ -1,8 +1,6 @@
 import type { TTerm } from '@/types'
-import { LOCALES } from '@/data/locales'
-import { SOURCES } from '@/data/sources'
-import { TAGS } from '@/data/tags'
-import { TYPES } from '@/data/types'
+import { LOCALES } from '@/common'
+import { SOURCES, TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `vite`,
