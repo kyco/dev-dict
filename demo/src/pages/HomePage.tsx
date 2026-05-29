@@ -2,27 +2,24 @@ import { Link } from '@tanstack/react-router'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import { TERMS } from 'dev-dict'
 import { getTags, getTerms, getTypes } from 'dev-dict/utils'
-import { BookOpen, CheckCircle, Layers, Plus, Search, Tag } from 'lucide-react'
+import { BookOpen, Layers, Plus, Search, Tag } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 
 import { Dropdown } from '~/components/Dropdown'
 import { LanguageDropdown } from '~/components/LanguageDropdown'
 import { SearchBar } from '~/components/SearchBar'
 import { TermCard } from '~/components/TermCard'
-import { FILTER_OPTIONS, LANGUAGES } from '~/shared/constants'
+import { LANGUAGES } from '~/shared/constants'
 import { useAppContext } from '~/shared/context/AppContext'
 import { filterTerms } from '~/shared/utils/filterUtils'
 import { sortTermsByName } from '~/shared/utils/sortUtils'
-import { getTermCompleteness } from '~/shared/utils/termUtils'
 
 interface HomePageProps {
   searchQuery: string
   onSearchChange: (value: string) => void
-  completeness: string
-  onCompletenessChange: (value: string) => void
 }
 
-export function HomePage({ searchQuery, onSearchChange, completeness, onCompletenessChange }: HomePageProps) {
+export function HomePage({ searchQuery, onSearchChange }: HomePageProps) {
   const { lang, setLang, populateEmpty, setPopulateEmpty } = useAppContext()
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -55,14 +52,9 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
       searchQuery,
       selectedTypes,
       selectedTags,
-      completeness: completeness as 'all' | 'baseline_incomplete' | 'baseline_complete' | 'fully_complete',
-      getCompleteness: (termId: string) => {
-        const comp = getTermCompleteness(termId)
-        return { baselineComplete: comp.baselineComplete, fullPercentage: comp.fullPercentage }
-      },
     })
     return filtered.sort((a, b) => sortTermsByName(a, b, lang))
-  }, [dictionary, searchQuery, selectedTypes, selectedTags, completeness, lang])
+  }, [dictionary, searchQuery, selectedTypes, selectedTags, lang])
 
   const rowCount = Math.ceil(filteredTerms.length / columns)
 
@@ -114,13 +106,6 @@ export function HomePage({ searchQuery, onSearchChange, completeness, onComplete
               setSelected={setLang}
               populateEmpty={populateEmpty}
               setPopulateEmpty={setPopulateEmpty}
-            />
-            <Dropdown
-              icon={CheckCircle}
-              placeholder="Status"
-              options={FILTER_OPTIONS}
-              selected={completeness}
-              setSelected={onCompletenessChange}
             />
             <div className="w-px h-6 bg-slate-200 hidden sm:block" />
             <Dropdown
