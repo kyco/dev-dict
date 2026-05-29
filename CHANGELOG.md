@@ -1,3 +1,46 @@
+## [0.13.0](https://github.com/kyco/dev-dict/compare/v0.12.3...v0.13.0) (2026-05-29)
+
+### Features
+
+* Export all utils ([968aa1e](https://github.com/kyco/dev-dict/commit/968aa1e1414429fa9e01f87a2a4d4121fede08d3))
+* Export RAW ([a0168e0](https://github.com/kyco/dev-dict/commit/a0168e055ea44e913c657a29987917ac9240e9bc))
+
+### Bug Fixes
+
+* Circular dependencies ([3f39ea5](https://github.com/kyco/dev-dict/commit/3f39ea57f3b842a9a6bd75d1039fe8481d8b00fc))
+* **demo:** Add "Edit" button ([73eabb0](https://github.com/kyco/dev-dict/commit/73eabb04f894e9a198438663a7839ebf17e4dd19))
+* **demo:** Query param ([d288ead](https://github.com/kyco/dev-dict/commit/d288ead8e1ece2d5d704b5729773608ba1bfac5f))
+* Export all terms as `TERMS` instead of `terms` [BREAKING CHANGE] ([ace20d3](https://github.com/kyco/dev-dict/commit/ace20d3ab262d2376b589b0caa8f53ac59fe95cc))
+* Export all terms as `TERMS` instead of `terms` [BREAKING] ([9ce97b1](https://github.com/kyco/dev-dict/commit/9ce97b1b519e12740a5ee733d7f56cc94a41aebd))
+* Expose sources ([a193863](https://github.com/kyco/dev-dict/commit/a193863129580795f7638042d6e9021d97c0934b))
+* Import ([d65e7fc](https://github.com/kyco/dev-dict/commit/d65e7fc38b1ef9dd50ba1e4df69131e205918bf8))
+* Imports ([3ce58b2](https://github.com/kyco/dev-dict/commit/3ce58b280e76f57140da647ffeae60e8cf311979))
+* Update exports ([2d96bac](https://github.com/kyco/dev-dict/commit/2d96bac51709cf7afbff42437867996392516edb))
+* Update tests ([45b3c45](https://github.com/kyco/dev-dict/commit/45b3c45b6c538f6e9ae938833701a8229ac22582))
+
+### Docs
+
+* Contribute ([3fe8d00](https://github.com/kyco/dev-dict/commit/3fe8d0097db43cf48f140e2e4fc1bd3e134652ed))
+* Update README ([88734ec](https://github.com/kyco/dev-dict/commit/88734ec37895f0ad64e6db42cea3d8e48f575afd))
+* Update references ([2472702](https://github.com/kyco/dev-dict/commit/24727020a3c629d31e7a7108e4832e8bad3402ff))
+
+### Refactoring
+
+* "sources" to "term-sources" ([3cea3f9](https://github.com/kyco/dev-dict/commit/3cea3f9bfd9b3393a3c64463075adf7faf41cf8b))
+* "tags" to "term-tags" ([0b704f3](https://github.com/kyco/dev-dict/commit/0b704f3da795031b0977d6432ac295ce3c1d8fb6))
+* "types" to "term-types" ([de12a3c](https://github.com/kyco/dev-dict/commit/de12a3c76f384416fae082ef622d5abadd269375))
+* Dir name ([bac63b6](https://github.com/kyco/dev-dict/commit/bac63b6d27a762711487ec4d171a7ae0065c6d6d))
+* Dir name ([ad321bc](https://github.com/kyco/dev-dict/commit/ad321bc36b821a9a1748c17994d4231adc1976bd))
+* Dir name ([98c50a5](https://github.com/kyco/dev-dict/commit/98c50a5024ca5c6a010ad090282aa3f4517985e4))
+* Export `TERM_TAGS` instead of `tags` [BREAKING CHANGE] ([43b2f13](https://github.com/kyco/dev-dict/commit/43b2f13d04083583f051826ab106f44b67374d02))
+* Export from root ([1e66be5](https://github.com/kyco/dev-dict/commit/1e66be57f3c7c1769f8fe7a0de79d964052327e4))
+* Move file ([37ef73d](https://github.com/kyco/dev-dict/commit/37ef73de7c38429d2d0e969bc1500876493d1fad))
+* Move file ([fd6fc44](https://github.com/kyco/dev-dict/commit/fd6fc448c1f9b1381da10b56b02cabb5b58ade1c))
+* Move file ([20eacf4](https://github.com/kyco/dev-dict/commit/20eacf4bf5993283d2a650e16d6ee31a862fa5ed))
+* Move file ([ad5c1dc](https://github.com/kyco/dev-dict/commit/ad5c1dc2ea73bfad83821b217ed324d4805097de))
+* Move locales to common dir ([4608455](https://github.com/kyco/dev-dict/commit/4608455df9e03899b8ec78dc19f5f3f47e08a2b1))
+* Move methods ([1a5ee1d](https://github.com/kyco/dev-dict/commit/1a5ee1d4d8f0f92197c8b91f25b8bf7e10b2eee3))
+
 ## [0.12.3](https://github.com/kyco/dev-dict/compare/v0.12.2...v0.12.3) (2026-05-29)
 
 ### Docs
