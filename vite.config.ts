@@ -3,12 +3,10 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
-export default defineConfig(({ command }) => {
-  const isDev = command === 'serve'
+export default defineConfig(({ mode }) => {
   const isUmd = process.env.BUILD_UMD === 'true'
 
   return {
-    root: isDev ? 'examples' : undefined,
     plugins: [!isUmd && dts()],
     resolve: {
       alias: {
@@ -24,7 +22,6 @@ export default defineConfig(({ command }) => {
               'terms-entry': resolve(__dirname, 'src/terms-entry.ts'),
               'types-entry': resolve(__dirname, 'src/types-entry.ts'),
               'tags-entry': resolve(__dirname, 'src/tags-entry.ts'),
-              'utils-entry': resolve(__dirname, 'src/utils-entry.ts'),
             },
         name: 'devdict',
         formats: process.env.BUILD_UMD ? ['umd'] : ['es'],

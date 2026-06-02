@@ -29,7 +29,7 @@ export default {
     [LOCALES.DE_DE]: `Künstliche Intelligenz (KI) bezieht sich auf die Simulation menschlicher Intelligenz in Maschinen, die so programmiert sind, dass sie wie Menschen denken und lernen können. Sie umfasst eine Vielzahl von Technologien und Techniken, einschließlich maschinellem Lernen, natürlicher Sprachverarbeitung, Computer Vision und Robotik. KI-Systeme können Aufgaben ausführen, die typischerweise menschliche Intelligenz erfordern, wie z.B. Spracherkennung, Entscheidungsfindung und Problemlösung.`,
   },
 
-  type: [],
+  type: [TYPES.concept],
 
   tags: [],
 } as const satisfies TTerm
