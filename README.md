@@ -6,7 +6,8 @@
 
 A multilingual collection of software development terms. Useful for building developer tools, documentation sites, personal portfolios, etc.
 
-**[Docs](https://kyco.github.io/dev-dict/docs)** · **[Browse all terms](https://kyco.github.io/dev-dict/)**
+**[Browse terms](https://kyco.github.io/dev-dict/)** | **[Documentation](https://kyco.github.io/dev-dict/docs)**
+
 
 ## Installation
 
@@ -22,7 +23,7 @@ import { TERMS, getTerms } from 'dev-dict'
 // Define dictionary
 const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
-// Display terms
+// Display translated terms
 dictionary.forEach(term => {
   console.log(term.name) // "React", "TypeScript", etc.
 })
@@ -55,7 +56,7 @@ The root entry is best suited for server-side or build-time use cases where you 
 
 Contributions welcome! Please help add terms, provide translations, fix errors and/or suggest improvements.
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
 
 ## Development
 
