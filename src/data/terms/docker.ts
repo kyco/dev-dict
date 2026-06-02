@@ -17,7 +17,7 @@ export default {
     [LOCALES.EN_US]: ``,
   },
 
-  type: [],
+  type: [TYPES.tool, TYPES.runtime_environment],
 
   tags: [],
 } as const satisfies TTerm

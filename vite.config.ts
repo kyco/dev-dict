@@ -3,12 +3,10 @@ import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
-export default defineConfig(({ command }) => {
-  const isDev = command === 'serve'
+export default defineConfig(({ mode }) => {
   const isUmd = process.env.BUILD_UMD === 'true'
 
   return {
-    root: isDev ? 'examples' : undefined,
     plugins: [!isUmd && dts()],
     resolve: {
       alias: {

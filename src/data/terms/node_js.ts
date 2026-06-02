@@ -23,7 +23,7 @@ export default {
     [LOCALES.DE_DE]: `Node.js ist eine kostenlose, Open-Source, plattformübergreifende JavaScript-Laufzeitumgebung, die es Entwicklern ermöglicht, Server, Webanwendungen, Befehlszeilentools und Skripte zu erstellen.`,
   },
 
-  type: [TYPES.runtime_environment],
+  type: [TYPES.runtime_environment, TYPES.platform],
 
   tags: [TAGS.backend],
 

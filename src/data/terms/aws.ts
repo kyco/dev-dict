@@ -27,7 +27,7 @@ export default {
     [LOCALES.EN_US]: ``,
   },
 
-  type: [TYPES.platform],
+  type: [TYPES.platform, TYPES.service],
 
   tags: [],
 
