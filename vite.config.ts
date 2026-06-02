@@ -24,7 +24,6 @@ export default defineConfig(({ command }) => {
               'terms-entry': resolve(__dirname, 'src/terms-entry.ts'),
               'types-entry': resolve(__dirname, 'src/types-entry.ts'),
               'tags-entry': resolve(__dirname, 'src/tags-entry.ts'),
-              'utils-entry': resolve(__dirname, 'src/utils-entry.ts'),
             },
         name: 'devdict',
         formats: process.env.BUILD_UMD ? ['umd'] : ['es'],

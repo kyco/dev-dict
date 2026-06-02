@@ -59,10 +59,6 @@
     "./tags": {
       "types": "./dist/tags-entry.d.ts",
       "import": "./dist/tags-entry.js"
-    },
-    "./utils": {
-      "types": "./dist/utils-entry.d.ts",
-      "import": "./dist/utils-entry.js"
     }
   },
   "sideEffects": false,
