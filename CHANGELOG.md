@@ -1,3 +1,21 @@
+## [0.14.0](https://github.com/kyco/dev-dict/compare/v0.13.0...v0.14.0) (2026-06-02)
+
+### Features
+
+* Add types ([d42bc3c](https://github.com/kyco/dev-dict/commit/d42bc3c64832af276bdfc71860da7e7c49461871))
+
+### Bug Fixes
+
+* Remove "utils" entry [BREAKING CHANGE] ([8581644](https://github.com/kyco/dev-dict/commit/85816442ea5a22cf5f9fc49782d2b87f364744d5))
+
+### Chore
+
+* Bump deps ([4c64f79](https://github.com/kyco/dev-dict/commit/4c64f79fe005f2063639d41aa9084034076ae224))
+
+### Docs
+
+* Update README ([90fc10d](https://github.com/kyco/dev-dict/commit/90fc10d0018a15ae85ffbbe6bb036228a1c2f92a))
+
 ## [0.13.0](https://github.com/kyco/dev-dict/compare/v0.12.3...v0.13.0) (2026-05-29)
 
 ### Features
