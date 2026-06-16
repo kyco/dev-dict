@@ -18,16 +18,13 @@
   },
   "linter": {
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
       "style": {
         "noNonNullAssertion": "warn",
         "useConst": {
           "fix": "none",
           "level": "warn"
         }
-      },
-      "nursery": {
-        "noShadow": "warn"
       },
       "a11y": {
         "noAutofocus": "warn",
@@ -36,6 +33,7 @@
       },
       "suspicious": {
         "noArrayIndexKey": "warn",
+        "noShadow": "warn",
         "noConsole": {
           "level": "warn",
           "options": {
