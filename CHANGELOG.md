@@ -1,3 +1,10 @@
+## [0.14.1](https://github.com/kyco/dev-dict/compare/v0.14.0...v0.14.1) (2026-06-16)
+
+### Chore
+
+* Bump deps ([786c253](https://github.com/kyco/dev-dict/commit/786c25392a292a3e4b9047ad6975db283059c5a2))
+* Bump deps and node version ([48644bf](https://github.com/kyco/dev-dict/commit/48644bfb5decef60ba8f9931a69541bd472781a0))
+
 ## [0.14.0](https://github.com/kyco/dev-dict/compare/v0.13.0...v0.14.0) (2026-06-02)
 
 ### Features
