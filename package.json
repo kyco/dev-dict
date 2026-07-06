@@ -82,22 +82,22 @@
     "bundle-analyzer": "npx vite-bundle-visualizer",
     "update-packages": "pnpm dlx npm-check-updates --format group --cooldown 1 -i"
   },
-  "packageManager": "pnpm@11.7.0",
+  "packageManager": "pnpm@11.10.0",
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^12.0.8",
+    "@semantic-release/github": "^12.0.9",
     "@semantic-release/npm": "^13.1.5",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.1.0",
     "@vitest/ui": "^4.1.9",
-    "conventional-changelog-conventionalcommits": "^9.3.1",
-    "globals": "^17.6.0",
+    "conventional-changelog-conventionalcommits": "^10.2.1",
+    "globals": "^17.7.0",
     "semantic-release": "^25.0.5",
-    "tsx": "^4.22.4",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.16",
-    "vite-plugin-dts": "^5.0.2",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.3",
+    "vite-plugin-dts": "^5.0.3",
     "vitest": "^4.1.9"
   }
 }
