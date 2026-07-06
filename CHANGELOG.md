@@ -1,3 +1,5 @@
+## [0.14.2](https://github.com/kyco/dev-dict/compare/v0.14.1...v0.14.2) (2026-07-06)
+
 ## [0.14.1](https://github.com/kyco/dev-dict/compare/v0.14.0...v0.14.1) (2026-06-16)
 
 ### Chore
