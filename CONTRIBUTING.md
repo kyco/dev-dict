@@ -21,7 +21,6 @@ Create `src/data/terms/{term_id}.ts` (lowercase with underscores only):
 ```typescript
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES } from '@/data/sources'
 import { TAGS } from '@/data/tags'
 import { TYPES } from '@/data/types'
 
@@ -53,10 +52,6 @@ export default {
     npm: 'https://www.npmjs.com/package/vue',
   },
 
-  sources: {
-    label: SOURCES.community,
-    definition: SOURCES.official_website,
-  },
 } as const satisfies TTerm
 ```
 
@@ -86,7 +81,6 @@ pnpm build
 - **IDs**: Use lowercase with underscores (e.g., `node_js`, `react_native`), never dashes
 - **Filenames**: Must match ID exactly (`node_js.ts` for `id: 'node_js'`)
 - **Locales**: Provide at least `en-US`, use `LOCALES.EN_US` for aliasing
-- **Sources**: Only add if content comes from a verifiable source (omit for AI-generated)
 
 ## Adding a New Type or Tag
 

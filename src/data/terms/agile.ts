@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data/raw'
+import { TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `agile`,
@@ -28,10 +28,5 @@ export default {
   links: {
     official_website: 'https://agilemanifesto.org',
     wikipedia: 'https://en.wikipedia.org/wiki/Agile_software_development',
-  },
-
-  sources: {
-    label: [SOURCES.community],
-    definition: [SOURCES.ai_generated],
   },
 } as const satisfies TTerm

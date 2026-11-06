@@ -1,5 +1,5 @@
 import type { LOCALES } from '@/common'
-import type { SOURCES, TAGS, TERMS, TYPES } from '@/data'
+import type { TAGS, TERMS, TYPES } from '@/data'
 import { CONFIG } from '@/common'
 
 type AtLeastOne<T> = {
@@ -39,28 +39,6 @@ export type TTermTagLocalized = {
 }
 
 export type TTermTags = (typeof TAGS)[keyof typeof TAGS]
-
-export type TTermSource = {
-  id: string
-  name: TLocaleRecord
-}
-
-export type TTermSourceLocalized = {
-  id: string
-  name: string
-}
-
-export type TTermSources = (typeof SOURCES)[keyof typeof SOURCES]
-
-export type TSourceMetadata = AtLeastOne<{
-  label: TTermSources[]
-  definition: TTermSources[]
-}>
-
-export type TSourceMetadataLocalized = AtLeastOne<{
-  label: TTermSourceLocalized[]
-  definition: TTermSourceLocalized[]
-}>
 
 export type TTerm = {
   /**
@@ -105,33 +83,18 @@ export type TTerm = {
    * The 'website' field is required if links are provided.
    */
   links?: TTermLinks
-  /**
-   * Source attribution for term labels and definitions.
-   * Uses predefined source constants (e.g., SOURCE.official_website, SOURCE.community).
-   *
-   * IMPORTANT: If no source is specified, all content is assumed to be AI-generated.
-   * Only add sources when the content comes from a specific, verifiable origin.
-   *
-   * @example
-   * sources: {
-   *   label: SOURCE.community,
-   *   definition: SOURCE.official_website,
-   * }
-   */
-  sources?: TSourceMetadata
   // Possible future fields:
   // examples?: Record<TLocale, string>[]
   // relatedTerms?: TTerm['name'][]
 }
 
-export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definition' | 'type' | 'tags' | 'sources'> & {
+export type TTermLocalized = Omit<TTerm, 'name' | 'altName' | 'label' | 'definition' | 'type' | 'tags'> & {
   name: string
   altName?: string
   label: string
   definition: string
   type: TTermTypeLocalized[]
   tags: TTermTagLocalized[]
-  sources?: TSourceMetadataLocalized
 }
 
 export type TTerms = (typeof TERMS)[keyof typeof TERMS]
@@ -155,9 +118,3 @@ export type TTermTagId = TTermTag['id']
 export type TTermTagsDict = Record<TTermTagId, TTermTag>
 
 export type TTermTagsDictLocalized = Record<TTermTagId, TTermTagLocalized>
-
-export type TTermSourceId = TTermSource['id']
-
-export type TTermSourcesDict = Record<TTermSourceId, TTermSource>
-
-export type TTermSourcesDictLocalized = Record<TTermSourceId, TTermSourceLocalized>

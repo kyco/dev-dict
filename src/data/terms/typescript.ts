@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data/raw'
+import { TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `typescript`,
@@ -29,10 +29,5 @@ export default {
 
   links: {
     official_website: `https://www.typescriptlang.org`,
-  },
-
-  sources: {
-    label: [SOURCES.community],
-    definition: [SOURCES.official_website],
   },
 } as const satisfies TTerm
