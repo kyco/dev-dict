@@ -1,7 +1,9 @@
 packages:
-  - 'demo'
+  - "demo"
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@tanstack/react-virtual@3.14.3'
-  - '@tanstack/virtual-core@3.17.1'
+  - "@tanstack/react-virtual@3.14.3"
+  - "@tanstack/virtual-core@3.17.1"
+overrides:
+  "@semantic-release/release-notes-generator": "15.0.0-beta.3"

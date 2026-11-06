@@ -8,7 +8,6 @@ A multilingual collection of software development terms. Useful for building dev
 
 **[Browse terms](https://kyco.github.io/dev-dict/)** | **[Documentation](https://kyco.github.io/dev-dict/docs)**
 
-
 ## Installation
 
 ```bash
@@ -24,11 +23,10 @@ import { TERMS, getTerms } from 'dev-dict'
 const dictionary = getTerms({ terms: TERMS, locale: 'en-US' })
 
 // Display translated terms
-dictionary.forEach(term => {
+dictionary.forEach((term) => {
   console.log(term.name) // "React", "TypeScript", etc.
 })
 ```
-
 
 ## Bundle size
 
@@ -47,7 +45,7 @@ The root entry is best suited for server-side or build-time use cases where you 
 ## Supported languages
 
 | Locale  | Language                            |
-|---------|-------------------------------------|
+| ------- | ----------------------------------- |
 | `en-US` | English (United States) - _Default_ |
 | `en-GB` | English (Great Britain)             |
 | `de-DE` | German (Germany)                    |

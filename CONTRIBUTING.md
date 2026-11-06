@@ -51,7 +51,6 @@ export default {
     github: 'https://github.com/vuejs/core',
     npm: 'https://www.npmjs.com/package/vue',
   },
-
 } as const satisfies TTerm
 ```
 

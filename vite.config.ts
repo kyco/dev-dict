@@ -10,18 +10,18 @@ export default defineConfig(({ mode }) => {
     plugins: [!isUmd && dts()],
     resolve: {
       alias: {
-        '@': resolve(__dirname, './src'),
+        '@': resolve(import.meta.dirname, './src'),
       },
     },
     build: {
       lib: {
         entry: process.env.BUILD_UMD
-          ? resolve(__dirname, 'src/umd.ts')
+          ? resolve(import.meta.dirname, 'src/umd.ts')
           : {
-              index: resolve(__dirname, 'src/index.ts'),
-              'terms-entry': resolve(__dirname, 'src/terms-entry.ts'),
-              'types-entry': resolve(__dirname, 'src/types-entry.ts'),
-              'tags-entry': resolve(__dirname, 'src/tags-entry.ts'),
+              index: resolve(import.meta.dirname, 'src/index.ts'),
+              'terms-entry': resolve(import.meta.dirname, 'src/terms-entry.ts'),
+              'types-entry': resolve(import.meta.dirname, 'src/types-entry.ts'),
+              'tags-entry': resolve(import.meta.dirname, 'src/tags-entry.ts'),
             },
         name: 'devdict',
         formats: process.env.BUILD_UMD ? ['umd'] : ['es'],
