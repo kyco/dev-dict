@@ -28,9 +28,9 @@ jobs:
       - name: Setup environment
         uses: actions/setup-node@v6
         with:
-          node-version: '26.4.0'
-          cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "26.4.0"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -62,8 +62,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: '26.4.0'
-          cache: 'pnpm'
+          node-version: "26.4.0"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

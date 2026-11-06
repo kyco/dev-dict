@@ -187,4 +187,3 @@ export const getTags = ({
 }): TTermTagLocalized[] => {
   return Object.values(getTagsDict({ terms, locale, populateEmpty }))
 }
-

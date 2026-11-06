@@ -1,7 +1,7 @@
 packages:
-  - 'demo'
+  - "demo"
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@tanstack/react-virtual@3.14.3'
-  - '@tanstack/virtual-core@3.17.1'
+  - "@tanstack/react-virtual@3.14.3"
+  - "@tanstack/virtual-core@3.17.1"
