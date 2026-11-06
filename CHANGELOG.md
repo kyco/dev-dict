@@ -1,3 +1,14 @@
+## [0.15.1](https://github.com/kyco/dev-dict/compare/v0.15.0...v0.15.1) (2026-11-06)
+
+### Bug Fixes
+
+* bump deps and migrate codebase for bumped deps ([3c2b968](https://github.com/kyco/dev-dict/commit/3c2b968adac32e8de23c82d1a8366a4dfa95f312))
+
+### Chore
+
+* bump deps (BREAKING CHANGE) ([aefb7cd](https://github.com/kyco/dev-dict/commit/aefb7cd1b807c066ba4c7b3615f72fe8368320e3))
+* **dependencies:** bump actions/setup-node from 6 to 7 ([537963c](https://github.com/kyco/dev-dict/commit/537963c51acb67fb3248e89e97a35f78e524e8cb))
+
 ## [0.15.0](https://github.com/kyco/dev-dict/compare/v0.14.2...v0.15.0) (2026-11-06)
 
 ## [0.14.2](https://github.com/kyco/dev-dict/compare/v0.14.1...v0.14.2) (2026-07-06)
