@@ -1,6 +1,6 @@
 import { useRouter } from '@tanstack/react-router'
-import type { TTermSourceLocalized, TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
-import { getSources, getTerms, TERMS } from 'dev-dict'
+import type { TTermTagLocalized, TTermTypeLocalized } from 'dev-dict'
+import { getTerms, TERMS } from 'dev-dict'
 import { ArrowLeft, Book, Check, Copy, ExternalLink, Layers, Pencil, Tag } from 'lucide-react'
 import { useMemo } from 'react'
 
@@ -32,7 +32,6 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
   const copyId = () => copy(termId)
 
   const dictionary = useMemo(() => getTerms({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
-  const sources = useMemo(() => getSources({ terms: TERMS, locale: lang, populateEmpty }), [lang, populateEmpty])
   const term = dictionary.find((t) => t.id === termId)
 
   if (!term) {
@@ -192,34 +191,6 @@ export function TermPage({ termId, fromQuery }: TermPageProps) {
               </h2>
               <TermLinks links={term.links} variant="button" showEmpty />
             </div>
-
-            {term.sources && (term.sources.label?.length || term.sources.definition?.length) ? (
-              <div className="pt-6 border-t border-slate-200">
-                <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Sources</h2>
-                <div className="text-sm text-slate-500 space-y-1">
-                  {term.sources.label?.length ? (
-                    <p>
-                      <span className="text-slate-400">Label:</span>{' '}
-                      {term.sources.label
-                        .map(
-                          (source) => sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
-                        )
-                        .join(', ')}
-                    </p>
-                  ) : null}
-                  {term.sources.definition?.length ? (
-                    <p>
-                      <span className="text-slate-400">Definition:</span>{' '}
-                      {term.sources.definition
-                        .map(
-                          (source) => sources.find((s: TTermSourceLocalized) => s.id === source.id)?.name || source.id,
-                        )
-                        .join(', ')}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>

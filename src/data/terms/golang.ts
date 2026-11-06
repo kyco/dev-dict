@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data/raw'
+import { TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `golang`,
@@ -36,10 +36,5 @@ export default {
   links: {
     official_website: `https://go.dev/`,
     wikipedia: `https://en.wikipedia.org/wiki/Go_(programming_language)`,
-  },
-
-  sources: {
-    label: [SOURCES.ai_generated],
-    definition: [SOURCES.ai_generated],
   },
 } as const satisfies TTerm

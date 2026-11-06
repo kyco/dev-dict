@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data/raw'
+import { TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `javascript`,
@@ -30,10 +30,5 @@ export default {
   links: {
     official_website: 'https://tc39.es/ecma262',
     wikipedia: `https://en.wikipedia.org/wiki/JavaScript`,
-  },
-
-  sources: {
-    label: [SOURCES.ai_generated],
-    definition: [SOURCES.ai_generated],
   },
 } as const satisfies TTerm

@@ -1,6 +1,6 @@
 import type { TTerm } from '@/types'
 import { LOCALES } from '@/common'
-import { SOURCES, TAGS, TYPES } from '@/data/raw'
+import { TAGS, TYPES } from '@/data/raw'
 
 export default {
   id: `react`,
@@ -32,10 +32,5 @@ export default {
     npm: `https://www.npmjs.com/package/react`,
     github: `https://github.com/facebook/react`,
     wikipedia: `https://en.wikipedia.org/wiki/React_(software)`,
-  },
-
-  sources: {
-    label: [SOURCES.community],
-    definition: [SOURCES.official_website],
   },
 } as const satisfies TTerm

@@ -2,11 +2,6 @@ import type {
   TLocale,
   TTerm,
   TTermLocalized,
-  TTermSource,
-  TTermSourceId,
-  TTermSourceLocalized,
-  TTermSourcesDict,
-  TTermSourcesDictLocalized,
   TTermsDict,
   TTermsDictPartial,
   TTermTag,
@@ -34,17 +29,6 @@ export const getTerm = ({
   locale?: TLocale
   populateEmpty?: boolean
 }): TTermLocalized => {
-  const sourcesLocalized = term.sources
-    ? {
-        ...(term.sources.label && {
-          label: term.sources.label.map((value) => getSource({ source: value, locale, populateEmpty })),
-        }),
-        ...(term.sources.definition && {
-          definition: term.sources.definition.map((value) => getSource({ source: value, locale, populateEmpty })),
-        }),
-      }
-    : undefined
-
   return {
     id: term.id,
     name: getValueLocalized({ obj: term.name, locale, populateEmpty }),
@@ -56,7 +40,6 @@ export const getTerm = ({
     definition: getValueLocalized({ obj: term.definition, locale, populateEmpty }),
     tags: term.tags.map((value) => getTag({ tag: value, locale, populateEmpty })),
     links: term.links,
-    ...(sourcesLocalized && Object.keys(sourcesLocalized).length > 0 ? { sources: sourcesLocalized } : {}),
   } as TTermLocalized
 }
 
@@ -205,68 +188,3 @@ export const getTags = ({
   return Object.values(getTagsDict({ terms, locale, populateEmpty }))
 }
 
-// ------------------------ SOURCES ------------------------
-export const getSource = ({
-  source,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  source: TTermSource
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermSourceLocalized => {
-  return {
-    id: source.id,
-    name: getValueLocalized({ obj: source.name, locale, populateEmpty }),
-  }
-}
-
-export const getSourcesDict = ({
-  terms,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  terms: TTermsDict | TTermsDictPartial
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermSourcesDictLocalized => {
-  const interpolatedTerms = interpolateValues({ obj: terms, keys: MISC.TERM_INTERPOLATION_KEYS, populateEmpty })
-  const sourcesDict: TTermSourcesDict = {}
-
-  Object.values(interpolatedTerms).forEach((term) => {
-    if (term.sources?.label) {
-      term.sources.label.forEach((source) => {
-        if (!sourcesDict[source.id]) {
-          sourcesDict[source.id] = source
-        }
-      })
-    }
-    if (term.sources?.definition) {
-      term.sources.definition.forEach((source) => {
-        if (!sourcesDict[source.id]) {
-          sourcesDict[source.id] = source
-        }
-      })
-    }
-  })
-
-  const localizedSources: TTermSourcesDictLocalized = {}
-
-  for (const [key, source] of Object.entries(sourcesDict)) {
-    localizedSources[key as TTermSourceId] = getSource({ source, locale, populateEmpty })
-  }
-
-  return localizedSources
-}
-
-export const getSources = ({
-  terms,
-  locale = CONFIG.DEFAULT_LOCALE,
-  populateEmpty = CONFIG.POPULATE_EMPTY,
-}: {
-  terms: TTermsDict | TTermsDictPartial
-  locale?: TLocale
-  populateEmpty?: boolean
-}): TTermSourceLocalized[] => {
-  return Object.values(getSourcesDict({ terms, locale, populateEmpty }))
-}

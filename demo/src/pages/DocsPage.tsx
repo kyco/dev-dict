@@ -271,7 +271,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
           <div className="bg-white p-6 rounded-xl border border-slate-200">
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-slate-700 mb-4">Import Data</h3>
-              <CodeBlock code={`import { TERMS, TYPES, TAGS, SOURCES, LOCALES } from 'dev-dict'`} />
+              <CodeBlock code={`import { TERMS, TYPES, TAGS, LOCALES } from 'dev-dict'`} />
             </div>
 
             <div className="space-y-0">
@@ -290,11 +290,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
       { id: 'frontend', name: { 'en-US': 'Frontend', ... } },
       ...
     ],
-    links: { official_website: 'https://react.dev', wikipedia: '...', ... },
-    sources: {
-      label: [ { id: 'community', name: { 'en-US': 'Community', ... } } ],
-      ...
-    }
+    links: { official_website: 'https://react.dev', wikipedia: '...', ... }
   },
   typescript: { id: 'typescript', ... },
   // ... more terms
@@ -342,29 +338,6 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
                 />
               </Accordion>
 
-              <Accordion title="SOURCES" description="Source attribution constants with TLocaleRecord values">
-                <CodeBlock
-                  code={`{
-  official_website: {
-    id: 'official_website',
-    name: { 'en-US': 'Official Website', 'en-GB': 'Official Website', 'de-DE': 'Offizielle Website' }
-  },
-  wikipedia: {
-    id: 'wikipedia',
-    name: { 'en-US': 'Wikipedia', 'en-GB': 'Wikipedia', 'de-DE': 'Wikipedia' }
-  },
-  community: {
-    id: 'community',
-    name: { 'en-US': 'Community', 'en-GB': 'Community', 'de-DE': 'Gemeinschaft' }
-  },
-  ai_generated: {
-    id: 'ai_generated',
-    name: { 'en-US': 'AI Generated', 'en-GB': 'AI Generated', 'de-DE': 'KI-generiert' }
-  }
-}`}
-                />
-              </Accordion>
-
               <Accordion title="LOCALES" description="Available locale constants">
                 <CodeBlock
                   code={`{
@@ -390,9 +363,7 @@ const dictionary = getTerms({ terms, locale: 'en-US' })`}
   getTypes,
   getTypesDict,
   getTags,
-  getTagsDict,
-  getSources,
-  getSourcesDict
+  getTagsDict
 } from 'dev-dict'`}
               />
             </div>
@@ -508,45 +479,6 @@ const tagsDict = getTagsDict({
 // }`}
                 />
               </Accordion>
-
-              <Accordion title="getSources()" description="Get all sources as an array (extracted from terms)">
-                <CodeBlock
-                  code={`import { TERMS, getSources } from 'dev-dict'
-
-const sourcesList = getSources({
-  terms: TERMS,       // Required: the terms dictionary
-  locale: 'en-US',
-  populateEmpty: true
-})
-
-// Returns: [
-//   { id: "official_website", name: "Official Website" },
-//   { id: "wikipedia", name: "Wikipedia" },
-//   ...
-// ]`}
-                />
-              </Accordion>
-
-              <Accordion
-                title="getSourcesDict()"
-                description="Get all sources as a dictionary object (extracted from terms)"
-              >
-                <CodeBlock
-                  code={`import { TERMS, getSourcesDict } from 'dev-dict'
-
-const sourcesDict = getSourcesDict({
-  terms: TERMS,       // Required: the terms dictionary
-  locale: 'en-US',
-  populateEmpty: true
-})
-
-// Returns: {
-//   official_website: { id: "official_website", name: "Official Website" },
-//   wikipedia: { id: "wikipedia", name: "Wikipedia" },
-//   ...
-// }`}
-                />
-              </Accordion>
             </div>
 
             <div className="mt-8 pt-6 border-t border-slate-200">
@@ -554,7 +486,7 @@ const sourcesDict = getSourcesDict({
               <p className="text-slate-600 mb-4">
                 All helper functions accept the same options. Note that all functions take{' '}
                 <code className="text-sm bg-slate-100 px-1.5 py-0.5 rounded">terms</code> as input, even when extracting
-                types, tags or sources.
+                types or tags.
               </p>
               <Table
                 headers={['Parameter', 'Type', 'Required', 'Default', 'Description']}
