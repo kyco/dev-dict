@@ -1,3 +1,10 @@
+## [0.15.4](https://github.com/kyco/dev-dict/compare/v0.15.3...v0.15.4) (2026-11-10)
+
+### Chore
+
+* bump deps ([20c1858](https://github.com/kyco/dev-dict/commit/20c1858640ced547416dc71d1610c093214e9200))
+* pin version ([86198da](https://github.com/kyco/dev-dict/commit/86198da09df0729cc8ae09dcf9db29578311dd53))
+
 ## [0.15.3](https://github.com/kyco/dev-dict/compare/v0.15.2...v0.15.3) (2026-11-10)
 
 ### Chore
