@@ -1,6 +1,7 @@
-# Add Entry Skill
-
-Add new terms, types, or tags to the dev-dict project.
+---
+name: add-entry
+description: Add new terms, types, or tags to the dev-dict project.
+---
 
 1. Create file in `src/data/{terms,types,tags}/{id}.ts` with a default export. Use an existing file as a template.
 2. Import and add to the `RAW_*` object in the corresponding `index.ts`.
