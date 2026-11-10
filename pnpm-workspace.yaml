@@ -3,9 +3,7 @@ packages:
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - "@tanstack/react-virtual@3.14.3"
-  - "@tanstack/virtual-core@3.17.1"
-  - "@kyco-utils/biome-config@1.1.0 || 1.2.0"
+  - "@kyco-utils/*"
 overrides:
   "@semantic-release/release-notes-generator": "15.0.0-beta.3"
 permissions:
