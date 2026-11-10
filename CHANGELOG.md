@@ -1,3 +1,9 @@
+## [0.15.3](https://github.com/kyco/dev-dict/compare/v0.15.2...v0.15.3) (2026-11-10)
+
+### Chore
+
+* update lockfile ([2cd142e](https://github.com/kyco/dev-dict/commit/2cd142e5637f1bfa3d3d626be991b7515da9814a))
+
 ## [0.15.2](https://github.com/kyco/dev-dict/compare/v0.15.1...v0.15.2) (2026-11-10)
 
 ### Chore
