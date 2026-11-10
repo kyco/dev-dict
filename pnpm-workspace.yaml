@@ -5,5 +5,11 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - "@tanstack/react-virtual@3.14.3"
   - "@tanstack/virtual-core@3.17.1"
+  - "@kyco-utils/biome-config@1.1.0"
 overrides:
   "@semantic-release/release-notes-generator": "15.0.0-beta.3"
+permissions:
+  "@tanstack/react-router":
+    skills: false
+  "@tanstack/router-plugin":
+    skills: false
