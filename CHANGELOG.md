@@ -1,3 +1,12 @@
+## [0.15.2](https://github.com/kyco/dev-dict/compare/v0.15.1...v0.15.2) (2026-11-10)
+
+### Chore
+
+* bump deps ([56cc028](https://github.com/kyco/dev-dict/commit/56cc0282de1a9f56e6a47d580218baa630311f53))
+* bump nodejs ([7a720e5](https://github.com/kyco/dev-dict/commit/7a720e5d25c12b88e3586d9922f1c2bb7cfb1641))
+* move skills to .agents/skills and symlink .claude/skills ([460432c](https://github.com/kyco/dev-dict/commit/460432c286c19cefdf35d4ec773cafc5fdd614b7))
+* remove ([2b81363](https://github.com/kyco/dev-dict/commit/2b81363d9ec3b6490270e8f4963003d7af5302f5))
+
 ## [0.15.1](https://github.com/kyco/dev-dict/compare/v0.15.0...v0.15.1) (2026-11-06)
 
 ### Bug Fixes
