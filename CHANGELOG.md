@@ -1,3 +1,10 @@
+## [0.15.5](https://github.com/kyco/dev-dict/compare/v0.15.4...v0.15.5) (2026-11-10)
+
+### Chore
+
+* remove unnecesary "vcs" definition ([1f3801a](https://github.com/kyco/dev-dict/commit/1f3801a36f3752355f24439af0eaf5d70f9845c4))
+* update exclude list ([8072528](https://github.com/kyco/dev-dict/commit/80725284ce901f0bec527a669c66de778e970db1))
+
 ## [0.15.4](https://github.com/kyco/dev-dict/compare/v0.15.3...v0.15.4) (2026-11-10)
 
 ### Chore
